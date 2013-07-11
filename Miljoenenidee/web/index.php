@@ -43,13 +43,18 @@ include_once ("config.php");
 </html>
 
 <?php
-} else {
-	$usr = new Users ();
-	$usr->storeFormValues ( $_POST );
+}
+else
+{
+	$usr = new Users();
+	$usr->storeFormValues($_POST);
 	
-	if ($usr->userLogin ()) {
+	if ($usr->userLogin())
+	{
 		echo "Welcome";
-	} else {
+	}
+	else
+	{
 		echo "Incorrect Username/Password";
 	}
 }

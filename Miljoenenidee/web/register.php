@@ -46,13 +46,18 @@ include_once ("config.php");
 </html>
 
 <?php
-} else {
-	$usr = new Users ();
-	$usr->storeFormValues ( $_POST );
+}
+else
+{
+	$usr = new Users();
+	$usr->storeFormValues($_POST);
 	
-	if ($_POST ['password'] == $_POST ['conpassword']) {
-		echo $usr->register ( $_POST );
-	} else {
+	if ($_POST['password'] == $_POST['conpassword'])
+	{
+		echo $usr->register($_POST);
+	}
+	else
+	{
 		echo "Password and Confirm password not match";
 	}
 }
