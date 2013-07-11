@@ -27,7 +27,8 @@ class Users {
 			
 			$valid = $stmt->fetchColumn ();
 			
-			if ($valid) {
+			if ($valid) 
+			{
 				$success = true;
 			}
 			
