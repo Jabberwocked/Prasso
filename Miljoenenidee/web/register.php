@@ -4,7 +4,6 @@ include_once ("config.php");
 
 <?php if( !(isset( $_POST['register'] ) ) ) { ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>

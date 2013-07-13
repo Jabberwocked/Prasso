@@ -23,7 +23,35 @@ class Users
 		$this->__construct($params);
 	}
 
-
+	
+	/**
+	 * Checks whether the given username is already in the database.
+	 * 
+	 * @param 	string 	userName The user name that will be searched for.
+	 * @return 	boolean True when the username exists.
+	 */
+	public function isDuplicateUserName( $userName )
+	{
+			$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+			$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			
+			$sql = "SELECT * FROM users WHERE username = :username";
+			
+			$stmt = $con->prepare($sql);
+			$stmt->bindValue("username", $this->username, PDO::PARAM_STR);
+			$stmt->execute();
+			
+			$isDuplicate = $stmt->fetchColumn();
+			$con = null;
+			return (strTemp != '');
+	}
+	
+	
+	/**
+	 * Attempts to log in a user with the given username and password.
+	 * 
+	 * @return boolean
+	 */
 	public function userLogin( )
 	{
 		$success = false;
@@ -60,25 +88,16 @@ class Users
 	{
 		$correct = false;
 		
+		if( $this->isDuplicateUserName( $this->username ) )
+		{
+			return "Registration failed user already exists";
+		}
+		
 		try
 		{
 			$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 			$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			
-			$sql = "SELECT * FROM users WHERE username = :username";
-			
-			$stmt = $con->prepare($sql);
-			$stmt->bindValue("username", $this->username, PDO::PARAM_STR);
-			$stmt->execute();
-			
-			$valid = $stmt->fetchColumn();
-			
-			if ($valid)
-			{
-				$con = null;
-				return "registration failed, duplicate user name";
-			}
-			
+				
 			$sql = "INSERT INTO users(username, password) VALUES(:username, :password)";
 			$stmt = $con->prepare($sql);
 			$stmt->bindValue("username", $this->username, PDO::PARAM_STR);
