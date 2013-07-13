@@ -1,4 +1,36 @@
 <?php
+<<<<<<< HEAD
+	/**
+	 * GIT DEPLOYMENT SCRIPT
+	 *
+	 * Used for automatically deploying websites via github or bitbucket, more deets here:
+	 *
+	 *		https://gist.github.com/1809044
+	 */
+ 
+	// The commands
+	$commands = array(
+		'echo $PWD',
+		'whoami',
+		'git pull',
+		'git status',
+		'git submodule sync',
+		'git submodule update',
+		'git submodule status',
+	);
+ 
+	// Run the commands for output
+	$output = '';
+	foreach($commands AS $command){
+		// Run it
+		$tmp = shell_exec($command);
+		// Output
+		$output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
+		$output .= htmlentities(trim($tmp)) . "\n";
+	}
+ 
+	// Make it pretty for manual user access (and why not?)
+=======
 /**
  * Simple PHP GIT deploy script
  *
@@ -99,176 +131,23 @@ define('BACKUP_DIR', false);
 
 // ===========================================[ Configuration end ]===
 
+>>>>>>> bca99ef97aefb05e986024a0f804775999f72628
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en-US">
 <head>
-	<meta charset="utf-8">
-	<title>Simple PHP GIT deploy script</title>
-	<style>
-body { padding: 0 1em; background: #222; color: #fff; }
-h2, .error { color: #c33; }
-.prompt { color: #6be234; }
-.command { color: #729fcf; }
-.output { color: #999; }
-	</style>
+	<meta charset="UTF-8">
+	<title>GIT DEPLOYMENT SCRIPT</title>
 </head>
-<body>
-<?php
-if (!isset($_GET['sat']) || $_GET['sat'] !== SECRET_ACCESS_TOKEN) {
-	die('<h2>ACCESS DENIED!</h2>');
-}
-if (SECRET_ACCESS_TOKEN === 'BetterChangeMeNowOrSufferTheConsequences') {
-	die("<h2>You're suffering the consequences!<br>Change the SECRET_ACCESS_TOKEN from it's default value!</h2>");
-}
-?>
+<body style="background-color: #000000; color: #FFFFFF; font-weight: bold; padding: 0 10px;">
 <pre>
-
-Checking the environment ...
-
-Running as <b><?php echo trim(shell_exec('whoami')); ?></b>.
-
-<?php
-// Check if the needed programs are available
-$binaries = array();
-foreach (array('git', 'rsync', 'tar') as $command) {
-	$path = trim(shell_exec('which '.$command));
-	if ($path == '') {
-		die(sprintf('<div class="error"><b>%s</b> not available. It need to be installed on the server for this script to work.</div>', $command));
-	} else {
-		$binaries[$command] = $path;
-		$version = explode("\n", shell_exec($path.' --version'));
-		printf('<b>%s</b> : %s'."\n"
-			, $path
-			, $version[0]
-		);
-	}
-}
-?>
-
-Environment OK.
-
-Deploying <?php echo REMOTE_REPOSITORY; ?> <?php echo BRANCH."\n"; ?>
-to        <?php echo TARGET_DIR; ?> ...
-
-<?php
-// The commands
-$commands = array();
-
-// ========================================[ Pre-Deployment steps ]===
-
-// Clone the repository into the TMP_DIR
-$commands[] = sprintf(
-	'%s clone --depth=1 --branch %s %s %s'
-	, $binaries['git']
-	, BRANCH
-	, REMOTE_REPOSITORY
-	, TMP_DIR
-);
-
-// Update the submodules
-$commands[] = sprintf(
-	'%s submodule update --init --recursive'
-	, $binaries['git']
-);
-
-// Describe the deployed version
-if (defined('VERSION_FILE') && VERSION_FILE !== '') {
-	$commands[] = sprintf(
-		'%s --git-dir="%s.git" --work-tree="%s" describe --always > %s'
-		, $binaries['git']
-		, TMP_DIR
-		, TMP_DIR
-		, VERSION_FILE
-	);
-}
-
-// Backup the TARGET_DIR
-if (defined('BACKUP_DIR') && BACKUP_DIR !== false && is_dir(BACKUP_DIR)) {
-	$commands[] = sprintf(
-		'%s czf %s/%s-%s-%s.tar.gz %s*'
-		, $binaries['tar']
-		, BACKUP_DIR
-		, basename(TARGET_DIR)
-		, md5(TARGET_DIR)
-		, date('YmdHis')
-		, TARGET_DIR // We're backing up this directory into BACKUP_DIR
-	);
-}
-
-// ==================================================[ Deployment ]===
-
-// Compile exclude parameters
-$exclude = '';
-foreach (unserialize(EXCLUDE) as $exc) {
-	$exclude .= ' --exclude='.$exc;
-}
-// Deployment command
-$commands[] = sprintf(
-	'%s -rltgoDzv %s %s %s %s'
-	, $binaries['rsync']
-	, TMP_DIR
-	, TARGET_DIR
-	, (DELETE_FILES) ? '--delete-after' : ''
-	, $exclude
-);
-
-// =======================================[ Post-Deployment steps ]===
-
-// Remove the TMP_DIR
-$commands['cleanup'] = sprintf(
-	'rm -rf %s'
-	, TMP_DIR
-);
-
-// =======================================[ Run the command steps ]===
-
-foreach ($commands as $command) {
-	set_time_limit(TIME_LIMIT); // Reset the time limit for each command
-	if (file_exists(TMP_DIR) && is_dir(TMP_DIR)) {
-		chdir(TMP_DIR); // Ensure that we're in the right directory
-	}
-	$tmp = array();
-	exec($command.' 2>&1', $tmp, $return_code); // Execute the command
-	// Output the result
-	printf('
-<span class="prompt">$</span> <span class="command">%s</span>
-<div class="output">%s</div>
-'
-		, htmlentities(trim($command))
-		, htmlentities(trim(implode("\n", $tmp)))
-	);
-	flush(); // Try to output everything as it happens
-
-	// Error handling and cleanup
-	if ($return_code !== 0) {
-		$tmp = shell_exec($commands['cleanup']);
-		printf('
-<div class="error">
-Error encountered!
-Stopping the script to prevent possible data loss.
-CHECK THE DATA IN YOUR TARGET DIR!
-</div>
-
-
-Cleaning up temporary files ...
-
-<span class="prompt">$</span> <span class="command">%s</span>
-<div class="output">%s</div>
-'
-			, htmlentities(trim($commands['cleanup']))
-			, htmlentities(trim($tmp))
-		);
-		error_log(sprintf(
-			'Deployment error! %s'
-			, __FILE__
-		));
-		break;
-	}
-}
-?>
-
-Done.
+ .  ____  .    ____________________________
+ |/      \|   |                            |
+[| <span style="color: #FF0000;">&hearts;    &hearts;</span> |]  | Git Deployment Script v0.1 |
+ |___==___|  /              &copy; oodavid 2012 |
+              |____________________________|
+ 
+<?php echo $output; ?>
 </pre>
 </body>
 </html>
