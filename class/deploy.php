@@ -11,7 +11,7 @@
 $commands = array(
 	'echo $PWD',
 	'whoami',
-	'git pull',
+	'git pull 2>&1',
 	'git status');
 
 // Run the commands for output
