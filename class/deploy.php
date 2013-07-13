@@ -8,10 +8,17 @@
  * Blaat
  */
 
+define('SECRET_ACCESS_TOKEN', 'Changedit');
+
+if (!isset($_GET['sat']) || $_GET['sat'] !== SECRET_ACCESS_TOKEN) {
+	die('<h2>ACCESS DENIED!</h2>');
+}
+
 // The commands
 $commands = array(
 	'echo $PWD',
 	'whoami',
+	'echo $PATH',
 	'git pull 2>&1',
 	'git status');
 
