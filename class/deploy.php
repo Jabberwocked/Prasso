@@ -30,7 +30,7 @@ foreach ($commands as $command)
 
 
 // Make it pretty for manual user access (and why not?)
-// Make it secure.
+// Make it secure and test deployements.
 ?>
 <!DOCTYPE HTML>
 <html lang="en-US">
