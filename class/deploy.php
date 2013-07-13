@@ -6,7 +6,6 @@
  *
  * https://gist.github.com/1809044
  */
-// Config allright now???
 
 // The commands
 $commands = array(
