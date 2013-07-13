@@ -1,5 +1,9 @@
 <?php
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bb56989176fac8bc5cdd8b30081d87c7a4d87a66
 	/**
 	 * GIT DEPLOYMENT SCRIPT
 	 *
@@ -30,7 +34,11 @@
 	}
  
 	// Make it pretty for manual user access (and why not?)
+<<<<<<< HEAD
 =======
+=======
+=======
+>>>>>>> bb56989176fac8bc5cdd8b30081d87c7a4d87a66
 /**
  * Simple PHP GIT deploy script
  *
@@ -131,7 +139,11 @@ define('BACKUP_DIR', false);
 
 // ===========================================[ Configuration end ]===
 
+<<<<<<< HEAD
 >>>>>>> bca99ef97aefb05e986024a0f804775999f72628
+=======
+>>>>>>> bca99ef97aefb05e986024a0f804775999f72628
+>>>>>>> bb56989176fac8bc5cdd8b30081d87c7a4d87a66
 ?>
 <!DOCTYPE HTML>
 <html lang="en-US">
