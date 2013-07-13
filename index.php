@@ -7,7 +7,7 @@ include_once ("config.php");
 <!DOCTYPE html>
 <html>
 <head>
-<title>a million</title>
+<title>once in a million</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
