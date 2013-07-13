@@ -5,14 +5,22 @@
  * Used for automatically deploying websites via github or bitbucket, more deets here:
  *
  * https://gist.github.com/1809044
- * Blaat
  */
+// Now it works!!
+
+
+define('SECRET_ACCESS_TOKEN', 'Changedit');
+
+if (!isset($_GET['sat']) || $_GET['sat'] !== SECRET_ACCESS_TOKEN) {
+	die('<h2>ACCESS DENIED!</h2>');
+}
 
 // The commands
 $commands = array(
 	'echo $PWD',
 	'whoami',
-	'git pull',
+	'echo $PATH',
+	'git pull 2>&1',
 	'git status');
 
 // Run the commands for output
