@@ -7,11 +7,10 @@
  * https://gist.github.com/1809044
  */
 // Now it works!!
-
-
 define('SECRET_ACCESS_TOKEN', 'Changedit');
 
-if (!isset($_GET['sat']) || $_GET['sat'] !== SECRET_ACCESS_TOKEN) {
+if (! isset($_GET['sat']) || $_GET['sat'] !== SECRET_ACCESS_TOKEN)
+{
 	die('<h2>ACCESS DENIED!</h2>');
 }
 
@@ -33,7 +32,6 @@ foreach ($commands as $command)
 	$output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
 	$output .= htmlentities(trim($tmp)) . "\n";
 }
-
 
 // Make it pretty for manual user access (and why not?)
 // Make it secure and test deployements.

@@ -1,6 +1,6 @@
 <?php
 
-class Users
+class User
 {
 
 	public $username = null;
@@ -23,33 +23,34 @@ class Users
 		$this->__construct($params);
 	}
 
-	
+
 	/**
 	 * Checks whether the given username is already in the database.
-	 * 
-	 * @param 	string 	userName The user name that will be searched for.
-	 * @return 	boolean True when the username exists.
+	 *
+	 * @param
+	 *        	string userName The user name that will be searched for.
+	 * @return boolean True when the username exists.
 	 */
 	public function isDuplicateUserName( $userName )
 	{
-			$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-			$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			
-			$sql = "SELECT * FROM users WHERE username = :username";
-			
-			$stmt = $con->prepare($sql);
-			$stmt->bindValue("username", $this->username, PDO::PARAM_STR);
-			$stmt->execute();
-			
-			$isDuplicate = $stmt->fetchColumn();
-			$con = null;
-			return (strTemp != '');
+		$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+		$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		
+		$sql = "SELECT * FROM user WHERE username = :username";
+		
+		$stmt = $con->prepare($sql);
+		$stmt->bindValue("username", $this->username, PDO::PARAM_STR);
+		$stmt->execute();
+		
+		$isDuplicate = $stmt->fetchColumn();
+		$con = null;
+		return (strTemp != '');
 	}
-	
-	
+
+
 	/**
 	 * Attempts to log in a user with the given username and password.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public function userLogin( )
@@ -59,7 +60,7 @@ class Users
 		{
 			$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 			$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$sql = "SELECT * FROM users WHERE username = :username AND password = :password LIMIT 1";
+			$sql = "SELECT * FROM user WHERE username = :username AND password = :password LIMIT 1";
 			
 			$stmt = $con->prepare($sql);
 			$stmt->bindValue("username", $this->username, PDO::PARAM_STR);
@@ -88,7 +89,7 @@ class Users
 	{
 		$correct = false;
 		
-		if( $this->isDuplicateUserName( $this->username ) )
+		if ($this->isDuplicateUserName($this->username))
 		{
 			return "Registration failed user already exists";
 		}
@@ -97,8 +98,8 @@ class Users
 		{
 			$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 			$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				
-			$sql = "INSERT INTO users(username, password) VALUES(:username, :password)";
+			
+			$sql = "INSERT INTO user(username, password) VALUES(:username, :password)";
 			$stmt = $con->prepare($sql);
 			$stmt->bindValue("username", $this->username, PDO::PARAM_STR);
 			$stmt->bindValue("password", hash("sha256", $this->password . $this->salt), PDO::PARAM_STR);

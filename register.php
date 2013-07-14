@@ -48,7 +48,7 @@ include_once ("config.php");
 }
 else
 {
-	$usr = new Users();
+	$usr = new User();
 	$usr->storeFormValues($_POST);
 	
 	if ($_POST['password'] == $_POST['conpassword'])
