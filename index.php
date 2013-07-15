@@ -7,7 +7,7 @@ include_once ("config.php");
 <!DOCTYPE html>
 <html>
 <head>
-<title>once in a million 2345checkins it works b;laat</title>
+<title>once in a million checkins it works</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
