@@ -14,7 +14,7 @@ include_once ("config.php");
 <body>
 
 	<header id="head">
-		<p>Miljoenenidee: User Login</p>
+		<p>Presso: User Login</p>
 		<p>
 			<a href="register.php"><span id="register">Register</span></a>
 		</p>
