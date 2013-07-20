@@ -7,13 +7,13 @@ include_once ("config.php");
 <!DOCTYPE html>
 <html>
 <head>
-<title>Miljoenenidee</title>
+<title>Welcome to Presso: Please register</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
 	<header id="head">
-		<p>Miljoenenidee User Registration</p>
+		<p>User Registration</p>
 		<p>
 			<a href="register.php"><span id="register">Register</span></a>
 		</p>

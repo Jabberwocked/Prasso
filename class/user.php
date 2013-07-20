@@ -27,8 +27,8 @@ class User
 	/**
 	 * Checks whether the given username is already in the database.
 	 *
-	 * @param
-	 *        	string userName The user name that will be searched for.
+	 * @param string userName The user name that will be searched for.
+	 * 
 	 * @return boolean True when the username exists.
 	 */
 	public function isDuplicateUserName( $userName )
