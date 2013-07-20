@@ -7,14 +7,14 @@ include_once ("config.php");
 <!DOCTYPE html>
 <html>
 <head>
-<title>Welcome to Presso. Please log in.</title>
+<title>Welcome to Prasso. Please log in.</title>
 <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
 
 	<header id="head">
-		<p>Presso: User Login</p>
+		<p>Prasso: User Login</p>
 		<p>
 			<a href="register.php"><span id="register">Register</span></a>
 		</p>
