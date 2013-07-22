@@ -1,3 +1,7 @@
+<?php
+include_once (".\class\config.php");
+include once (".\class\user.php");
+?>
 <?php if( !(isset( $_POST['login'] ) ) ) { ?>
 
 <!DOCTYPE html>
