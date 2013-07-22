@@ -29,8 +29,7 @@ if (isset($_SESSION['HTTP_USER_AGENT']))
 			</header>
 		
 			<div id="main-wrapper">
-				<div id="login-wrapper">
-				</div>
+				<p> Not logged in</p>
 			</div>
 		</body>
 		</html>
@@ -60,9 +59,7 @@ else
 		</header>
 	
 		<div id="main-wrapper">
-			<div id="login-wrapper">
 			<p> welcome </p>
-			</div>
 		</div>
 	</body>
 	</html>
