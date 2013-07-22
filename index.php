@@ -36,7 +36,6 @@ if (isset($_SESSION['HTTP_USER_AGENT']))
 		</html>
 
 		<?php 
-		exit;
 	}
 }
 else
