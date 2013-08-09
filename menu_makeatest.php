@@ -10,7 +10,7 @@
 
 <center>
 <ul class="sonarmenu">
-<li><a href="temp_makeatest_new.php">New</a></li><br>
+<li><a href="menu_makeatest_new.php">New</a></li><br>
 </ul>
 </center>
 
