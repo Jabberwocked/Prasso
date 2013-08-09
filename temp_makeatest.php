@@ -7,9 +7,13 @@
 </head>
 <body>
 <br><br><br><br>
-<div id="buttons">
-<a href="temp_makeatest_new.php"><button type="button">New</button></a><br>
-</div>
+
+<center>
+<ul class="sonarmenu">
+<li><a href="temp_makeatest_new.php">New</a></li><br>
+</ul>
+</center>
+
 <br><br><br>
 
 <div style="width:500px; margin-left:auto; margin-right:auto">

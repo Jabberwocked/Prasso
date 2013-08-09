@@ -7,16 +7,19 @@
 </head>
 <body>
 <br><br><br><br>
-<div id="buttons">
-<a href=""><button type="button" style="width:450px">My results by test</button></a><br>
-<br><br><br>
-<a href=""><button type="button" style="width:450px">Other results by test</button></a><br>
-<a href=""><button type="button" style="width:450px">Other results by user</button></a><br>
-<br><br><br>
-<a href=""><button type="button" style="width:450px">Request to track another user</button></a><br>
-<a href=""><button type="button" style="width:450px">Invite a user to track me</button></a><br>
 
-</div>
+<center>
+<ul class="sonarmenu">
+<li><a href="">My results by test</a></li><br>
+<br><br><br>
+<li><a href="">Other results by test</a></li><br>
+<li><a href="">Other results by user</a></li><br>
+<br><br><br>
+<li><a href="">Request to track another user</a></li><br>
+<li><a href="">Invite a user to track me</a></li><br>
+</ul>
+</center>
+
 </body>
 </html>
 

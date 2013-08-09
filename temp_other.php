@@ -7,10 +7,14 @@
 </head>
 <body>
 <br><br><br><br>
-<div id="buttons">
-<a href=""><button type="button" style="width:450px">Create a timeline</button></a><br>
-<a href=""><button type="button" style="width:450px">Search lesson blocks by topic</button></a><br>
-</div>
+
+<center>
+<ul class="sonarmenu">
+<li><a href="">Create a timeline</a></li><br>
+<li><a href="">Search lesson blocks by topic</a></li><br>
+</ul>
+</center>
+
 </body>
 </html>
 
