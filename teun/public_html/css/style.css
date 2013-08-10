@@ -1,0 +1,311 @@
+/* Not sure where to put this */
+
+/* Buttons and menu */
+
+<link href='http://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
+
+ul.sonarmenu{ /* Inspired by http://tympanus.net/codrops/2013/08/06/creative-link-effects */
+	list-style: none;
+}
+
+ul.sonarmenu li{
+ display: inline-block;
+}
+
+ul.sonarmenu a{
+	position: relative;
+	display: inline-block;
+	color: black; /* font color */
+	text-decoration: none;
+	margin: 10px 20px;
+	text-transform: uppercase;
+	font-family: 'Raleway', sans-serif; /* font style (uses Google fonts) */
+	font-size: 22px; /* font size */
+	letter-spacing: 2px; /* letter spacing */
+	border-bottom: 2px solid transparent; /* Bottom border style */
+}
+
+ul.sonarmenu a:hover, ul.sonarmenu a:focus{
+	outline: none;
+	border-bottom: 2px solid #eee; /* Bottom border style on hover */
+}
+
+ul.sonarmenu a::before, ul.sonarmenu a:after{ /* shared style for two circles */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 70px; /* width of outer circle */
+	height: 70px; /* height of outer circle */
+	border: 12px double rgba(0,0,0,0.1); /* style and color of circles */
+	border-radius: 50%;
+	content: '';
+	opacity: 0;
+	-webkit-transform: translateX(-50%) translateY(-50%) scale(0.2);
+	-moz-transform: translateX(-50%) translateY(-50%) scale(0.2);
+	transform: translateX(-50%) translateY(-50%) scale(0.2);
+}
+
+ul.sonarmenu a:after{ /* inner circle specific CSS */
+	width: 60px; /* width of inner circle */
+	height: 60px; /* width of inner circle */
+	border-width: 6px;
+	-webkit-transform: translateX(-50%) translateY(-50%) scale(0.8);
+	-moz-transform: translateX(-50%) translateY(-50%) scale(0.8);
+	transform: translateX(-50%) translateY(-50%) scale(0.8);
+}
+
+ul.sonarmenu a:hover:before, ul.sonarmenu a:hover:after{
+	-webkit-animation: pulsate 1.2s infinite; /* animation name duration loop etc */
+	-moz-animation: pulsate 1.2s infinite;
+	-ms-animation: pulsate 1.2s infinite;
+	animation: pulsate 1.2s infinite;
+}
+
+/* ### Keyframe animations ### */
+
+@-webkit-keyframes pulsate{
+  30%{
+	opacity: 1;
+	-webkit-transform: translateX(-50%) translateY(-50%) scale(1);
+  }
+	100%{
+	opacity: 0.3;
+	-webkit-transform: translateX(-50%) translateY(-50%) scale(0.5);
+	}
+}
+
+@-moz-keyframes pulsate{
+  30%{
+	opacity: 1;
+	-moz-transform: translateX(-50%) translateY(-50%) scale(1);
+  }
+	100%{
+	opacity: 0.3;
+	-moz-transform: translateX(-50%) translateY(-50%) scale(0.5);
+	}
+}
+
+@-ms-keyframes pulsate{
+  30%{
+	opacity: 1;
+	-ms-transform: translateX(-50%) translateY(-50%) scale(1);
+  }
+	100%{
+	opacity: 0.3;
+	-ms-transform: translateX(-50%) translateY(-50%) scale(0.5);
+	}
+}
+
+@-keyframes pulsate{
+  30%{
+	opacity: 1;
+	transform: translateX(-50%) translateY(-50%) scale(1);
+  }
+
+	100%{
+	opacity: 0.3;
+	transform: translateX(-50%) translateY(-50%) scale(0.5);
+	}
+}
+
+/* end buttons and menu */
+
+
+
+
+
+
+
+/* Css RESET */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video
+	{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section
+	{
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol,ul {
+	list-style: none;
+}
+
+blockquote,q {
+	quotes: none;
+}
+
+blockquote:before,blockquote:after,q:before,q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Styling the Header */
+header#head {
+	background-color: #333333;
+	height: 50px;
+	width: 100%;
+}
+
+header#head p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	color: #999;
+	font-weight: bold;
+	padding: 20px;
+}
+
+header#head p #register {
+	float: right;
+	margin-top: -60px;
+}
+
+header#head p a:hover #register {
+	color: #999;
+}
+
+/* Styling the main wrapper */
+#main-wrapper {
+	width: 100%;
+	height: 100%;
+}
+
+/* Styling the login wrapper */
+#login-wrapper {
+	margin: 0px auto;
+	width: 310px;
+	height: 180px;
+	padding: 50px 1px 10px 50px;
+	margin-top: 150px;
+	-moz-box-shadow: 0px 0px 10px #888;
+	-o-box-shadow: 0px 0px 10px #888;
+	-webkit-box-shadow: 0px 0px 10px #888;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-o-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+}
+
+#register-wrapper {
+	margin: 0px auto;
+	width: 310px;
+	height: 250px;
+	padding: 50px 1px 10px 50px;
+	margin-top: 150px;
+	-moz-box-shadow: 0px 0px 10px #888;
+	-o-box-shadow: 0px 0px 10px #888;
+	-webkit-box-shadow: 0px 0px 10px #888;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-o-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+}
+
+/* Form height, margin, padding */
+form ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+form ul li {
+	margin: .9em 0 0 0;
+	padding: 0;
+}
+
+form * {
+	line-height: 1em;
+}
+
+/* field labels */
+label {
+	clear: left;
+	text-align: right;
+	width: 15%;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 15px;
+	color: #808080;
+}
+
+/* the fields */
+input {
+	font-size: .9em;
+}
+
+input {
+	border: 2px solid #666;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background: #fff;
+}
+
+input {
+	display: block;
+	margin: 0;
+	padding: .4em;
+	width: 80%;
+}
+
+/* Place a border around focused fields */
+form *:focus {
+	border: 2px solid #7c412b;
+	outline: none;
+}
+
+/* Display correctly filled-in fields with a green background */
+input:valid {
+	background: #efe;
+}
+
+/* Submit buttons */
+.buttons {
+	text-align: center;
+	margin: 20px 0 0 -80px;
+}
+
+input[type="submit"],input[type="button"] {
+	display: inline;
+	margin: 0 5px;
+	margin-left: 20px;
+	width: 10em;
+	padding: 10px;
+	border: 2px solid #7c412b;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+	box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+	color: #fff;
+	background: #ca5f34;
+	font-weight: bold;
+	-webkit-appearance: none;
+}
+
+input[type="submit"]:hover,input[type="submit"]:active,input[type="button"]:hover,input[type="button"]:active
+	{
+	cursor: pointer;
+	background: #fff;
+	color: #ef7d50;
+}
+
+input[type="button"]:active,input[type="button"]:active {
+	background: #eee;
+	-moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
+	-webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
+	box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
+}
