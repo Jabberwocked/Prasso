@@ -42,7 +42,7 @@ td {
 			<td>Chapter 5</td>
 			<td>Present continuous</td>
 			<td>-</td>
-			<td>70%</td>
+			<td>70% (<a href="">Share</a>)</td>
 			<td><a href="">View</a></td>
 			<td><a href="">Discuss</a></td>
 		</tr>
@@ -53,7 +53,7 @@ td {
 			<td>Chapter 5</td>
 			<td>Present continuous</td>
 			<td>-</td>
-			<td>95%</td>
+			<td>95% (<a href="">Share</a>)</td>
 			<td><a href="">View</a></td>
 			<td><a href="">Discuss</a></td>
 		</tr>
@@ -64,7 +64,7 @@ td {
 			<td>Random</td>
 			<td>Present continuous</td>
 			<td>-</td>
-			<td>80%</td>
+			<td>80% (<a href="">Share</a>)</td>
 			<td><a href="">View</a></td>
 			<td><a href="">Discuss</a></td>
 		</tr>
