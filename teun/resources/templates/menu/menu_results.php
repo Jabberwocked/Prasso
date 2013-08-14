@@ -8,8 +8,8 @@
 			<br>
 			<br>
 			<br>
-			<li><a href="">Track a user</a></li>
-			<li><a href="">Invite tracker</a></li>
+			<li><a href="">Follow a user</a></li>
+			<li><a href="">Invite follower</a></li>
 			<br>
 		</ul>
 	</center>
