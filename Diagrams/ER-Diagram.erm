@@ -110,7 +110,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2013-07-14 09:10:06</creation_date>
-			<updated_date>2013-08-14 21:02:10</updated_date>
+			<updated_date>2013-08-14 21:12:48</updated_date>
 			<model_property>
 				<name>Project Name</name>
 				<value></value>
@@ -286,8 +286,8 @@
 			<unsigned>false</unsigned>
 			<args></args>
 			<description></description>
-			<logical_name>GroupID</logical_name>
-			<physical_name>GroupID</physical_name>
+			<logical_name>GroupIDs</logical_name>
+			<physical_name>GroupIDs</physical_name>
 			<type></type>
 		</word>
 		<word>
@@ -1605,7 +1605,7 @@
 		</table>
 		<note>
 			<id>4</id>
-			<height>140</height>
+			<height>159</height>
 			<width>600</width>
 				<font_name>Segoe UI</font_name>
 				<font_size>9</font_size>
@@ -1618,7 +1618,7 @@
 			</color>
 			<connections>
 			</connections>
-			<text>As I see it, results should be shared by test, so users keep the option of having a test result not shared.&#x0D;&#x0A;Follows_UserIDs and Followedby_UserIDs are used to prompt a user to share/not share a result with followers.&#x0D;&#x0A;&#x0D;&#x0A;GroupID is optional. For batch following.&#x0D;&#x0A;&#x0D;&#x0A;TestIDS are for tests that are saved and editable by the user.</text>
+			<text>As I see it, results should be shared by test, so users keep the option of having a test result not shared.&#x0D;&#x0A;Follows_UserIDs and Followedby_UserIDs are used to prompt a user to share/not share a result with followers.&#x0D;&#x0A;&#x0D;&#x0A;GroupIDs are optional. Comes in handy for batch following. Can later be used for social options (group discussions etc.)&#x0D;&#x0A;&#x0D;&#x0A;TestIDS are for tests that are saved and editable by the user.</text>
 		</note>
 		<table>
 			<id>5</id>
