@@ -6,7 +6,7 @@
 			<br>
 			<li><a href="loggedin_makeatest.php">Make a test</a></li>
 			<br>
-			<li><a href="loggedin_trackprogress.php">Track progress</a></li>
+			<li><a href="loggedin_results.php">Results</a></li>
 			<br>
 			<li><a href="loggedin_other.php">Other</a></li>
 			<br>
