@@ -42,9 +42,11 @@ td {
 			<td>Chapter 5</td>
 			<td>Present continuous</td>
 			<td>-</td>
-			<td>70% (<a href="">Share</a>)</td>
+	 		<td>70% 
+<!--		 		(<a href="">Share</a>)			-->
+	 										</td>
 			<td><a href="">View</a></td>
-			<td><a href="">Discuss</a></td>
+<!--		<td><a href="">Discuss</a></td>			-->
 		</tr>
 		<tr>
 			<td>4-8-2013</td>
@@ -53,9 +55,11 @@ td {
 			<td>Chapter 5</td>
 			<td>Present continuous</td>
 			<td>-</td>
-			<td>95% (<a href="">Share</a>)</td>
+	 		<td>95% 
+<!--		 		(<a href="">Share</a>)			-->
+	 										</td>
 			<td><a href="">View</a></td>
-			<td><a href="">Discuss</a></td>
+<!--		<td><a href="">Discuss</a></td>			-->
 		</tr>
 		<tr>
 			<td>2-8-2013</td>
@@ -64,13 +68,16 @@ td {
 			<td>Random</td>
 			<td>Present continuous</td>
 			<td>-</td>
-			<td>80% (<a href="">Share</a>)</td>
+	 		<td>70% 
+<!--		 		(<a href="">Share</a>)			-->
+	 										</td>
 			<td><a href="">View</a></td>
-			<td><a href="">Discuss</a></td>
+<!--		<td><a href="">Discuss</a></td>			-->
 		</tr>
 	</table>
 </div>
 
+<!-- 
 <center>
 	<br> <br> <br> <br> <br> <br> <br> <br>
 	
@@ -95,3 +102,4 @@ td {
 	</ul>
 	
 </center>
+-->
