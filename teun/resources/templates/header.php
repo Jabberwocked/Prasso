@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
-<div class='title'><h1>PRASSO</h1></div>
+<div class='header'><a href="loggedin_main.php"><h1 id='title'>PRASSO</h1></a></div>
 	<br>
 	<br>
 	<br>
