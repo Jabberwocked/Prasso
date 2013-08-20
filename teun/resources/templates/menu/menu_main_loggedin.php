@@ -9,9 +9,12 @@
 			<br>
 			<br>
 			<li><a href="loggedin_makeatest.php">Make a test</a></li>
-			<br>
+			
+<!-- 		<br>
 			<li><a href="loggedin_other.php">Other</a></li>
 			<br>
+-->
+
 		</ul>
 	</center>
 

@@ -17,9 +17,14 @@
 			<br>
 			<br>
 
-			<li><a href="">Invite users</a></li>
+			<li><a href="">Take test</a></li>
 			<br>
-			<li><a href="">Share link</a></li>
+			<li><a href="">Administer test</a></li>
+						
+	<!-- 	<br>
+			<li><a href="">Share test</a></li>
 			<br>
+	-->
+		
 		</ul>
 	</center>
