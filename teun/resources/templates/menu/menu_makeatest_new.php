@@ -1,8 +1,7 @@
 
 	<center>
-		<ul class="sonarmenu">
-			<li><a href="">Add question</a></li>
-			<br>
+		<nav>
+			<a href="">Add question</a><br>
 
 			<br>
 			<br>
@@ -17,14 +16,9 @@
 			<br>
 			<br>
 
-			<li><a href="">Take test</a></li>
-			<br>
-			<li><a href="">Administer test</a></li>
-						
-	<!-- 	<br>
-			<li><a href="">Share test</a></li>
-			<br>
-	-->
+			<a href="">Take test</a><br>
+			<a href="">Administer test</a><br>						
+	<!-- 	<a href="">Share test</a><br>		-->
 		
-		</ul>
+		</nav>
 	</center>

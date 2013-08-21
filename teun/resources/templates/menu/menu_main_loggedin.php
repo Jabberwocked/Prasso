@@ -1,20 +1,13 @@
 
 
 	<center>
-		<ul class="sonarmenu">
-			<li><a href="loggedin_takeatest.php">Take a test</a></li>
-			<br>
-			<li><a href="loggedin_results.php">Results</a></li>
-			<br>
+		<nav>
+			<a href="loggedin_takeatest.php">Take a test</a><br>
+			<a href="loggedin_results.php">Results</a><br>
 			<br>
 			<br>
-			<li><a href="loggedin_makeatest.php">Make a test</a></li>
-			
-<!-- 		<br>
-			<li><a href="loggedin_other.php">Other</a></li>
-			<br>
--->
-
-		</ul>
+			<a href="loggedin_makeatest.php">Make a test</a><br>			
+<!-- 		<a href="loggedin_other.php">Other</a><br>		-->
+		</nav>
 	</center>
 
