@@ -37,7 +37,7 @@ foreach ($commands as $command)
 <html lang="en-US">
 <head>
 <meta charset="UTF-8">
-<title>Prasso deployement scriptt</title>
+<title>Prasso deployment script</title>
 </head>
 <body
 	style="background-color: #000000; color: #FFFFFF; font-weight: bold; padding: 0 10px;">

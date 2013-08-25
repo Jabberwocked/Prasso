@@ -4,20 +4,10 @@ include_once ("config.php");
 
 <?php if( !(isset( $_POST['register'] ) ) ) { ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>Welcome to Prssso: Please register</title>
-<link rel="stylesheet" type="text/css" href="style.css" />
-</head>
-
-<body>
-	<header id="head">
-		<p>Prasso: User Registration</p>
-		<p>
-			<a href="register.php"><span id="register">Register</span></a>
-		</p>
-	</header>
+<?php 
+include_once ("../config/config.php");
+include_once (TEMPLATES_PATH . "/header.php");
+?>
 
 	<div id="main-wrapper">
 		<div id="register-wrapper">
@@ -41,9 +31,11 @@ include_once ("config.php");
 		</div>
 	</div>
 
-</body>
-</html>
-
+<?php
+include_once (TEMPLATES_PATH . "/footer.php");
+?>
+	
+	
 <?php
 }
 else
