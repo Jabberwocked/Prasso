@@ -12,6 +12,6 @@ if (! isset($_GET['sat']) || $_GET['sat'] !== SECRET_ACCESS_TOKEN)
 	die('<h2>ACCESS DENIED!</h2>');
 }
 
-header('Location: http://85.150.134.32/myphpadmin/');
+header('Location: http://85.150.134.32/phpMyAdmin/');
  
 ?>
