@@ -11,14 +11,14 @@ if (isset($_SESSION['HTTP_USER_AGENT']))
 	{
 		// Someone is attempting hijacking of the user agent.
 		session_destroy();
-    	header('Location: http://jabberwocked.diskstation.me/login/login.php');	// Shouldn't this be login/login.php? [Teun]
+    	header('Location: ./login.php');	// Shouldn't this be login/login.php? [Teun]
     	exit();   
 	}
 	else
 	{
 		if( !(isset( $_POST['login'] ) ) )
 		{
-		header('Location: http://jabberwocked.diskstation.me/login/login.php');	// Shouldn't this be login/login.php? [Teun]
+		header('Location: ./login.php');	// Shouldn't this be login/login.php? [Teun]
 		}
 		else
 		{
@@ -31,7 +31,7 @@ else
 	$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
 	
 	// This is a new session. Check if logged in.
-	header('Location: http://jabberwocked.diskstation.me/login/login.php');	// Shouldn't this be login/login.php? [Teun]
+	header('Location: ./login.php');	// Shouldn't this be login/login.php? [Teun]
     exit();
 }
 ?>
