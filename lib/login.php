@@ -13,7 +13,7 @@
 						maxlength="30" required name="password" /></li>
 					<li class="buttons"><input type="submit" name="login"
 						value="Log me in" /> <input type="button" name="register"
-						value="Register" onclick="location.href='register.php'" /></li>
+						value="Register" onclick="location.href='registerpage.php'" /></li>
 
 				</ul>
 			</form>

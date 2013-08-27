@@ -46,7 +46,7 @@ header {
 	display: block;
 	width: 98%;
 	margin: 0px auto;
-	border-bottom: 2px ridge red;
+	border-bottom: 2px solid #614051;
 }
 
 header a {
@@ -65,6 +65,7 @@ header a {
 	margin: 30px 0px;
 	font-size: 50px; 
 	letter-spacing: 50px; 
+	color: black;
 }
 
 header#head {
@@ -231,7 +232,7 @@ input[type="submit"],input[type="button"] {
 	-webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
 	box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
 	color: #fff;
-	background: darkred;
+	background: #614051;
 	font-weight: bold;
 	-webkit-appearance: none;
 }
