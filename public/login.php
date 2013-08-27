@@ -1,4 +1,3 @@
-
 <?php if( !(isset( $_POST['login'] ) ) ) { ?>
 
 
@@ -40,7 +39,7 @@ else
 
 	if ($usr->userLogin())
 	{
-		echo "Welcome";
+		$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
 	}
 	else
 	{
