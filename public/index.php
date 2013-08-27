@@ -1,5 +1,5 @@
 <?php
-include_once ("config.php");													 // Shouldn't this be class/config.php? [Teun]
+include_once ("config/config.php");
 
 // Start the session
 session_start();
@@ -11,14 +11,14 @@ if (isset($_SESSION['HTTP_USER_AGENT']))
 	{
 		// Someone is attempting hijacking of the user agent.
 		session_destroy();
-    	header('Location: ./login.php');	// Shouldn't this be login/login.php? [Teun]
+    	header('Location: ./loginpage.php');
     	exit();   
 	}
 	else
 	{
 		if( !(isset( $_POST['login'] ) ) )
 		{
-		header('Location: ./login.php');	// Shouldn't this be login/login.php? [Teun]
+		header('Location: ./loginpage.php');
 		}
 		else
 		{
