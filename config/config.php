@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 // Creating constants for heavily used paths makes things a lot easier e.g. when folder structure changes.
 // ex. require_once(LIBRARY_PATH . "user.php")
 
-define("DB_DSN", "mysql:host=localhost;dbname=miljoenenidee");	// Should this be local host?
+define("DB_DSN", "mysql:host=localhost;dbname=miljoenenidee");
 define("DB_USERNAME", "root");
 define("DB_PASSWORD", "miljoen");
 define("LIBRARY_PATH", "../lib/");
