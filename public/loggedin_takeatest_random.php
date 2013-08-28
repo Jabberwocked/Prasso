@@ -14,6 +14,7 @@ $stmt = $con->prepare($sql);
 $stmt->bindValue("username", $this->username, PDO::PARAM_STR);
 
 echo $stmt;
+echo 'hi';
 
 $con = null;
 
