@@ -4,20 +4,22 @@ include_once (TEMPLATES_PATH . "/header.php");
 ?>
 
 <?php
-// Connect
-// $con = mysqli_connect("jabberwocked.diskstation.me", "root", "miljoen", "Question");
+
 $con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Check connection
-if (mysqli_connect_errno($con))
-{
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+$sql = "SELECT * FROM Question WHERE QuestionId = 1";
+
+$stmt = $con->prepare($sql);
+$stmt->bindValue("username", $this->username, PDO::PARAM_STR);
+
+echo $stmt;
+
+$con = null;
 
 
 
 
-echo 'hi';
 ?>
 
 
