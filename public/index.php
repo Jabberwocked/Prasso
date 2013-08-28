@@ -31,7 +31,7 @@ else
 	$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
 	
 	// This is a new session. Check if logged in.
-	header('Location: ./loggedin_main.php');	// Shouldn't this be login/login.php? [Teun]
+	header('Location: ./loggedin_main.php');
     exit();
 }
 ?>
