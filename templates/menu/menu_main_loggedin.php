@@ -2,12 +2,12 @@
 
 	<center>
 		<nav>
-			<a href="loggedin_takeatest.php">Take a test</a><br>
-			<a href="loggedin_results.php">Results</a><br>
+			<a href="takeatest.php">Take a test</a><br>
+			<a href="results.php">Results</a><br>
 			<br>
 			<br>
-			<a href="loggedin_mytests.php">My Tests</a><br>			
-<!-- 		<a href="loggedin_other.php">Other</a><br>		-->
+			<a href="mytests.php">My Tests</a><br>			
+<!-- 		<a href="other.php">Other</a><br>		-->
 		</nav>
 	</center>
 

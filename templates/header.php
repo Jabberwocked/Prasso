@@ -7,7 +7,7 @@
 </head>
 <body>
 	<header>
-		<a href="loggedin_main.php"><h1 id='title'>PRASSO</h1></a>
+		<a href="main.php"><h1 id='title'>PRASSO</h1></a>
 		<a href="loginpage.php" style="position:absolute; top:55px; right:0px; font-size:15px">Guust Flater</a>
 	</header>
 	<br>
