@@ -5,7 +5,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php
 
-$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+
+/* $con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $sql = "SELECT * FROM Question WHERE QuestionId = 1";
@@ -18,6 +19,17 @@ echo 'hi';
 $con = null;
 
 echo "hello hello"
+ */
+
+$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+
+$sql = "SELECT * FROM Question";
+$results = $db->query($sql);
+
+foreach($results as $row)
+{
+	echo $row['naam'].'<br>';
+}
 
 
 ?>
