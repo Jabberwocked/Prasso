@@ -14,10 +14,13 @@ include_once (TEMPLATES_PATH . "/header.php");
 	How many questions would you like to answer?<br> 
 	<input type="text" name="number" value="0"> 
 	<br> 
-	<input type="submit" value="Submit">
+	<input type="submit" value="Generate Test">
 </form>
 <br>
 <br>
+
+<form>
+
 
 <?php
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
@@ -33,15 +36,11 @@ foreach ($results as $row)
 {
 	if ($n < $number)
 	{
-		if ($type == "all")
+		if ($type == "all" or $row['Type'] == $type)
 		{
-			echo $row['Question'] . '<br>';
 			$n ++;
-		}
-		elseif ($row['Type'] == $type)
-		{
-			echo $row['Question'] . '<br>';
-			$n ++;
+			echo "Question" . $n . "<br>";
+			echo $row['Question'] . "<br>";			
 		}
 	}
 	else
@@ -52,7 +51,7 @@ foreach ($results as $row)
 
 ?>
 
-
+</form>
 
 
 <?php
