@@ -3,7 +3,7 @@ include_once ("../config/config.php");
 include_once (TEMPLATES_PATH . "/header.php");
 ?>
 
-<div style="text-align:center">
+<div style="margin-left: auto; margin-right: auto; width: 300px">
 	
 	<form action="takeatest_random.php" method="get">
 		Filter by type<br> 
