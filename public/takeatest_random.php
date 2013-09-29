@@ -51,7 +51,7 @@ foreach ($results as $row)
 }
 
 ?>
-
+<input type="submit" value="Submit Answers">
 </form>
 
 
