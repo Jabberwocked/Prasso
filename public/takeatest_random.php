@@ -5,7 +5,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php
 
-echo 'test1';
+echo 'test2<br><br>';
 
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
@@ -14,13 +14,18 @@ $results = $db->query($sql);
 
 $number = 1;
 $n = 0;
-while ($n < $number)
+
+foreach ($results as $row)
 {
-	foreach ($results as $row)
+	if ($n < $number)
 	{
 		echo $row['Question'] . '<br>';
-		$n++;
+		$n ++;
 		echo $n;
+	}
+	else
+	{
+		break;
 	}
 }
 
