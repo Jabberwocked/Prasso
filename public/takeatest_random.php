@@ -49,6 +49,11 @@ foreach ($results as $row)
 		break;
 	}
 }
+if($n < $number)
+{
+	echo "<p style='color:red'>There are no more questions of that type.</p>";
+}
+
 
 ?>
 <input type="submit" value="Submit Answers">
