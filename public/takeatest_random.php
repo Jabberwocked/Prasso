@@ -7,7 +7,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <form action="takeatest_random.php" method="get">
 	Filter by type<br> 
-	<input type="radio" style="display:inline; width:20px;" name="type" value="*">All<br>
+	<input type="radio" style="display:inline; width:20px;" name="type" value="all">All<br>
 	<input type="radio" style="display:inline; width:20px;" name="type" value="shortanswer">Short Answer<br>
 	<input type="radio" style="display:inline; width:20px;" name="type" value="multichoice">Multiple Choice<br>
 	<br>
@@ -33,7 +33,12 @@ foreach ($results as $row)
 {
 	if ($n < $number)
 	{
-		if ($row['Type'] == $type)
+		if ($type == "all")
+		{
+			echo $row['Question'] . '<br>';
+			$n ++;
+		}
+		elseif ($row['Type'] == $type)
 		{
 			echo $row['Question'] . '<br>';
 			$n ++;
