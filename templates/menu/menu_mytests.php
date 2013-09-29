@@ -1,4 +1,4 @@
-	<center>
+	<div style="text-align:center">
 		<nav style="margin: 10px 20px 40px 20px;">
 			<a href="mytests_new.php">New</a><br>
 		</nav>
@@ -11,5 +11,5 @@
 			<a href="" style="font-size: small; margin: 10px 2px">label</a>
 		</nav>
 		
-	</center>
+	</div>
 

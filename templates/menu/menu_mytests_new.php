@@ -1,5 +1,5 @@
 
-	<center>
+	<div style="text-align:center">
 		<nav>
 			<a href="">Add question</a><br>
 
@@ -21,4 +21,4 @@
 	<!-- 	<a href="">Share test</a><br>		-->
 		
 		</nav>
-	</center>
+	</div>
