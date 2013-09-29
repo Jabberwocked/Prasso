@@ -6,10 +6,13 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 
 <form action="takeatest_random.php" method="get">
-<input type="text" name="Numberofquestions" value="max 5">
+How many questions would you like to answer?<br>
+<input type="text" name="Numberofquestions" value="0">
+<br>
 <input type="submit" value="Submit">
 </form>
-
+<br>
+<br>
 
 <?php 
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
@@ -27,7 +30,6 @@ foreach ($results as $row)
 	{
 		echo $row['Question'] . '<br>';
 		$n ++;
-		echo $n;
 	}
 	else
 	{
