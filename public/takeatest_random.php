@@ -61,6 +61,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	?>
 	
 </form>
+<br><br><br>
 	
 </div>
 
