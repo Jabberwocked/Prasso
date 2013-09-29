@@ -46,7 +46,8 @@ header {
 	display: block;
 	width: 98%;
 	margin: 0px auto;
-	border-bottom: 2px solid #614051;
+/* 	border-bottom: 2px solid #614051;  */
+	border-bottom: 2px solid red;
 }
 
 header a {
