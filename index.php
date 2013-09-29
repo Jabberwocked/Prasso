@@ -1,3 +1,1 @@
-<?php
-header('Location: http://jabberwocked.diskstation.me/public/index.php');
-?>
+<?php header('Location: http://jabberwocked.diskstation.me/public/index.php');?>
