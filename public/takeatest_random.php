@@ -28,9 +28,10 @@ $results = $db->query($sql);
 
 foreach($results as $row)
 {
-	echo $row['naam'].'<br>';
+	echo $row['Question'].'<br>';
 }
 
+echo 'hello';
 
 ?>
 
