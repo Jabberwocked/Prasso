@@ -41,7 +41,7 @@ foreach ($results as $row)
 			$n ++;
 			echo "<b>Question " . $n . "</b><br>";
 			echo $row['Question'] . "<br><br>";
-			echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>" 			
+			echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>"; 			
 		}
 	}
 	else
