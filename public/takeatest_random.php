@@ -21,6 +21,8 @@ $con = null;
 echo "hello hello"
  */
 
+echo 'hello1';
+
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
 $sql = "SELECT * FROM Question";
@@ -31,7 +33,7 @@ foreach($results as $row)
 	echo $row['Question'].'<br>';
 }
 
-echo 'hello';
+echo 'hello2';
 
 ?>
 
