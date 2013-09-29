@@ -7,7 +7,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 echo 'test3<br><br>';
 
-echo "<form action='takeatest_random.php' method='post'><input type='text' name='Numberofquestions' value='max 5'><input type='submit' value='Submit'></form>;
+
 
 
 
