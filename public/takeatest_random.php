@@ -3,7 +3,7 @@ include_once ("../config/config.php");
 include_once (TEMPLATES_PATH . "/header.php");
 ?>
 
-<div style="margin-left: auto; margin-right: auto; width: 300px">
+<div style="margin-left: auto; margin-right: auto; width: 500px">
 	
 	<form action="takeatest_random.php" method="get">
 		Filter by type<br> 
@@ -54,10 +54,14 @@ include_once (TEMPLATES_PATH . "/header.php");
 		echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
 	}
 	
-	
+	if($number > 0)
+	{
+		echo "<input type='submit' value='Submit Answers'>"
+	}
 	?>
-	<input type="submit" value="Submit Answers">
-	</form>
+	
+</form>
+	
 </div>
 
 <?php
