@@ -5,19 +5,21 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php
 
-
-
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
 $sql = "SELECT * FROM Questions";
 $results = $db->query($sql);
 
-foreach($results as $row)
+$number = 3;
+$n = 0;
+while ($n < $number)
 {
-	echo $row['Question'].'<br>';
+	foreach ($results as $row)
+	{
+		echo $row['Question'] . '<br>';
+		$n++;
+	}
 }
-
-
 
 ?>
 
