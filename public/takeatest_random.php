@@ -51,7 +51,7 @@ foreach ($results as $row)
 }
 if($n < $number)
 {
-	echo "<p style='color:red'>There are no more questions of that type.</p>";
+	echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
 }
 
 
