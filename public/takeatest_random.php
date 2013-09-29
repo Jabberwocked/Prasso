@@ -26,7 +26,7 @@ $results = $db->query($sql);
 
 $n = 0;
 $number = $_GET["number"];
-$type = $_GET["type"]
+$type = $_GET["type"];
 
 foreach ($results as $row)
 {
