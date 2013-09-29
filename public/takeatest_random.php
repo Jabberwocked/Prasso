@@ -18,6 +18,7 @@ while ($n < $number)
 	{
 		echo $row['Question'] . '<br>';
 		$n++;
+		echo $n;
 	}
 }
 
