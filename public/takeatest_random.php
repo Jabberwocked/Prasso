@@ -5,6 +5,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php
 
+echo 'test1';
+
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
 $sql = "SELECT * FROM Questions";
