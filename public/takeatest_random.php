@@ -5,14 +5,21 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php
 
-echo 'test2<br><br>';
+echo 'test3<br><br>';
+
+<html>
+<form action="takeatest_random.php" method="post">
+<input type="text" name="Numberofquestions" value="max 5">
+<input type="submit" value="Submit">
+</form>
+</html>
 
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
 $sql = "SELECT * FROM Questions";
 $results = $db->query($sql);
 
-$number = 1;
+$number = $_POST["Numberofquestions"];
 $n = 0;
 
 foreach ($results as $row)
