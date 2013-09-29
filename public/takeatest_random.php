@@ -39,7 +39,7 @@ foreach ($results as $row)
 		if ($type == "all" or $row['Type'] == $type)
 		{
 			$n ++;
-			echo "<b>Question " . $n . "</b><br>";
+			echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
 			echo $row['Question'] . "<br><br>";
 			echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>"; 			
 		}
