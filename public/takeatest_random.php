@@ -10,7 +10,7 @@ $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 $sql = "SELECT * FROM Questions";
 $results = $db->query($sql);
 
-$number = 3;
+$number = 1;
 $n = 0;
 while ($n < $number)
 {
