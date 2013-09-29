@@ -40,7 +40,7 @@ foreach ($results as $row)
 		{
 			$n ++;
 			echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
-			echo $row['Question'] . "<br><br>";
+			echo "<p>" . $row['Question'] . "</p><br><br>";
 			echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>"; 			
 		}
 	}
