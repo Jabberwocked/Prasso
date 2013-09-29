@@ -3,20 +3,22 @@ include_once ("../config/config.php");
 include_once (TEMPLATES_PATH . "/header.php");
 ?>
 
-<?php
-
-echo 'test3<br><br>';
 
 
+<form action="takeatest_random.php" method="get">
+<input type="text" name="Numberofquestions" value="max 5">
+<input type="submit" value="Submit">
+</form>
 
 
-
+<?php 
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
 $sql = "SELECT * FROM Questions";
 $results = $db->query($sql);
 
-$number = $_POST["Numberofquestions"];
+
+$number = $_GET["Numberofquestions"];
 $n = 0;
 
 foreach ($results as $row)
