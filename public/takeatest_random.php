@@ -7,6 +7,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <form action="takeatest_random.php" method="get">
 	Filter by type<br> 
+	<input type="radio" style="display:inline; width:20px;" name="type" value="*">All<br>
 	<input type="radio" style="display:inline; width:20px;" name="type" value="shortanswer">Short Answer<br>
 	<input type="radio" style="display:inline; width:20px;" name="type" value="multichoice">Multiple Choice<br>
 	<br>
