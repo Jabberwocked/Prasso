@@ -56,7 +56,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	
 	if($number > 0)
 	{
-		echo "<input type='submit' value='Submit Answers'>"
+		echo "<input type='submit' value='Submit Answers'>";
 	}
 	?>
 	
