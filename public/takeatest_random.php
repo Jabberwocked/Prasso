@@ -27,15 +27,6 @@ include_once (TEMPLATES_PATH . "/header.php");
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
 	$type = $_GET["type"];
-	
-	foreach ($type as $t)
-	{
-		echo $t;
-	}
-	
-	
-	
-	
 	$number = $_GET["number"];
 	
 	if ($type == "all")
@@ -44,7 +35,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	}
 	else 
 	{
-		$sql = "SELECT * FROM Questions WHERE Type IN '$type' ORDER BY RAND() LIMIT $number";
+		$sql = "SELECT * FROM Questions WHERE Type IN $type ORDER BY RAND() LIMIT $number";
 	}
 	
 	$results = $db->query($sql);
