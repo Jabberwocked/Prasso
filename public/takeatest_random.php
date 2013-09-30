@@ -7,12 +7,12 @@ include_once (TEMPLATES_PATH . "/header.php");
 	
 	<form action="takeatest_random.php" method="get">
 		Filter by type<br> 
-		<input type="radio" style="display:inline; width:20px;" name="type" value="all">All<br>
+		<input type="radio" style="display:inline; width:20px;" name="type" value="all" checked>All<br>
 		<input type="radio" style="display:inline; width:20px;" name="type" value="shortanswer">Short Answer<br>
 		<input type="radio" style="display:inline; width:20px;" name="type" value="multichoice">Multiple Choice<br>
 		<br>
 		How many questions would you like to answer?<br> 
-		<input type="text" name="number"> 
+		<input type="text" name="number" value="<?php echo $_GET['number']; ?>"> 
 		<br> 
 		<input type="submit" value="Generate Test">
 	</form>
