@@ -26,7 +26,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 		
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
-	$type = $_GET["type"];
+	// $type = $_GET["type"];
+	$type = "'".implode("','", $_GET["type"])."'";
 	$number = $_GET["number"];
 	
 	if ($type == "all")
@@ -35,7 +36,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	}
 	else 
 	{
-		$sql = "SELECT * FROM Questions WHERE Type IN ('.implode(',',$type).') ORDER BY RAND() LIMIT $number";
+		$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
 	}
 	
 	// $type bewerken. Wordt niet herkend als ('shortanswer', 'multichoice')
