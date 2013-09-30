@@ -52,6 +52,10 @@ include_once (TEMPLATES_PATH . "/header.php");
 		echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>";
 	}
 	
+	if($n < $number)
+	{
+		echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
+	}
 	
 	if($number > 0)
 	{
