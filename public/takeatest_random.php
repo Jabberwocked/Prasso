@@ -25,7 +25,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	<?php
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 	
-	$sql = "SELECT * FROM Questions WHERE QuestionId >= RAND() * (SELECT MAX(QuestionId) FROM Questions) LIMIT 1";
+	$sql = "SELECT * FROM Questions WHERE QuestionId >= RAND() * (SELECT MAX(QuestionId) FROM Questions)";
 	$results = $db->query($sql);
 	
 	$n = 0;
