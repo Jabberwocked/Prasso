@@ -42,10 +42,11 @@ include_once (TEMPLATES_PATH . "/header.php");
 	}
 	
 	$results = $db->query($sql);
-	
+	$n = 0
 	
 	foreach ($results as $row)
 	{
+		$n ++;
 		echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
 		echo "<p>" . $row['Question'] . "</p><br><br>";
 		echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>";
