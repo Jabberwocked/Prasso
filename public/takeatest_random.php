@@ -7,7 +7,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	
 	<form action="takeatest_random.php" method="get">
 		Filter by type<br> 
-		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="all" class="chk_boxes" label="check all" <? if(in_array("all", $_GET['type'])){ echo 'checked';}?>>All<br>
+		<input type="checkbox" style="display:inline; width:20px;" name="type_selectall" id="type_selectall" <? if(in_array("all", $_GET['type'])){ echo 'checked';}?>>All<br>
 		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="shortanswer" class="chk_boxes1" <? if(in_array("shortanswer", $_GET['type'])){ echo 'checked';}?>>Short Answer<br>
 		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="multichoice" class="chk_boxes1" <? if(in_array("multichoice", $_GET['type'])){ echo 'checked';}?>>Multiple Choice<br>
 		<br>
@@ -16,6 +16,27 @@ include_once (TEMPLATES_PATH . "/header.php");
 		<br> 
 		<input type="submit" value="Generate Test">
 	</form>
+	
+	
+<script language='JavaScript'>
+$(document).ready(function(){
+      $('#select-all').click(function(event) {   
+        if(this.checked) {
+          // Iterate each checkbox
+          $(':checkbox').each(function() {
+            this.checked = true;                        
+          });
+        }
+        else {
+          // Iterate each checkbox
+          $(':checkbox').each(function() {
+            this.checked = false;
+          });
+        }
+      });
+});
+    </script>;
+	
 	<br>
 	<br>
 	
@@ -56,13 +77,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 	?>
 </form>
-<script type="text/javascript">
-	$(document).ready(function() {
-	    $('.chk_boxes').click(function(){
-	            $('.chk_boxes1').attr('checked',$(this).attr('checked'));
-	    })
-	});
-</script>
+
 
 <br><br><br>
 	
