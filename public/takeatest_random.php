@@ -35,7 +35,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	}
 	else 
 	{
-		$sql = "SELECT * FROM Questions WHERE Type IN ('multichoice', 'shortanswer') ORDER BY RAND() LIMIT $number";
+		$sql = "SELECT * FROM Questions WHERE Type IN ($type) ORDER BY RAND() LIMIT $number";
 	}
 	
 	$results = $db->query($sql);
