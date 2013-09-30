@@ -7,7 +7,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	
 	<form action="takeatest_random.php" method="get">
 		Filter by type<br> 
-		<input type="checkbox" style="display:inline; width:20px;" name="type_selectall" id="type_selectall" <? if(in_array("all", $_GET['type'])){ echo 'checked';}?>>All<br>
+		<input type="checkbox" style="display:inline; width:20px;" class="selectall">All<br>
 		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="shortanswer" class="chk_boxes1" <? if(in_array("shortanswer", $_GET['type'])){ echo 'checked';}?>>Short Answer<br>
 		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="multichoice" class="chk_boxes1" <? if(in_array("multichoice", $_GET['type'])){ echo 'checked';}?>>Multiple Choice<br>
 		<br>
@@ -19,23 +19,9 @@ include_once (TEMPLATES_PATH . "/header.php");
 	
 	
 <script type="text/javascript">
-    $(function(){
-
-     $('#type_selectall').click(function(event) {   
-        if(this.checked) {
-          // Iterate each checkbox
-          $(':checkbox').each(function() {
-            this.checked = true;                        
-          });
-        }
-        else {
-          // Iterate each checkbox
-          $(':checkbox').each(function() {
-            this.checked = false;
-          });
-        }
-      });
-    })
+$( '.selectall' ).click( function () {
+    $( this ).closest( 'form' ).find( ':checkbox' ).attr( 'checked' , this.checked );
+});
 </script>
 	
 	<br>
