@@ -24,13 +24,24 @@ include_once (TEMPLATES_PATH . "/header.php");
 	
 	<?php
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+
+	If ($_GET["type"] == "All"){
+		$type = *;
+	}
+	else {
+		$type = $_GET["type"];
+	}
+	$number = $_GET["number"];
 	
+//	$sql = "SELECT * FROM Questions"; //	
 	$sql = "SELECT * FROM Questions WHERE QuestionId >= RAND() * (SELECT MAX(QuestionId) FROM Questions)";
+	$sql = "SELECT * FROM Questions WHERE Type = '".$type."' LIMIT '".$number."'";
 	$results = $db->query($sql);
 	
+	echo $results;
+	
 	$n = 0;
-	$number = $_GET["number"];
-	$type = $_GET["type"];
+	
 	
 	foreach ($results as $row)
 	{
