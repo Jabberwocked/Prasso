@@ -38,6 +38,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 		$sql = "SELECT * FROM Questions WHERE Type IN ($type) ORDER BY RAND() LIMIT $number";
 	}
 	
+	// $type bewerken. Wordt niet herkend als ('shortanswer', 'multichoice')
+	
 	$results = $db->query($sql);
 	$n = 0;
 	
