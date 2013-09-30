@@ -7,7 +7,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	
 	<form action="takeatest_random.php" method="get">
 		Filter by type<br> 
-		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="all" <? if(in_array("all", $_GET['type'])){ echo 'checked';}?>>All<br>
+		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="all" class="chk_boxes" label="check all" <? if(in_array("all", $_GET['type'])){ echo 'checked';}?>>All<br>
 		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="shortanswer" <? if(in_array("shortanswer", $_GET['type'])){ echo 'checked';}?>>Short Answer<br>
 		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="multichoice" <? if(in_array("multichoice", $_GET['type'])){ echo 'checked';}?>>Multiple Choice<br>
 		<br>
@@ -26,20 +26,11 @@ include_once (TEMPLATES_PATH . "/header.php");
 		
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
-	// $type = $_GET["type"];
 	$type = "'".implode("','", $_GET["type"])."'";
 	$number = $_GET["number"];
 	
-	if ($type == "all")
-	{
-		$sql = "SELECT * FROM Questions ORDER BY RAND() LIMIT $number ";
-	}
-	else 
-	{
-		$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
-	}
+	$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
 	
-	// $type bewerken. Wordt niet herkend als ('shortanswer', 'multichoice')
 	
 	$results = $db->query($sql);
 	$n = 0;
@@ -65,6 +56,14 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 	?>
 </form>
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $('.chk_boxes').click(function(){
+	            $('.chk_boxes1').attr('checked',$(this).attr('checked'));
+	    })
+	});
+</script>
+
 <br><br><br>
 	
 </div>
