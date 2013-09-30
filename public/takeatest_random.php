@@ -26,9 +26,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
 	$type = $_GET["type"];
-	echo $type; 
 	$number = $_GET["number"];
-	echo $number;
 	
 //	$sql = "SELECT * FROM Questions"; 
 // 	$sql = "SELECT * FROM Questions WHERE QuestionId >= RAND() * (SELECT MAX(QuestionId) FROM Questions)";
@@ -40,7 +38,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	}
 	else 
 	{
-		$sql = "SELECT * FROM Questions WHERE Type = '$type'";
+		$sql = "SELECT * FROM Questions";
 	}
 	
 	$results = $db->query($sql);
