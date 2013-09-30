@@ -42,7 +42,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	}
 	
 	$results = $db->query($sql);
-	$n = 0
+	$n = 0;
 	
 	foreach ($results as $row)
 	{
