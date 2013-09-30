@@ -51,7 +51,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	{
 		echo "<input type='submit' value='Submit Answers'>";
 	}
-	?>
+	
 	
 // 	foreach ($results as $row)
 // 	{
@@ -79,8 +79,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 // 	{
 // 		echo "<input type='submit' value='Submit Answers'>";
 // 	}
-// 	?>
-	
+
+	?>
 </form>
 <br><br><br>
 	
