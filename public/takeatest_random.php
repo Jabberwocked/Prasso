@@ -34,11 +34,11 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 	if ($type == "all")
 	{
-		$sql = "SELECT * FROM Questions LIMIT $number ORDER BY RAND()";
+		$sql = "SELECT * FROM Questions ORDER BY RAND() LIMIT $number ";
 	}
 	else 
 	{
-		$sql = "SELECT * FROM Questions WHERE Type = '$type' LIMIT $number ORDER BY RAND()";
+		$sql = "SELECT * FROM Questions WHERE Type = '$type' ORDER BY RAND() LIMIT $number";
 	}
 	
 	$results = $db->query($sql);
