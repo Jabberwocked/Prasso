@@ -3,12 +3,6 @@ include_once ("../config/config.php");
 include_once (TEMPLATES_PATH . "/header.php");
 ?>
 
-<script type="text/javascript">
-$( '.selectall' ).click( function () {
-    $( this ).closest( 'form' ).find( ':checkbox' ).attr( 'checked' , this.checked );
-});
-</script>
-
 
 <div style="margin-left: auto; margin-right: auto; width: 500px">
 

@@ -6,6 +6,12 @@
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
+<script type="text/javascript">
+$( '.selectall' ).click( function () {
+    $( this ).closest( 'form' ).find( ':checkbox' ).attr( 'checked' , this.checked );
+});
+</script>
+
 
 </head>
 <body>
