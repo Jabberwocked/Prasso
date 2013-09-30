@@ -28,10 +28,6 @@ include_once (TEMPLATES_PATH . "/header.php");
 	$type = $_GET["type"];
 	$number = $_GET["number"];
 	
-//	$sql = "SELECT * FROM Questions"; 
-// 	$sql = "SELECT * FROM Questions WHERE QuestionId >= RAND() * (SELECT MAX(QuestionId) FROM Questions)";
-// 	$sql = "SELECT * FROM Questions WHERE Type = '".$type."' LIMIT '".$number."'";
-
 	if ($type == "all")
 	{
 		$sql = "SELECT * FROM Questions ORDER BY RAND() LIMIT $number ";
@@ -61,25 +57,6 @@ include_once (TEMPLATES_PATH . "/header.php");
 	{
 		echo "<input type='submit' value='Submit Answers'>";
 	}
-	
-	
-// 	foreach ($results as $row)
-// 	{
-// 		if ($n < $number)
-// 		{
-// 			if ($type == "all" or $row['Type'] == $type)
-// 			{
-// 				$n ++;
-// 				echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
-// 				echo "<p>" . $row['Question'] . "</p><br><br>";
-// 				echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>"; 			
-// 			}
-// 		}
-// 		else
-// 		{
-// 			break;
-// 		}
-// 	}
 
 
 	?>
