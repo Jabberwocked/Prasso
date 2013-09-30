@@ -38,7 +38,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	}
 	else 
 	{
-		$sql = "SELECT * FROM Questions WHERE Type = '$type' LIMIT '$number'";
+		$sql = "SELECT * FROM Questions WHERE Type = '$type' LIMIT $number";
 	}
 	$results = $db->query($sql);
 	
