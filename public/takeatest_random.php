@@ -34,11 +34,11 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 	if ($type == "all")
 	{
-		$sql = "SELECT * FROM Questions LIMIT $number";
+		$sql = "SELECT * FROM Questions LIMIT $number ORDER BY RAND()";
 	}
 	else 
 	{
-		$sql = "SELECT * FROM Questions WHERE Type = '$type' LIMIT $number";
+		$sql = "SELECT * FROM Questions WHERE Type = '$type' LIMIT $number ORDER BY RAND()";
 	}
 	
 	$results = $db->query($sql);
@@ -80,15 +80,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 // 			break;
 // 		}
 // 	}
-// 	if($n < $number)
-// 	{
-// 		echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
-// 	}
-	
-// 	if($number > 0)
-// 	{
-// 		echo "<input type='submit' value='Submit Answers'>";
-// 	}
+
 
 	?>
 </form>
