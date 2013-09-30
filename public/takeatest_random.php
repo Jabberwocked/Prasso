@@ -38,38 +38,48 @@ include_once (TEMPLATES_PATH . "/header.php");
 	$sql = "SELECT * FROM Questions WHERE Type = '".$type."' LIMIT '".$number."'";
 	$results = $db->query($sql);
 	
-	echo $results;
-	
-	$n = 0;
-	
 	
 	foreach ($results as $row)
 	{
-		if ($n < $number)
-		{
-			if ($type == "all" or $row['Type'] == $type)
-			{
-				$n ++;
-				echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
-				echo "<p>" . $row['Question'] . "</p><br><br>";
-				echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>"; 			
-			}
-		}
-		else
-		{
-			break;
-		}
+		echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
+		echo "<p>" . $row['Question'] . "</p><br><br>";
+		echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>";
 	}
-	if($n < $number)
-	{
-		echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
-	}
+	
 	
 	if($number > 0)
 	{
 		echo "<input type='submit' value='Submit Answers'>";
 	}
 	?>
+	
+// 	foreach ($results as $row)
+// 	{
+// 		if ($n < $number)
+// 		{
+// 			if ($type == "all" or $row['Type'] == $type)
+// 			{
+// 				$n ++;
+// 				echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
+// 				echo "<p>" . $row['Question'] . "</p><br><br>";
+// 				echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>"; 			
+// 			}
+// 		}
+// 		else
+// 		{
+// 			break;
+// 		}
+// 	}
+// 	if($n < $number)
+// 	{
+// 		echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
+// 	}
+	
+// 	if($number > 0)
+// 	{
+// 		echo "<input type='submit' value='Submit Answers'>";
+// 	}
+// 	?>
 	
 </form>
 <br><br><br>
