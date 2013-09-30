@@ -20,7 +20,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	
 <script language='JavaScript'>
 $(document).ready(function(){
-      $('#select-all').click(function(event) {   
+      $('#type_selectall').click(function(event) {   
         if(this.checked) {
           // Iterate each checkbox
           $(':checkbox').each(function() {
@@ -35,7 +35,7 @@ $(document).ready(function(){
         }
       });
 });
-    </script>;
+    </script>
 	
 	<br>
 	<br>
