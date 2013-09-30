@@ -14,7 +14,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="multichoice" <? if(in_array("multichoice", $_GET['type'])){ echo 'checked';}?>>Multiple Choice<br>
 		<br>
 		How many questions would you like to answer?<br> 
-		<input type="text" name="number" value="<?php echo $_GET['number']; ?>"> 
+		<input type="number" name="number" value="<?php echo $_GET['number']; ?>"> 
 		<br> 
 		<input type="submit" value="Generate Test">
 	</form>
