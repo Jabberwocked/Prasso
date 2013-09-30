@@ -34,7 +34,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 	if ($type = "All")
 	{
-		$sql = "SELECT * FROM Questions";
+		$sql = "SELECT * FROM Questions LIMIT 1";
 	}
 	else 
 	{
