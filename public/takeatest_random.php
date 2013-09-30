@@ -35,7 +35,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 	
 //	$sql = "SELECT * FROM Questions"; 
 // 	$sql = "SELECT * FROM Questions WHERE QuestionId >= RAND() * (SELECT MAX(QuestionId) FROM Questions)";
-	$sql = "SELECT * FROM Questions WHERE Type = '".$type."' LIMIT '".$number."'";
+// 	$sql = "SELECT * FROM Questions WHERE Type = '".$type."' LIMIT '".$number."'";
+	$sql = "SELECT * FROM Questions WHERE Type = '".$type."'";
 	$results = $db->query($sql);
 	
 	
