@@ -5,7 +5,7 @@
 <title>Prasso</title>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="js/jQuery.js"></script>
+<script src="js/checkall.js"></script>
 
 
 </head>
