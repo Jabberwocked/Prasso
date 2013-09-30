@@ -33,8 +33,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 	}
 	$number = $_GET["number"];
 	
-//	$sql = "SELECT * FROM Questions"; //	
-	$sql = "SELECT * FROM Questions WHERE QuestionId >= RAND() * (SELECT MAX(QuestionId) FROM Questions)";
+//	$sql = "SELECT * FROM Questions"; 
+// 	$sql = "SELECT * FROM Questions WHERE QuestionId >= RAND() * (SELECT MAX(QuestionId) FROM Questions)";
 	$sql = "SELECT * FROM Questions WHERE Type = '".$type."' LIMIT '".$number."'";
 	$results = $db->query($sql);
 	
