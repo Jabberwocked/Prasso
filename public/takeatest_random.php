@@ -18,9 +18,10 @@ include_once (TEMPLATES_PATH . "/header.php");
 	</form>
 	
 	
-<script language='JavaScript'>
-$(document).ready(function(){
-      $('#type_selectall').click(function(event) {   
+<script type="text/javascript">
+    $(function(){
+
+     $('#type_selectall').click(function(event) {   
         if(this.checked) {
           // Iterate each checkbox
           $(':checkbox').each(function() {
@@ -34,8 +35,8 @@ $(document).ready(function(){
           });
         }
       });
-});
-    </script>
+    })
+</script>
 	
 	<br>
 	<br>
