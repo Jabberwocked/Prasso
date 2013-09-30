@@ -7,9 +7,9 @@ include_once (TEMPLATES_PATH . "/header.php");
 	
 	<form action="takeatest_random.php" method="get">
 		Filter by type<br> 
-		<input type="radio" style="display:inline; width:20px;" name="type" value="all" checked>All<br>
-		<input type="radio" style="display:inline; width:20px;" name="type" value="shortanswer" <? if($_GET['type'] == "shortanswer"){ echo 'checked';}?>>Short Answer<br>
-		<input type="radio" style="display:inline; width:20px;" name="type" value="multichoice" <? if($_GET['type'] == "multichoice"){ echo 'checked';}?>>Multiple Choice<br>
+		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="all" checked>All<br>
+		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="shortanswer" <? if($_GET['type'] == "shortanswer"){ echo 'checked';}?>>Short Answer<br>
+		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="multichoice" <? if($_GET['type'] == "multichoice"){ echo 'checked';}?>>Multiple Choice<br>
 		<br>
 		How many questions would you like to answer?<br> 
 		<input type="text" name="number" value="<?php echo $_GET['number']; ?>"> 
@@ -23,6 +23,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	
 	
 	<?php
+		
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
 	$type = $_GET["type"];
@@ -34,7 +35,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	}
 	else 
 	{
-		$sql = "SELECT * FROM Questions WHERE Type = '$type' ORDER BY RAND() LIMIT $number";
+		$sql = "SELECT * FROM Questions WHERE Type IN '$type' ORDER BY RAND() LIMIT $number";
 	}
 	
 	$results = $db->query($sql);
