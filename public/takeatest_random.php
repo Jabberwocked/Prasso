@@ -26,8 +26,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 		
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
+	echo $_GET["type"];
 	$type = $_GET["type"];
-	echo $type;
 	$number = $_GET["number"];
 	
 	if ($type == "all")
