@@ -12,7 +12,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 		<input type="radio" style="display:inline; width:20px;" name="type" value="multichoice">Multiple Choice<br>
 		<br>
 		How many questions would you like to answer?<br> 
-		<input type="text" name="number" value="0"> 
+		<input type="text" name="number"> 
 		<br> 
 		<input type="submit" value="Generate Test">
 	</form>
@@ -25,7 +25,6 @@ include_once (TEMPLATES_PATH . "/header.php");
 	<?php
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 	
-// 	$sql = "SELECT * FROM Questions"; //
 	$sql = "SELECT * FROM Questions WHERE QuestionId >= RAND() * (SELECT MAX(QuestionId) FROM Questions) LIMIT 1";
 	$results = $db->query($sql);
 	
