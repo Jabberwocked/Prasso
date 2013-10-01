@@ -7,7 +7,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 <div style="margin-left: auto; margin-right: auto; width: 500px">
 
 
-	<form action="takeatest_random.php" method="get">
+	<form action=<?php echo htmlspecialchars('takeatest_random.php');?> method="get">
 		Filter by type<br> 
 		<input type="checkbox" style="display:inline; width:20px;" name="selectall" value="yes" class="selectall" <? if($_GET['selectall'] == 'yes'){ echo 'checked';}?>>All<br>
 		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="shortanswer" <? if(in_array("shortanswer", $_GET['type'])){ echo 'checked';}?>>Short Answer<br>
@@ -16,17 +16,6 @@ include_once (TEMPLATES_PATH . "/header.php");
 		How many questions would you like to answer?<br> 
 		<input type="number" name="number" value="<?php if($_GET['number'] > 0) { echo $_GET['number']; } else { echo 10; } ?>">
 
-		<?php 
-// 				if($_GET['number'] > 0)
-// 				{ 
-// 					echo $_GET['number'];
-// 				} 
-// 				else 
-// 				{
-// 					echo 10;
-// 				}
-// 			?>
-
 		<br> 
 		<input type="submit" value="Generate Test">
 	</form>
@@ -34,7 +23,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	<br>
 	
 	
-	<form>
+	<form action="<?php echo htmlspecialchars('takeatest_check.php');?>" method="post">
 		
 		<?php
 			
