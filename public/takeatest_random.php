@@ -23,7 +23,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 	<br>
 	
 	
-	<form action="<?php echo htmlspecialchars('takeatest_check.php');?>" method="get">
+	<form action="<?php echo htmlspecialchars('takeatest_check.php');?>" method="post">
 		
 		<?php
 			
