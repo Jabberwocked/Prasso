@@ -10,7 +10,10 @@ include_once (TEMPLATES_PATH . "/header.php");
 $answers = $_POST;
 $n = 0;
 
-echo $results;
+foreach ($results as $row)
+{
+	echo $row;
+}
 
 foreach($answers as $answer)
 {
