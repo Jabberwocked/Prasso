@@ -10,18 +10,12 @@ include_once (TEMPLATES_PATH . "/header.php");
 $answers = $_POST;
 $n = 0;
 
-// foreach ($results as $row)
-// {
-// 	echo $row;
-// }
-
 foreach($answers as $answer)
 {
 	$n ++;
 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
 	echo "<p>" . $row['Question'] . "</p><br><br>";
-	echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>";
-	
+	// NEEDS SESSION OR STH
 	echo $answer . "<br>";
 }
 	
