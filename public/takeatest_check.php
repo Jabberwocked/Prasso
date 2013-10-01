@@ -16,7 +16,7 @@ foreach($answers as $answer)
 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
 	echo "<p>" . $row['Question'] . "</p><br><br>";
 	// NEEDS SESSION OR STH
-	echo $answer . "<br>";
+	echo "<p>" . $answer . "</p><br><br>";
 }
 	
 ?>
