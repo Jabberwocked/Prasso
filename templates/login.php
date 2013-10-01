@@ -1,3 +1,4 @@
+<?php include_once (LIBRARY_PATH . "/user.php"); ?>
 <?php if( !(isset( $_POST['login'] ) ) ) { ?>
 
 
@@ -26,7 +27,7 @@
 }
 else
 {
-	$usr = new Users();
+	$usr = new User();
 	$usr->storeFormValues($_POST);
 
 	if ($usr->userLogin())

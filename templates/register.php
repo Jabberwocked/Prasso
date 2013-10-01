@@ -1,5 +1,4 @@
-<?php include_once ("config.php"); ?>
-
+<?php include_once (LIBRARY_PATH . "/user.php"); ?>
 <?php if( !(isset( $_POST['register'] ) ) ) { ?>
 
 
