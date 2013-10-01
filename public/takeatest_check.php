@@ -8,9 +8,17 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php 
 $answers = $_POST;
+$n = 0;
+
+echo $results;
 
 foreach($answers as $answer)
 {
+	$n ++;
+	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
+	echo "<p>" . $row['Question'] . "</p><br><br>";
+	echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>";
+	
 	echo $answer . "<br>";
 }
 	
