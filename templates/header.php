@@ -12,7 +12,7 @@
 <body>
 	<header>
 		<a href="main.php"><h1 id='title'>PRASSO</h1></a>
-		<a href="loginpage.php" style="position:absolute; top:55px; right:0px; font-size:15px">Guust Flater</a>
+		<a href="loginpage.php" style="position:absolute; top:55px; right:0px; font-size:15px"><?php echo $user->username ?></a>
 	</header>
 	<br>
 	<br>
