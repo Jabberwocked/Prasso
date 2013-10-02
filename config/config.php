@@ -1,4 +1,7 @@
 <?php
+// start or continue session
+session_start();
+
 // set off all error for security purposes
 error_reporting(E_ALL);
 
