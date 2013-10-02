@@ -33,7 +33,7 @@ else
 	if ($usr->userLogin())
 	{
 		$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
-		$_SESSION['lalala'] = "lalala";
+		$_SESSION['username'] = $usr['username'];
 	}
 	else
 	{
