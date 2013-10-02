@@ -15,14 +15,15 @@ if (isset($_SESSION['HTTP_USER_AGENT']))
 	}
 	else
 	{
-		if( !(isset( $_POST['login'] ) ) )
-		{
-		header('Location: ./loginpage.php');
-		}
-		else
-		{
-			break;
-		}
+		break;
+// 		if( !(isset( $_POST['login'] ) ) )
+// 		{
+// 		header('Location: ./loginpage.php');
+// 		}
+// 		else
+// 		{
+// 			break;
+// 		}
 	}
 }
 else
