@@ -1,6 +1,6 @@
 <?php
 // start or continue session
-session_start();
+include_once("../templates/session.php");
 
 // set off all error for security purposes
 error_reporting(E_ALL);
