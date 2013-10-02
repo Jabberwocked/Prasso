@@ -34,6 +34,7 @@ else
 	{
 		$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
 		$_SESSION['username'] = $usr['username'];
+		echo $usr['username'];
 	}
 	else
 	{
