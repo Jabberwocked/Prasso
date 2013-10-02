@@ -33,10 +33,10 @@ else
 	if ($usr->userLogin())
 	{
 		$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
-// 		$_SESSION['username'] = $usr['username'];
+
 		$_SESSION['username'] = $_POST['username'];
-		echo $_POST['username'];
-		echo "lala";
+		echo "Logged in as" . $_SESSION['username'];
+		
 	}
 	else
 	{
