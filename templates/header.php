@@ -13,7 +13,7 @@
 	<header>
 		<a href="main.php"><h1 id='title'>PRASSO</h1></a>
 		<?php 
-		if (!isset($_SESSION['username']))
+		if (isset($_SESSION['username']))
 		{
 		echo "<a href='profile.php' style='position:absolute; top:55px; right:0px; font-size:15px'>" . $_SESSION['username'] . "</a>";
 		}
