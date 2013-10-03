@@ -12,7 +12,16 @@
 <body>
 	<header>
 		<a href="main.php"><h1 id='title'>PRASSO</h1></a>
-		<a href="loginpage.php" style="position:absolute; top:55px; right:0px; font-size:15px"><?php echo $_SESSION['username']; ?></a>
+		<?php 
+		if (!isset($_SESSION['username']))
+		{
+		echo "<a href='profile.php' style='position:absolute; top:55px; right:0px; font-size:15px'>" . $_SESSION['username'] . "</a>";
+		}
+		else 
+		{
+		echo "<a href='loginpage.php' style='position:absolute; top:55px; right:0px; font-size:15px'>" . "LOG IN" . "</a>";
+		}
+		?>
 	</header>
 	<br>
 	<br>
