@@ -35,7 +35,8 @@ else
 		$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
 
 		$_SESSION['username'] = $_POST['username'];
-		echo "Logged in as" . $_SESSION['username'];
+		echo "Logged in as " . $_SESSION['username'];
+		header("Location:main.php");
 		
 	}
 	else
