@@ -34,6 +34,11 @@ else
 	{
 		$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
 
+		/**
+		 * The username is saved in the session to update the top-right corner.
+		 * The redirect is necessary to refresh the page and to initiate the update.
+		 * The echo is useless now. 
+		 */
 		$_SESSION['username'] = $_POST['username'];
 		echo "Logged in as " . $_SESSION['username'];
 		header("Location:main.php");

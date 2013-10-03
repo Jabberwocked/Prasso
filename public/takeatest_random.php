@@ -6,6 +6,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <div style="margin-left: auto; margin-right: auto; width: 500px">
 
+<!-- Form to generate a test -->
 
 	<form action=<?php echo htmlspecialchars('takeatest_random.php');?> method="get">
 		Filter by type<br> 
@@ -22,20 +23,30 @@ include_once (TEMPLATES_PATH . "/header.php");
 	<br>
 	<br>
 	
-	
+<!-- The test itself -->
+		
 	<form action="<?php echo htmlspecialchars('takeatest_check.php');?>" method="post">
 		
 		<?php
 			
 		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 	
+		/**
+		 * Query based on criteria 
+		 */
+		
 		$type = "'".implode("','", $_GET["type"])."'";
 		$number = $_GET["number"];
 		
 		$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
 		
-		
 		$results = $db->query($sql);
+		
+		
+		/**
+		 * Output questions 
+		 */
+		
 		$n = 0;
 		
 		foreach ($results as $row)
@@ -46,10 +57,18 @@ include_once (TEMPLATES_PATH . "/header.php");
 			echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>";
 		}
 		
+		/**
+		 * Error message 
+		 */
+		
 		if($n < $number)
 		{
 			echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
 		}
+		
+		/**
+		 * Submit button 
+		 */
 		
 		if($number > 0)
 		{

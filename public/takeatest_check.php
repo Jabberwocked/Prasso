@@ -7,6 +7,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 <div style="margin-left: auto; margin-right: auto; width: 500px">
 
 <?php 
+/* Checks answers. Doesn't work yet. */
+
 $answers = $_POST;
 $n = 0;
 

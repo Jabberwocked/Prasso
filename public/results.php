@@ -4,6 +4,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 include_once (MENU_PATH . "/menu_results.php");
 ?>
 
+<!-- PLACEHOLDER -->
 
 <style type="text/css">
 td {
@@ -64,7 +65,8 @@ td {
 	</table>
 </div>
 
-<!-- 	
+<!-- The code below is placeholder code for *following* options, to be added later.
+ 	
 	<center>
 	<br> <br> <br> <br> <br> <br> <br> <br>
 

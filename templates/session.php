@@ -3,6 +3,10 @@
 // Start the session
 session_start();
 
+
+/**
+ * The code below generates an error. Needs checking. 
+ */
 // // When the session has been started check if it is the same as stored before.
 // if (isset($_SESSION['HTTP_USER_AGENT']))
 // {
