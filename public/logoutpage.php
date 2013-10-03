@@ -6,7 +6,9 @@ include_once (TEMPLATES_PATH . "/header.php");
 <?php 
 session_destroy();
 
-echo "You are logged out."
+echo "You are logged out.";
+header("Location: main.php");
+
 
 ?>
 
