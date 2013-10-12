@@ -8,12 +8,13 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php 
 /* Checks answers. Doesn't work yet. */
-echo 'lalalala';
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
 $testquestions = $_SESSION['testquestions'];
 $answers = $db->query("SELECT * FROM Answers WHERE QuestionID IN (".$testquestions.")");
 $useranswers = $_POST;
+
+echo 'lalalala2';
 
 $n = 0;
 
