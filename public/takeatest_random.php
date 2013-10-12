@@ -39,18 +39,19 @@ include_once (TEMPLATES_PATH . "/header.php");
 		$number = $_GET["number"];
 		
 		$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
-		
 		$testquestions = $db->query($sql);
-		$_SESSION['testquestions'] = $testquestions;
+		
 		
 		/**
-		 * Output questions 
+		 * Output questions and save questionids in session 
 		 */
 		
+		$_SESSION['QuestionIds'] = array();
 		$n = 0;
 		
 		foreach ($testquestions as $questionrow)
 		{
+			$_SESSION['QuestionIds'][] = $questionrow['QuestionId'];
 			$n ++;
 			echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
 			echo "<p>" . $questionrow['Question'] . "</p><br><br>";

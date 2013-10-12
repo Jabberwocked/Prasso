@@ -10,7 +10,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 /* Checks answers. Doesn't work yet. */
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
-print_r($_SESSION['testquestions']);
+print_r($_SESSION['QuestionIds']);
 
 $testquestions = $_SESSION['testquestions'];
 $answers = $db->query("SELECT * FROM Answers WHERE QuestionID IN (".$testquestions.")");
