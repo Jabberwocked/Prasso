@@ -13,7 +13,7 @@ include_once (MENU_PATH . "/menu_mytests_new.php");
 		<input type="radio" style="display:inline; width:20px;" name="type" value="shortanswer" checked>Short Answer<br>
 		<input type="radio" style="display:inline; width:20px;" name="type" value="multichoice" >Multiple Choice<br>
 		Answers<br> 
-		<input type="text" name="answers">
+		<input type="text" name="answers" id="answers">
 		<input type="button" id="addOption" value="Add" />
 		<br> 
 		<input type="submit" value="Add question">
