@@ -110,9 +110,9 @@ foreach ($_SESSION['questions'] as $question)
 		<input type="button" id="addOption" value="Add" /><br>
 		<br>
 		<br> 
-		<button type="submit" name="action" value="Add Question">
-		<button type="submit" name="action" value="Save" /><br>
-		<button type="submit" name="action" value="Delete_All" /><br>
+		<button type="submit" name="action" value="Add Question"></button><br>
+		<button type="submit" name="action" value="Save" ></button><br>
+		<button type="submit" name="action" value="Delete_All" ></button><br>
 	</form>
 	<br>
 	<br>
@@ -120,6 +120,7 @@ foreach ($_SESSION['questions'] as $question)
 
 
 
+</div>
 
 <?php 
 include_once (TEMPLATES_PATH . "/footer.php");
