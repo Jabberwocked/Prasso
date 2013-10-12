@@ -70,17 +70,17 @@ elseif ($_POST['action'] == "save")
 {
 	echo "saving?<br>";
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-// 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 	
 	foreach ($_SESSION['questions'] as $questionobject)
 	{
 		$question = $questionobject->question;
 		$type = $questionobject->type;
 		$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
-// 		if (!$qry) {
-// 			echo "\nPDO::errorInfo():\n";
-// 			print_r($db->errorInfo());
-// 		}
+		if (!$qry) {
+			echo "\nPDO::errorInfo():\n";
+			print_r($db->errorInfo());
+		}
 		
 		$qry->execute(array(':question'=>$question,':type'=>$type));
 		
