@@ -51,8 +51,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 		
 		foreach ($testquestions as $questionrow)
 		{
-			$_SESSION['QuestionIds'][] = $questionrow['QuestionId'];
 			$n ++;
+			$_SESSION['QuestionIds'][$n] = $questionrow['QuestionId'];
 			echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
 			echo "<p>" . $questionrow['Question'] . "</p><br><br>";
 			echo "<input type='text' name='" . $questionrow['QuestionId'] . "' ><br>";
