@@ -20,9 +20,9 @@ $n = 0;
 foreach($testquestions as $questionrow)
 {
 	echo '3';
-	$n ++;
-	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
-	echo "<p>" . $questionrow['Question'] . "</p><br><br>";
+// 	$n ++;
+// 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
+// 	echo "<p>" . $questionrow['Question'] . "</p><br><br>";
 // 	echo "<p>" . $answers[$questionsrow['QuestionID']] . "</p><br><br>";
 }
 	
