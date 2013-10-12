@@ -81,7 +81,7 @@ elseif ($_POST['action'] == "save")
 		
 	
 	mysqli_close($db);
-	echo "<br><p style='color:green'>Test is saved.</p>";
+	echo "<br><p style='color:green'>Test is saved.</p><br><br>";
 	
 };
 
