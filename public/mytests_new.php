@@ -61,11 +61,11 @@ if ($_SESSION['questionno'] == false)
 // 	$_SESSION['questionno'] = 1;
 // }
 
-if ($_POST('action') == "Add Question")
-{
+// if ($_POST('action') == "Add Question")
+// {
 	$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
 	$_SESSION['questionno'] ++;
-}
+// }
 
 
 
