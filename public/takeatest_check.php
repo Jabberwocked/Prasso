@@ -11,7 +11,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
 print_r($_SESSION['QuestionIds']);
-$testquestions = $db->query("SELECT * FROM Questions WHERE QuestionId IN array('1','2','3')");
+$testquestions = $db->query("SELECT * FROM Questions WHERE QuestionId IN (1,2,3)");
 $answers = $db->query("SELECT * FROM Answers WHERE QuestionId IN (".$_SESSION['QuestionIds'].")");
 $useranswers = $_POST;
 print_r($useranswers);
