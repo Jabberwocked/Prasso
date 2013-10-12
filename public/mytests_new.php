@@ -12,11 +12,11 @@ include_once (MENU_PATH . "/menu_mytests_new.php");
  * Save new questions in SESSION
  */
 
-if ($_POST('reset') == true)
-{
-	$_SESSION['questions'] = array();	
-	$_SESSION['questionno'] = 1;
-}
+// if ($_POST('reset') == true)
+// {
+// 	$_SESSION['questions'] = array();	
+// 	$_SESSION['questionno'] = 1;
+// }
 
 
 if ($_SESSION['questionno'] == false) 
