@@ -15,13 +15,11 @@ $(document).ready(function(){
 	 * Used in mytests_new to add fields to the form
  	 */
 	
-	var $answerno = 1;
-	var $lastanswer = "";  
+	var $answerno = 1;  
 	
 	$("#addOption").click (function(){
-		$answerno ++;
-		$lastanswer = 'answer' + $answerno;  
-		$("#" + $lastanswer).after('<input type="text" name=' + $lastanswer + ' id=' + $lastanswer + '>');
+		$answerno ++;  
+		$("#answer" + $answerno).after('<input type="text" name=answer' + $answerno + ' id=answer' + $answerno + '>');
 		});
 		
 	
