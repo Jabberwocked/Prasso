@@ -55,7 +55,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 			$_SESSION['QuestionIds'][$n] = $questionrow['QuestionId'];
 			echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
 			echo "<p>" . $questionrow['Question'] . "</p><br><br>";
-			echo "<input type='text' name='".$n."' ><br>";
+			echo "<input type='text' name='".$questionrow['QuestionId']."' ><br>";
 		}
 		
 		/**

@@ -8,34 +8,63 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php 
 /* Checks answers. Doesn't work yet. */
+
+
+/** 
+ * Get questionids from SESSION and user answers from POST
+ */
+
+$questionids = $_SESSION['QuestionIds']; // array(questionno => questionid)
+$useranswers = $_POST; // array(questionid => answer)
+
+/**
+ * Query db
+ */
+
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
-$questionids = $_SESSION['QuestionIds'];
 $questionidssql = "'".implode("','", $_SESSION['QuestionIds'])."'";
-$testquestions = $db->query("SELECT * FROM Questions WHERE QuestionId IN (".$questionidssql.")");
-$answers = $db->query("SELECT * FROM Answers WHERE QuestionId IN (".$questionidssql.")");
-$useranswers = $_POST;
-print_r($useranswers);
+$questionsquery = $db->query("SELECT * FROM Questions WHERE QuestionId IN (".$questionidssql.")");
+$answersquery = $db->query("SELECT * FROM Answers WHERE QuestionId IN (".$questionidssql.")");
 
+
+/** 
+ * Save questions in array(id => question)
+ */
 
 $questions = array();
 
-foreach($testquestions as $questionrow)
+foreach($questionsquery as $questionrow)
 {
-	echo $questionrow['QuestionId'];
 	$id = $questionrow['QuestionId'];
 	$question = $questionrow['Question'];
 	$questions[$id] = $question;
 }
-print_r($questions);
+
+/**
+ * Save answers in array(id => answer)
+ */
+
+$answers = array();
+
+foreach($answersquery as $answersrow)
+{
+	$id = $answersrow['QuestionId'];
+	$answer1 = $answersrow['Answer1'];
+	$answers[$id] = $answer1;
+}
 
 
+/**
+ * Output question, answer and user answer
+ */
 
 foreach($questionids as $n => $id)
 {
 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
-// 	echo "<p>" . $testquestions[$id]['Question'] . "</p><br><br>";
-// 	echo "<p>" . $answers[$id]['Answer1'] . "</p><br><br>";
+	echo "<p>" . $questions[$id] . "</p><br><br>";
+	echo "<p>" . $answers[$id] . "</p><br><br>";
+	echo "<p>" . $useranswers[$id] . "</p><br><br>";
 }
 	
 ?>
