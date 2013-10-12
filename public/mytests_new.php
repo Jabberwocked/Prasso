@@ -61,11 +61,11 @@ if ($_POST('action') == "Delete_All")
 	$_SESSION['questionno'] = 1;
 }
 
-// if ($_POST('action') == "Add Question")
-// {
+if ($_POST('action') == "Add Question")
+{
 	$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
 	$_SESSION['questionno'] ++;
-// }
+}
 
 
 
@@ -74,10 +74,10 @@ if ($_POST('action') == "Delete_All")
  */
 
 
-foreach ($_SESSION['questions'] as $question)
-{
-	$question->show();
-}
+// foreach ($_SESSION['questions'] as $question)
+// {
+// 	$question->show();
+// }
 
 
 
