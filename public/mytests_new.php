@@ -15,16 +15,12 @@ include_once (MENU_PATH . "/menu_mytests_new.php");
 
 
 
-if ($_SESSION['questionno'] !== false) 
+if ($_SESSION['questionno'] == false) 
 {
 	$_SESSION['questionno'] = 1;
 }
-else
-{
-	$_SESSION['questionno'] = 43;
-}
 
-echo $_SESSION['questionno'];
+
 
 class question {
 	public $questionno;
@@ -48,6 +44,7 @@ class question {
 		echo "<p>Question: " . $this->question . "</p>";
 		echo "<p>Type: " . $this->type . "</p>";
 		echo "<p>Answer1: " . $this->answer1 . "</p>";
+		echo "<br><br>";
 	}
 }
 
