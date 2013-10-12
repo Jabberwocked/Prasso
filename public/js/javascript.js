@@ -9,8 +9,11 @@ $(document).ready(function(){
 
 	
 	
+	var $answerno = 1;
+	
 	$("#addOption").click (function(){
-		$("#answers").after('<input type="text">');
+		$answerno ++;
+		$("#answer1").after('<input type="text" name=answer' + $answerno + '>');
 		});
 		
 	
