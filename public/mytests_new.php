@@ -70,7 +70,9 @@ foreach ($_SESSION['questions'] as $question)
 		<input type="button" id="addOption" value="Add" /><br>
 		<br>
 		<br> 
-		<input type="submit" value="Add question">
+		<input type="submit" value="Add Question">
+		<input type="button" value="Save" /><br>
+		<input type="button" value="Reset" /><br>
 	</form>
 	<br>
 	<br>
