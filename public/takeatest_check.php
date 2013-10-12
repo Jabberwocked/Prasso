@@ -50,19 +50,27 @@ $answers = array();
 foreach($answersquery as $answersrow)
 {
 	$id = $answersrow['QuestionId'];
-	$multipleanswers = array();
-	foreach($answersrow as $column => $value)
-	{
-		if (strpos($column,'Answer') !== false)
-		{
-			echo $value;
-			$multipleanswers[] = $value;
-		}
-	}
-	$answers[$id] = $multipleanswers;
+	$answer1 = $answersrow['Answer1'];
+	$answers[$id] = $answer1;
 }
 
-print_r($answers);
+
+// $answers = array();
+
+// foreach($answersquery as $answersrow)
+// {
+// 	$id = $answersrow['QuestionId'];
+// 	$multipleanswers = array();
+// 	foreach($answersrow as $column => $value)
+// 	{
+// 		if (strpos($column,'Answer') !== false)
+// 		{
+// 			$multipleanswers[] = $value;
+// 		}
+// 	}
+// 	$answers[$id] = $multipleanswers;
+// }
+
 
 /**
  * Output question, answer and user answer
