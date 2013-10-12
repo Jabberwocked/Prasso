@@ -83,23 +83,27 @@ foreach($questionids as $n => $id)
 {
 	if ($useranswers[$id] == $answers[$id])
 	{
+		$correct = true;
 		$score = 1;
 		$totalscore ++;
+		$colour = "green";
 	}
 	else 
 	{
+		$correct = false;
 		$score = 0;
+		$colour = "red";
 	}
 	
 	
 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
 	echo "<p>" . $questions[$id] . "</p><br><br>";
 	echo "<p>" . $answers[$id] . "</p><br><br>";
-	echo "<p>" . $useranswers[$id] . "</p><br><br>";
+	echo "<p style='text:" . $colour . "'>" . $useranswers[$id] . "</p><br><br>";
 	echo "<p> Score: " . $score . "</p><br><br>";
 }
 
-echo "<p>" . "Totalscore: " . $totalscore . "</p><br><br>";
+echo "<p style='font-weight:bold'> Totalscore: " . $totalscore . "</p><br><br>";
 
 ?>
 	
