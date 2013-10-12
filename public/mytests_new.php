@@ -76,11 +76,13 @@ elseif ($_POST['action'] == "save")
 	{
 		$sql="INSERT INTO Questions (Question, Type) VALUES (:question,:type)";
 		$q = $db->prepare($sql);
-		$q->execute(array(':question'=>$questionobject->question,':type'=>$questionobject->type));
-		if ($q) {
+		if (!$q) {
 			echo "\nPDO::errorInfo():\n";
 			print_r($db->errorInfo());
 		}
+		
+		$q->execute(array(':question'=>$questionobject->question,':type'=>$questionobject->type));
+		
 		
 		echo "1 record added<br>";
 	}
