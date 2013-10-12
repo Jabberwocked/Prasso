@@ -20,9 +20,8 @@ $(document).ready(function(){
 	$("#addOption").click (function(){
 		$answerno ++;  
 		$("<input type='text' value='' />")
+		 .attr("name", "answer" + $answerno)
 		 .attr("class", "answers")
-	     .attr("id", "answer" + $answerno)
-	     .attr("name", "answer" + $answerno)
 	     .insertAfter(".answers:last");
 	});
 		
