@@ -77,19 +77,15 @@ elseif ($_POST['action'] == "save")
 	}
 		
 	
-	foreach ($_SESSION['questions'] as $questionarray)
+	foreach ($_SESSION['questions'] as $questionpobject)
 	{
-		echo "lalal";
-		print_r($questionarray);
-		echo $questionarray->question;
-		$question = $questionarray['question'];
-		echo $question;
-		$t = $question['type'];
-		$sql="INSERT INTO Questions (Question, Type) VALUES ('$q','$t')";
-// 		if (!mysqli_query($db,$sql))
-// 		{
-// 			die('Error: ' . mysqli_error($db));
-// 		}
+		$question = $questionobject->question;
+		$type = $questionobject->type;
+		$sql="INSERT INTO Questions (Question, Type) VALUES ('$question','$type')";
+		if (!mysqli_query($db,$sql))
+		{
+			die('Error: ' . mysqli_error($db));
+		}
 		echo "1 record added";
 	}
 		
