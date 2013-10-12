@@ -10,7 +10,7 @@ include_once (MENU_PATH . "/menu_mytests_new.php");
 <?php 
 
 
-
+echo $_POST['action'];
 
 
 /**
