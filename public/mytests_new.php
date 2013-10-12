@@ -55,11 +55,11 @@ if ($_SESSION['questionno'] == false)
 	$_SESSION['questionno'] = 1;
 }
 
-if ($_POST('action') == "Delete All")
-{
-	$_SESSION['questions'] = array();
-	$_SESSION['questionno'] = 1;
-}
+// if ($_POST('action') == "Delete All")
+// {
+// 	$_SESSION['questions'] = array();
+// 	$_SESSION['questionno'] = 1;
+// }
 
 if ($_POST('action') == "Add Question")
 {
