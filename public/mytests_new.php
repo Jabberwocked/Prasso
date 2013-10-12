@@ -68,6 +68,7 @@ elseif ($_POST['action'] == "addquestion")
 }
 elseif ($_POST['action'] == "save")
 {
+	echo "tests";
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 	// Check connection
 	if (mysqli_connect_errno())
