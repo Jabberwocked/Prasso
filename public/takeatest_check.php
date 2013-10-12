@@ -10,21 +10,18 @@ include_once (TEMPLATES_PATH . "/header.php");
 /* Checks answers. Doesn't work yet. */
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
-$questionids = "'".implode("','", $_SESSION['QuestionIds'])."'";
-$testquestions = $db->query("SELECT * FROM Questions WHERE QuestionId IN (".$questionids.")");
-$answers = $db->query("SELECT * FROM Answers WHERE QuestionId IN (".$questionids.")");
+$questionids = $_SESSION['QuestionIds'];
+$questionidssql = "'".implode("','", $_SESSION['QuestionIds'])."'";
+$testquestions = $db->query("SELECT * FROM Questions WHERE QuestionId IN (".$questionidssql.")");
+$answers = $db->query("SELECT * FROM Answers WHERE QuestionId IN (".$questionidssql.")");
 $useranswers = $_POST;
 print_r($useranswers);
 
-$n = 0;
-
-foreach($testquestions as $questionrow)
+foreach($questionids as $n => $id)
 {
-	echo '3';
-// 	$n ++;
-// 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
-// 	echo "<p>" . $questionrow['Question'] . "</p><br><br>";
-// 	echo "<p>" . $answers[$questionsrow['QuestionID']] . "</p><br><br>";
+	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
+	echo "<p>" . $testquestions[$n-1]['Question'] . "</p><br><br>";
+	echo "<p>" . $answers[$n-1]['Answer1'] . "</p><br><br>";
 }
 	
 ?>
