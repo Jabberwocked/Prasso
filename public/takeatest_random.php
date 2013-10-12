@@ -73,6 +73,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 		foreach($questionsquery as $questionrow)
 		{
 			$id = $questionrow['QuestionId'];
+			echo $id;
 			$question = $questionrow['Question'];
 			$questions[$id] = $question;
 		}
