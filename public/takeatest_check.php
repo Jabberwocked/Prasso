@@ -17,6 +17,17 @@ $answers = $db->query("SELECT * FROM Answers WHERE QuestionId IN (".$questionids
 $useranswers = $_POST;
 print_r($useranswers);
 
+
+$questions = array();
+
+foreach($testquestions as $questionrow)
+{
+	$testquestions[$questionrow['QuestionId']=$questionrow['Question']];
+}
+print_r($questions);
+
+
+
 foreach($questionids as $n => $id)
 {
 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
