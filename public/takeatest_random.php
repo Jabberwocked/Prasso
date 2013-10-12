@@ -42,30 +42,6 @@ include_once (TEMPLATES_PATH . "/header.php");
 		
 		
 		/**
-		 * Save questionids in array(questionno => questionid)
-		 */
-		
-		$questionids = array();
-		$n = 0;
-		
-		foreach ($questionsquery as $questionrow)
-		{
-			$n ++;
-			$id = $questionrow['QuestionId'];
-			echo $id;
-			$questionids[$n] = $id;
-		}
-
-		print_r($questionids);
-		
-		/**
-		 * Save questionids in SESSION
-		 */
-		
-		$_SESSION['questionids'] = $questionids;
-		
-		
-		/**
 		 * Save questions in array(id => question)
 		 */
 		
@@ -80,6 +56,31 @@ include_once (TEMPLATES_PATH . "/header.php");
 		}
 		
 		print_r($questions);
+		
+		
+		/**
+		 * Save questionids in array(questionno => questionid)
+		 */
+		
+		$questionids = array();
+		$n = 0;
+		
+		foreach ($questionsquery as $questionrow)
+		{
+			$n ++;
+			$id = $questionrow['QuestionId'];
+			$questionids[$n] = $id;
+		}
+
+		print_r($questionids);
+		
+		/**
+		 * Save questionids in SESSION
+		 */
+		
+		$_SESSION['questionids'] = $questionids;
+		
+		
 		
 		/**
 		 * Output questions and form
