@@ -80,6 +80,7 @@ elseif ($_POST['action'] == "save")
 	{
 		$question = $question['question'];
 		$type = $question['type'];
+		echo $question;
 		$sql="INSERT INTO Questions (Question, Type) VALUES ('$question','$type')";
 		if (!mysqli_query($db,$sql))
 		{
