@@ -71,11 +71,11 @@ echo $_POST['action'];
 
 
 
-if ($_POST('action') == "Add Question")
-{
-	$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
-	$_SESSION['questionno'] ++;
-}
+// if ($_POST('action') == "Add Question")
+// {
+// 	$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
+// 	$_SESSION['questionno'] ++;
+// }
 
 
 
