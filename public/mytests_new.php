@@ -43,7 +43,7 @@ class question {
 }
 
 
-echo $_POST['action'];
+
 
 
 /**
@@ -81,7 +81,7 @@ elseif ($_POST('action') == "Add Question")
 // 	$question->show();
 // }
 
-
+echo $_POST['action'];
 
 
 /** 
