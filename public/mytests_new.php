@@ -69,23 +69,13 @@ elseif ($_POST['action'] == "addquestion")
 elseif ($_POST['action'] == "save")
 {
 	echo "saving?";
-	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-	// Check connection
-	if (mysqli_connect_errno())
-	{
-		echo "Failed to connect to MySQL: " . mysqli_connect_error();
-	}
-		
+	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);		
 	
 	foreach ($_SESSION['questions'] as $questionpobject)
 	{
-		$question = $questionobject->question;
-		$type = $questionobject->type;
-		$sql="INSERT INTO Questions (Question, Type) VALUES ('$question','$type')";
-		if (!mysqli_query($db,$sql))
-		{
-			die('Error: ' . mysqli_error($db));
-		}
+		$sql="INSERT INTO Questions (Question, Type) VALUES (:question,:type)";
+		$q = $db->prepare($sql);
+		$q->execute(array(':author'=>$questionobject->question,':title'=>$questionobject->type));
 		echo "1 record added";
 	}
 		
