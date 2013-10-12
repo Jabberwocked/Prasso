@@ -16,10 +16,11 @@ $(document).ready(function(){
  	 */
 	
 	var $answerno = 1;
+	var $lastanswer = 'answer' + $answerno;  
 	
 	$("#addOption").click (function(){
 		$answerno ++;
-		$(".answers").after('<input type="text" name=answer' + $answerno + '>');
+		$("#" + $lastanswer).after('<input type="text" name=' + $lastanswer + 'id=' + $lastanswer + '>');
 		});
 		
 	
