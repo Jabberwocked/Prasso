@@ -11,7 +11,7 @@ include_once (MENU_PATH . "/menu_mytests_new.php");
 /** 
  * Save new questions in SESSION
  */
-$_SESSION['questionno']=38;
+
 echo $_SESSION['questionno'];
 
 
