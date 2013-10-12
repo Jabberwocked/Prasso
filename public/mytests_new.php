@@ -74,14 +74,15 @@ elseif ($_POST['action'] == "save")
 	
 	foreach ($_SESSION['questions'] as $questionpobject)
 	{
-		$sql="INSERT INTO Questions (Question, Type) VALUES (:question,:type)";
-		$q = $db->prepare($sql);
-		if (!$q) {
+		$question = $questionobject->question;
+		$type = $questionobject->type;
+		$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
+		if (!$qry) {
 			echo "\nPDO::errorInfo():\n";
 			print_r($db->errorInfo());
 		}
 		
-		$q->execute(array(':question'=>$questionobject->question,':type'=>$questionobject->type));
+		$qry->execute(array(':question'=>$question,':type'=>$type));
 		
 		
 		echo "1 record added<br>";
