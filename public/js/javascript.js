@@ -10,7 +10,7 @@ $(document).ready(function(){
 	
 	
 	$("#addOption").click (function(){
-		$("answers").after('<input type="text">');
+		$("#answers").after('<input type="text">');
 		});
 		
 	
