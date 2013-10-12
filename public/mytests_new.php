@@ -12,6 +12,11 @@ include_once (MENU_PATH . "/menu_mytests_new.php");
  * Save new questions in SESSION
  */
 
+if ($_SESSION['questionno'] !== false) 
+{
+	$_SESSION['questionno'] = 1;
+}
+
 class question {
 	public $questionno;
 	public $question;
@@ -20,10 +25,12 @@ class question {
 	
 	function __construct($questionno, $question, $type, $answer1)
 	{
-		$this->questionno = $questionno;
+		$this->questionno = $questionno];
 		$this->question = $question;
 		$this->type = $type;
 		$this->answer1 = $answer1;
+
+		$questionno ++;
 	}
 	
 	function show()
@@ -35,8 +42,8 @@ class question {
 	}
 }
 
-$question1 = new question("a", $_POST['question'], $_POST['type'], $_POST['answer1']);
-$question1->show();
+$question[] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
+$question[0]->show();
 
 ?>		
 		
