@@ -102,9 +102,9 @@ foreach ($_SESSION['questions'] as $question)
 		<input type="button" id="addOption" value="Add" /><br>
 		<br>
 		<br> 
-		<input type="submit" name="action" value="addquestion">Add Question</input><br>
-		<input type="submit" name="action" value="save" >Save</input><br>
-		<input type="submit" name="action" value="deleteall" >Delete All</input><br>
+		<button type="submit" name="action" value="addquestion">Add Question</button><br>
+		<button type="submit" name="action" value="save" >Save</button><br>
+		<button type="submit" name="action" value="deleteall" >Delete All</button><br>
 	</form>
 	<br>
 	<br>

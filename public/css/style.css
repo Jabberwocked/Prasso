@@ -218,7 +218,7 @@ input:valid {
 	margin: 20px 0 0 -80px;
 }
 
-input[type="submit"],input[type="button"] {
+input[type="submit"],input[type="button"],button {
 	display: inline;
 	margin: 0 5px;
 	margin-left: 20px;
@@ -237,14 +237,14 @@ input[type="submit"],input[type="button"] {
 	-webkit-appearance: none;
 }
 
-input[type="submit"]:hover,input[type="submit"]:active,input[type="button"]:hover,input[type="button"]:active
+input[type="submit"]:hover,input[type="submit"]:active,input[type="button"]:hover,input[type="button"]:active,button:hover,button:active
 	{
 	cursor: pointer;
 	background: #fff;
 	color: #614051;
 }
 
-input[type="button"]:active,input[type="button"]:active {
+input[type="button"]:active,input[type="button"]:active,button:active {
 	background: #eee;
 	-moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
 	-webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
