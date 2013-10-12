@@ -100,7 +100,7 @@ foreach ($_SESSION['questions'] as $question)
 		<br> 
 		<button type="submit" name="action" value="Add Question">
 		<button type="submit" name="action" value="Save" /><br>
-		<button type="submit" name="action" value="Delete All" /><br>
+		<button type="submit" name="action" value="Delete_All" /><br>
 	</form>
 	<br>
 	<br>
