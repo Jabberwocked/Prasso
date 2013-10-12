@@ -81,14 +81,14 @@ elseif ($_POST['action'] == "save")
 	{
 		echo "lalal";
 		print_r($question);
-// 		$q = $question['question'];
-// 		$t = $question['type'];
-// 		$sql="INSERT INTO Questions (Question, Type) VALUES ('$q','$t')";
+		$q = $question['question'];
+		$t = $question['type'];
+		$sql="INSERT INTO Questions (Question, Type) VALUES ('$q','$t')";
 // 		if (!mysqli_query($db,$sql))
 // 		{
 // 			die('Error: ' . mysqli_error($db));
 // 		}
-// 		echo "1 record added";
+		echo "1 record added";
 	}
 		
 	
