@@ -14,12 +14,12 @@ $testquestions = $_SESSION['testquestions'];
 $answers = $db->query("SELECT * FROM Answers WHERE QuestionID IN (".$testquestions.")");
 $useranswers = $_POST;
 
-echo 'lalalala2';
 
 $n = 0;
 
 foreach($testquestions as $questionrow)
 {
+	echo '3';
 	$n ++;
 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
 	echo "<p>" . $questionrow['Question'] . "</p><br><br>";
