@@ -50,7 +50,7 @@ class question {
  * Process form
  */
 
-
+echo $_POST['action'];
 
 if ($_SESSION['questionno'] == false)
 {
@@ -81,7 +81,7 @@ elseif ($_POST('action') == "Add Question")
 // 	$question->show();
 // }
 
-echo $_POST['action'];
+
 
 
 /** 
