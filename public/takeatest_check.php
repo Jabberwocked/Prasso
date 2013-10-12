@@ -88,11 +88,11 @@ foreach($questionids as $n => $id)
 	if ($useranswers[$id] == $answers[$id])
 	{
 		$totalscore ++;
-		echo "<p>" . "Score: 1" . "</p><br><br>";
+		echo "<p> Score: 1 </p><br><br>";
 	}
 	else 
 	{
-		echo "<p>" . "Score: 0" . "</p><br><br>";
+		echo "<p> Score: 0 </p><br><br>";
 	}
 }
 
