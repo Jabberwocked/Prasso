@@ -77,12 +77,12 @@ elseif ($_POST['action'] == "save")
 	}
 		
 	
-	foreach ($_SESSION['questions'] as $question)
+	foreach ($_SESSION['questions'] as $questionarray)
 	{
 		echo "lalal";
 		print_r($question);
-		$q = $question['question'];
-		echo $q;
+		$question = $questionarray['question'];
+		echo $question;
 		$t = $question['type'];
 		$sql="INSERT INTO Questions (Question, Type) VALUES ('$q','$t')";
 // 		if (!mysqli_query($db,$sql))
