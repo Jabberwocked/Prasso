@@ -73,6 +73,7 @@ foreach($answersquery as $answersrow)
 
 
 /**
+ * Score berekenen en
  * Output question, answer, user answer and score
  */
 
@@ -80,20 +81,22 @@ $totalscore = 0;
 
 foreach($questionids as $n => $id)
 {
+	if ($useranswers[$id] == $answers[$id])
+	{
+		$score = 1;
+		$totalscore ++;
+	}
+	else 
+	{
+		$score = 0;
+	}
+	
+	
 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
 	echo "<p>" . $questions[$id] . "</p><br><br>";
 	echo "<p>" . $answers[$id] . "</p><br><br>";
 	echo "<p>" . $useranswers[$id] . "</p><br><br>";
-	
-	if ($useranswers[$id] == $answers[$id])
-	{
-		$totalscore ++;
-		echo "<p> Score: 1 </p><br><br>";
-	}
-	else 
-	{
-		echo "<p> Score: 0 </p><br><br>";
-	}
+	echo "<p> Score: " . $score . "</p><br><br>";
 }
 
 echo "<p>" . "Totalscore: " . $totalscore . "</p><br><br>";
