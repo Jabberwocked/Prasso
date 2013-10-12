@@ -28,14 +28,14 @@ class question {
 	
 	function show()
 	{
-		echo "<p>Question" . $this->questionno . "</p>";
+		echo "<p>Question " . $this->questionno . "</p>";
 		echo "<p>Question: " . $this->question . "</p>";
 		echo "<p>Type: " . $this->type . "</p>";
 		echo "<p>Answer1: " . $this->answer1 . "</p>";
 	}
 }
 
-$question1 = new question("a", "b", "c", "d");
+$question1 = new question("a", $_POST['question'], $_POST['type'], $_POST['answer1']);
 $question1->show();
 
 ?>		
