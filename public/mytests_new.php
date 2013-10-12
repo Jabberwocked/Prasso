@@ -81,15 +81,15 @@ elseif ($_POST['action'] == "save")
 		$question = $question['question'];
 		$type = $question['type'];
 		$sql="INSERT INTO Questions (Question, Type) VALUES ('$question','$type')";
-		if (!mysqli_query($con,$sql))
+		if (!mysqli_query($db,$sql))
 		{
-			die('Error: ' . mysqli_error($con));
+			die('Error: ' . mysqli_error($db));
 		}
 		echo "1 record added";
 	}
 		
 	
-	mysqli_close($con);
+	mysqli_close($db);
 	echo "<p color=green>Test is saved.</p>";
 	
 };
