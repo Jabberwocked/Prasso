@@ -8,17 +8,20 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php 
 /* Checks answers. Doesn't work yet. */
+$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
-$answers = $_POST;
+$testquestions = $_SESSION['testquestions'];
+$answers = $db->query("SELECT * FROM Answers WHERE QuestionID IN (".$testquestions.")");
+$useranswers = $_POST;
+
 $n = 0;
 
-foreach($answers as $answer)
+foreach($testquestions as $questionrow)
 {
 	$n ++;
 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
-	echo "<p>" . $row['Question'] . "</p><br><br>";
-	// NEEDS SESSION OR STH
-	echo "<p>" . $answer . "</p><br><br>";
+	echo "<p>" . $questionrow['Question'] . "</p><br><br>";
+	echo "<p>" . $answers[$questionsrow['QuestionID']] . "</p><br><br>";
 }
 	
 ?>

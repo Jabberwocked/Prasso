@@ -40,8 +40,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 		
 		$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
 		
-		$results = $db->query($sql);
-		
+		$testquestions = $db->query($sql);
+		$_SESSION['testquestions'] = $testquestions;
 		
 		/**
 		 * Output questions 
@@ -49,12 +49,12 @@ include_once (TEMPLATES_PATH . "/header.php");
 		
 		$n = 0;
 		
-		foreach ($results as $row)
+		foreach ($testquestions as $questionrow)
 		{
 			$n ++;
 			echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
-			echo "<p>" . $row['Question'] . "</p><br><br>";
-			echo "<input type='text' name='" . $row['QuestionId'] . "' ><br>";
+			echo "<p>" . $questionrow['Question'] . "</p><br><br>";
+			echo "<input type='text' name='" . $questionrow['QuestionId'] . "' ><br>";
 		}
 		
 		/**
