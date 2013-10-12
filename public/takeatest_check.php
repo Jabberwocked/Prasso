@@ -92,7 +92,7 @@ foreach($questionids as $n => $id)
 	}
 	else 
 	{
-		echo "<p>" . "Score: 1" . "</p><br><br>";
+		echo "<p>" . "Score: 0" . "</p><br><br>";
 	}
 }
 
