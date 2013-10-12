@@ -69,14 +69,8 @@ elseif ($_POST['action'] == "addquestion")
 elseif ($_POST['action'] == "save")
 {
 	echo "saving?<br>";
-
-	try {
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); }
-	catch (PDOException $e) {
-		echo 'Connection failed: ' . $e->getMessage();
-		exit;
-	}
+// 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); }
 	
 	foreach ($_SESSION['questions'] as $questionpobject)
 	{
