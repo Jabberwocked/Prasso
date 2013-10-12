@@ -55,7 +55,7 @@ class question {
 if ($_SESSION['questionno'] == false)
 {
 	$_SESSION['questionno'] = 1;
-}
+};
 
 
 
