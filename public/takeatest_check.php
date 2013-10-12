@@ -61,6 +61,7 @@ foreach($answersquery as $answersrow)
 	$answers[$id] = $multipleanswers;
 }
 
+print_r($answers);
 
 /**
  * Output question, answer and user answer
