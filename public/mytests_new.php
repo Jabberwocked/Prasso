@@ -42,8 +42,8 @@ class question {
 	}
 }
 
-$question[] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
-$question[0]->show();
+$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
+$_SESSION['questions'][0]->show();
 
 ?>		
 		
