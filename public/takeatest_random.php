@@ -42,43 +42,24 @@ include_once (TEMPLATES_PATH . "/header.php");
 		
 		
 		/**
-		 * Save questions in array(id => question)
+		 * Save some arrays 
 		 */
 		
-		$questions = array();
-		
-		foreach($questionsquery as $questionrow)
-		{
-			$id = $questionrow['QuestionId'];
-			echo $id;
-			$question = $questionrow['Question'];
-			$questions[$id] = $question;
-		}
-		
-		print_r($questions);
-		
-		
-		/**
-		 * Save questionids in array(questionno => questionid)
-		 */
-		
-		$questionids = array();
 		$n = 0;
+		$questionids = array();
+		$questions = array();
 		
 		foreach ($questionsquery as $questionrow)
 		{
 			$n ++;
 			$id = $questionrow['QuestionId'];
-			$questionids[$n] = $id;
+			$question = $questionrow['Question'];
+			
+			$questionids[$n] = $id;	// Save questionids in array(questionno => id)
+			$questions[$id] = $question;	// Save questions in array(id => question)
+			
+			$_SESSION['questionids'] = $questionids;	// Save questionids in SESSION
 		}
-
-		print_r($questionids);
-		
-		/**
-		 * Save questionids in SESSION
-		 */
-		
-		$_SESSION['questionids'] = $questionids;
 		
 		
 		
