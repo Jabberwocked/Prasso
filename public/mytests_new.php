@@ -12,11 +12,11 @@ include_once (MENU_PATH . "/menu_mytests_new.php");
  * Save new questions in SESSION
  */
 
-// if ($_POST('reset') == true)
-// {
-// 	$_SESSION['questions'] = array();	
-// 	$_SESSION['questionno'] = 1;
-// }
+if ($_POST('action') == "Delete All")
+{
+	$_SESSION['questions'] = array();	
+	$_SESSION['questionno'] = 1;
+}
 
 
 if ($_SESSION['questionno'] == false) 
@@ -74,9 +74,9 @@ foreach ($_SESSION['questions'] as $question)
 		<input type="button" id="addOption" value="Add" /><br>
 		<br>
 		<br> 
-		<button type="submit" value="Add Question">
-		<input type="button" value="Save" /><br>
-		<button type="button" value="Delete All" name="reset" /><br>
+		<button type="submit" name="action" value="Add Question">
+		<button type="submit" name="action" value="Save" /><br>
+		<button type="submit" name="action" value="Delete All" /><br>
 	</form>
 	<br>
 	<br>
