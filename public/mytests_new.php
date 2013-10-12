@@ -11,6 +11,8 @@ include_once (MENU_PATH . "/menu_mytests_new.php");
 /** 
  * Save new questions in SESSION
  */
+echo $_SESSION['questionno'];
+
 
 if ($_SESSION['questionno'] !== false) 
 {
