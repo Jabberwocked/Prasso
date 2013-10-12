@@ -50,12 +50,15 @@ class question {
  * Process form
  */
 
-echo $_POST['action'];
+
 
 if ($_SESSION['questionno'] == false)
 {
 	$_SESSION['questionno'] = 1;
 }
+
+echo $_POST['action'];
+
 
 if ($_POST('action') == "Delete_All")
 {
