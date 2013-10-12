@@ -81,7 +81,7 @@ elseif ($_POST['action'] == "save")
 	{
 		echo "lalal";
 		print_r($questionarray);
-		echo $questionarray['question'];
+		echo $questionarray->question;
 		$question = $questionarray['question'];
 		echo $question;
 		$t = $question['type'];
