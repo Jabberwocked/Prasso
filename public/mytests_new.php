@@ -12,13 +12,19 @@ include_once (MENU_PATH . "/menu_mytests_new.php");
  * Save new questions in SESSION
  */
 
-echo $_SESSION['questionno'];
+
 
 
 if ($_SESSION['questionno'] !== false) 
 {
 	$_SESSION['questionno'] = 1;
 }
+else
+{
+	$_SESSION['questionno'] = 43;
+}
+
+echo $_SESSION['questionno'];
 
 class question {
 	public $questionno;
