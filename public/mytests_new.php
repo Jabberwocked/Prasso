@@ -68,7 +68,7 @@ elseif ($_POST['action'] == "addquestion")
 }
 elseif ($_POST['action'] == "save")
 {
-	echo "saving?";
+	echo "saving?<br>";
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);		
 	
 	foreach ($_SESSION['questions'] as $questionpobject)
@@ -76,12 +76,12 @@ elseif ($_POST['action'] == "save")
 		$sql="INSERT INTO Questions (Question, Type) VALUES (:question,:type)";
 		$q = $db->prepare($sql);
 		$q->execute(array(':question'=>$questionobject->question,':type'=>$questionobject->type));
-		echo "1 record added";
+		echo "1 record added<br>";
 	}
 		
 	
 	mysqli_close($db);
-	echo "<p color=green>Test is saved.</p>";
+	echo "<br><p style='color:green'>Test is saved.</p>";
 	
 };
 
