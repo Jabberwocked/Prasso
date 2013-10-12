@@ -29,34 +29,65 @@ include_once (TEMPLATES_PATH . "/header.php");
 		
 		<?php
 			
-		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-	
 		/**
 		 * Query based on criteria 
 		 */
 		
+		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+		
 		$type = "'".implode("','", $_GET["type"])."'";
 		$number = $_GET["number"];
-		
 		$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
-		$testquestions = $db->query($sql);
+		$questionsquery = $db->query($sql);
 		
 		
 		/**
-		 * Output questions and save questionids in session 
+		 * Save questionids in array(questionno => questionid)
 		 */
 		
-		$_SESSION['QuestionIds'] = array();
+		$questionids = array();
 		$n = 0;
 		
-		foreach ($testquestions as $questionrow)
+		foreach ($questionsquery as $questionrow)
 		{
 			$n ++;
-			$_SESSION['QuestionIds'][$n] = $questionrow['QuestionId'];
-			echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
-			echo "<p>" . $questionrow['Question'] . "</p><br><br>";
-			echo "<input type='text' name='".$questionrow['QuestionId']."' ><br>";
+			$questionids[$n] = $questionrow['QuestionId'];
 		}
+
+		/**
+		 * Save questionids in SESSION
+		 */
+		
+		$_SESSION['questionids'] = $questionids;
+		
+		
+		/**
+		 * Save questions in array(id => question)
+		 */
+		
+		$questions = array();
+		
+		foreach($questionsquery as $questionrow)
+		{
+			$id = $questionrow['QuestionId'];
+			$question = $questionrow['Question'];
+			$questions[$id] = $question;
+		}
+		
+		
+		/**
+		 * Output questions and form
+		 */
+		
+		foreach($questionids as $n => $id)
+		{
+			echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
+			echo "<p>" . $questions[$id] . "</p><br><br>";
+			echo "<input type='text' name='".$id."' ><br>";
+		
+		}
+		
+				
 		
 		/**
 		 * Error message 

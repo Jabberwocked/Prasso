@@ -14,7 +14,7 @@ include_once (TEMPLATES_PATH . "/header.php");
  * Get questionids from SESSION and user answers from POST
  */
 
-$questionids = $_SESSION['QuestionIds']; // array(questionno => questionid)
+$questionids = $_SESSION['questionids']; // array(questionno => questionid)
 $useranswers = $_POST; // array(questionid => answer)
 
 /**
