@@ -46,7 +46,7 @@ $_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['questio
 
 foreach ($_SESSION['questions'] as $question)
 {
-	$this->show();
+	$question->show();
 }
 
 ?>		
