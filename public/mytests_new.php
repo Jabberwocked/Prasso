@@ -8,22 +8,14 @@ include_once (MENU_PATH . "/menu_mytests_new.php");
 <div style="margin-left: auto; margin-right: auto; width: 500px">
 		
 <?php 
-/** 
- * Save new questions in SESSION
+
+
+
+
+
+/**
+ * Class question
  */
-
-if ($_POST('action') == "Delete All")
-{
-	$_SESSION['questions'] = array();	
-	$_SESSION['questionno'] = 1;
-}
-
-
-if ($_SESSION['questionno'] == false) 
-{
-	$_SESSION['questionno'] = 1;
-}
-
 
 
 class question {
@@ -38,8 +30,6 @@ class question {
 		$this->question = $question;
 		$this->type = $type;
 		$this->answer1 = $answer1;
-
-		$_SESSION['questionno'] ++;
 	}
 	
 	function show()
@@ -52,17 +42,51 @@ class question {
 	}
 }
 
-$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
+
+
+/**
+ * Process form
+ */
+
+
+
+if ($_SESSION['questionno'] == false)
+{
+	$_SESSION['questionno'] = 1;
+}
+
+if ($_POST('action') == "Delete All")
+{
+	$_SESSION['questions'] = array();
+	$_SESSION['questionno'] = 1;
+}
+
+if ($_POST('action') == "Add Question")
+{
+	$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
+	$_SESSION['questionno'] ++;
+}
+
+
+
+/** 
+ * Print questions
+ */
+
 
 foreach ($_SESSION['questions'] as $question)
 {
 	$question->show();
 }
 
+
+
+
+/** 
+ * Form
+ */
+
 ?>		
-		
-		
-		
 	<form action=<?php echo htmlspecialchars('mytests_new.php');?> method="post">
 		Question<br> 
 		<input type="text" name="question"><br>
