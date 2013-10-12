@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+	/**
+	 * Used in takeatest_random to select all checkboxes
+ 	 */
 	
 	$(function() {
 		   $('.selectall').change(function() {
@@ -8,12 +11,15 @@ $(document).ready(function(){
 		});
 
 	
+	/**
+	 * Used in mytests_new to add fields to the form
+ 	 */
 	
 	var $answerno = 1;
 	
 	$("#addOption").click (function(){
 		$answerno ++;
-		$("#answer1").after('<input type="text" name=answer' + $answerno + '>');
+		$(".answers").after('<input type="text" name=answer' + $answerno + '>');
 		});
 		
 	
