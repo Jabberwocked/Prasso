@@ -50,8 +50,15 @@ $answers = array();
 foreach($answersquery as $answersrow)
 {
 	$id = $answersrow['QuestionId'];
-	$answer1 = $answersrow['Answer1'];
-	$answers[$id] = $answer1;
+	$multipleanswers = array();
+	foreach($answersrow as $column => $value)
+	{
+		if (strpos($column, 'Answer'))
+		{
+			$multipleanswers[] = $value;
+		}
+	}
+	$answers[$id] = $multipleanswer;
 }
 
 
@@ -63,7 +70,7 @@ foreach($questionids as $n => $id)
 {
 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
 	echo "<p>" . $questions[$id] . "</p><br><br>";
-	echo "<p>" . $answers[$id] . "</p><br><br>";
+	echo "<p>" . print_r($answers[$id]) . "</p><br><br>";
 	echo "<p>" . $useranswers[$id] . "</p><br><br>";
 }
 	
