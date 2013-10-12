@@ -19,8 +19,11 @@ $(document).ready(function(){
 	
 	$("#addOption").click (function(){
 		$answerno ++;  
-		$("'#answer" + $answerno + "'").after('<input type="text" name=answer' + $answerno + ' id=answer' + $answerno + '>');
-		});
+		$("<input type='text' value='' />")
+	     .attr("id", "answer" + $answerno)
+	     .attr("name", "answer" + $answerno)
+	     .after("#answer1");
+	});
 		
-	
+		
 });
