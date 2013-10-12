@@ -22,7 +22,7 @@ $questions = array();
 
 foreach($testquestions as $questionrow)
 {
-	$testquestions[$questionrow['QuestionId']=$questionrow['Question']];
+	$questions[$questionrow['QuestionId']=$questionrow['Question']];
 }
 print_r($questions);
 
