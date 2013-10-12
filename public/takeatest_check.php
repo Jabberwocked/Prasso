@@ -80,7 +80,7 @@ foreach($questionids as $n => $id)
 {
 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
 	echo "<p>" . $questions[$id] . "</p><br><br>";
-	echo "<p>" . print_r($answers[$id]) . "</p><br><br>";
+	echo "<p>" . $answers[$id] . "</p><br><br>";
 	echo "<p>" . $useranswers[$id] . "</p><br><br>";
 }
 	
