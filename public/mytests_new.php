@@ -75,7 +75,7 @@ if ($_SESSION['questionno'] == false)
 	
 // };
 
-echo $_POST('action') === "Delete_All";
+// echo $_POST('action') === "Delete_All";
 
 
 /** 
