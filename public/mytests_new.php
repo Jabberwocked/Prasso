@@ -84,10 +84,10 @@ echo $_POST['action'];
  */
 
 
-// foreach ($_SESSION['questions'] as $question)
-// {
-// 	$question->show();
-// }
+foreach ($_SESSION['questions'] as $question)
+{
+	$question->show();
+}
 
 
 
