@@ -30,7 +30,7 @@ class question {
 		$this->type = $type;
 		$this->answer1 = $answer1;
 
-		$questionno ++;
+		$_SESSION['questionno'] ++;
 	}
 	
 	function show()
