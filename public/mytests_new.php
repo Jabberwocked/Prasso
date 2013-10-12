@@ -75,11 +75,14 @@ if ($_SESSION['questionno'] == false)
 	
 // };
 
-// if ($_POST('action') == "deleteall")
-// {
-// 	echo "true";
-// }
-
+if ($_POST('action') == "deleteall")
+{
+	echo "true";
+}
+else 
+{
+	echo "false";
+}
 
 /** 
  * Print questions
