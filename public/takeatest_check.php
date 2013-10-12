@@ -8,6 +8,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php 
 /* Checks answers. Doesn't work yet. */
+echo 'lalalala';
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
 $testquestions = $_SESSION['testquestions'];
