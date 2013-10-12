@@ -60,12 +60,12 @@ if ($_SESSION['questionno'] == false)
 
 
 
-// if ($_POST('action') == "Delete_All")
+// if ($_POST('action') == "deleteall")
 // {
 // // 	$_SESSION['questions'] = array();
 // // 	$_SESSION['questionno'] = 1;
 // }
-// elseif ($_POST('action') == "Add Question")
+// elseif ($_POST('action') == "addquestion")
 // {
 // // 	$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
 // // 	$_SESSION['questionno'] ++;
@@ -75,7 +75,7 @@ if ($_SESSION['questionno'] == false)
 	
 // };
 
-if ($_POST('action') == "Delete_All")
+if ($_POST('action') == "deleteall")
 {
 	echo "true";
 }
@@ -110,9 +110,9 @@ foreach ($_SESSION['questions'] as $question)
 		<input type="button" id="addOption" value="Add" /><br>
 		<br>
 		<br> 
-		<button type="submit" name="action" value="Add Question"></button><br>
-		<button type="submit" name="action" value="Save" ></button><br>
-		<button type="submit" name="action" value="Delete_All" ></button><br>
+		<button type="submit" name="action" value="addquestion">Add Question</button><br>
+		<button type="submit" name="action" value="save" >Save</button><br>
+		<button type="submit" name="action" value="deleteall" >Delete All</button><br>
 	</form>
 	<br>
 	<br>
