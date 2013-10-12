@@ -20,8 +20,8 @@ print_r($useranswers);
 foreach($questionids as $n => $id)
 {
 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
-	echo "<p>" . $testquestions[$n-1]['Question'] . "</p><br><br>";
-	echo "<p>" . $answers[$n-1]['Answer1'] . "</p><br><br>";
+// 	echo "<p>" . $testquestions[$id]['Question'] . "</p><br><br>";
+// 	echo "<p>" . $answers[$id]['Answer1'] . "</p><br><br>";
 }
 	
 ?>
