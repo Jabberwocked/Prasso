@@ -80,7 +80,8 @@ elseif ($_POST['action'] == "save")
 	foreach ($_SESSION['questions'] as $questionarray)
 	{
 		echo "lalal";
-		print_r($question);
+		print_r($questionarray);
+		echo $questionarray['question'];
 		$question = $questionarray['question'];
 		echo $question;
 		$t = $question['type'];
