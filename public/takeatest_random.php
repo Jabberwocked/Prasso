@@ -54,7 +54,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 			$questionids[$n] = $questionrow['QuestionId'];
 		}
 
-		print_r($questionids);
+		
 		
 		/**
 		 * Save questionids in SESSION
@@ -76,6 +76,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 			$questions[$id] = $question;
 		}
 		
+		print_r($questions);
 		
 		/**
 		 * Output questions and form
