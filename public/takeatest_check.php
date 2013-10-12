@@ -58,7 +58,7 @@ foreach($answersquery as $answersrow)
 			$multipleanswers[] = $value;
 		}
 	}
-	$answers[$id] = $multipleanswer;
+	$answers[$id] = $multipleanswers;
 }
 
 
