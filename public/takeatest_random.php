@@ -51,7 +51,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 		foreach ($questionsquery as $questionrow)
 		{
 			$n ++;
-			$questionids[$n] = $questionrow['QuestionId'];
+			$id = $questionrow['QuestionId'];
+			$questionids[$n] = $id;
 		}
 
 		
