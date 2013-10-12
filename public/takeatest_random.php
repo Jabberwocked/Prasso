@@ -52,6 +52,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 		{
 			$n ++;
 			$id = $questionrow['QuestionId'];
+			echo $id;
 			$questionids[$n] = $id;
 		}
 
