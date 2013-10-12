@@ -60,14 +60,12 @@ if ($_SESSION['questionno'] == false)
 
 
 
-// if ($_POST('action') == "Delete_All")
-// {
-// // 	$_SESSION['questions'] = array();
-// 	$_SESSION['questionno'] = 1;
-// }
+if ($_POST('action') == "Delete_All")
+{
+	$_SESSION['questions'] = array();
+	$_SESSION['questionno'] = 1;
+}
 
-
-echo $_POST['action'];
 
 
 
