@@ -62,7 +62,7 @@ if ($_SESSION['questionno'] == false)
 
 if ($_POST('action') == "Delete_All")
 {
-	$_SESSION['questions'] = array();
+// 	$_SESSION['questions'] = array();
 	$_SESSION['questionno'] = 1;
 }
 
