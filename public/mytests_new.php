@@ -77,10 +77,10 @@ elseif ($_POST['action'] == "save")
 		$question = $questionobject->question;
 		$type = $questionobject->type;
 		$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
-		if (!$qry) {
-			echo "\nPDO::errorInfo():\n";
-			print_r($db->errorInfo());
-		}
+// 		if (!$qry) {
+// 			echo "\nPDO::errorInfo():\n";
+// 			print_r($db->errorInfo());
+// 		}
 		
 		$qry->execute(array(':question'=>$question,':type'=>$type));
 		
