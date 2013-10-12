@@ -53,9 +53,9 @@ foreach($answersquery as $answersrow)
 	$multipleanswers = array();
 	foreach($answersrow as $column => $value)
 	{
-		print_r($answersrow);
 		if (strpos($column, 'Answer'))
 		{
+			echo $value;
 			$multipleanswers[] = $value;
 		}
 	}
