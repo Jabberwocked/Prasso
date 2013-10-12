@@ -1,7 +1,7 @@
 <?php
 include_once ("../config/config.php");
 include_once (TEMPLATES_PATH . "/header.php");
-// include_once (MENU_PATH . "/menu_mytests_new.php");
+include_once (MENU_PATH . "/menu_mytests_new.php");
 ?>
 
 
@@ -50,39 +50,28 @@ class question {
  * Process form
  */
 
-
-
 if ($_SESSION['questionno'] == false)
 {
 	$_SESSION['questionno'] = 1;
 };
 
 
-
-
-// if ($_POST('action') == "deleteall")
-// {
-// // 	$_SESSION['questions'] = array();
-// // 	$_SESSION['questionno'] = 1;
-// }
-// elseif ($_POST('action') == "addquestion")
-// {
-// // 	$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
-// // 	$_SESSION['questionno'] ++;
-// }
-// else 
-// {
-	
-// };
-
-if ("a" == "a")
+if ($_POST['action'] == "deleteall")
 {
-	echo "true";
+	$_SESSION['questions'] = array();
+	$_SESSION['questionno'] = 1;
+}
+elseif ($_POST['action'] == "addquestion")
+{
+	$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
+	$_SESSION['questionno'] ++;
 }
 else 
 {
-	echo "false";
-}
+	
+};
+
+
 
 /** 
  * Print questions
