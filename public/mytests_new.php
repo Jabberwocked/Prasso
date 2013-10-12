@@ -80,7 +80,7 @@ elseif ($_POST['action'] == "save")
 	foreach ($_SESSION['questions'] as $question)
 	{
 		echo "lalal";
-		echo $question;
+		print_r($question);
 		$q = $question['question'];
 		$t = $question['type'];
 		$sql="INSERT INTO Questions (Question, Type) VALUES ('$q','$t')";
