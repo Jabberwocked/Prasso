@@ -42,7 +42,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 		
 		$testquestions = $db->query($sql);
 		$_SESSION['testquestions'] = $testquestions;
-		print_r($_SESSION['testquestions']);
+		
 		/**
 		 * Output questions 
 		 */
