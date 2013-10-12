@@ -20,7 +20,7 @@ $(document).ready(function(){
 	
 	$("#addOption").click (function(){
 		$answerno ++;
-		$("#" + $lastanswer).after('<input type="text" name=' + $lastanswer + 'id=' + $lastanswer + '>');
+		$("#" + $lastanswer).after('<input type="text" name=' + $lastanswer + ' id=' + $lastanswer + '>');
 		});
 		
 	
