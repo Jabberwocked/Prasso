@@ -22,7 +22,7 @@ $(document).ready(function(){
 		$("<input type='text' value='' />")
 	     .attr("id", "answer" + $answerno)
 	     .attr("name", "answer" + $answerno)
-	     .after("#answer1");
+	     .insertAfter("#answer1");
 	});
 		
 		
