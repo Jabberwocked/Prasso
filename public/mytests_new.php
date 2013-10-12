@@ -80,10 +80,10 @@ elseif ($_POST['action'] == "save")
 	foreach ($_SESSION['questions'] as $question)
 	{
 		echo "lalal";
-		$question = $question['question'];
 		echo $question;
-		$type = $question['type'];
-		$sql="INSERT INTO Questions (Question, Type) VALUES ('$question','$type')";
+		$q = $question['question'];
+		$t = $question['type'];
+		$sql="INSERT INTO Questions (Question, Type) VALUES ('$q','$t')";
 		if (!mysqli_query($db,$sql))
 		{
 			die('Error: ' . mysqli_error($db));
