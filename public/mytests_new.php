@@ -68,7 +68,7 @@ elseif ($_POST['action'] == "addquestion")
 }
 elseif ($_POST['action'] == "save")
 {
-	echo "tests";
+	echo "saving?";
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 	// Check connection
 	if (mysqli_connect_errno())
@@ -79,9 +79,9 @@ elseif ($_POST['action'] == "save")
 	
 	foreach ($_SESSION['questions'] as $question)
 	{
+		echo "lalal";
 		$question = $question['question'];
 		$type = $question['type'];
-		echo $question;
 		$sql="INSERT INTO Questions (Question, Type) VALUES ('$question','$type')";
 		if (!mysqli_query($db,$sql))
 		{
