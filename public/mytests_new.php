@@ -72,7 +72,7 @@ elseif ($_POST['action'] == "save")
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 // 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 	
-	foreach ($_SESSION['questions'] as $questionpobject)
+	foreach ($_SESSION['questions'] as $questionobject)
 	{
 		$question = $questionobject->question;
 		$type = $questionobject->type;
