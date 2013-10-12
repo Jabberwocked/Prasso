@@ -98,8 +98,8 @@ foreach($questionids as $n => $id)
 	
 	echo "<p style='font-weight:bold;'>Question " . $n . "</p><br>";
 	echo "<p>" . $questions[$id] . "</p><br><br>";
-	echo "<p>" . $answers[$id] . "</p><br><br>";
 	echo "<p style='color:" . $colour . "'>" . $useranswers[$id] . "</p><br><br>";
+	echo "<p> Answer: " . $answers[$id] . "</p><br><br>";
 	echo "<p> Score: " . $score . "</p><br><br>";
 }
 
