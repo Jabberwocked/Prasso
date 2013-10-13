@@ -53,9 +53,9 @@ elseif ($_POST['action'] == "save")
 	/**
 	 * Check if test name is given
 	 */
-		if ($_POST['testname'] == false)
+	if ($_POST['testname'] == false)
 	{
-		echo "<p style='color:red'>Please insert a test name</p>"
+		echo "<p style='color:red'>Please insert a test name</p>";
 	}
 	else 
 	{
