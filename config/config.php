@@ -3,7 +3,7 @@
 include_once("../templates/session.php");
 
 // set off all error for security purposes
-error_reporting(E_ALL);
+// error_reporting(E_ALL);
 
 // define some constants
 // Creating constants for heavily used paths makes things a lot easier e.g. when folder structure changes.
