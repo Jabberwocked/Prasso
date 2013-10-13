@@ -3,159 +3,170 @@
 include_once ("../config/config.php");
 include_once (TEMPLATES_PATH . "/header.php");
 // include_once (MENU_PATH . "/menu_mytests_new.php");
-?>
 
 
-<div style="margin-left: auto; margin-right: auto; width: 500px">
-		
-<?php 
 
-/**
- * Set questionno to 1 if not set yet. (Specific for this test, i.e. not database related.)
- */
 
-if ($_SESSION['questionno'] == false)
+if (!isset($_SESSION['username']))
 {
-	$_SESSION['questionno'] = 1;
-};
+	header("Location:loginpage.php?location=" . urlencode($_SERVER['REQUEST_URI']));
+
+}
+else
+{ ?>
 
 
-/**
- * Process form depending on button pressed.
- */
-/**
- * DELETE ALL
- */
-
-
-if ($_POST['action'] == "deleteall")
-{
-	$_SESSION['questions'] = array();
-	$_SESSION['questionno'] = 1;
+	<div style="margin-left: auto; margin-right: auto; width: 500px">
+			
+	<?php 
 	
-	header("Location: mytests_edit.php");
-}
-
-/**
- * ADD QUESTION to session
- */
-
-elseif ($_POST['action'] == "addquestion")
-{
-	$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
-	$_SESSION['questionno'] ++;
-
-	header("Location: mytests_edit.php");
-}
-
-/**
- * SAVE
- */
-
-elseif ($_POST['action'] == "save")
-{
 	/**
-	 * Check if test name is given
+	 * Set questionno to 1 if not set yet. (Specific for this test, i.e. not database related.)
 	 */
-	if ($_POST['testname'] == false)
+	
+	if ($_SESSION['questionno'] == false)
 	{
-		echo "<p style='color:red'>Please insert a test name</p><br>";
+		$_SESSION['questionno'] = 1;
+	};
+	
+	
+	/**
+	 * Process form depending on button pressed.
+	 */
+	/**
+	 * DELETE ALL
+	 */
+	
+	
+	if ($_POST['action'] == "deleteall")
+	{
+		$_SESSION['questions'] = array();
+		$_SESSION['questionno'] = 1;
+		
+		header("Location: mytests_edit.php");
 	}
-	else 
-	{
-		echo "<p style='font-weight:bold'>" . $_POST['testname'] . "</p><br>";
+	
 	/**
-	 * Save questions from SESSION to table QUESTIONS
+	 * ADD QUESTION to session
 	 */
-		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-		
-		echo "<p style='color:green'>"; // set p style for echo in foreach
-		
-		foreach ($_SESSION['questions'] as $questionobject)
+	
+	elseif ($_POST['action'] == "addquestion")
+	{
+		$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
+		$_SESSION['questionno'] ++;
+	
+		header("Location: mytests_edit.php");
+	}
+	
+	/**
+	 * SAVE
+	 */
+	
+	elseif ($_POST['action'] == "save")
+	{
+		/**
+		 * Check if test name is given
+		 */
+		if ($_POST['testname'] == false)
 		{
-			$question = $questionobject->question;
-			$type = $questionobject->type;
-			$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
-			$qry->execute(array(':question'=>$question,':type'=>$type));
-			
-	// 		echo inserts to screen
-			$insert_id=$db->lastInsertId();
-			echo "1 record added: id = $insert_id<br>";
+			echo "<p style='color:red'>Please insert a test name</p><br>";
 		}
+		else 
+		{
+			echo "<p style='font-weight:bold'>" . $_POST['testname'] . "</p><br>";
+		/**
+		 * Save questions from SESSION to table QUESTIONS
+		 */
+			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 			
-		echo "</p>"; // end p style for echos in foreach
+			echo "<p style='color:green'>"; // set p style for echo in foreach
+			
+			foreach ($_SESSION['questions'] as $questionobject)
+			{
+				$question = $questionobject->question;
+				$type = $questionobject->type;
+				$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
+				$qry->execute(array(':question'=>$question,':type'=>$type));
+				
+		// 		echo inserts to screen
+				$insert_id=$db->lastInsertId();
+				echo "1 record added: id = $insert_id<br>";
+			}
+				
+			echo "</p>"; // end p style for echos in foreach
+			
+			/**
+			 * Save test to table TESTS
+			 */
+			
+			$TestName = $_POST['testname'];
+			$UserId_Owner = $_SESSION['userid'];
+			$qry2 = $db->prepare("INSERT INTO Tests (TestName, UserId_Owner) VALUES (:TestName,:UserId_Owner)");
+			$qry2->execute(array(':TestName'=>$TestName,':UserId_Owner'=>$UserId_Owner));
+			
+			echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p><br><br>"; // echo success
+			
+			/**
+			 * End connection
+			 */
+			mysqli_close($db);
 		
-		/**
-		 * Save test to table TESTS
-		 */
+		}	
 		
-		$TestName = $_POST['testname'];
-		$UserId_Owner = $_SESSION['userid'];
-		$qry2 = $db->prepare("INSERT INTO Tests (TestName, UserId_Owner) VALUES (:TestName,:UserId_Owner)");
-		$qry2->execute(array(':TestName'=>$TestName,':UserId_Owner'=>$UserId_Owner));
-		
-		echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p><br><br>"; // echo success
-		
-		/**
-		 * End connection
-		 */
-		mysqli_close($db);
+		$_SESSION['questions'] = array();
+		$_SESSION['questionno'] = 1;
+		header("Location: mytests.php");
+	};
 	
-	}	
 	
-	$_SESSION['questions'] = array();
-	$_SESSION['questionno'] = 1;
-	header("Location: mytests.php");
-};
-
-
-
-/** 
- * Print questions
- */
-
-foreach ($_SESSION['questions'] as $question)
-{
-	$question->show();
-};
-
-
-
-
-/** 
- * Form
- */
-
-?>		
-	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-		Question<br> 
-		<input type="text" name="question"><br>
-		<input type="radio" style="display:inline; width:20px;" name="type" value="shortanswer" checked>Short Answer<br>
-		<input type="radio" style="display:inline; width:20px;" name="type" value="multichoice" >Multiple Choice<br>
+	
+	/** 
+	 * Print questions
+	 */
+	
+	foreach ($_SESSION['questions'] as $question)
+	{
+		$question->show();
+	};
+	
+	
+	
+	
+	/** 
+	 * Form
+	 */
+	
+	?>		
+		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+			Question<br> 
+			<input type="text" name="question"><br>
+			<input type="radio" style="display:inline; width:20px;" name="type" value="shortanswer" checked>Short Answer<br>
+			<input type="radio" style="display:inline; width:20px;" name="type" value="multichoice" >Multiple Choice<br>
+			<br>
+			Answers<br> 
+			<input type="text" name="answer1" class="answers" style="display:inline; width:70%">
+			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button><br>
+			<br>
+			<br> 
+			<button type="submit" name="action" value="addquestion">Add Question</button>
+			<button type="submit" name="action" value="deleteall" >Delete All</button><br>
+		</form>
 		<br>
-		Answers<br> 
-		<input type="text" name="answer1" class="answers" style="display:inline; width:70%">
-		<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button><br>
 		<br>
-		<br> 
-		<button type="submit" name="action" value="addquestion">Add Question</button>
-		<button type="submit" name="action" value="deleteall" >Delete All</button><br>
-	</form>
-	<br>
-	<br>
-	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-	Test Name<br>
-	<input type="text" name="testname"><br>
-	<button type="submit" name="action" value="save" >Save Test</button>
-	</form>
-	<br>
-	<br>
+		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+		Test Name<br>
+		<input type="text" name="testname"><br>
+		<button type="submit" name="action" value="save" >Save Test</button>
+		</form>
+		<br>
+		<br>
+	
+	
+	
+	
+	</div>
 
-
-
-
-</div>
-
-<?php 
+<?php
+} 
 include_once (TEMPLATES_PATH . "/footer.php");
 ?>
