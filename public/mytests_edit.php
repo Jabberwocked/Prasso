@@ -59,9 +59,9 @@ elseif ($_POST['action'] == "save")
 	}
 	else 
 	{
-		/**
-		 * Save questions from SESSION to table QUESTIONS
-		 */
+	/**
+	 * Save questions from SESSION to table QUESTIONS
+	 */
 		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 		
 		echo "<p style='color:green'>"; // set p style for echo in foreach
