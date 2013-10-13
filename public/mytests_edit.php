@@ -85,7 +85,7 @@ elseif ($_POST['action'] == "save")
 		 */
 		
 		$TestName = $_POST['testname'];
-		$UserId_Owner = $_SESSION['username'];
+		$UserId_Owner = $_SESSION['userid'];
 		$qry2 = $db->prepare("INSERT INTO Tests (TestName, UserId_Owner) VALUES (:TestName,:UserId_Owner)");
 		$qry2->execute(array(':TestName'=>$TestName,':UserId_Owner'=>$UserId_Owner));
 		
