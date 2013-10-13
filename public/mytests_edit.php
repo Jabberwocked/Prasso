@@ -21,7 +21,7 @@ include_once (LIBRARY_PATH . "question.php");
  * Set questionno to 1 if not set yet. (Specific for this test, i.e. not database related.)
  */
 
-if ($_SESSION['questionno'] == false)
+if ($_['questionno'] == false)
 {
 	$_SESSION['questionno'] = 1;
 };
@@ -97,10 +97,10 @@ elseif ($_POST['action'] == "save")
  */
 echo "<br>testtest";
 
-// foreach ($_SESSION['questions'] as $question)
-// {
-// 	$question->show();
-// }
+foreach ($_SESSION['questions'] as $question)
+{
+	$question->show();
+}
 
 
 
