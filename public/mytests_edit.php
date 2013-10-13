@@ -32,6 +32,7 @@ if ($_POST['action'] == "deleteall")
 {
 	$_SESSION['questions'] = array();
 	$_SESSION['questionno'] = 1;
+	$_POST['action'] == "";
 }
 
 /**
@@ -42,6 +43,7 @@ elseif ($_POST['action'] == "addquestion")
 {
 	$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
 	$_SESSION['questionno'] ++;
+	$_POST['action'] == "";
 }
 
 /**
@@ -50,7 +52,7 @@ elseif ($_POST['action'] == "addquestion")
 
 elseif ($_POST['action'] == "save")
 {
-
+	$_POST['action'] == "";
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 //	For debugging
 // 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
