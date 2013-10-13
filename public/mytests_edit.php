@@ -10,14 +10,6 @@ include_once (TEMPLATES_PATH . "/header.php");
 		
 <?php 
 
-
-
-
-
-
-
-
-
 /**
  * Set questionno to 1 if not set yet. (Specific for this test, i.e. not database related.)
  */
@@ -27,7 +19,6 @@ if ($_['questionno'] == false)
 	$_SESSION['questionno'] = 1;
 };
 
-echo "<br>testtest" . $_SESSION['questionno'];
 
 /**
  * Process form depending on button pressed.
@@ -96,20 +87,19 @@ elseif ($_POST['action'] == "save")
 /** 
  * Print questions
  */
-echo "<br>testtestprintquestions";
 
 foreach ($_SESSION['questions'] as $question)
 {
 	$question->show();
 };
 
-// print_r($_SESSION['questions']);
+
 
 
 /** 
  * Form
  */
-echo "<br>testtestform";
+
 ?>		
 	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 		Question<br> 
