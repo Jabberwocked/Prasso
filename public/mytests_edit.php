@@ -142,7 +142,7 @@ foreach ($_SESSION['questions'] as $question)
 	</form>
 	<br>
 	<br>
-	<form action=<?php echo htmlspecialchars('mytests.php');?> method="post">
+	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 	Test Name<br>
 	<input type="text" name="testname"><br>
 	<button type="submit" name="action" value="save" >Save Test</button>
