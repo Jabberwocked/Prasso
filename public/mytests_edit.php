@@ -100,7 +100,7 @@ echo "<br>testtest";
 foreach ($_SESSION['questions'] as $question)
 {
 	$question->show();
-}
+};
 
 
 
