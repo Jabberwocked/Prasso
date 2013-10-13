@@ -38,7 +38,7 @@ $testsquery->execute(array(
 
 foreach ($testsquery as $testrow)
 {
-	$testname = $testrow['testname'];
+	$testname = $testrow['TestName'];
 	
 	echo	"<tr>";
 	echo	"<td>" . $testname . "</td>";
