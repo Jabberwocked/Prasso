@@ -34,7 +34,7 @@ include_once (LIBRARY_PATH . "user.php");
 include_once (LIBRARY_PATH . "question.php");
 
 // start or continue session (must come after classes)
-include_once("../templates/session.php");
+include_once (LIBRARY_PATH . "session.php");
 
 
 
