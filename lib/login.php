@@ -36,11 +36,11 @@ else
 
 		/**
 		 * The username is saved in the session to update the top-right corner.
+		 * The userid is saved in the session to be easily accessible for db purposes.
 		 * The redirect is necessary to refresh the page and to initiate the update.
-		 * The echo is useless now. 
 		 */
 		$_SESSION['username'] = $_POST['username'];
-		echo "Logged in as " . $_SESSION['username'];
+		$_SESSION['userid'] = $_POST['username'];
 		header("Location:main.php");
 		
 	}
