@@ -55,10 +55,11 @@ elseif ($_POST['action'] == "save")
 	 */
 	if ($_POST['testname'] == false)
 	{
-		echo "<p style='color:red'>Please insert a test name</p>";
+		echo "<p style='color:red'>Please insert a test name</p><br>";
 	}
 	else 
 	{
+		echo "<p style='font-weight:bold'>" . $_POST['testname'] . "</p><br>";
 	/**
 	 * Save questions from SESSION to table QUESTIONS
 	 */
@@ -112,7 +113,7 @@ foreach ($_SESSION['questions'] as $question)
 };
 
 
-
+break;
 
 /** 
  * Form
@@ -136,7 +137,7 @@ foreach ($_SESSION['questions'] as $question)
 	</form>
 	<br>
 	<br>
-	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+	<form action=<?php echo htmlspecialchars('mytests.php');?> method="post">
 	Test Name<br>
 	<input type="text" name="testname"><br>
 	<button type="submit" name="action" value="save" >Save Test</button>
