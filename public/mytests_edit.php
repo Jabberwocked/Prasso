@@ -103,6 +103,8 @@ elseif ($_POST['action'] == "save")
 	
 	}	
 	
+	$_SESSION['questions'] = array();
+	$_SESSION['questionno'] = 1;
 	header("Location: mytests.php");
 };
 
