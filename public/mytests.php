@@ -30,9 +30,8 @@ $testsquery->execute(array(
 	':UserId' => $_SESSION['userid'],
 ));
 
-echo $testsquery[0];
 
-if ($testsquery == false)
+if ($testsquery[0] == false)
 {
 	echo "</table>";
 	echo "You have no tests.";
