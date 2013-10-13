@@ -86,8 +86,8 @@ elseif ($_POST['action'] == "save")
 		
 		
 		echo "1 record added<br>";
-		$insert_id=$db->lastInsertId();
-		echo " insert id = $insert_id ";
+// 		$insert_id=$db->lastInsertId();
+// 		echo " insert id = $insert_id ";
 		}
 	}
 		
