@@ -36,44 +36,43 @@ $testsquery->execute(array(
 	':UserId' => $_SESSION['userid'],
 ));
 
-foreach ($testsquery as $testrow)
+if ($testsquery == false)
 {
-	$testname = $testrow['TestName'];
-	$topic = "";
-	$labels = array();
-	
-	echo	"<tr>";
-	echo	"<td>" . $testname . "</td>";
-	echo	"<td>" . $topic . "</td>";
-	echo	"<td>" . $labels . "</td>";
-	echo	"<td><nav>";
-	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Take</a>";
-	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Edit</a>";
-	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Results</a>";
-	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Administer</a>";
-	echo	"</nav></td>";
-	echo	"<!--		<a href=''>Discuss</a>			-->";
-	echo	"</tr>";
+	echo "</table>";
+	echo "You have no tests.";
+	echo "</div>";
 }
-?>
+
+else 
+{
+	
+	foreach ($testsquery as $testrow)
+	{
+		$testname = $testrow['TestName'];
+		$topic = "";
+		$labels = array();
 		
-		<tr>
-			<td>Random</td>
-			<td>Present continuous</td>
-			<td>-</td>
-			</td>
-			<td><nav>
-				<a href="" style="font-size: small; margin: 0px 2px">Take</a>
-				<a href="" style="font-size: small; margin: 0px 2px">Edit</a>
-				<a href="" style="font-size: small; margin: 0px 2px">Results</a>
-				<a href="" style="font-size: small; margin: 0px 2px">Administer</a>
-			</nav></td>
-			<!--		<a href="">Discuss</a>			-->		
-			</tr>
-	</table>
-</div>
+		echo	"<tr>";
+		echo	"<td>" . $testname . "</td>";
+		echo	"<td>" . $topic . "</td>";
+		echo	"<td>" . $labels . "</td>";
+		echo	"<td><nav>";
+		echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Take</a>";
+		echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Edit</a>";
+		echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Results</a>";
+		echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Administer</a>";
+		echo	"</nav></td>";
+		echo	"<!--		<a href=''>Discuss</a>			-->";
+		echo	"</tr>";
+	}
+		
+	echo "</table></div>";
+}
 
-
+?>
+	
+	
+	
 <?php
 include_once (TEMPLATES_PATH . "/footer.php");
 ?>
