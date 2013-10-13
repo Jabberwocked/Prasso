@@ -35,7 +35,7 @@ $tests = $testsquery->fetchAll();
 if (!$tests)
 {
 	echo "</table>";
-	echo "You have no tests.";
+	echo "<br><br><br><p style='font-style:italic'>You have no tests.</p>";
 	echo "</div>";
 }
 
