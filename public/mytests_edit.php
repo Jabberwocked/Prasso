@@ -135,7 +135,7 @@ foreach ($_SESSION['questions'] as $question)
 		<br>
 		Answers<br> 
 		<input type="text" name="answer1" class="answers">
-		<button type="button" id="addOption" value="Add" /><br>
+		<button type="button" id="addOption" value="Add" />Add<br>
 		<br>
 		<br> 
 		<button type="submit" name="action" value="addquestion">Add Question</button>
