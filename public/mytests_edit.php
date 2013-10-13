@@ -80,16 +80,16 @@ elseif ($_POST['action'] == "save")
 			
 		echo "</p>"; // end p style for echos in foreach
 		
-		/**
-		 * Save test to table TESTS
-		 */
+// 		/**
+// 		 * Save test to table TESTS
+// 		 */
 		
-		$TestName = $_POST['testname'];
-		$UserId_Owner = $_SESSION['username'];
-		$qry2 = $db->prepare("INSERT INTO Tests (TestName, UserId_Owner) VALUES (:TestName,:UserId_Owner)");
-		$qry2->execute(array(':TestName'=>$TestName,':UserId_Owner'=>$UserId_Owner));
+// 		$TestName = $_POST['testname'];
+// 		$UserId_Owner = $_SESSION['username'];
+// 		$qry2 = $db->prepare("INSERT INTO Tests (TestName, UserId_Owner) VALUES (:TestName,:UserId_Owner)");
+// 		$qry2->execute(array(':TestName'=>$TestName,':UserId_Owner'=>$UserId_Owner));
 		
-		echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p><br><br>"; // echo success
+// 		echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p><br><br>"; // echo success
 		
 		/**
 		 * End connection
