@@ -7,7 +7,7 @@
 			<a href="">Administered tests</a><br>
 			<br>
 			<br>
-			<a href="loginpage.php" style="color:lightgrey">My tests <!-- and shared tests --> </a><br>
+			<a href="mytests.php" style="color:lightgrey">My tests <!-- and shared tests --> </a><br>
 		</nav>
 	</div>
 
