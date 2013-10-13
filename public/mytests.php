@@ -30,6 +30,8 @@ $testsquery->execute(array(
 	':UserId' => $_SESSION['userid'],
 ));
 
+print_r($testsquery);
+
 if ($testsquery == false)
 {
 	echo "</table>";
