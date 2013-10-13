@@ -118,9 +118,6 @@ foreach ($_SESSION['questions'] as $question)
 	$question->show();
 };
 
-unset($_POST);
-
-break;
 
 /** 
  * Form
