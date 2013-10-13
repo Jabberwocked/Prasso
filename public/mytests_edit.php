@@ -70,7 +70,7 @@ if ($_POST['action'] == "deleteall")
 }
 
 /**
- * ADD QUESTION
+ * ADD QUESTION to session
  */
 
 elseif ($_POST['action'] == "addquestion")
@@ -80,7 +80,7 @@ elseif ($_POST['action'] == "addquestion")
 }
 
 /**
- * SAVE QUESTIONS TO DATABASE
+ * SAVE QUESTIONS from session TO DATABASE
  */
 
 elseif ($_POST['action'] == "save")

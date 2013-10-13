@@ -32,7 +32,7 @@ $config = array(
 
 // include the classes
 include_once (LIBRARY_PATH . "user.php");
-// include_once (LIBRARY_PATH . "question.php");
+include_once (LIBRARY_PATH . "question.php");
 
 
 
