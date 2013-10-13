@@ -108,7 +108,7 @@ foreach ($_SESSION['questions'] as $question)
 /** 
  * Form
  */
-
+echo "<br>testtestform";
 ?>		
 	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 		Question<br> 
