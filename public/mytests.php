@@ -7,7 +7,8 @@ include_once (MENU_PATH . "/menu_mytests.php");
 
 if (!isset($_SESSION['username'])) 
 { 
-header('Location: loginpage.php');
+header("Location:loginpage.php?location=" . urlencode($_SERVER['REQUEST_URI']));
+
 } 
 else 
 { ?>
