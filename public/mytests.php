@@ -39,11 +39,13 @@ $testsquery->execute(array(
 foreach ($testsquery as $testrow)
 {
 	$testname = $testrow['TestName'];
+	$topic = "";
+	$labels = array();
 	
 	echo	"<tr>";
 	echo	"<td>" . $testname . "</td>";
-	echo	"<td>Mixed</td>";
-	echo	"<td>-</td>";
+	echo	"<td>" . $topic . "</td>";
+	echo	"<td>" . $labels . "</td>";
 	echo	"<td><nav>";
 	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Take</a>";
 	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Edit</a>";
