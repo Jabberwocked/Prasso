@@ -9,8 +9,8 @@
 				<label for="usn">Username : </label> 
 				<input type="text" maxlength="30" required autofocus name="username" />
 				<label for="passwd">Password : </label> <input type="password" maxlength="30" required name="password" />
-				<button type="submit" name="login" value="Log me in" style="display:inline; width:3em">Log me in</button> 
-				<button type="button" name="register" value="Register" onclick="location.href='registerpage.php'" style="display:inline; width:3em">Register</button>
+				<button type="submit" name="login" value="Log me in" style="display:inline; width:10em">Log me in</button> 
+				<button type="button" name="register" value="Register" onclick="location.href='registerpage.php'" style="display:inline; width:10em">Register</button>
 			</form>
 
 		</div>
