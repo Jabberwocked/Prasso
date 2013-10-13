@@ -5,12 +5,6 @@ include_once (MENU_PATH . "/menu_mytests.php");
 ?>
 
 
-<!-- 
-Nothing works in the table below.
-Mostly placeholder.
- -->
-
-
 <style type="text/css">
 td {
 	padding: 0px 10px
@@ -50,7 +44,7 @@ else
 	{
 		$testname = $testrow['TestName'];
 		$topic = "";
-		$labels = array();
+		$labels = "";
 		
 		echo	"<tr>";
 		echo	"<td>" . $testname . "</td>";
