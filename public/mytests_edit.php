@@ -45,40 +45,58 @@ elseif ($_POST['action'] == "addquestion")
 }
 
 /**
- * SAVE QUESTIONS from session TO DATABASE
+ * SAVE
  */
 
 elseif ($_POST['action'] == "save")
 {
-
-	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-//	For debugging
-// 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	
-	echo "<p style='color:green'>"; // set p style for echo in foreach
-	
-	foreach ($_SESSION['questions'] as $questionobject)
+	/**
+	 * Check if test name is given
+	 */
+		if ($_POST['testname'] == false)
 	{
-		$question = $questionobject->question;
-		$type = $questionobject->type;
-		$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
-//		For debugging
-// 		if (!$qry) 
-// 		{
-// 			echo "\nPDO::errorInfo():\n";
-// 			print_r($db->errorInfo());
-// 		}
-		
-		$qry->execute(array(':question'=>$question,':type'=>$type));
-		
-// 		echo inserts to screen
-		$insert_id=$db->lastInsertId();
-		echo "1 record added: id = $insert_id<br>";
+		echo "<p style='color:red'>Please insert a test name</p>"
 	}
+	else 
+	{
+		/**
+		 * Save questions from SESSION to table QUESTIONS
+		 */
+		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 		
-	echo "</p>"; // end p style for echos in foreach
-	mysqli_close($db); // end connection
-	echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p><br><br>"; // echo success
+		echo "<p style='color:green'>"; // set p style for echo in foreach
+		
+		foreach ($_SESSION['questions'] as $questionobject)
+		{
+			$question = $questionobject->question;
+			$type = $questionobject->type;
+			$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
+			$qry->execute(array(':question'=>$question,':type'=>$type));
+			
+	// 		echo inserts to screen
+			$insert_id=$db->lastInsertId();
+			echo "1 record added: id = $insert_id<br>";
+		}
+			
+		echo "</p>"; // end p style for echos in foreach
+		
+		/**
+		 * Save test to table TESTS
+		 */
+		
+		$TestName = $_POST['testname'];
+		$UserId_Owner = $_SESSION['username'];
+		$qry2 = $db->prepare("INSERT INTO Tests (TestName, UserId_Owner) VALUES (:TestName,:UserId_Owner)");
+		$qry2->execute(array(':TestName'=>$TestName,':UserId_Owner'=>$UserId_Owner));
+		
+		echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p><br><br>"; // echo success
+		
+		/**
+		 * End connection
+		 */
+		mysqli_close($db);
+	
+	}	
 	
 };
 
@@ -113,8 +131,11 @@ foreach ($_SESSION['questions'] as $question)
 		<br>
 		<br> 
 		<button type="submit" name="action" value="addquestion">Add Question</button>
-		<button type="submit" name="action" value="save" >Save</button>
 		<button type="submit" name="action" value="deleteall" >Delete All</button><br>
+	</form>
+	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+	<input type="text" name="testname"><br>
+	<button type="submit" name="action" value="save" >Save</button>
 	</form>
 	<br>
 	<br>
