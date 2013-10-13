@@ -38,8 +38,10 @@ $testsquery->execute(array(
 
 foreach ($testsquery as $testrow)
 {
+	$testname = $testrow['testname'];
+	
 	echo	"<tr>";
-	echo	"<td>Chapter 3</td>";
+	echo	"<td>" . $testname . "</td>";
 	echo	"<td>Mixed</td>";
 	echo	"<td>-</td>";
 	echo	"<td><nav>";
