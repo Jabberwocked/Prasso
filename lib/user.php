@@ -68,7 +68,7 @@ class User
 			$stmt->execute();
 			
 // 			testing
-			$_SESSION['test'] = mysql_fetch_row($stmt);
+			$_SESSION['test'] = $this->username;
 // 			$_SESSION['test'] = "poep";
 			
 			$valid = $stmt->fetchColumn();
