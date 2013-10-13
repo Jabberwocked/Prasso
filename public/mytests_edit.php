@@ -133,9 +133,12 @@ foreach ($_SESSION['questions'] as $question)
 		<button type="submit" name="action" value="addquestion">Add Question</button>
 		<button type="submit" name="action" value="deleteall" >Delete All</button><br>
 	</form>
+	<br>
+	<br>
 	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+	Test Name<br>
 	<input type="text" name="testname"><br>
-	<button type="submit" name="action" value="save" >Save</button>
+	<button type="submit" name="action" value="save" >Save Test</button>
 	</form>
 	<br>
 	<br>
