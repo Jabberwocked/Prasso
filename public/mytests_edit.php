@@ -9,6 +9,43 @@ include_once (TEMPLATES_PATH . "/header.php");
 		
 <?php 
 
+
+
+
+
+/**
+ * Class question
+ */
+
+
+class question {
+	public $questionno;
+	public $question;
+	public $type;
+	public $answer1;
+	
+	function __construct($questionno, $question, $type, $answer1)
+	{
+		$this->questionno = $questionno;
+		$this->question = $question;
+		$this->type = $type;
+		$this->answer1 = $answer1;
+	}
+	
+	function show()
+	{
+		echo "<p style='font-weight:bold'>Question " . $this->questionno . "</p>";
+		echo "<p>Question: " . $this->question . "</p>";
+		echo "<p>Type: " . $this->type . "</p>";
+		echo "<p>Answer1: " . $this->answer1 . "</p>";
+		echo "<br><br>";
+	}
+}
+
+
+
+
+
 /**
  * Set questionno to 1 if not set yet. (Specific for this test, i.e. not database related.)
  */
