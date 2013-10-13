@@ -31,7 +31,7 @@ $testsquery->execute(array(
 ));
 
 
-if ($testsquery[0] == false)
+if (!$testsquery)
 {
 	echo "</table>";
 	echo "You have no tests.";
