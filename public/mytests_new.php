@@ -86,9 +86,9 @@ elseif ($_POST['action'] == "save")
 		$qry->execute(array(':question'=>$question,':type'=>$type));
 		
 		
-		echo "1 record added<br>";
+		echo "1 record added:";
 		$insert_id=$db->lastInsertId();
-		echo " insert id = $insert_id ";
+		echo " insert id = $insert_id<br>";
 		
 	}
 		
