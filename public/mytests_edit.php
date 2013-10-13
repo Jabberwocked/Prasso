@@ -97,10 +97,10 @@ elseif ($_POST['action'] == "save")
  */
 echo "<br>testtest";
 
-foreach ($_SESSION['questions'] as $question)
-{
-	$question->show();
-}
+// foreach ($_SESSION['questions'] as $question)
+// {
+// 	$question->show();
+// }
 
 
 
