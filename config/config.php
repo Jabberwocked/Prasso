@@ -33,7 +33,7 @@ $config = array(
 include_once (LIBRARY_PATH . "user.php");
 include_once (LIBRARY_PATH . "question.php");
 
-// start or continue session
+// start or continue session (must come after classes)
 include_once("../templates/session.php");
 
 
