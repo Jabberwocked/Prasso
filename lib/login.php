@@ -8,9 +8,12 @@
 			<form method="post" action="">
 				<label for="usn">Username : </label> 
 				<input type="text" maxlength="30" required autofocus name="username" />
-				<label for="passwd">Password : </label> <input type="password" maxlength="30" required name="password" />
-				<button type="submit" name="login" value="Log me in" style="display:inline; width:7em">Log me in</button> 
-				<button type="button" name="register" value="Register" onclick="location.href='registerpage.php'" style="display:inline; width:7em">Register</button>
+				<br>
+				<label for="passwd">Password : </label> 
+				<input type="password" maxlength="30" required name="password" />
+				<br>
+				<button type="submit" name="login" value="Log me in" style="display:inline; width:9em">Log me in</button> 
+				<button type="button" name="register" value="Register" onclick="location.href='registerpage.php'" style="display:inline; width:9em">Register</button>
 			</form>
 
 		</div>
