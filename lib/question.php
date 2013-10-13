@@ -1,4 +1,4 @@
-<?php
+
 
 /**
  * Class question
@@ -30,4 +30,3 @@ class question {
 }
 
 
-?>
