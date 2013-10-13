@@ -32,6 +32,8 @@ if ($_POST['action'] == "deleteall")
 {
 	$_SESSION['questions'] = array();
 	$_SESSION['questionno'] = 1;
+	
+	header("Location: mytests_edit.php");
 }
 
 /**
@@ -101,6 +103,7 @@ elseif ($_POST['action'] == "save")
 	
 	}	
 	
+	header("Location: mytests_edit.php");
 };
 
 
