@@ -36,21 +36,21 @@ $testsquery->execute(array(
 	':UserId' => $_SESSION['userid'],
 ));
 
-// foreach ($testsquery as $testrow)
-// {
-// 	echo	"<tr>";
-// 	echo	"<td>Chapter 3</td>";
-// 	echo	"<td>Mixed</td>";
-// 	echo	"<td>-</td>";
-// 	echo	"<td><nav>";
-// 	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Take</a>";
-// 	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Edit</a>";
-// 	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Results</a>";
-// 	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Administer</a>";
-// 	echo	"</nav></td>";
-// 	echo	"<!--		<a href=''>Discuss</a>			-->";
-// 	echo	"</tr>";
-// }
+foreach ($testsquery as $testrow)
+{
+	echo	"<tr>";
+	echo	"<td>Chapter 3</td>";
+	echo	"<td>Mixed</td>";
+	echo	"<td>-</td>";
+	echo	"<td><nav>";
+	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Take</a>";
+	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Edit</a>";
+	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Results</a>";
+	echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Administer</a>";
+	echo	"</nav></td>";
+	echo	"<!--		<a href=''>Discuss</a>			-->";
+	echo	"</tr>";
+}
 ?>
 		
 		<tr>
