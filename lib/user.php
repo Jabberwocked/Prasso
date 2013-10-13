@@ -73,7 +73,7 @@ class User
 			if ($valid)
 			{
 				$success = true;
-				$_SESSION['userid'] = $stmt->fetchColumn(0);
+				$_SESSION['userid'] = $stmt->fetchColumn();
 				$_SESSION['username'] = $stmt->fetchColumn(1);
 // 				$_SESSION['userid'] = $_POST['username'];
 // 				$_SESSION['test'] = $stmt[0]['userID'];
