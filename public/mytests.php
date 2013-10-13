@@ -42,7 +42,7 @@ if (!$tests)
 else 
 {
 	
-	foreach ($testsquery as $testrow)
+	foreach ($tests as $testrow)
 	{
 		$testname = $testrow['TestName'];
 		$topic = "";
