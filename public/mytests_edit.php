@@ -95,14 +95,14 @@ elseif ($_POST['action'] == "save")
 /** 
  * Print questions
  */
-echo "<br>testtest";
+echo "<br>testtestprintquestions";
 
-foreach ($_SESSION['questions'] as $question)
-{
-	$question->show();
-};
+// foreach ($_SESSION['questions'] as $question)
+// {
+// 	$question->show();
+// };
 
-
+print_r($_SESSION['questions']);
 
 
 /** 
