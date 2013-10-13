@@ -134,7 +134,7 @@ foreach ($_SESSION['questions'] as $question)
 		<input type="radio" style="display:inline; width:20px;" name="type" value="multichoice" >Multiple Choice<br>
 		<br>
 		Answers<br> 
-		<input type="text" name="answer1" class="answers"><br>
+		<input type="text" name="answer1" class="answers">
 		<button type="button" id="addOption" value="Add">Add</button><br>
 		<br>
 		<br> 
