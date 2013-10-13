@@ -67,15 +67,13 @@ class User
 			$stmt->bindValue("password", hash("sha256", $this->password . $this->salt), PDO::PARAM_STR);
 			$stmt->execute();
 			
-// 			testing
-			$_SESSION['test'] = $this->username;
-// 			$_SESSION['test'] = "poep";
 			
 			$valid = $stmt->fetchColumn();
 			
 			if ($valid)
 			{
 				$success = true;
+				$_SESSION['test'] = $this->username;
 // 				$_SESSION['username'] = $stmt[0]['username'];
 // 				$_SESSION['userid'] = $_POST['username'];
 // 				$_SESSION['test'] = $stmt[0]['userID'];
