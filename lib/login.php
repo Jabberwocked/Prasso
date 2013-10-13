@@ -12,6 +12,7 @@
 				<label for="passwd">Password : </label> 
 				<input type="password" maxlength="30" required name="password" />
 				<br>
+				<input type="hidden" name="location" value="<?php if(isset($_GET['location'])) { echo htmlspecialchars($_GET['location']); } ?>"  />;
 				<button type="submit" name="login" value="Log me in" style="margin: 0 0 0 -1em">Log me in</button> 
 				<button type="button" name="register" value="Register" onclick="location.href='registerpage.php'">Register</button>
 			</form>
@@ -33,10 +34,14 @@ else
 
 		/**
 		 * The username is saved in the session to update the top-right corner.
-		 * The redirect is necessary to refresh the page and to initiate the update.
+		 * The redirect redirects to previous location or main.php.
 		 */
 		
-		header('Location: ' . $_SERVER['HTTP_REFERER']);
+		$redirect = main.php;
+		if($_POST['location'] != '') {
+			$redirect = $_POST['location'];
+		}
+		header('Location: ' . $redirect);
 		
 	}
 	else
