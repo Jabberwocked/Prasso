@@ -30,7 +30,7 @@ $testsquery->execute(array(
 	':UserId' => $_SESSION['userid'],
 ));
 
-print_r($testsquery);
+print_r($testsquery[0]);
 
 if ($testsquery == false)
 {
