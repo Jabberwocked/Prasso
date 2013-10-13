@@ -31,7 +31,7 @@ td {
 <?php 
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
-$testsquery = $pdo->prepare("SELECT * FROM Tests WHERE UserId_Owner=:UserId");
+$testsquery = $db->prepare("SELECT * FROM Tests WHERE UserId_Owner=:UserId");
 $testsquery->execute(array(
 	':UserId' => $_SESSION['userid'],
 ));
