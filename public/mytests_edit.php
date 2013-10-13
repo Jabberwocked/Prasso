@@ -137,7 +137,7 @@ foreach ($_SESSION['questions'] as $question)
  */
 
 ?>		
-	<form action=<?php echo htmlspecialchars('mytests_new.php');?> method="post">
+	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 		Question<br> 
 		<input type="text" name="question"><br>
 		<input type="radio" style="display:inline; width:20px;" name="type" value="shortanswer" checked>Short Answer<br>

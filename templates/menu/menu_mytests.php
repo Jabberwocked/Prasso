@@ -1,6 +1,6 @@
 	<div style="text-align:center">
 		<nav style="margin: 10px 20px 40px 20px;">
-			<a href="mytests_new.php">New</a><br>
+			<a href="mytests_edit.php">New</a><br>
 		</nav>
 		
 		<nav>
