@@ -77,7 +77,8 @@ elseif ($_POST['action'] == "save")
 		$question = $questionobject->question;
 		$type = $questionobject->type;
 		$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
-		if (!$qry) {
+		if (!$qry) 
+		{
 			echo "\nPDO::errorInfo():\n";
 			print_r($db->errorInfo());
 		}
@@ -88,7 +89,7 @@ elseif ($_POST['action'] == "save")
 		echo "1 record added<br>";
 // 		$insert_id=$db->lastInsertId();
 // 		echo " insert id = $insert_id ";
-		}
+		
 	}
 		
 	
