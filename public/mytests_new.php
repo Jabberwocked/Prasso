@@ -68,9 +68,11 @@ elseif ($_POST['action'] == "addquestion")
 }
 elseif ($_POST['action'] == "save")
 {
-	echo "saving?<br>";
+
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 // 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	
+	echo "<p style='color:green'>";
 	
 	foreach ($_SESSION['questions'] as $questionobject)
 	{
@@ -85,16 +87,15 @@ elseif ($_POST['action'] == "save")
 		
 		$qry->execute(array(':question'=>$question,':type'=>$type));
 		
-		
-		echo "1 record added:";
 		$insert_id=$db->lastInsertId();
-		echo " insert id = $insert_id<br>";
-		
+	
+		echo "1 record added: id = $insert_id<br>";
 	}
 		
+	echo "</p>";
 	
 	mysqli_close($db);
-	echo "<br><p style='color:green'>Test is saved.</p><br><br>";
+	echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p><br><br>";
 	
 };
 
