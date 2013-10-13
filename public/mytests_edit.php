@@ -26,6 +26,8 @@ if ($_SESSION['questionno'] == false)
 	$_SESSION['questionno'] = 1;
 };
 
+echo "testtest" . $_SESSION['questionno'];
+
 /**
  * Process form depending on button pressed.
  */
