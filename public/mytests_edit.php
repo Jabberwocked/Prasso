@@ -103,7 +103,7 @@ elseif ($_POST['action'] == "save")
 	
 	}	
 	
-	header("Location: mytests_edit.php");
+	header("Location: mytests.php");
 };
 
 
