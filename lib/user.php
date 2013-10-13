@@ -69,12 +69,13 @@ class User
 			
 			
 			$valid = $stmt->fetchColumn();
+			$test = $stmt->fetchColumn(1);
 			
 			if ($valid)
 			{
 				$success = true;
-				$_SESSION['test'] = $valid;
-// 				$_SESSION['username'] = $stmt[0]['username'];
+				$_SESSION['userid'] = $valid;
+				$_SESSION['username'] = $test;
 // 				$_SESSION['userid'] = $_POST['username'];
 // 				$_SESSION['test'] = $stmt[0]['userID'];
 // 				$_SESSION['test'] = $stmt->fetchAll();
