@@ -29,9 +29,10 @@ $testsquery = $db->prepare("SELECT * FROM Tests WHERE UserId_Owner=:UserId");
 $testsquery->execute(array(
 	':UserId' => $_SESSION['userid'],
 ));
+$tests = $testsquery->fetch();
 
 
-if (!$testsquery)
+if (!$tests)
 {
 	echo "</table>";
 	echo "You have no tests.";
