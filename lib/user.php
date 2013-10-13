@@ -68,13 +68,13 @@ class User
 			$stmt->execute();
 			
 			
-			$valid = $stmt->fetchColumn();
+			$valid = $stmt->fetch();
 			
 			if ($valid)
 			{
 				$success = true;
-				$_SESSION['userid'] = $valid;	// saved to session for profile and later db actions
-				$_SESSION['username'] = $stmt->fetchColumn(1); // saved to session for profile and login status
+				$_SESSION['userid'] = $valid['userID'];	// saved to session for profile and later db actions
+				$_SESSION['username'] = $valid['username']; // saved to session for profile and login status
 			}
 			
 			$con = null;
