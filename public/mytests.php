@@ -41,7 +41,7 @@ if (!$tests)
 
 else 
 {
-	
+	print_r($tests);
 	foreach ($tests as $testrow)
 	{
 		$testname = $testrow['TestName'];
