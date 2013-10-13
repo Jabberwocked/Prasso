@@ -14,10 +14,10 @@ include_once (TEMPLATES_PATH . "/header.php");
  * Set questionno to 1 if not set yet. (Specific for this test, i.e. not database related.)
  */
 
-// if ($_['questionno'] == false)
-// {
-// 	$_SESSION['questionno'] = 1;
-// };
+if ($_SESSION['questionno'] == false)
+{
+	$_SESSION['questionno'] = 1;
+};
 
 
 /**
