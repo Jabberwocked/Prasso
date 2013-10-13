@@ -73,7 +73,7 @@ class User
 			if ($valid)
 			{
 				$success = true;
-				$_SESSION['test'] = $this->username;
+				$_SESSION['test'] = $valid;
 // 				$_SESSION['username'] = $stmt[0]['username'];
 // 				$_SESSION['userid'] = $_POST['username'];
 // 				$_SESSION['test'] = $stmt[0]['userID'];
