@@ -14,7 +14,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 include_once (LIBRARY_PATH . "question.php");
 
-
+?>
+<?php 
 
 
 /**
