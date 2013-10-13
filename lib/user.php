@@ -75,7 +75,7 @@ class User
 // 				$_SESSION['username'] = $stmt[0]['username'];
 // 				$_SESSION['userid'] = $_POST['username'];
 // 				$_SESSION['test'] = $stmt[0]['userid'];
-				print_r($stmt);
+				$_SESSION['test'] = $stmt;
 			}
 			
 			$con = null;
