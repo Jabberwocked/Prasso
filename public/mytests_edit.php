@@ -1,5 +1,5 @@
 <?php
-include_once (LIBRARY_PATH . "question.php");
+
 include_once ("../config/config.php");
 include_once (TEMPLATES_PATH . "/header.php");
 // include_once (MENU_PATH . "/menu_mytests_new.php");

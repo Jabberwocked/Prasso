@@ -1,6 +1,5 @@
 <?php
-// start or continue session
-include_once("../templates/session.php");
+
 
 // set off all error for security purposes
 // error_reporting(E_ALL);
@@ -32,9 +31,10 @@ $config = array(
 
 // include the classes
 include_once (LIBRARY_PATH . "user.php");
-// include_once (LIBRARY_PATH . "question.php");
+include_once (LIBRARY_PATH . "question.php");
 
-
+// start or continue session
+include_once("../templates/session.php");
 
 
 
