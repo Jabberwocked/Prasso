@@ -26,7 +26,7 @@ if ($_SESSION['questionno'] == false)
 	$_SESSION['questionno'] = 1;
 };
 
-echo "testtest" . $_SESSION['questionno'];
+echo "<br>testtest" . $_SESSION['questionno'];
 
 /**
  * Process form depending on button pressed.
@@ -95,7 +95,7 @@ elseif ($_POST['action'] == "save")
 /** 
  * Print questions
  */
-
+echo "<br>testtest";
 
 foreach ($_SESSION['questions'] as $question)
 {
