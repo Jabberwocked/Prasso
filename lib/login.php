@@ -12,7 +12,7 @@
 				<label for="passwd">Password : </label> 
 				<input type="password" maxlength="30" required name="password" />
 				<br>
-				<button type="submit" name="login" value="Log me in" style="margin: 0">Log me in</button> 
+				<button type="submit" name="login" value="Log me in" style="margin: 0 0 0 -1em">Log me in</button> 
 				<button type="button" name="register" value="Register" onclick="location.href='registerpage.php'">Register</button>
 			</form>
 
