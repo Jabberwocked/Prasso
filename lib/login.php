@@ -38,7 +38,7 @@ else
 		 * The username is saved in the session to update the top-right corner.
 		 * The redirect is necessary to refresh the page and to initiate the update.
 		 */
-		$_SESSION['username'] = $_POST['username'];
+		
 		header("Location:main.php");
 		
 	}

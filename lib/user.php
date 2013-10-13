@@ -73,11 +73,8 @@ class User
 			if ($valid)
 			{
 				$success = true;
-				$_SESSION['userid'] = $valid;
-				$_SESSION['username'] = $stmt->fetchColumn(1);
-// 				$_SESSION['userid'] = $_POST['username'];
-// 				$_SESSION['test'] = $stmt[0]['userID'];
-// 				$_SESSION['test'] = $stmt->fetchAll();
+				$_SESSION['userid'] = $valid;	// saved to session for profile and later db actions
+				$_SESSION['username'] = $stmt->fetchColumn(1); // saved to session for profile and login status
 			}
 			
 			$con = null;
