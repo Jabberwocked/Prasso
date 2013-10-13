@@ -67,6 +67,8 @@ class User
 			$stmt->bindValue("password", hash("sha256", $this->password . $this->salt), PDO::PARAM_STR);
 			$stmt->execute();
 			
+			$_SESSION['test'] = $stmt;
+			
 			$valid = $stmt->fetchColumn();
 			
 			if ($valid)
@@ -75,7 +77,7 @@ class User
 // 				$_SESSION['username'] = $stmt[0]['username'];
 // 				$_SESSION['userid'] = $_POST['username'];
 // 				$_SESSION['test'] = $stmt[0]['userid'];
-				$_SESSION['test'] = $stmt;
+				
 			}
 			
 			$con = null;
