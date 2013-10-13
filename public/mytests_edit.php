@@ -32,6 +32,8 @@ if ($_POST['action'] == "deleteall")
 {
 	$_SESSION['questions'] = array();
 	$_SESSION['questionno'] = 1;
+
+	unset($_POST);
 }
 
 /**
@@ -42,6 +44,8 @@ elseif ($_POST['action'] == "addquestion")
 {
 	$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answer1']);
 	$_SESSION['questionno'] ++;
+
+	unset($_POST);
 }
 
 /**
@@ -99,6 +103,8 @@ elseif ($_POST['action'] == "save")
 	
 	}	
 	
+	unset($_POST);
+	
 };
 
 
@@ -112,6 +118,7 @@ foreach ($_SESSION['questions'] as $question)
 	$question->show();
 };
 
+unset($_POST);
 
 break;
 
