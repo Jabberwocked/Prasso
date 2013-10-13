@@ -68,7 +68,7 @@ class User
 			$stmt->execute();
 			
 // 			testing
-			$_SESSION['test'] = $stmt;
+			$_SESSION['test'] = $stmt->fetchAll;
 // 			$_SESSION['test'] = "poep";
 			
 			$valid = $stmt->fetchColumn();
