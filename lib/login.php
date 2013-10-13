@@ -37,7 +37,7 @@ else
 		 * The redirect redirects to previous location or main.php.
 		 */
 		
-		$redirect = main.php;
+		$redirect = "main.php";
 		if($_POST['location'] != '') {
 			$redirect = $_POST['location'];
 		}
