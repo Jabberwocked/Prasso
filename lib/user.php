@@ -45,7 +45,10 @@ class User
 		$isDuplicate = $stmt->fetchColumn();
 		$con = null;
 		
+// 		OLD (bugged):
 // 		return (strTemp != '');
+//		NEW:
+
 		if ($isDuplicate == '')
 		{
 			return false;
