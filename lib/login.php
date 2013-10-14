@@ -33,7 +33,6 @@ else
 		$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
 
 		/**
-		 * The username is saved in the session to update the top-right corner.
 		 * The redirect redirects to previous location or main.php.
 		 */
 		

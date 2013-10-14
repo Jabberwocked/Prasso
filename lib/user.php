@@ -73,8 +73,8 @@ class User
 			if ($userfound)
 			{
 				$success = true;
-				$_SESSION['userid'] = $userfound['userID'];	// saved to session for profile and later db actions
-				$_SESSION['username'] = $userfound['username']; // saved to session for profile and login status
+				$_SESSION['userid'] = $userfound['userID'];	// saved to session for later db actions (e.g. saving a test)
+				$_SESSION['username'] = $userfound['username']; // saved to session to update top-right corner
 			}
 			
 			$con = null;
