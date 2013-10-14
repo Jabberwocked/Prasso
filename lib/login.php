@@ -14,7 +14,7 @@
 				<br>
 				<input type="hidden" name="location" value="<?php if(isset($_GET['location'])) { echo htmlspecialchars($_GET['location']); } ?>"  />;
 				<button type="submit" name="login" value="Log me in" style="margin: 0 0 0 -1em">Log me in</button> 
-				<button type="button" name="register" value="Register" onclick="location.href='registerpage.php'">Register</button>
+				<button type="button" name="register" value="Register" onclick="location.href='http://www.google.com'">Register</button>
 			</form>
 
 		</div>
