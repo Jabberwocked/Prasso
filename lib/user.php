@@ -46,7 +46,15 @@ class User
 		$con = null;
 		
 // 		return (strTemp != '');
-		return false;
+		if ($isDuplicate == '')
+		{
+			return false;
+		}
+		else 
+		{
+			return true;
+		}
+		
 	}
 
 
