@@ -12,12 +12,12 @@ class question {
 	public $type;
 	public $answer1;
 
-	function __construct($questionno, $question, $type, $answer1)
+	function __construct($questionno, $question, $type, $answers)
 	{
 		$this->questionno = $questionno;
 		$this->question = $question;
 		$this->type = $type;
-		$this->answers[] = $answer1;
+		$this->answers = $answers;
 	}
 
 	function show()
