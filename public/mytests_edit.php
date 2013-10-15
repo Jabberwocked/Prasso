@@ -143,9 +143,8 @@ else
 				<option value="shortanswer selected">Short Answer</option>
 				<option value="multichoice">Multiple Choice</option>
 			</select> 
-			<input type="text" name="question"><br>
-			Answers
-			<input type="text" name="answer1" class="answers" style="display:inline; width:70%">
+			<input type="text" name="question" placeholder="Question text">
+			<input type="text" name="answer1" class="answers" placeholder="Answer 1" style="display:inline; width:70%">
 			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button><br>
 			<br>
 			<br> 

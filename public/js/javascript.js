@@ -22,6 +22,7 @@ $(document).ready(function(){
 		$("<input type='text' value='' style='display:inline; width:70%' />")
 		 .attr("name", "answer" + $answerno)
 		 .attr("class", "answers")
+		 .attr("placeholder", "Answer" + $answerno)
 	     .insertAfter(".answers:last");
 	});
 		
