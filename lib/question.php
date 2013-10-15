@@ -18,19 +18,21 @@ class question {
 		$this->question = $question;
 		$this->type = $type;
 		$this->answers = $answers;
+		
+		if ($this->type == "shortanswer")
+		{
+			$this->typeshort = "SA";
+		}
+		if ($this->type == "multichoice")
+		{
+			$this->typeshort = "MC";
+		}
+		
 	}
 
 	function show()
 	{
-		echo "<p style='font-weight:bold'>" . $this->questionno . " " . $this->question;
-		if ($this->type == "shortanswer")
-		{
-			echo " (SA) </p>";
-		}
-		if ($this->type == "multichoice")
-		{
-			echo " (MC) </p>";
-		}
+		echo "<p style='font-weight:bold'>" . $this->questionno . " " . $this->question . " <span style='font-weight:normal'>" . $this->typeshort . "</span></p>";
 		echo "<p>Answers: " ;
 		$n = 1;
 		foreach($this->answers as $answer) 
