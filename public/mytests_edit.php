@@ -148,8 +148,7 @@ else
 			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button><br>
 			<br>
 			<br> 
-			<button type="submit" name="action" value="addquestion">Add Question</button>
-			<button type="submit" name="action" value="deleteall" >Delete All</button><br>
+			<button type="submit" name="action" value="addquestion">Add Question</button><br>
 		</form>
 		<br>
 		<br>
@@ -157,6 +156,7 @@ else
 		Test Name<br>
 		<input type="text" name="testname" placeholder="Give your test a name."><br>
 		<button type="submit" name="action" value="save" >Save Test</button>
+		<button type="submit" name="action" value="deleteall" >Delete All</button>
 		</form>
 		<br>
 		<br>
