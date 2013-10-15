@@ -140,6 +140,10 @@ else
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 			Question<br> 
 			<input type="text" name="question"><br>
+			<select name="type">
+				<option value="shortanswer selected">Short Answer</option>
+				<option value="multichoice">Multiple Choice</option>
+			</select>
 			<input type="radio" style="display:inline; width:20px;" name="type" value="shortanswer" checked>Short Answer<br>
 			<input type="radio" style="display:inline; width:20px;" name="type" value="multichoice" >Multiple Choice<br>
 			<br>
