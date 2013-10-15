@@ -12,7 +12,7 @@
 				}
 				else
 				{ 
-					echo "<p style='color:green; text-align:center'> Temporary line. </p>";
+					echo "<p style='color:green; text-align:center'> Temporary line. </p><br><br>";
 				}
 		?>
 		<div id="login-wrapper">
