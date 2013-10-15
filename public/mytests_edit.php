@@ -151,8 +151,8 @@ else
 		<br>
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 		Test Name<br>
-		<input type="text" name="testname" placeholder="Give your test a name."><br>
-		<button type="submit" name="action" value="save" >Save Test</button>
+		<input type="text" name="testname" placeholder="Give your test a name." style="display:inline; width:50%">
+		<button type="submit" name="action" value="save" style="width:10em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Save Test</button>
 		<button type="submit" name="action" value="deleteall" >Delete All</button>
 		</form>
 		<br>
