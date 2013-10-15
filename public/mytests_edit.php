@@ -110,10 +110,11 @@ else
 			$TestId = $db->lastInsertId();
 			
 // 			Test name and owner are saved. Now save which questionids belong to testid.
-			$qry3 = $db->prepare("INSERT INTO Question_Test (QuestionId, TestId) VALUES (:QuestionId,:TestId)");
-			foreach ($questionids as $QuestionId)
+			$qry3 = $db->prepare("INSERT INTO Question_Test (QuestionId, TestId, Orderno) VALUES (:QuestionId,:TestId,:OrderNo)");
+			foreach ($questionids as $OrderNo=>$QuestionId)
 			{
-				$qry3->execute(array(':QuestionId'=>$QuestionId,':TestId'=>$TestId));
+				$OrderNo ++;
+				$qry3->execute(array(':QuestionId'=>$QuestionId,':TestId'=>$TestId, ':OrderNo'=>$OrderNo));
 			}
 			
 			echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p><br><br>"; // echo success
