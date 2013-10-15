@@ -33,10 +33,10 @@ else
 		$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
 
 		/**
-		 * The redirect redirects to previous location or main.php.
+		 * The redirect redirects to previous location or index.php.
 		 */
 		
-		$redirect = "main.php";
+		$redirect = "index.php";
 		if($_POST['location'] != '') {
 			$redirect = $_POST['location'];
 		}

@@ -11,7 +11,7 @@
 </head>
 <body>
 	<header>
-		<a href="main.php"><h1 id='title'>PRASSO</h1></a>
+		<a href="index.php"><h1 id='title'>PRASSO</h1></a>
 	
 		<?php
 		/**
