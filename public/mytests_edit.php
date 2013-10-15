@@ -88,11 +88,11 @@ else
 				$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
 				$qry->execute(array(':question'=>$question,':type'=>$type));
 				
-		//		save ids to array...
+		//		save ids to array for later use...
+				$questionids[] = $db->lastInsertId();
 				
 		// 		echo inserts to screen
-				$insert_id=$db->lastInsertId();
-				echo "1 record added: id = $insert_id<br>";
+				echo "1 record added: id = " . $db->lastInsertId() . "<br>";
 			}
 				
 			echo "</p>"; // end p style for echos in foreach
@@ -106,10 +106,15 @@ else
 			$qry2 = $db->prepare("INSERT INTO Tests (TestName, UserId_Owner) VALUES (:TestName,:UserId_Owner)");
 			$qry2->execute(array(':TestName'=>$TestName,':UserId_Owner'=>$UserId_Owner));
 			
-// 			Test name and owner are saved. Now save which questions belong in the test.
-// 			$qry2 = $db->prepare("INSERT INTO Question_Test (QuestionId, TestId) VALUES (:QuestionId,:TestId)");
+		// 	save testid for later use
+			$TestId = $db->lastInsertId();
 			
-			
+// 			Test name and owner are saved. Now save which questionids belong to testid.
+			$qry3 = $db->prepare("INSERT INTO Question_Test (QuestionId, TestId) VALUES (:QuestionId,:TestId)");
+			foreach ($questionids as $QuestionId)
+			{
+				$qry3->execute(array(':QuestionId'=>$QuestionId,':TestId'=>$TestId));
+			}
 			
 			echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p><br><br>"; // echo success
 			
