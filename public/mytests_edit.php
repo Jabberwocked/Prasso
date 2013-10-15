@@ -141,9 +141,9 @@ else
 			Question <?php echo $_SESSION['questionno']?><br>
 
 			<input type="text" name="question" placeholder="Question text" style="display:inline; width:65%">
-			<select name="type">
-				<option value="shortanswer" selected>Short Answer</option>
-				<option value="multichoice">Multiple Choice</option>
+			<select name="type" style="width:50px;">
+				<option value="shortanswer" selected>SA: Short Answer</option>
+				<option value="multichoice">MC: Multiple Choice</option>
 			</select> 
 			<input type="text" name="answers[]" class="answers" placeholder="Answer 1" style="display:inline; width:60%">
 			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
