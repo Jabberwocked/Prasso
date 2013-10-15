@@ -24,6 +24,7 @@ class question {
 	{
 		echo "<p style='font-weight:bold'>" . $this->questionno . " " . $this->question . " (" . $this->type . ") </p>";
 		echo "<p>Answers: " ;
+		print_r($this->answers);
 		foreach($this->answers as $answer) 
 		{
     	echo $answer . ", ";
