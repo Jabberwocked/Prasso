@@ -23,7 +23,11 @@ class question {
 	function show()
 	{
 		echo "<p style='font-weight:bold'>" . $this->questionno . " " . $this->question . " (" . $this->type . ") </p>";
-		echo "<p>Answers: " . $this->answers . "</p>";
+		echo "<p>Answers: " ;
+		foreach($this->answers as $answer) 
+		{
+    	echo $answer . ", ";
+		}
 		echo "<br><br>";
 	}
 }
