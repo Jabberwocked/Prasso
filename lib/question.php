@@ -17,7 +17,7 @@ class question {
 		$this->questionno = $questionno;
 		$this->question = $question;
 		$this->type = $type;
-		$this->answer1 = $answer1;
+		$this->answers[] = $answer1;
 	}
 
 	function show()
