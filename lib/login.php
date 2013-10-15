@@ -7,7 +7,7 @@
 		<?php 	if (isset($_SESSION['registrationsuccessful']))
 				{
 					// Echoes a line after registration (when applicable)
-					echo "<p style='color:green'>" . $_SESSION['registrationsuccessful'] . "</p>"; 
+					echo "<p style='color:green; text-align:center'>" . $_SESSION['registrationsuccessful'] . "</p><br><br>"; 
 					unset($_SESSION['registrationsuccessful']);
 				}
 				else
