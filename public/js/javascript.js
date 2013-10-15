@@ -20,7 +20,7 @@ $(document).ready(function(){
 	$("#addOption").click (function(){
 		$answerno ++;  
 		$("<input type='text' value='' style='display:inline; width:70%' />")
-		 .attr("name", "answer" + $answerno)
+		 .attr("name", "answer[]")
 		 .attr("class", "answers")
 		 .attr("placeholder", "Answer " + $answerno)
 	     .insertAfter(".answers:last");

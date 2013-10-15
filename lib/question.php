@@ -22,8 +22,8 @@ class question {
 
 	function show()
 	{
-		echo "<p style='font-weight:bold'>" . $this->questionno . $this->question . " (" . $this->type . ") </p>";
-		echo "<p>Answer1: " . $this->answer1 . "</p>";
+		echo "<p style='font-weight:bold'>" . $this->questionno . " " . $this->question . " (" . $this->type . ") </p>";
+		echo "<p>Answers: " . $this->answer1 . "</p>";
 		echo "<br><br>";
 	}
 }
