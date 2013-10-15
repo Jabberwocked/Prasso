@@ -140,7 +140,7 @@ else
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 			Question <?php echo $_SESSION['questionno']?>
 			<select name="type">
-				<option value="shortanswer selected">Short Answer</option>
+				<option value="shortanswer" selected>Short Answer</option>
 				<option value="multichoice">Multiple Choice</option>
 			</select> 
 			<input type="text" name="question" placeholder="Question text">
