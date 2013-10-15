@@ -4,17 +4,15 @@
 
 
 	<div id="main-wrapper">
+		
 		<?php 	if (isset($_SESSION['registrationsuccessful']))
 				{
 					// Echoes a line after registration (when applicable)
 					echo "<p style='color:green; text-align:center'>" . $_SESSION['registrationsuccessful'] . "</p><br><br>"; 
 					unset($_SESSION['registrationsuccessful']);
 				}
-				else
-				{ 
-					echo "<p style='color:green; text-align:center'> Temporary line. </p><br><br>";
-				}
 		?>
+		
 		<div id="login-wrapper">
 			<form method="post" action="">
 				<label for="usn">Username : </label> 
