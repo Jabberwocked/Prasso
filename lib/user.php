@@ -120,7 +120,10 @@ class User
 			$stmt->bindValue("username", $this->username, PDO::PARAM_STR);
 			$stmt->bindValue("password", hash("sha256", $this->password . $this->salt), PDO::PARAM_STR);
 			$stmt->execute();
-			return "Registration Successful <br/> <a href='index.php'>Login Now</a>";
+			
+			$_SESSION['registrationsuccessful'] = "Registration succesful. Please log in.";
+			header('location:./loginpage.php'); 
+// 			return "Registration Successful <br/> <a href='loginpage.php'>Login Now</a>";
 		}
 		catch (PDOException $e)
 		{
