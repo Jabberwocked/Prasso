@@ -22,7 +22,15 @@ class question {
 
 	function show()
 	{
-		echo "<p style='font-weight:bold'>" . $this->questionno . " " . $this->question . " (" . $this->type . ") </p>";
+		echo "<p style='font-weight:bold'>" . $this->questionno . " " . $this->question;
+		if ($this->type == "shortanswer")
+		{
+			echo " (SA) </p>";
+		}
+		if ($this->type == "multichoice")
+		{
+			echo " (MC) </p>";
+		}
 		echo "<p>Answers: " ;
 		$n = 1;
 		foreach($this->answers as $answer) 
