@@ -10,6 +10,10 @@
 					echo "<p style='color:green'>" . $_SESSION['registrationsuccessful'] . "</p>"; 
 					unset($_SESSION['registrationsuccessful']);
 				}
+				else
+				{ 
+					echo "<p style='color:green'> Temporary line. </p>";
+				}
 		?>
 		<div id="login-wrapper">
 			<form method="post" action="">
