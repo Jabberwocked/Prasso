@@ -156,7 +156,7 @@ else
 		<br>
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 		Test Name<br>
-		<input type="text" name="testname" value="Give your test a name." onfocus="this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" style="color:grey"><br>
+		<input type="text" name="testname" placeholder="Give your test a name."><br>
 		<button type="submit" name="action" value="save" >Save Test</button>
 		</form>
 		<br>
