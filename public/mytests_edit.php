@@ -141,7 +141,7 @@ else
 			Question <?php echo $_SESSION['questionno']?><br>
 
 			<input type="text" name="question" placeholder="Question text" style="display:inline; width:65%">
-			<select name="type" style="width:50px;">
+			<select name="type" style="width:40px;">
 				<option value="shortanswer" selected>SA: Short Answer</option>
 				<option value="multichoice">MC: Multiple Choice</option>
 			</select> 
