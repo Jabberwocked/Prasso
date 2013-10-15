@@ -138,7 +138,7 @@ else
 	
 	?>		
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-			<input type="text" name="question" placeholder="Question <?php echo $_SESSION['questionno']?>" style="display:inline; width:75%">
+			<input type="text" name="question" placeholder="Question <?php echo $_SESSION['questionno']?>" style="display:inline; width:70%">
 			<select name="type" style="width:45px;">
 				<option value="shortanswer" selected>SA: Short Answer</option>
 				<option value="multichoice">MC: Multiple Choice</option>
