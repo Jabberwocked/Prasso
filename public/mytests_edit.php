@@ -144,15 +144,15 @@ else
 				<option value="multichoice">MC: Multiple Choice</option>
 			</select> 
 			<input type="text" name="answers[]" class="answers" placeholder="Answer 1" style="display:inline; width:60%">
-			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
+			<button type="button" id="addOption" value="Add" style="width:2em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
 			<button type="submit" name="action" value="addquestion" style="width:5em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Add</button><br>
 		</form>
 		<br>
 		<br>
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 		<input type="text" name="testname" placeholder="Give your test a name." style="display:inline; width:55%">
-		<button type="submit" name="action" value="save" style="width:4em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Save</button>
-		<button type="submit" name="action" value="deleteall" style="width:5em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Delete</button>
+		<button type="submit" name="action" value="save" style="width:4em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Save</button>
+		<button type="submit" name="action" value="deleteall" style="width:5em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Delete</button>
 		</form>
 		<br>
 		<br>
