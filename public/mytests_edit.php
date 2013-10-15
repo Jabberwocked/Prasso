@@ -144,7 +144,7 @@ else
 				<option value="multichoice">Multiple Choice</option>
 			</select> 
 			<input type="text" name="question" placeholder="Question text">
-			<input type="text" name="answers[]" class="answers" placeholder="Answer 1" style="display:inline; width:50%">
+			<input type="text" name="answers[]" class="answers" placeholder="Answer 1" style="display:inline; width:60%">
 			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
 			<button type="submit" name="action" value="addquestion" style="width:5em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Add</button><br>
 		</form>
