@@ -5,6 +5,15 @@
 
 	<div id="main-wrapper">
 		<div id="login-wrapper">
+
+		<?php 	if (isset($_SESSION['registrationsuccessful']))
+				{
+					// Echoes a line after registration (when applicable)
+					echo "<p style='text:green'>" . $_SESSION['registrationsuccessful'] . "</p>"; 
+					unset($_SESSION['registrationsuccessful']);
+				}
+		?>
+		
 			<form method="post" action="">
 				<label for="usn">Username : </label> 
 				<input type="text" maxlength="30" required autofocus name="username" />
