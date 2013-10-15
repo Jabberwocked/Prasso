@@ -138,14 +138,12 @@ else
 	
 	?>		
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-			Question <?php echo $_SESSION['questionno']?><br> 
-			<input type="text" name="question"><br>
+			Question <?php echo $_SESSION['questionno']?>
 			<select name="type">
 				<option value="shortanswer selected">Short Answer</option>
 				<option value="multichoice">Multiple Choice</option>
-			</select>
-			<input type="radio" style="display:inline; width:20px;" name="type" value="shortanswer" checked>Short Answer<br>
-			<input type="radio" style="display:inline; width:20px;" name="type" value="multichoice" >Multiple Choice<br>
+			</select> 
+			<input type="text" name="question"><br>
 			<br>
 			Answers<br> 
 			<input type="text" name="answer1" class="answers" style="display:inline; width:70%">
