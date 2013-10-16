@@ -42,35 +42,63 @@ else
 	
 	
 	if (!$tests)
-	{
-		echo "</table>";
-		echo "<br><br><br><p style='font-style:italic'>You have no tests.</p>";
-		echo "</div>";
-	}
+	{ ?>
+		</table>
+		<br><br><br><p style='font-style:italic'>You have no tests.</p>
+		</div>
+	<?php  }
 	
 	else 
 	{
 		foreach ($tests as $testrow)
 		{
+			$testid = $testrow['TestId'];
 			$testname = $testrow['TestName'];
 			$topic = "";
 			$labels = "";
 			
-			echo	"<tr>";
-			echo	"<td>" . $testname . "</td>";
-			echo	"<td>" . $topic . "</td>";
-			echo	"<td>" . $labels . "</td>";
-			echo	"<td><nav>";
-			echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Take</a>";
-			echo	"	<a href='mytests_edit.php' style='font-size: small; margin: 0px 2px'>Edit</a>";
-			echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Results</a>";
-			echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Administer</a>";
-			echo	"</nav></td>";
-			echo	"<!--		<a href=''>Discuss</a>			-->";
-			echo	"</tr>";
-		}
+			?>
+			<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+			<button type="submit" name="editquestion" value="<?php echo $testid ?>" style='
+				width:auto; 
+				height:auto; 
+				margin:0; 
+				padding:0; 
+				border: 0;
+				background:none; 
+				color:#666; 
+				text-align:left; 
+				-moz-border-radius: 0px;
+				-webkit-border-radius: 0px;
+				border-radius: 0px;
+				-moz-box-shadow: 0;
+				-webkit-box-shadow: 0;
+				box-shadow: none;
+				-webkit-appearance: none;
+				text-transform: none;
+				letter-spacing: 1px;'>
+		
+			<tr>
+			<td><?php echo $testname ?></td>
+			<td><?php echo $topic ?></td>
+			<td><?php echo $labels ?></td>
+			<td><nav>
+				<a href='' style='font-size: small; margin: 0px 2px'>Take</a>
+				<a href='mytests_edit.php' style='font-size: small; margin: 0px 2px'>Edit</a>
+				<a href='' style='font-size: small; margin: 0px 2px'>Results</a>
+				<a href='' style='font-size: small; margin: 0px 2px'>Administer</a>
+			</nav></td>
+			<!--		<a href=''>Discuss</a>			-->
+			</tr>
+		
+			</button>
+			</form>
+		<?php 
+		} ?>
 			
-		echo "</table></div>";
+		</table></div>
+		
+		<?php 
 	}
 }
 
