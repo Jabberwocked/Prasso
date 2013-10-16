@@ -154,14 +154,15 @@ else
 			</select> 
 			
 		<?php 
-		$answerno = $_SESSION['answerno'] = 1; // variable needs to be available for javascript
+		$answerno = 1; 
+		$_SESSION['answerno'] = 1; // variable needs to be available for javascript
 		foreach ($_SESSION['questions'][$questionno-1]->answers as $answer)
 		{ 
 		?>
 			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
 		<?php 
 		$answerno ++;
-		$_SESSION['answerno'] = $answerno;
+		$_SESSION['answerno'] ++;
 		}
 		if ($answerno == 1)
 		{ ?>
