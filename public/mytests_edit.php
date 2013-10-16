@@ -156,7 +156,9 @@ else
 		<?php 
 		$amountanswers = 0;
 		foreach ($_SESSION['questions'][$questionno-1]->answers as $answer)
-		{ ?>
+		{ 
+		$amountanswers ++;
+		?>
 			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer 1" style="display:inline; width:60%">
 		<?php 
 		}
