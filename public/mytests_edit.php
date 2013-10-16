@@ -43,7 +43,7 @@ else
 	
 	elseif ($_POST['action'] == "savequestion")
 	{
-		$_SESSION['questions'][] = new question($_POST['questionno'], $_POST['question'], $_POST['type'], $_POST['answers']);
+		$_SESSION['questions'][$_POST['questionno']-1] = new question($_POST['questionno'], $_POST['question'], $_POST['type'], $_POST['answers']);
 	
 		header("Location: mytests_edit.php");
 	}
