@@ -205,7 +205,7 @@ input {
 
 /* Place a border around focused fields */
 form *:focus {
-	border: 2px solid #7c412b;
+/* 	border: 2px solid #7c412b; */
 	outline: none;
 }
 
