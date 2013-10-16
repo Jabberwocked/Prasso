@@ -157,7 +157,7 @@ else
 		
 		
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-			<input type="hidden" name="questionno" value='<?php echo $_SESSION['questions'][$editquestionno-1]->questionno ?>'>
+			<input type="hidden" name="questionno" value='<?php echo $editquestionno ?>'>
 			<input type="text" name="question" value='<?php echo $_SESSION['questions'][$editquestionno-1]->question ?>' placeholder="Question <?php echo $_SESSION['questions'][$editquestionno-1]->questionno ?>" style="display:inline; width:70%; font-weight:bold">
 			<select name="type" style="width:45px;">
 				<option value="shortanswer" <?php if ($_SESSION['questions'][$editquestionno-1]->type == 'shortanswer' OR !isset($_SESSION['questions'][$editquestionno-1])){echo 'selected';} ?>>SA: Short Answer</option>
