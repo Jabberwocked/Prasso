@@ -21,7 +21,7 @@ else
 	<?php 
 	
 	/**
-	 * Set questionno to 1 if not set yet. (Specific for this test, i.e. not database related.)
+	 * Set questionno to 1 if not set yet.
 	 */
 	
 	if ($_SESSION['questionno'] == false)
@@ -136,14 +136,57 @@ else
 	/** 
 	 * Print questions
 	 */
-	
-	echo $_POST['edit'];
-	foreach ($_SESSION['questions'] as $question)
+	if (!isset($_POST['edit']))
 	{
-		$question->show();
-	};
-	
-	
+		foreach ($_SESSION['questions'] as $question)
+		{
+			$question->show();
+		};
+	}
+	if (isset($_POST['edit']))
+	{
+		$n = $_POST['edit'];
+		foreach ($_SESSION['questions'] as $key => $question)
+		{
+			if ($key + 1 < $n)
+			{
+				$question->show();
+			}
+		};
+		
+		?>
+		
+		
+		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+			<input type="text" name="question" value='<?php echo $_SESSION['questions'][$n-1]; ?>' placeholder="Question <?php echo $_SESSION['questionno']?>" style="display:inline; width:70%; font-weight:bold">
+			<select name="type" style="width:45px;">
+				<option value="shortanswer" selected>SA: Short Answer</option>
+				<option value="multichoice">MC: Multiple Choice</option>
+			</select> 
+			<input type="text" name="answers[]" class="answers" placeholder="Answer 1" style="display:inline; width:60%">
+			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
+			<button type="submit" name="action" value="addquestion" style="width:5em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Add</button><br>
+		</form>
+		<br>
+		<br>
+		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+		<input type="text" name="testname" placeholder="Give your test a name." style="display:inline; width:55%">
+		<button type="submit" name="action" value="save" style="width:4em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Save</button>
+		<button type="submit" name="action" value="deleteall" style="width:5em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Delete</button>
+		</form>
+		
+		
+		
+		<?php 
+		
+		foreach ($_SESSION['questions'] as $key => $question)
+		{
+			if ($key + 1 > $n)
+			{
+				$question->show();
+			}
+		};
+	}
 	
 	
 	/** 
