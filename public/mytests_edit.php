@@ -173,9 +173,9 @@ else
     	var answernojs = <?php echo json_encode($answerno); ?>;
 		</script>	
 			
-			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
+			<button type="button" id="addOption" value="Add" >+</button> 
 			
-			<button type="submit" name="action" value="savequestion" style="width:5em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Save</button><br>
+			<button type="submit" name="action" value="savequestion" >Save</button><br>
 		</form>
 				
 		
@@ -199,12 +199,12 @@ else
 	
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 		<?php if($questionno != count($_SESSION['questions']) + 1){ ?>
-		<button type="submit" name="edit" value="<?php echo count($_SESSION['questions']) + 1 ?>" style="width:4em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Add</button>
+		<button type="submit" name="edit" value="<?php echo count($_SESSION['questions']) + 1 ?>" >Add</button>
 		<?php } ?>
 		<br>
 		<br>
 		<input type="text" name="testname" placeholder="Give your test a name." style="display:inline; width:55%">
-		<button type="submit" name="action" value="save" style="width:4em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Save</button>
+		<button type="submit" name="action" value="save" >Save</button>
 		<button type="submit" name="action" value="deleteall" >Delete</button>
 		</form>
 		<br>
