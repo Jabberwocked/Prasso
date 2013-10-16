@@ -138,15 +138,15 @@ else
 	 */
 	if (!isset($_POST['edit']))
 	{
-		$questionno = 99;
+		$editquestionno = 99;
 	}
 	if (isset($_POST['edit']))
 	{
-		$questionno = $_POST['edit'];
+		$editquestionno = $_POST['edit'];
 	}
 	foreach ($_SESSION['questions'] as $key => $question)
 	{
-		if ($key + 1 < $questionno)
+		if ($key + 1 < $editquestionno)
 		{
 			$question->show();
 		}
@@ -171,7 +171,7 @@ else
 		
 		foreach ($_SESSION['questions'] as $key => $question)
 		{
-			if ($key + 1 > $questionno)
+			if ($key + 1 > $editquestionno)
 			{
 				$question->show();
 			}
