@@ -221,7 +221,7 @@ input:valid {
 }
 
 input[type="submit"],input[type="button"],button {
-	display: inline;
+	display: inline-block;
 	margin: 0px 5px;
 	margin-left: 20px;
 	padding:0; 
