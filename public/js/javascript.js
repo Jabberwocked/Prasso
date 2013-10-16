@@ -15,13 +15,14 @@ $(document).ready(function(){
 	 * Used in mytests_new to add fields to the form
  	 */
 	 
+	var $answernojs = $answerno;
 	
 	$("#addOption").click (function(){
-//		$answerno ++;  
+		$answernojs ++;  
 		$("<input type='text' value='' style='display:inline; width:60%' />")
 		 .attr("name", "answers[]")
 		 .attr("class", "answers")
-//		 .attr("placeholder", "Answer " + $answerno)
+		 .attr("placeholder", "Answer " + $answernojs)
 	     .insertAfter(".answers:last");
 	});
 		
