@@ -205,9 +205,9 @@ form *:focus {
 }
 
 /* Display correctly filled-in fields with a green background */
-input:valid {
-	background: #efe;
-}
+/* input:valid { */
+/* 	background: #efe; */
+/* } */
 
 /* Submit buttons */
 .buttons {
