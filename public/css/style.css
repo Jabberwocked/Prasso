@@ -240,10 +240,12 @@ input[type="submit"],input[type="button"],button {
 input[type="submit"]:hover,input[type="submit"]:active,input[type="button"]:hover,input[type="button"]:active,button:hover,button:active
 	{
 	outline: none;
+	border:0;
 	border-bottom: 2px solid #eee; /* Bottom border style on hover */
 }
 
 input[type="button"]:active,input[type="button"]:active,button:active {
 	outline: none;
+	border:0;
 	border-bottom: 2px solid #eee; /* Bottom border style on hover */
 }
