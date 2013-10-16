@@ -156,21 +156,7 @@ nav a:hover,nav a:focus {
 	-webkit-border-radius: 10px 10px 10px 10px;
 }
 
-/* Form height, margin, padding */
-form ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-form ul li {
-	margin: .9em 0 0 0;
-	padding: 0;
-}
-
-form * {
-	line-height: 1em;
-}
+/* Form */
 
 /* field labels */
 label {
@@ -198,24 +184,9 @@ input {
 	width: 80%;
 }
 
-/* Place a border around focused fields */
-form *:focus {
-/* 	border: 2px solid #7c412b; */
-	outline: none;
-}
-
-/* Display correctly filled-in fields with a green background */
-/* input:valid { */
-/* 	background: #efe; */
-/* } */
-
 /* Submit buttons */
-.buttons {
-	text-align: center;
-	margin: 20px 0 0 -80px;
-}
 
-input[type="submit"],input[type="button"],button {
+button, input[type="submit"],input[type="button"] {
 	cursor:pointer;
 	font-size:16px;
 	display: inline-block;
@@ -233,15 +204,11 @@ input[type="submit"],input[type="button"],button {
 	text-align:left; 
 }
 
-input[type="submit"]:hover,input[type="submit"]:active,input[type="button"]:hover,input[type="button"]:active,button:hover,button:active
+button:hover,button:active, input[type="submit"]:hover,input[type="submit"]:active,input[type="button"]:hover,input[type="button"]:active
 	{
 	outline: none;
 	border:0;
 	border-bottom: 2px solid #eee; /* Bottom border style on hover */
 }
 
-input[type="button"]:active,input[type="button"]:active,button:active {
-	outline: none;
-	border:0;
-	border-bottom: 2px solid #eee; /* Bottom border style on hover */
-}
+
