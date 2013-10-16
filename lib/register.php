@@ -3,7 +3,7 @@
 
 
 	<div id="main-wrapper">
-		<div id="register-wrapper">
+		<div id="login-wrapper">
 			<form method="post" action="">
 				<label for="usn">Username : </label> 
 				<input type="text" id="usn" maxlength="30" required autofocus name="username" />
