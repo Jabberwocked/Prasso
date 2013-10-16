@@ -152,11 +152,12 @@ else
 		}
 	};
 		
+	echo $_SESSION['questions'][$n-1]->questionno
 		?>
 		
 		
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-			<input type="text" name="question" value='<?php echo $_SESSION['questions'][$n-1]->question ?>' placeholder="Question <?php echo $_SESSION['questions'][$n-1]->questionno?>" style="display:inline; width:70%; font-weight:bold">
+			<input type="text" name="question" value='<?php echo $_SESSION['questions'][$n-1]->question ?>' placeholder="Question <?php echo $_SESSION['questions'][$n-1]->questionno ?>" style="display:inline; width:70%; font-weight:bold">
 			<select name="type" style="width:45px;">
 				<option value="shortanswer" <?php if ($_SESSION['questions'][$n-1]->type == 'shortanswer' OR !isset($_SESSION['questions'][$n-1])){echo 'selected';} ?>>SA: Short Answer</option>
 				<option value="multichoice" <?php if ($_SESSION['questions'][$n-1]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
