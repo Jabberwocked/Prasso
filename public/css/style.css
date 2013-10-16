@@ -272,14 +272,11 @@ input[type="submit"],input[type="button"],button {
 
 input[type="submit"]:hover,input[type="submit"]:active,input[type="button"]:hover,input[type="button"]:active,button:hover,button:active
 	{
-	cursor: pointer;
-	background: #fff;
-	color: #614051;
+	outline: none;
+	border-bottom: 2px solid #eee; Bottom border style on hover
 }
 
 input[type="button"]:active,input[type="button"]:active,button:active {
-	background: #eee;
-	-moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
-	-webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
-	box-shadow: 0 0 .5em rgba(0, 0, 0, .8) inset;
+	outline: none;
+	border-bottom: 2px solid #eee; Bottom border style on hover
 }
