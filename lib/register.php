@@ -5,21 +5,14 @@
 	<div id="main-wrapper">
 		<div id="register-wrapper">
 			<form method="post" action="">
-				<ul>
-					<li><label for="usn">Username : </label> <input type="text"
-						id="usn" maxlength="30" required autofocus name="username" /></li>
-
-					<li><label for="passwd">Password : </label> <input type="password"
-						id="passwd" maxlength="30" required name="password" /></li>
-
-					<li><label for="conpasswd">Confirm Password : </label> <input
-						type="password" id="conpasswd" maxlength="30" required
-						name="conpassword" /></li>
-					<li class="buttons"><input type="submit" name="register"
-						value="Register" /> <input type="button" name="cancel"
-						value="Cancel" onclick="location.href='index.php'" /></li>
-
-				</ul>
+				<label for="usn">Username : </label> 
+				<input type="text" id="usn" maxlength="30" required autofocus name="username" />
+				<label for="passwd">Password : </label> 
+				<input type="password" id="passwd" maxlength="30" required name="password" />
+				<label for="conpasswd">Confirm Password : </label> 
+				<input type="password" id="conpasswd" maxlength="30" required name="conpassword" />
+				<input type="submit" name="register" value="Register" /> |
+				<input type="button" name="cancel" value="Cancel" onclick="location.href='index.php'" />
 			</form>
 		</div>
 	</div>
