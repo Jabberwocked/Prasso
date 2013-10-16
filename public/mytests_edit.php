@@ -154,11 +154,18 @@ else
 			</select> 
 			
 		<?php 
+		$amountanswers = 0;
 		foreach ($_SESSION['questions'][$questionno-1]->answers as $answer)
 		{ ?>
 			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer 1" style="display:inline; width:60%">
 		<?php 
-		} ?>	
+		}
+		if ($amountanswers == 0)
+		{ ?>
+			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer 1" style="display:inline; width:60%">
+		<?php 
+		}
+		?>	
 			
 			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
 			
