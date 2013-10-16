@@ -173,7 +173,7 @@ else
     	var answernojs = <?php echo json_encode($answerno); ?>;
 		</script>	
 			
-			<button type="button" id="addOption" value="Add" >+</button> 
+			<button type="button" id="addOption" value="Add" >+</button> |
 			
 			<button type="submit" name="action" value="savequestion" >Save</button><br>
 		</form>
