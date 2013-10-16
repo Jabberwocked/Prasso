@@ -158,13 +158,13 @@ else
 		foreach ($_SESSION['questions'][$questionno-1]->answers as $answer)
 		{ 
 		?>
-			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $amountanswers ?>" style="display:inline; width:60%">
+			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
 		<?php 
 		$answerno ++;
 		}
 		if ($answerno == 1)
 		{ ?>
-			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $amountanswers ?>" style="display:inline; width:60%">
+			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
 		<?php 
 		}
 		?>	
