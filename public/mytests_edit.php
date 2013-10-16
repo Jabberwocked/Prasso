@@ -140,6 +140,7 @@ else
 	{
 		$editquestionno = count($_SESSION['questions']) + 1;
 	}
+	echo $editquestionno;
 	if (isset($_POST['edit']))
 	{
 		$editquestionno = $_POST['edit'];
