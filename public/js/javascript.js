@@ -14,15 +14,14 @@ $(document).ready(function(){
 	/**
 	 * Used in mytests_new to add fields to the form
  	 */
-	
-	var $answerno = 1;  
+	 
 	
 	$("#addOption").click (function(){
 		$amountanswers ++;  
 		$("<input type='text' value='' style='display:inline; width:60%' />")
 		 .attr("name", "answers[]")
 		 .attr("class", "answers")
-		 .attr("placeholder", "Answer " + $amountanswers)
+		 .attr("placeholder", "Answer " + $answerno)
 	     .insertAfter(".answers:last");
 	});
 		

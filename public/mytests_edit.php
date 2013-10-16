@@ -154,15 +154,15 @@ else
 			</select> 
 			
 		<?php 
-		$amountanswers = 0;
+		$answerno = 1;
 		foreach ($_SESSION['questions'][$questionno-1]->answers as $answer)
 		{ 
-		$amountanswers ++;
 		?>
 			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $amountanswers ?>" style="display:inline; width:60%">
 		<?php 
+		$answerno ++;
 		}
-		if ($amountanswers == 0)
+		if ($answerno == 1)
 		{ ?>
 			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $amountanswers ?>" style="display:inline; width:60%">
 		<?php 
