@@ -33,7 +33,7 @@ class question {
 	function show()
 	{
 		echo "<form><button style='width:auto; height:auto; margin:0; padding:0; border: 0; " ;
-		echo "background:none; color:#666; text-decoration:underline;'>";
+		echo "background:none; color:#666; text-decoration:underline; text-align:left'>";
 		echo "<p style='font-weight:bold'>" . $this->questionno . " " . $this->question ;
 		echo " <span style='font-weight:normal'> (" . $this->typeshort . ")</span></p>";
 		
