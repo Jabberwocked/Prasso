@@ -47,12 +47,12 @@ class question {
 			border-radius: 0px;
 			-moz-box-shadow: 0;
 			-webkit-box-shadow: 0;
-			box-shadow: 0;
+			box-shadow: none;
 			-webkit-appearance: none;'>
 		<p style='font-weight:bold'>
 		<?php echo $this->questionno . " " . $this->question ; ?>
 		<span style='font-weight:normal'> (
-		<?php $this->typeshort ?>
+		<?php echo $this->typeshort ?>
 		)</span></p>
 		<?php ;
 		echo "<p>Answers: " ;
