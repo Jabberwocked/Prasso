@@ -156,7 +156,7 @@ else
 		
 		
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-			<input type="text" name="question" value='<?php echo $_SESSION['questions'][$n-1]->question ?>' placeholder="Question <?php echo $_SESSION['questionno']?>" style="display:inline; width:70%; font-weight:bold">
+			<input type="text" name="question" value='<?php echo $_SESSION['questions'][$n-1]->question ?>' placeholder="Question <?php echo $_SESSION['questions'][$n-1]->questionno?>" style="display:inline; width:70%; font-weight:bold">
 			<select name="type" style="width:45px;">
 				<option value="shortanswer" <?php if ($_SESSION['questions'][$n-1]->type == 'shortanswer' OR !isset($_SESSION['questions'][$n-1])){echo 'selected';} ?>>SA: Short Answer</option>
 				<option value="multichoice" <?php if ($_SESSION['questions'][$n-1]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
@@ -185,9 +185,10 @@ else
 	
 	?>		
 	
-		<br>
-		<br>
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+		<button type="submit" name="edit" value="99" style="width:4em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Add</button>
+		<br>
+		<br>
 		<input type="text" name="testname" placeholder="Give your test a name." style="display:inline; width:55%">
 		<button type="submit" name="action" value="save" style="width:4em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Save</button>
 		<button type="submit" name="action" value="deleteall" style="width:5em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Delete</button>
