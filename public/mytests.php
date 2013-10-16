@@ -65,11 +65,10 @@ else
 			<td><?php echo $labels ?></td>
 			<td>
 				<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-				<button type="submit" name="editquestion" value="<?php echo $testid ?>" >
-				Take</button>
-				<a href='mytests_edit.php' style='font-size: small; margin: 0px 2px'>Edit</a>
-				<a href='' style='font-size: small; margin: 0px 2px'>Results</a>
-				<a href='' style='font-size: small; margin: 0px 2px'>Administer</a>
+				<button type="submit" name="editquestion" value="<?php echo $testid ?>" >Take</button> |
+				<button type="submit" name="" value="<?php echo $testid ?>" >Edit</button> |
+				<button type="submit" name="" value="<?php echo $testid ?>" >Results</button> |
+				<button type="submit" name="" value="<?php echo $testid ?>" >Administer</button> |
 			</nav></td>
 			<!--		<a href=''>Discuss</a>			-->
 			</tr>
