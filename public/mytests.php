@@ -65,24 +65,7 @@ else
 			<td><?php echo $labels ?></td>
 			<td>
 				<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-				<button type="submit" name="editquestion" value="<?php echo $testid ?>" style='
-					width:auto; 
-					height:auto; 
-					margin:0; 
-					padding:0; 
-					border: 0;
-					background:none; 
-					color:#666; 
-					text-align:left; 
-					-moz-border-radius: 0px;
-					-webkit-border-radius: 0px;
-					border-radius: 0px;
-					-moz-box-shadow: 0;
-					-webkit-box-shadow: 0;
-					box-shadow: none;
-					-webkit-appearance: none;
-					text-transform: none;
-					letter-spacing: 1px;'>
+				<button type="submit" name="editquestion" value="<?php echo $testid ?>" >
 				Take</button>
 				<a href='mytests_edit.php' style='font-size: small; margin: 0px 2px'>Edit</a>
 				<a href='' style='font-size: small; margin: 0px 2px'>Results</a>
