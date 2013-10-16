@@ -205,7 +205,7 @@ else
 		<br>
 		<input type="text" name="testname" placeholder="Give your test a name." style="display:inline; width:55%">
 		<button type="submit" name="action" value="save" style="width:4em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Save</button>
-		<br><button type="submit" name="action" value="deleteall" style="width:5em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Delete</button>
+		<button type="submit" name="action" value="deleteall" style="width:5em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Delete</button>
 		</form>
 		<br>
 		<br>
