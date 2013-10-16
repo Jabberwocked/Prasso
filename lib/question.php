@@ -32,9 +32,10 @@ class question {
 
 	function show()
 	{
-		echo "<form><p style='font-weight:bold'>" . $this->questionno . " " . $this->question ;
-		echo " <span style='font-weight:normal'> (" . $this->typeshort ;
-		echo ") - <button style='width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;'>e<p style='font-style:italic'>d</p></button></span></p>";
+		echo "<form><button style='width:auto; height:auto; margin:0; padding:0; border: 0; " ;
+		echo "background:none; color:#666; text-decoration:underline;'>";
+		echo "<p style='font-weight:bold'>" . $this->questionno . " " . $this->question ;
+		echo " <span style='font-weight:normal'> (" . $this->typeshort . ")</span></p>";
 		
 		echo "<p>Answers: " ;
 		$n = 1;
@@ -47,7 +48,7 @@ class question {
     	$n ++;
 		echo $answer;
 		}
-		echo "</form><br><br>";
+		echo "</button></form><br><br>";
 	}
 }
 
