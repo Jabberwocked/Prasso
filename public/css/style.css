@@ -216,7 +216,7 @@ input:valid {
 }
 
 input[type="submit"],input[type="button"],button {
-	font-size: .5em;
+	font-size: small;
 	display: inline-block;
 	margin: 0;
 	padding:0; 
