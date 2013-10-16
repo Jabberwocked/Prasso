@@ -55,7 +55,7 @@ class question {
 		<?php echo $this->typeshort ?>
 		)</span></p>
 		<?php ;
-		echo "<p style='font-weight:regular'>Answers: " ;
+		echo "<p style='font-weight:normal'>Answers: " ;
 		$n = 1;
 		foreach($this->answers as $answer) 
 		{
