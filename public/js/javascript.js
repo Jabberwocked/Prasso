@@ -17,7 +17,7 @@ $(document).ready(function(){
 	 
 	
 	$("#addOption").click (function(){
-		$amountanswers ++;  
+		$answerno ++;  
 		$("<input type='text' value='' style='display:inline; width:60%' />")
 		 .attr("name", "answers[]")
 		 .attr("class", "answers")
