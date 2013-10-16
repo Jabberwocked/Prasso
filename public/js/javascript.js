@@ -17,11 +17,11 @@ $(document).ready(function(){
 	 
 	
 	$("#addOption").click (function(){
-		$answerno ++;  
+//		$answerno ++;  
 		$("<input type='text' value='' style='display:inline; width:60%' />")
 		 .attr("name", "answers[]")
 		 .attr("class", "answers")
-		 .attr("placeholder", "Answer " + $answerno)
+//		 .attr("placeholder", "Answer " + $answerno)
 	     .insertAfter(".answers:last");
 	});
 		
