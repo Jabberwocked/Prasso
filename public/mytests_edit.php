@@ -184,16 +184,7 @@ else
 	 */
 	
 	?>		
-		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-			<input type="text" name="question" placeholder="Question <?php echo $_SESSION['questionno']?>" style="display:inline; width:70%; font-weight:bold">
-			<select name="type" style="width:45px;">
-				<option value="shortanswer" selected>SA: Short Answer</option>
-				<option value="multichoice">MC: Multiple Choice</option>
-			</select> 
-			<input type="text" name="answers[]" class="answers" placeholder="Answer 1" style="display:inline; width:60%">
-			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
-			<button type="submit" name="action" value="addquestion" style="width:5em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Add</button><br>
-		</form>
+	
 		<br>
 		<br>
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
