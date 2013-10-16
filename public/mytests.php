@@ -22,13 +22,13 @@ else
 		<div
 			style="width: 800px; margin-left: auto; margin-right: auto; border: 1px dotted; padding: 20px 20px 100px 20px">
 			<table>
-				<th style="font-weight: bold; margin-bottom: 20px;">
+				<tr style="font-weight: bold; margin-bottom: 20px;">
 					<td>Test</td>
 					<td>Topic</td>
 					<td>Labels</td>
 					<td></td>
 					<td></td>
-				</th>
+				</tr>
 			
 <?php 
 
