@@ -20,14 +20,6 @@ else
 			
 	<?php 
 	
-	/**
-	 * Set questionno to 1 if not set yet.
-	 */
-	
-	if ($_SESSION['questionno'] == false)
-	{
-		$_SESSION['questionno'] = 1;
-	};
 	
 	
 	/**
@@ -41,7 +33,6 @@ else
 	if ($_POST['action'] == "deleteall")
 	{
 		$_SESSION['questions'] = array();
-		$_SESSION['questionno'] = 1;
 		
 		header("Location: mytests_edit.php");
 	}
@@ -53,7 +44,6 @@ else
 	elseif ($_POST['action'] == "savequestion")
 	{
 		$_SESSION['questions'][] = new question($_POST['questionno'], $_POST['question'], $_POST['type'], $_POST['answers']);
-		$_SESSION['questionno'] ++;
 	
 		header("Location: mytests_edit.php");
 	}
@@ -127,7 +117,6 @@ else
 		}	
 		
 		$_SESSION['questions'] = array();
-		$_SESSION['questionno'] = 1;
 		header("Location: mytests.php");
 	};
 	
@@ -138,15 +127,15 @@ else
 	 */
 	if (!isset($_POST['edit']))
 	{
-		$editquestionno = count($_SESSION['questions']) + 1;
+		$questionno = count($_SESSION['questions']) + 1;
 	}
 	if (isset($_POST['edit']))
 	{
-		$editquestionno = $_POST['edit'];
+		$questionno = $_POST['edit'];
 	}
 	foreach ($_SESSION['questions'] as $key => $question)
 	{
-		if ($key + 1 < $editquestionno)
+		if ($key + 1 < $questionno)
 		{
 			$question->show();
 		}
@@ -157,11 +146,11 @@ else
 		
 		
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-			<input type="hidden" name="questionno" value='<?php echo $editquestionno ?>'>
-			<input type="text" name="question" value='<?php echo $_SESSION['questions'][$editquestionno-1]->question ?>' placeholder="Question <?php echo $_SESSION['questions'][$editquestionno-1]->questionno ?>" style="display:inline; width:70%; font-weight:bold">
+			<input type="hidden" name="questionno" value='<?php echo $questionno ?>'>
+			<input type="text" name="question" value='<?php echo $_SESSION['questions'][$questionno-1]->question ?>' placeholder="Question <?php echo $_SESSION['questions'][$questionno-1]->questionno ?>" style="display:inline; width:70%; font-weight:bold">
 			<select name="type" style="width:45px;">
-				<option value="shortanswer" <?php if ($_SESSION['questions'][$editquestionno-1]->type == 'shortanswer' OR !isset($_SESSION['questions'][$editquestionno-1])){echo 'selected';} ?>>SA: Short Answer</option>
-				<option value="multichoice" <?php if ($_SESSION['questions'][$editquestionno-1]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
+				<option value="shortanswer" <?php if ($_SESSION['questions'][$questionno-1]->type == 'shortanswer' OR !isset($_SESSION['questions'][$questionno-1])){echo 'selected';} ?>>SA: Short Answer</option>
+				<option value="multichoice" <?php if ($_SESSION['questions'][$questionno-1]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
 			</select> 
 			<input type="text" name="answers[]" class="answers" placeholder="Answer 1" style="display:inline; width:60%">
 			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
@@ -173,7 +162,7 @@ else
 		
 	foreach ($_SESSION['questions'] as $key => $question)
 	{
-		if ($key + 1 > $editquestionno)
+		if ($key + 1 > $questionno)
 		{
 			$question->show();
 		}
