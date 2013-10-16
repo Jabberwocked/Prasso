@@ -47,10 +47,10 @@ else
 	}
 	
 	/**
-	 * ADD QUESTION to session
+	 * SAVE QUESTION to session
 	 */
 	
-	elseif ($_POST['action'] == "addquestion")
+	elseif ($_POST['action'] == "savequestion")
 	{
 		$_SESSION['questions'][] = new question($_SESSION['questionno'], $_POST['question'], $_POST['type'], $_POST['answers']);
 		$_SESSION['questionno'] ++;
@@ -138,7 +138,7 @@ else
 	 */
 	if (!isset($_POST['edit']))
 	{
-		$editquestionno = 99;
+		$editquestionno = count($_SESSION['questions']) + 1;
 	}
 	if (isset($_POST['edit']))
 	{
@@ -157,6 +157,7 @@ else
 		
 		
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+			<input type="hidden" name="questionno" value='<?php echo $_SESSION['questions'][$editquestionno-1]->questionno ?>'>
 			<input type="text" name="question" value='<?php echo $_SESSION['questions'][$editquestionno-1]->question ?>' placeholder="Question <?php echo $_SESSION['questions'][$editquestionno-1]->questionno ?>" style="display:inline; width:70%; font-weight:bold">
 			<select name="type" style="width:45px;">
 				<option value="shortanswer" <?php if ($_SESSION['questions'][$editquestionno-1]->type == 'shortanswer' OR !isset($_SESSION['questions'][$editquestionno-1])){echo 'selected';} ?>>SA: Short Answer</option>
@@ -164,7 +165,7 @@ else
 			</select> 
 			<input type="text" name="answers[]" class="answers" placeholder="Answer 1" style="display:inline; width:60%">
 			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
-			<button type="submit" name="action" value="addquestion" style="width:5em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Add</button><br>
+			<button type="submit" name="action" value="savequestion" style="width:5em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Add</button><br>
 		</form>
 				
 		
