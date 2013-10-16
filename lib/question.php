@@ -32,11 +32,29 @@ class question {
 
 	function show()
 	{
-		echo "<form><button style='width:auto; height:auto; margin:0; padding:0; border: 0; " ;
-		echo "background:none; color:#666; text-decoration:underline; text-align:left'>";
-		echo "<p style='font-weight:bold'>" . $this->questionno . " " . $this->question ;
-		echo " <span style='font-weight:normal'> (" . $this->typeshort . ")</span></p>";
-		
+		?>
+		<form><button style='
+			width:auto; 
+			height:auto; 
+			margin:0; 
+			padding:0; 
+			border: 0;
+			background:none; 
+			color:#666; 
+			text-align:left; 
+			-moz-border-radius: 0px;
+			-webkit-border-radius: 0px;
+			border-radius: 0px;
+			-moz-box-shadow: 0;
+			-webkit-box-shadow: 0;
+			box-shadow: 0;
+			-webkit-appearance: none;'>
+		<p style='font-weight:bold'>
+		<?php echo $this->questionno . " " . $this->question ; ?>
+		<span style='font-weight:normal'> (
+		<?php $this->typeshort ?>
+		)</span></p>";
+		<?php ;
 		echo "<p>Answers: " ;
 		$n = 1;
 		foreach($this->answers as $answer) 
@@ -48,7 +66,9 @@ class question {
     	$n ++;
 		echo $answer;
 		}
-		echo "</button></form><br><br>";
+		?>
+		</button></form><br><br>
+		<?php 
 	}
 }
 
