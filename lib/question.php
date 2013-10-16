@@ -67,7 +67,7 @@ class question {
 		echo $answer;
 		}
 		?>
-		</button></form><br><br>
+		</button></form><br>
 		<?php 
 	}
 }
