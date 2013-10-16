@@ -169,14 +169,14 @@ else
 		
 		<?php 
 		
-		foreach ($_SESSION['questions'] as $key => $question)
+	foreach ($_SESSION['questions'] as $key => $question)
+	{
+		if ($key + 1 > $editquestionno)
 		{
-			if ($key + 1 > $editquestionno)
-			{
-				$question->show();
-			}
-		};
-	}
+			$question->show();
+		}
+	};
+	
 	
 	
 	/** 
