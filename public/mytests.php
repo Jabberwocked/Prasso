@@ -62,7 +62,7 @@ else
 			echo	"<td>" . $labels . "</td>";
 			echo	"<td><nav>";
 			echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Take</a>";
-			echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Edit</a>";
+			echo	"	<a href='mytests_edit.php' style='font-size: small; margin: 0px 2px'>Edit</a>";
 			echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Results</a>";
 			echo	"	<a href='' style='font-size: small; margin: 0px 2px'>Administer</a>";
 			echo	"</nav></td>";
