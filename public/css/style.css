@@ -222,8 +222,7 @@ input:valid {
 
 input[type="submit"],input[type="button"],button {
 	display: inline-block;
-	margin: 0px 0px;
-	margin-left: 20px;
+	margin: 0 0 0 0;
 	padding:0; 
 	border: 0;
 	font-family: 'Raleway', sans-serif;
