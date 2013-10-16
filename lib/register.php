@@ -11,8 +11,8 @@
 				<input type="password" id="passwd" maxlength="30" required name="password" />
 				<label for="conpasswd">Confirm Password : </label> 
 				<input type="password" id="conpasswd" maxlength="30" required name="conpassword" />
-				<input type="submit" name="register" value="Register" /> |
-				<input type="button" name="cancel" value="Cancel" onclick="location.href='index.php'" />
+				<button type="submit" name="register" value="Register" /> |
+				<button type="button" name="cancel" value="Cancel" onclick="location.href='index.php'" />
 			</form>
 		</div>
 	</div>
