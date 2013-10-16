@@ -137,6 +137,7 @@ else
 	 * Print questions
 	 */
 	
+	echo $_POST['edit'];
 	foreach ($_SESSION['questions'] as $question)
 	{
 		$question->show();
