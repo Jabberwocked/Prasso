@@ -50,7 +50,8 @@ class question {
 				-webkit-box-shadow: 0;
 				box-shadow: none;
 				-webkit-appearance: none;
-				text-transform: none;'>
+				text-transform: none;
+				letter-spacing: normal;'>
 					<p style='font-weight:bold'>
 					<?php echo $this->questionno . " " . $this->question ; ?>
 					<span style='font-weight:normal'>
