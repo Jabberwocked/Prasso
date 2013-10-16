@@ -53,9 +53,9 @@ class question {
 				text-transform: none;'>
 					<p style='font-weight:bold'>
 					<?php echo $this->questionno . " " . $this->question ; ?>
-					<span style='font-weight:normal'> (
-					<?php echo $this->typeshort ?>
-					)</span></p>
+					<span style='font-weight:normal'>
+					(<?php echo $this->typeshort ?>)
+					</span></p>
 					<?php ;
 					echo "<p style='font-weight:normal'>Answers: " ;
 					$n = 1;
