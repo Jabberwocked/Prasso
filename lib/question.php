@@ -53,7 +53,7 @@ class question {
 		<?php echo $this->questionno . " " . $this->question ; ?>
 		<span style='font-weight:normal'> (
 		<?php $this->typeshort ?>
-		)</span></p>";
+		)</span></p>
 		<?php ;
 		echo "<p>Answers: " ;
 		$n = 1;
