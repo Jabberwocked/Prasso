@@ -169,7 +169,7 @@ form ul li {
 }
 
 form * {
-	line-height: 1em;
+/* 	line-height: 1em; */
 }
 
 /* field labels */
@@ -222,7 +222,7 @@ input:valid {
 
 input[type="submit"],input[type="button"],button {
 	display: inline;
-	margin: 10px 20px;
+	margin: 0px 5px;
 	margin-left: 20px;
 	padding:0; 
 	border: 0;
@@ -239,37 +239,6 @@ input[type="submit"],input[type="button"],button {
 	text-transform: uppercase;
 	background:none;
 	text-align:left; 
-
-	
-	
-	
-	
-	 
-/* 	color:#666;  */
-/* 	text-align:left;  */
-/* 	-moz-border-radius: 0px; */
-/* 	-webkit-border-radius: 0px; */
-/* 	border-radius: 0px; */
-/* 	-moz-box-shadow: 0; */
-/* 	-webkit-box-shadow: 0; */
-/* 	box-shadow: none; */
-/* 	-webkit-appearance: none;'> */
-/* 	} */
-
-/* input[type="submit"]:hover,input[type="submit"]:active,input[type="button"]:hover,input[type="button"]:active,button:hover,button:active */
-/* 	{ */
-/* 	outline: none; */
-/* 	border-bottom: 2px solid #eee; Bottom border style on hover */
-/* } */
-
-/* input[type="button"]:active,input[type="button"]:active,button:active { */
-/* 	outline: none; */
-/* 	border-bottom: 2px solid #eee; Bottom border style on hover */
-/* } */
-
-
-
-
 }
 
 input[type="submit"]:hover,input[type="submit"]:active,input[type="button"]:hover,input[type="button"]:active,button:hover,button:active
