@@ -222,11 +222,10 @@ input:valid {
 
 input[type="submit"],input[type="button"],button {
 	display: inline-block;
-	margin: 0px 5px;
+	margin: 0px 0px;
 	margin-left: 20px;
 	padding:0; 
 	border: 0;
-	height: 100px;
 	font-family: 'Raleway', sans-serif;
 	/* font style (uses Google fonts) */
 	font-size: 22px;
