@@ -15,7 +15,7 @@ $(document).ready(function(){
 	 * Used in mytests_new to add fields to the form
  	 */
 	
-	var $answernojs = 1;
+	var $answernojs = $_SESSION['answerno'];
 	
 	$("#addOption").click (function(){
 		$answernojs ++;  
