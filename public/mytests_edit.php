@@ -177,7 +177,9 @@ else
 	?>		
 	
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+		<?php if($questionno == count($_SESSION['questions']) + 1){ ?>
 		<button type="submit" name="edit" value="99" style="width:4em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Add</button>
+		<?php } ?>
 		<br>
 		<br>
 		<input type="text" name="testname" placeholder="Give your test a name." style="display:inline; width:55%">
