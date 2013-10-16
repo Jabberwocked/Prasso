@@ -152,7 +152,7 @@ else
 		}
 	};
 		
-	echo $_SESSION['questions'][$n-1]->questionno
+	echo $_SESSION['questions'][$n-1]->question;
 		?>
 		
 		
