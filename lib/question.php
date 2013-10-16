@@ -32,7 +32,10 @@ class question {
 
 	function show()
 	{
-		echo "<p style='font-weight:bold'>" . $this->questionno . " " . $this->question . " <span style='font-weight:normal'> (" . $this->typeshort . ")</span></p>";
+		echo "<p style='font-weight:bold'>" . $this->questionno . " " . $this->question ;
+		echo " <span style='font-weight:normal'> (" . $this->typeshort ;
+		echo ") - <a href=''>edit</a></span></p>";
+		
 		echo "<p>Answers: " ;
 		$n = 1;
 		foreach($this->answers as $answer) 
