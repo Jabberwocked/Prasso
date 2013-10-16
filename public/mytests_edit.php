@@ -159,12 +159,12 @@ else
 		{ 
 		$amountanswers ++;
 		?>
-			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="<?php echo $amountanswers ?>" style="display:inline; width:60%">
+			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $amountanswers ?>" style="display:inline; width:60%">
 		<?php 
 		}
 		if ($amountanswers == 0)
 		{ ?>
-			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer 1" style="display:inline; width:60%">
+			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $amountanswers ?>" style="display:inline; width:60%">
 		<?php 
 		}
 		?>	
