@@ -169,7 +169,7 @@ form ul li {
 }
 
 form * {
-/* 	line-height: 1em; */
+	line-height: 1em;
 }
 
 /* field labels */
@@ -227,7 +227,7 @@ input[type="submit"],input[type="button"],button {
 	padding:0; 
 	border: 0;
 	width:auto; 
-	height:auto;
+/* 	height:auto; */
 	padding: 10px;
 	font-family: 'Raleway', sans-serif;
 	/* font style (uses Google fonts) */
