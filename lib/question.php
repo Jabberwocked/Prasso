@@ -34,7 +34,7 @@ class question {
 	{
 		echo "<p style='font-weight:bold'>" . $this->questionno . " " . $this->question ;
 		echo " <span style='font-weight:normal'> (" . $this->typeshort ;
-		echo ") - <form><button>edit</button></form></span></p>";
+		echo ") - <form><button style='display: inline; height:2em; width:2em'>edit</button></form></span></p>";
 		
 		echo "<p>Answers: " ;
 		$n = 1;
