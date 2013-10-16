@@ -154,9 +154,7 @@ else
 		
 		?>
 		
-		lala
 		
-		<!-- 
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 			<input type="text" name="question" value='<?php echo $_SESSION['questions'][$n-1]->question ?>' placeholder="Question <?php echo $_SESSION['questionno']?>" style="display:inline; width:70%; font-weight:bold">
 			<select name="type" style="width:45px;">
@@ -167,13 +165,13 @@ else
 			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
 			<button type="submit" name="action" value="addquestion" style="width:5em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Add</button><br>
 		</form>
-		-->		
+				
 		
 		<?php 
 		
 		foreach ($_SESSION['questions'] as $key => $question)
 		{
-			if ($key + 1 > $n)
+			if ($key + 1 > $questionno)
 			{
 				$question->show();
 			}
