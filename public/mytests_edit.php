@@ -138,21 +138,19 @@ else
 	 */
 	if (!isset($_POST['edit']))
 	{
-		foreach ($_SESSION['questions'] as $question)
-		{
-			$question->show();
-		};
+		$questionno = 99;
 	}
 	if (isset($_POST['edit']))
 	{
-		$n = $_POST['edit'];
-		foreach ($_SESSION['questions'] as $key => $question)
+		$questionno = $_POST['edit'];
+	}
+	foreach ($_SESSION['questions'] as $key => $question)
+	{
+		if ($key + 1 < $questionno)
 		{
-			if ($key + 1 < $n)
-			{
-				$question->show();
-			}
-		};
+			$question->show();
+		}
+	};
 		
 		?>
 		
@@ -160,8 +158,8 @@ else
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 			<input type="text" name="question" value='<?php echo $_SESSION['questions'][$n-1]->question ?>' placeholder="Question <?php echo $_SESSION['questionno']?>" style="display:inline; width:70%; font-weight:bold">
 			<select name="type" style="width:45px;">
-				<option value="shortanswer" selected>SA: Short Answer</option>
-				<option value="multichoice">MC: Multiple Choice</option>
+				<option value="shortanswer" <?php if ($_SESSION['questions'][$n-1]->type == 'shortanswer' OR !isset($_SESSION['questions'][$n-1])){echo 'selected';} ?>>SA: Short Answer</option>
+				<option value="multichoice" <?php if ($_SESSION['questions'][$n-1]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
 			</select> 
 			<input type="text" name="answers[]" class="answers" placeholder="Answer 1" style="display:inline; width:60%">
 			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
