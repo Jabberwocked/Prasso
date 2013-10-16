@@ -154,7 +154,7 @@ else
 			</select> 
 			<input type="text" name="answers[]" class="answers" placeholder="Answer 1" style="display:inline; width:60%">
 			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
-			<button type="submit" name="action" value="savequestion" style="width:5em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Add</button><br>
+			<button type="submit" name="action" value="savequestion" style="width:5em; height:2.5em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0;">Save</button><br>
 		</form>
 				
 		
