@@ -155,7 +155,7 @@ else
 			
 		<?php 
 		$answerno = 1; 
-		$_SESSION['answerno'] = 88; // variable needs to be available for javascript
+		
 		foreach ($_SESSION['questions'][$questionno-1]->answers as $answer)
 		{ 
 		?>
@@ -168,7 +168,10 @@ else
 			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
 		<?php 
 		}
-		?>	
+		?>
+		<script>
+    	var answernojs = <?php echo json_encode($answerno); ?>;
+		</script>	
 			
 			<button type="button" id="addOption" value="Add" style="width:2em; height:2em; margin:0 0 0 0; padding:0 0 0 0; border: 0 0 0 0; ">+</button> 
 			
