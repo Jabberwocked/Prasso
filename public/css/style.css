@@ -226,7 +226,7 @@ input[type="submit"],input[type="button"],button {
 	margin-left: 20px;
 	padding:0; 
 	border: 0;
-	height: 1em;
+	height: 10em;
 	font-family: 'Raleway', sans-serif;
 	/* font style (uses Google fonts) */
 	font-size: 22px;
