@@ -29,7 +29,7 @@ else
 					<td></td>
 					<td></td>
 				</tr>
-				<tr>da</tr>
+				<tr><td></td></tr>
 <?php 
 
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
