@@ -49,7 +49,8 @@ class question {
 				-moz-box-shadow: 0;
 				-webkit-box-shadow: 0;
 				box-shadow: none;
-				-webkit-appearance: none;'>
+				-webkit-appearance: none;
+				text-transform: none;'>
 					<p style='font-weight:bold'>
 					<?php echo $this->questionno . " " . $this->question ; ?>
 					<span style='font-weight:normal'> (
