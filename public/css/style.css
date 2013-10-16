@@ -227,6 +227,7 @@ input[type="submit"],input[type="button"],button {
 	padding:0; 
 	border: 0;
 	width:auto; 
+	vertical-align: bottom;
 /* 	height:auto; */
 	font-family: 'Raleway', sans-serif;
 	/* font style (uses Google fonts) */
