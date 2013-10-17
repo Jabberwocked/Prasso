@@ -1,5 +1,4 @@
 <?php
-include_once ("../config/config.php");
 
 // Start the session
 session_start();
@@ -16,7 +15,12 @@ if (isset($_SESSION['HTTP_USER_AGENT']))
 	}
 	else
 	{
-		// User is already logged in. Continue session.
+		// Continue session. Check if logged in.
+		if (!isset($_SESSION['username']))
+		{
+			header("Location:loginpage.php?location=" . urlencode($_SERVER['REQUEST_URI']));
+		
+		}
 	}
 }
 else
