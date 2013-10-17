@@ -17,7 +17,7 @@ if (isset($_POST['editquestion']))
 {
 	$testid = $_POST['editquestion'];
 
-	$_SESSION['questions'] = array();
+	$_SESSION['questionobjects'] = array();
 	
 	
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
@@ -48,7 +48,7 @@ if (isset($_POST['editquestion']))
 		$question = $questionobject['Question'];
 		$type = $questionobject['Type'];
 		$answers = "";
-		$_SESSION['questions'][] = new question($questionno, $question, $type, $answers);
+		$_SESSION['questionobjects'][] = new questionobject($questionno, $question, $type, $answers);
 		
 		
 		$questionno ++;
@@ -67,7 +67,7 @@ if (isset($_POST['editquestion']))
 
 if ($_POST['action'] == "deleteall")
 {
-	$_SESSION['questions'] = array();
+	$_SESSION['questionobjects'] = array();
 	
 	header("Location: mytests_edit.php");
 }
@@ -79,13 +79,13 @@ if ($_POST['action'] == "deleteall")
 
 elseif ($_POST['action'] == "savequestion")
 {
-	$_SESSION['questions'][$_POST['questionno']-1] = new question($_POST['questionno'], $_POST['question'], $_POST['type'], $_POST['answers']);
+	$_SESSION['questionobjects'][$_POST['questionno']-1] = new questionobject($_POST['questionno'], $_POST['question'], $_POST['type'], $_POST['answers']);
 
 	header("Location: mytests_edit.php");
 }
 
 /**
- * SAVE
+ * SAVE to database
  */
 
 elseif ($_POST['action'] == "save")
@@ -101,13 +101,13 @@ elseif ($_POST['action'] == "save")
 	{
 		echo "<p style='font-weight:bold'>" . $_POST['testname'] . "</p><br>";
 	/**
-	 * Save questions from SESSION to table QUESTIONS
+	 * Save questionobjects from SESSION to table QUESTIONS
 	 */
 		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 		
 		echo "<p style='color:green'>"; // set p style for echo in foreach
 		
-		foreach ($_SESSION['questions'] as $questionobject)
+		foreach ($_SESSION['questionobjects'] as $questionobject)
 		{
 			$question = $questionobject->question;
 			$type = $questionobject->type;
@@ -152,29 +152,29 @@ elseif ($_POST['action'] == "save")
 	
 	}	
 	
-	$_SESSION['questions'] = array();
+	$_SESSION['questionobjects'] = array();
 	header("Location: mytests.php");
 };
 
 
 
 /** 
- * Print questions
+ * Print questionobjects
  */
 
 if (!isset($_POST['edit']))
 {
-	$questionno = count($_SESSION['questions']) + 1;
+	$questionno = count($_SESSION['questionobjects']) + 1;
 }
 if (isset($_POST['edit']))
 {
 	$questionno = $_POST['edit'];
 }
-foreach ($_SESSION['questions'] as $key => $question)
+foreach ($_SESSION['questionobjects'] as $key => $questionobject)
 {
 	if ($key + 1 < $questionno)
 	{
-		$question->show();
+		$questionobject->show();
 	}
 };
 	
@@ -183,16 +183,16 @@ foreach ($_SESSION['questions'] as $key => $question)
 	
 <form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 	<input type="hidden" name="questionno" value='<?php echo $questionno ?>'>
-	<input type="text" name="question" value='<?php echo $_SESSION['questions'][$questionno-1]->question ?>' placeholder="Question <?php echo $questionno ?>" style="display:inline; width:70%; font-weight:bold">
+	<input type="text" name="question" value='<?php echo $_SESSION['questionobjects'][$questionno-1]->question ?>' placeholder="Question <?php echo $questionno ?>" style="display:inline; width:70%; font-weight:bold">
 		<select name="type" style="width:45px;">
-			<option value="shortanswer" <?php if ($_SESSION['questions'][$questionno-1]->type == 'shortanswer' OR !isset($_SESSION['questions'][$questionno-1])){echo 'selected';} ?>>SA: Short Answer</option>
-			<option value="multichoice" <?php if ($_SESSION['questions'][$questionno-1]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
+			<option value="shortanswer" <?php if ($_SESSION['questionobjects'][$questionno-1]->type == 'shortanswer' OR !isset($_SESSION['questionobjects'][$questionno-1])){echo 'selected';} ?>>SA: Short Answer</option>
+			<option value="multichoice" <?php if ($_SESSION['questionobjects'][$questionno-1]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
 		</select> 
 			
 <?php 
 	$answerno = 1; 
 	
-	foreach ($_SESSION['questions'][$questionno-1]->answers as $answer)
+	foreach ($_SESSION['questionobjects'][$questionno-1]->answers as $answer)
 	{ 
 ?>
 
@@ -218,7 +218,7 @@ foreach ($_SESSION['questions'] as $key => $question)
 		
 <?php 
 		
-foreach ($_SESSION['questions'] as $key => $question)
+foreach ($_SESSION['questionobjects'] as $key => $question)
 {
 	if ($key + 1 > $questionno)
 	{
@@ -235,8 +235,8 @@ foreach ($_SESSION['questions'] as $key => $question)
 ?>		
 	
 <form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-<?php if($questionno != count($_SESSION['questions']) + 1){ ?>
-	<button type="submit" name="edit" value="<?php echo count($_SESSION['questions']) + 1 ?>" >Add</button>
+<?php if($questionno != count($_SESSION['questionobjects']) + 1){ ?>
+	<button type="submit" name="edit" value="<?php echo count($_SESSION['questionobjects']) + 1 ?>" >Add</button>
 <?php } ?>
 	<br>
 	<br>

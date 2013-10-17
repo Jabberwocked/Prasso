@@ -6,7 +6,7 @@
  */
 
 
-class question {
+class questionobject {
 	public $questionno;
 	public $question;
 	public $type;
