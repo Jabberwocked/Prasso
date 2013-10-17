@@ -250,45 +250,54 @@ foreach ($_SESSION['questionobjects'] as $key => $questionobject)
 };
 	
 
+foreach ($_SESSION['questionobjects'] as $key => $questionobject)
+{
+	if ($key + 1 == $questionno)
+	{
 ?>
 	
-<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-	<input type="hidden" name="questionno" value='<?php echo $questionno ?>'>
-	<input type="text" name="question" value='<?php echo $_SESSION['questionobjects'][$questionno-1]->question ?>' placeholder="Question <?php echo $questionno ?>" style="display:inline; width:70%; font-weight:bold">
-		<select name="type" style="width:45px;">
-			<option value="shortanswer" <?php if ($_SESSION['questionobjects'][$questionno-1]->type == 'shortanswer' OR !isset($_SESSION['questionobjects'][$questionno-1])){echo 'selected';} ?>>SA: Short Answer</option>
-			<option value="multichoice" <?php if ($_SESSION['questionobjects'][$questionno-1]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
-		</select> 
-			
+	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+		<input type="hidden" name="questionno" value='<?php echo $questionno ?>'>
+		<input type="text" name="question" value='<?php echo $_SESSION['questionobjects'][$questionno-1]->question ?>' placeholder="Question <?php echo $questionno ?>" style="display:inline; width:70%; font-weight:bold">
+			<select name="type" style="width:45px;">
+				<option value="shortanswer" <?php if ($_SESSION['questionobjects'][$questionno-1]->type == 'shortanswer' OR !isset($_SESSION['questionobjects'][$questionno-1])){echo 'selected';} ?>>SA: Short Answer</option>
+				<option value="multichoice" <?php if ($_SESSION['questionobjects'][$questionno-1]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
+			</select> 
+				
 <?php 
-	$answerno = 1; 
+		
+		$answerno = 1; 
+		
+		foreach ($_SESSION['questionobjects'][$questionno-1]->answers as $answer)
+		{ 
+?>
 	
-	foreach ($_SESSION['questionobjects'][$questionno-1]->answers as $answer)
-	{ 
-?>
-
-	<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
+		<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
 <?php 
-	$answerno ++;
-	}
-	if ($answerno == 1)
-	{ ?>
-	<input type="text" name="answers[]" class="answers" placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
-<?php 
-	}
+		$answerno ++;
+		}
+		if ($answerno == 1)
+		{ 
 ?>
-	<script>
-	   	var answernojs = <?php echo json_encode($answerno); ?>;
-	</script>	
-			
-	<button type="button" id="addOption" value="Add" >+</button> |
-	<button type="submit" name="action" value="save" >Save</button><br>
-	<br>
-</form>
+		<input type="text" name="answers[]" class="answers" placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
+<?php 
+		}
+?>
+		<script>
+		   	var answernojs = <?php echo json_encode($answerno); ?>;
+		</script>	
+				
+		<button type="button" id="addOption" value="Add" >+</button> |
+		<button type="submit" name="action" value="save" >Save</button><br>
+		<br>
+	</form>
 				
 		
 <?php 
-		
+	}
+};
+
+
 foreach ($_SESSION['questionobjects'] as $key => $question)
 {
 	if ($key + 1 > $questionno)
