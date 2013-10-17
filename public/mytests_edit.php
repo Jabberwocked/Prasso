@@ -8,7 +8,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 
 
-{ ?>
+?>
 
 
 	<div style="margin-left: auto; margin-right: auto; width: 500px">
@@ -211,6 +211,6 @@ include_once (TEMPLATES_PATH . "/header.php");
 	</div>
 
 <?php
-} 
+
 include_once (TEMPLATES_PATH . "/footer.php");
 ?>
