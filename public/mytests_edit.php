@@ -30,18 +30,13 @@ if (isset($_POST['editquestion']))
 	}
 	$questionidsqry = "'".implode("','", $questionids)."'";
 	
-	
-
 	$sql2 = "SELECT * FROM Questions WHERE QuestionId IN (".$questionidsqry.")";
 	$result2 = $db->query($sql2);
-	print_r($result2);
 	
 	$questionno = 1;
 	
 	foreach ($result2 as $questionobject)
 	{
-		echo "<br><br>";
-		print_r($questionobject);
 				
 		$question = $questionobject['question'];
 		$type = $questionobject['type'];
@@ -50,8 +45,6 @@ if (isset($_POST['editquestion']))
 		
 		$questionno ++;
 	}
-	echo "<br><br>";
-	print_r($_SESSION['questions']);
 } 
 
 
