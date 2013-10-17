@@ -17,6 +17,7 @@ if (isset($_POST['editquestion']))
 {
 	$testid = $_POST['editquestion'];
 
+	$_SESSION['questions'] = array();
 	
 	
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
