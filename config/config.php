@@ -33,6 +33,10 @@ $config = array(
 include_once (LIBRARY_PATH . "user.php");
 include_once (LIBRARY_PATH . "question.php");
 
+
+// all pages that require login:
+$loginrequired = array("/mytests_edit.php", );
+
 // start or continue session (must come after classes)
 include_once (LIBRARY_PATH . "session.php");
 

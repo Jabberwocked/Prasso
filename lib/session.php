@@ -16,7 +16,7 @@ if (isset($_SESSION['HTTP_USER_AGENT']))
 	else
 	{
 		// Continue session. Check if logged in on certain pages.
-		$loginrequired[] = "/mytests_edit.php";
+		
 		if (in_array($_SERVER['REQUEST_URI'], $loginrequired))
 		{
 			if (!isset($_SESSION['username']))
