@@ -22,7 +22,9 @@ if (isset($_POST['editquestion']))
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 	$sql = "SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo";
 	$result = $db->query($sql);
-
+	
+	print_r($result);
+	
 	foreach ($result as $relation)
 	{
 		$questionids[] = $relation['QuestionId'];
