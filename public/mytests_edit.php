@@ -25,11 +25,11 @@ if (isset($_POST['editquestion']))
 
 	foreach ($result as $relation)
 	{
-		print_r($relation);
+		
 		$questionids[] = $relation['QuestionId'];
 		
 	}
-	
+	print_r($questionids);
 	
 	
 	$qry2 = $db->prepare("SELECT * FROM Questions WHERE QuestionId IN ".$questionids);
