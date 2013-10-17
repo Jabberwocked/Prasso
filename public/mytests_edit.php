@@ -29,13 +29,13 @@ if (isset($_POST['editquestion']))
 	{
 		$questionids[] = $relation['QuestionId'];
 	}
-	$questionidsqry = "'".implode("','", $questionids)."'";
-	
-	$sql2 = "SELECT * FROM Questions WHERE QuestionId IN (".$questionidsqry.")";
-	$result2 = $db->query($sql2);
+		
 	
 	foreach ($questionids as $questionid)
 	{
+		$sql2 = "SELECT * FROM Questions WHERE QuestionId=".$questionid;
+		$result2 = $db->query($sql2);
+		
 		$sql3 = "SELECT * FROM Answers WHERE QuestionId=".$questionid;
 		$result3 = $db->query($sql3);
 		
@@ -43,20 +43,21 @@ if (isset($_POST['editquestion']))
 		{
 			$answerarray[] = $answerobject['Answer'];
 		}	
+		
+		$questionno = 1;
+		foreach ($result2 as $questionobject)
+		{
+			$question = $questionobject['Question'];
+			$type = $questionobject['Type'];
+			$answers = $answerarray;
+			$_SESSION['questionobjects'][] = new questionobject($questionno, $question, $type, $answers);
+		
+			$questionno ++;
+		}
+		
 	}
 	
 	
-	$questionno = 1;
-	foreach ($result2 as $questionobject)
-	{
-		$question = $questionobject['Question'];
-		$type = $questionobject['Type'];
-		$answers = $answerarray;
-		$_SESSION['questionobjects'][] = new questionobject($questionno, $question, $type, $answers);
-		
-		
-		$questionno ++;
-	}
 } 
 
 
@@ -133,7 +134,6 @@ elseif ($_POST['action'] == "save")
 			$questionid = $questionids[$n];
 			foreach ($questionobject->answers as $answer)
 			{
-				print_r($answer);
 				$qry = $db->prepare("INSERT INTO Answers (QuestionId, Answer) VALUES (:questionid,:answer)");
 				$qry->execute(array(':questionid'=>$questionid,':answer'=>$answer));
 			}
