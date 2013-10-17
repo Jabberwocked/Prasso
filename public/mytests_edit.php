@@ -22,16 +22,12 @@ if (isset($_POST['editquestion']))
 	$sql = "SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo";
 	$result = $db->query($sql);
 
-	print_r($result);
-	foreach ($result as $print)
-	{
-		print_r($print);
-	}
-	
 	foreach ($result as $relation)
 	{
 		$questionids[] = $relation['QuestionId'];
 	}
+	
+	print_r($questionids);
 	
 	$qry2 = $db->prepare("SELECT * FROM Questions WHERE QuestionId IN ".$questionids);
 	$result2 = $qry->execute();
