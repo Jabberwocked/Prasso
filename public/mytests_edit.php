@@ -193,6 +193,7 @@ elseif ($_POST['action'] == "savetest")
  */
 
 echo $_SESSION['testname'];
+echo "lalala";
 
 if (!isset($_POST['edit']))
 {
