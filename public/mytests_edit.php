@@ -9,6 +9,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 <?php 
 	
 echo $_POST['editquestion'];
+echo "lala";
+print_r($_POST['editquestion']);
 
 /**
  * If a test is selected to edit, copy questions from db to session.
