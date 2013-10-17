@@ -34,7 +34,7 @@ if (isset($_POST['editquestion']))
 	
 	$qry2 = $db->prepare("SELECT * FROM Questions WHERE QuestionId IN ".$questionidsqry);
 	$result2 = $qry->execute();
-	
+	print_r($result2);
 	
 	foreach ($result2 as $questionobject)
 	{
