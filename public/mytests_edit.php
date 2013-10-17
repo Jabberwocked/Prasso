@@ -69,6 +69,7 @@ if ($_POST['action'] == "deleteall")
  * SAVE QUESTION to session
  */
 
+
 elseif ($_POST['action'] == "savequestion")
 {
 	$_SESSION['questions'][$_POST['questionno']-1] = new question($_POST['questionno'], $_POST['question'], $_POST['type'], $_POST['answers']);
@@ -153,6 +154,9 @@ elseif ($_POST['action'] == "save")
 /** 
  * Print questions
  */
+
+print_r($_SESSION['questions']);
+
 if (!isset($_POST['edit']))
 {
 	$questionno = count($_SESSION['questions']) + 1;
