@@ -34,8 +34,8 @@ include_once (LIBRARY_PATH . "user.php");
 include_once (LIBRARY_PATH . "question.php");
 
 
-// all pages that require login:
-$loginrequired = array("/mytests_edit.php", );
+// all pages that require login. Use in session.php.
+$loginrequired = array("/mytests.php", "/mytests_edit.php", "/results.php", "/profile.php" );
 
 // start or continue session (must come after classes)
 include_once (LIBRARY_PATH . "session.php");

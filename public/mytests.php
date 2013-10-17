@@ -2,33 +2,23 @@
 include_once ("../config/config.php");
 include_once (TEMPLATES_PATH . "/header.php");
 include_once (MENU_PATH . "/menu_mytests.php");
+?>
 
-
-
-if (!isset($_SESSION['username'])) 
-{ 
-header("Location:loginpage.php?location=" . urlencode($_SERVER['REQUEST_URI']));
-
-} 
-else 
-{ ?>
-
-		<style type="text/css">
-		td {
-			padding: 0px 10px
-		}
-		</style>
+<style type="text/css">
+td {
+	padding: 0px 10px
+}
+</style>
 		
-		<div
-			style="width: 800px; margin-left: auto; margin-right: auto; border: 1px dotted; padding: 20px 20px 100px 20px">
-			<table>
-				<tr style="font-weight: bold; margin-bottom: 20px;">
-					<td>Test</td>
-					<td>Topic</td>
-					<td>Labels</td>
-					<td></td>
-					<td></td>
-				</tr>
+<div style="width: 800px; margin-left: auto; margin-right: auto; border: 1px dotted; padding: 20px 20px 100px 20px">
+	<table>
+		<tr style="font-weight: bold; margin-bottom: 20px;">
+			<td>Test</td>
+			<td>Topic</td>
+			<td>Labels</td>
+			<td></td>
+			<td></td>
+		</tr>
 			
 <?php 
 
@@ -75,19 +65,14 @@ else
 		
 			</button>
 			</form>
-		<?php 
-		} ?>
-			
-		</table></div>
+	<?php 
+	} ?>
 		
-		<?php 
-	}
+	</table></div>
+	
+<?php 
 }
 
-?>
-	
-	
-	
-<?php
+
 include_once (TEMPLATES_PATH . "/footer.php");
 ?>
