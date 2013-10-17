@@ -23,7 +23,10 @@ if (isset($_POST['editquestion']))
 	$result = $db->query($sql);
 
 	print_r($result);
-	echo $result;
+	foreach ($result as $print)
+	{
+		print_r($print);
+	}
 	
 	foreach ($result as $relation)
 	{
