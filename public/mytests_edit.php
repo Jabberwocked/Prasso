@@ -40,6 +40,7 @@ if (isset($_POST['editquestion']))
 	{
 				
 		$question = $questionobject['question'];
+		print_r($question);
 		$type = $questionobject['type'];
 		$answers = $questionobject['answer'];
 		$_SESSION['questions'][] = new question($questionno, $question, $type, $answers);
