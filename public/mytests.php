@@ -53,9 +53,8 @@ td {
 			<td><?php echo $testname ?></td>
 			<td><?php echo $topic ?></td>
 			<td><?php echo $labels ?></td>
-			<td><?php echo $testid ?></td>
 			<td>
-				<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+				<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="get">
 				<button type="submit" name="editquestion" value="<?php echo $testid ?>" >Take</button> |
 				<button type="submit" name="" value="<?php echo $testid ?>" >Edit</button> |
 				<button type="submit" name="" value="<?php echo $testid ?>" >Results</button> |
