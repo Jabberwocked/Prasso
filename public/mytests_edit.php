@@ -252,7 +252,7 @@ foreach ($_SESSION['questionobjects'] as $key => $questionobject)
 
 foreach ($_SESSION['questionobjects'] as $key => $questionobject)
 {
-	if ($key + 1 == $questionno)
+	if ($key + 1 == $questionno OR $key + 1 == count($_SESSION['questionobjects']) + 1)
 	{
 ?>
 	
