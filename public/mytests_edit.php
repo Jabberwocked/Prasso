@@ -79,22 +79,27 @@ if ($_POST['action'] == "deleteall")
 }
 
 /**
- * SAVE QUESTION to session
+ * SAVE QUESTION or TEST NAME to session
  */
 
 
-elseif ($_POST['action'] == "savequestion")
-{
-	$_SESSION['questionobjects'][$_POST['questionno']-1] = new questionobject($_POST['questionno'], $_POST['question'], $_POST['type'], $_POST['answers']);
-
-	header("Location: mytests_edit.php");
-}
+elseif ($_POST['action'] == "save")
+	if (isset($_POST['testname']))
+	{
+		$_SESSION['testname'] = $_POST['testname'];
+	}
+	else 
+	{
+		$_SESSION['questionobjects'][$_POST['questionno']-1] = new questionobject($_POST['questionno'], $_POST['question'], $_POST['type'], $_POST['answers']);
+	
+		header("Location: mytests_edit.php");
+	}
 
 /**
  * SAVE to database
  */
 
-elseif ($_POST['action'] == "save")
+elseif ($_POST['action'] == "savetest")
 {
 	/**
 	 * Check if test name is given
@@ -148,7 +153,7 @@ elseif ($_POST['action'] == "save")
 		 * Save test to table TESTS
 		 */
 		
-		$TestName = $_POST['testname'];
+		$TestName = $_SESSION['testname'];
 		$UserId_Owner = $_SESSION['userid'];
 		$qry2 = $db->prepare("INSERT INTO Tests (TestName, UserId_Owner) VALUES (:TestName,:UserId_Owner)");
 		$qry2->execute(array(':TestName'=>$TestName,':UserId_Owner'=>$UserId_Owner));
@@ -190,10 +195,51 @@ if (!isset($_POST['edit']))
 {
 	$questionno = count($_SESSION['questionobjects']) + 1;
 }
-if (isset($_POST['edit']))
+if ($_POST['edit'] == 0)
+{
+?>	
+
+<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">	
+	<input type="text" name="testname" placeholder="Give your test a name." style="display:inline; width:55%">
+	<button type="submit" name="action" value="save" >Save</button>
+</form>
+
+<?php 
+}
+else
+{
+?>
+
+	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+		<button type="submit" name="edit" value="0" style='
+			width:auto; 
+			height:auto; 
+			margin:0; 
+			padding:0; 
+			border: 0;
+			background:none; 
+			color:#666; 
+			text-align:left; 
+			-moz-border-radius: 0px;
+			-webkit-border-radius: 0px;
+			border-radius: 0px;
+			-moz-box-shadow: 0;
+			-webkit-box-shadow: 0;
+			box-shadow: none;
+			-webkit-appearance: none;
+			text-transform: none;
+			letter-spacing: 1px;'>
+	
+			<p style='font-weight:bold'><?php if (isset($_SESSION['testname'])){ echo $_SESSION['testname']; } else { echo "Test name"; }; ?></p>
+		</button>	
+	</form>	
+<?php 
+}
+if (isset($_POST['edit']) AND $_POST['edit'] != 0)
 {
 	$questionno = $_POST['edit'];
 }
+
 foreach ($_SESSION['questionobjects'] as $key => $questionobject)
 {
 	if ($key + 1 < $questionno)
@@ -235,7 +281,7 @@ foreach ($_SESSION['questionobjects'] as $key => $questionobject)
 	</script>	
 			
 	<button type="button" id="addOption" value="Add" >+</button> |
-	<button type="submit" name="action" value="savequestion" >Save</button><br>
+	<button type="submit" name="action" value="save" >Save</button><br>
 	<br>
 </form>
 				
@@ -267,33 +313,11 @@ if ($questionno != count($_SESSION['questionobjects']) + 1)
 } ?>	
 
 
-<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">	
-	<button type="submit" name="edit" value="0" style='
-		width:auto; 
-		height:auto; 
-		margin:0; 
-		padding:0; 
-		border: 0;
-		background:none; 
-		color:#666; 
-		text-align:left; 
-		-moz-border-radius: 0px;
-		-webkit-border-radius: 0px;
-		border-radius: 0px;
-		-moz-box-shadow: 0;
-		-webkit-box-shadow: 0;
-		box-shadow: none;
-		-webkit-appearance: none;
-		text-transform: none;
-		letter-spacing: 1px;'>
 
-		<p style='font-weight:bold'>Test Name</p>
-	</button>	
-</form>	
 	
 <form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">	
 	<input type="text" name="testname" placeholder="Give your test a name." style="display:inline; width:55%">
-	<button type="submit" name="action" value="save" >Save</button> |
+	<button type="submit" name="action" value="savetest" >Save</button> |
 	<button type="submit" name="action" value="deleteall" >Delete</button>
 </form>
 <br>
