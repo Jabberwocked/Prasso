@@ -154,8 +154,6 @@ elseif ($_POST['action'] == "save")
  * Print questions
  */
 
-print_r($_SESSION['questions']);
-
 if (!isset($_POST['edit']))
 {
 	$questionno = count($_SESSION['questions']) + 1;
