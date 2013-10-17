@@ -200,7 +200,7 @@ if (!isset($_POST['edit']))
 {
 	$questionno = count($_SESSION['questionobjects']) + 1;
 }
-if ($_POST['edit'] == 3)
+if ($_POST['edit'] == "testname")
 {
 ?>	
 
@@ -216,7 +216,7 @@ else
 ?>
 
 	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-		<button type="submit" name="edit" value="0" style='
+		<button type="submit" name="edit" value="testname" style='
 			width:auto; 
 			height:auto; 
 			margin:0; 
@@ -240,7 +240,7 @@ else
 	</form>	
 <?php 
 }
-if (isset($_POST['edit']) AND $_POST['edit'] != 0)
+if (isset($_POST['edit']) AND $_POST['edit'] != "testname")
 {
 	$questionno = $_POST['edit'];
 }
