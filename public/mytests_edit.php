@@ -39,9 +39,9 @@ if (isset($_POST['editquestion']))
 		$sql3 = "SELECT * FROM Answers WHERE QuestionId=".$questionid;
 		$result3 = $db->query($sql3);
 		
+		$answerarray = array();
 		foreach ($result3 as $answerobject)
 		{
-			$answerarray = array();
 			$answerarray[] = $answerobject['Answer'];
 		}	
 		
