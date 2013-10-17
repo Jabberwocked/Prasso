@@ -5,9 +5,11 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 
 <div style="margin-left: auto; margin-right: auto; width: 500px">
-		
+
 <?php 
 	
+echo $_POST['editquestion'];
+
 /**
  * If a test is selected to edit, copy questions from db to session.
  */
