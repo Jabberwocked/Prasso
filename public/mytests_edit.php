@@ -190,7 +190,7 @@ elseif ($_POST['action'] == "savetest")
 
 
 /** 
- * Print questionobjects
+ * Print test name and questionobjects
  */
 
 echo $_SESSION['testname'];
@@ -200,7 +200,7 @@ if (!isset($_POST['edit']))
 {
 	$questionno = count($_SESSION['questionobjects']) + 1;
 }
-if ($_POST['edit'] == 0)
+if ($_POST['edit'] == 3)
 {
 ?>	
 
