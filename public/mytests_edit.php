@@ -105,8 +105,6 @@ elseif ($_POST['action'] == "save")
 	 */
 		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 		
-		echo "<p style='color:green'>"; // set p style for echo in foreach
-		
 		foreach ($_SESSION['questionobjects'] as $questionobject)
 		{
 			$question = $questionobject->question;
@@ -117,11 +115,8 @@ elseif ($_POST['action'] == "save")
 	//		save ids to array for later use...
 			$questionids[] = $db->lastInsertId();
 			
-	// 		echo inserts to screen
-			echo "1 record added: id = " . $db->lastInsertId() . "<br>";
 		}
 			
-		echo "</p>"; // end p style for echos in foreach
 		
 		/**
 		 * Save answers from SESSION to table ANSWERS
@@ -170,10 +165,11 @@ elseif ($_POST['action'] == "save")
 		 */
 		mysqli_close($db);
 	
-	}	
-	
 	$_SESSION['questionobjects'] = array();
 	header("Location: mytests.php");
+	}	
+	
+
 };
 
 
