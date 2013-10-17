@@ -99,7 +99,7 @@ elseif ($_POST['action'] == "save")
 	}
 	else 
 	{
-		echo "<p style='font-weight:bold; color:green'>Test saved as " . $_POST['testname'] . "</p><br>";
+		
 	/**
 	 * Save questionobjects from SESSION to table QUESTIONS
 	 */
@@ -158,8 +158,9 @@ elseif ($_POST['action'] == "save")
 			$qry3->execute(array(':QuestionId'=>$QuestionId,':TestId'=>$TestId, ':OrderNo'=>$OrderNo));
 		}
 		
-		echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p><br><br>"; // echo success
-		echo "<a href='mytests.php'>Go to My Tests</a>";
+		echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p>"; // echo success
+		echo "<p>Go to <a href='mytests.php'>My Tests</a></p>";
+		echo "<p style='font-weight:bold; color:green'>Test saved as ".$_POST['testname']."</p><br>";
 		
 		/**
 		 * End connection
