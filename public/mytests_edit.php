@@ -41,6 +41,7 @@ if (isset($_POST['editquestion']))
 		
 		foreach ($result3 as $answerobject)
 		{
+			$answerarray = array();
 			$answerarray[] = $answerobject['Answer'];
 		}	
 		
