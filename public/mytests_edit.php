@@ -8,6 +8,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php 
 	
+echo $_SESSION['testname'];
 
 /**
  * If a test is selected to edit, copy questions from db to session.
