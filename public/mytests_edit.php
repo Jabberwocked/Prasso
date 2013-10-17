@@ -39,7 +39,7 @@ if (isset($_POST['editquestion']))
 	
 	foreach ($result3 as $answers)
 	{
-		print_r($answers);
+		// NOT DONE YET
 	}
 	
 	$questionno = 1;
