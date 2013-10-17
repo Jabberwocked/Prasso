@@ -53,6 +53,7 @@ td {
 			<td><?php echo $testname ?></td>
 			<td><?php echo $topic ?></td>
 			<td><?php echo $labels ?></td>
+			<td><?php echo $testid ?></td>
 			<td>
 				<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 				<button type="submit" name="editquestion" value="<?php echo $testid ?>" >Take</button> |
