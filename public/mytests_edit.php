@@ -8,7 +8,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php 
 	
-echo $_SESSION['testname'];
+
 
 /**
  * If a test is selected to edit, copy questions from db to session.
@@ -191,6 +191,8 @@ elseif ($_POST['action'] == "savetest")
 /** 
  * Print questionobjects
  */
+
+echo $_SESSION['testname'];
 
 if (!isset($_POST['edit']))
 {
