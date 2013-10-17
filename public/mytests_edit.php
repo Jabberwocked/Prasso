@@ -132,12 +132,10 @@ elseif ($_POST['action'] == "save")
 		foreach ($_SESSION['questionobjects'] as $questionobject)
 		{
 			$questionid = $questionids[$n];
-			$n2 = 1;
 			foreach ($questionobject->answers as $answer)
 			{
-				$qry = $db->prepare("INSERT INTO Answers (QuestionId, Answer".$n2.") VALUES (:questionid,:answer)");
+				$qry = $db->prepare("INSERT INTO Answers (QuestionId, Answer1) VALUES (:questionid,:answer)");
 				$qry->execute(array(':questionid'=>$questionid,':answer'=>$answer));
-				$n2 ++;
 			}
 			
 				
