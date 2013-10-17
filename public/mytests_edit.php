@@ -16,12 +16,14 @@ if (isset($_POST['editquestion']))
 {
 	$testid = $_POST['editquestion'];
 
-	echo $testid;
+	
 	
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 	$qry = $db->prepare("SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo");
 	$result = $qry->execute();
 
+	print_r($result);
+	
 	foreach ($result as $relation)
 	{
 		$questionids[] = $relation['QuestionId'];
