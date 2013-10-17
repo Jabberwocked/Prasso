@@ -85,6 +85,7 @@ if ($_POST['action'] == "deleteall")
 
 
 elseif ($_POST['action'] == "save")
+{
 	if (isset($_POST['testname']))
 	{
 		$_SESSION['testname'] = $_POST['testname'];
@@ -95,7 +96,7 @@ elseif ($_POST['action'] == "save")
 	
 		header("Location: mytests_edit.php");
 	}
-
+}
 /**
  * SAVE to database
  */
