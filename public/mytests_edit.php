@@ -39,8 +39,8 @@ if (isset($_POST['editquestion']))
 	
 	foreach ($result2 as $questionobject)
 	{
-		print_r($questionobject);
 		echo "<br><br>";
+		print_r($questionobject);
 		$_SESSION['questions'][] = $questionobject;
 	}
 } 
