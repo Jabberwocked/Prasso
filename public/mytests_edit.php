@@ -32,8 +32,7 @@ if (isset($_POST['editquestion']))
 	
 	print_r($questionidsqry);
 
-	$sql2 = "SELECT * FROM Questions";  
-// 		WHERE QuestionId IN ".$questionidsqry;
+	$sql2 = "SELECT * FROM Questions WHERE QuestionId IN (".$questionidsqry.")";
 	$result2 = $db->query($sql2);
 	print_r($result2);
 	echo "lalala";
