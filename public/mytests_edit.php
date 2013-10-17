@@ -129,6 +129,8 @@ elseif ($_POST['action'] == "save")
 			$questionid = $questionids[$n];
 			foreach ($questionobject->answers as $answer)
 			{
+				print_r($answer);
+				echo $answer;
 				$qry = $db->prepare("INSERT INTO Answers (QuestionId, Answer1) VALUES (:questionid,:answer)");
 				$qry->execute(array(':questionid'=>$questionid,':answer'=>$answer));
 			}
