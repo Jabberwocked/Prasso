@@ -124,6 +124,27 @@ elseif ($_POST['action'] == "save")
 		echo "</p>"; // end p style for echos in foreach
 		
 		/**
+		 * Save answers from SESSION to table ANSWERS
+		 */
+		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+		
+		$n = 0;
+		foreach ($_SESSION['questionobjects'] as $questionobject)
+		{
+			$questionid = $questionids[$n];
+			$n2 = 1;
+			foreach ($questionobject->answers as $answer)
+			{
+				$qry = $db->prepare("INSERT INTO Answers (QuestionId, Answer".$n2.") VALUES (:questionid,:answer)");
+				$qry->execute(array(':questionid'=>$questionid,':answer'=>$answer));
+			}
+			
+				
+			$n ++;				
+		}
+			
+		
+		/**
 		 * Save test to table TESTS
 		 */
 		
