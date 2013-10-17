@@ -193,9 +193,6 @@ elseif ($_POST['action'] == "savetest")
  * Print test name and questionobjects
  */
 
-echo $_SESSION['testname'];
-echo "lalala";
-
 if (!isset($_POST['edit']))
 {
 	$questionno = count($_SESSION['questionobjects']) + 1;
@@ -239,10 +236,9 @@ else
 		</button>	
 	</form>	
 <?php 
-}
-if (isset($_POST['edit']) AND $_POST['edit'] != "testname")
-{
-	$questionno = $_POST['edit'];
+
+$questionno = $_POST['edit'];
+
 }
 
 foreach ($_SESSION['questionobjects'] as $key => $questionobject)
@@ -321,7 +317,6 @@ if ($questionno != count($_SESSION['questionobjects']) + 1)
 
 	
 <form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">	
-	<input type="text" name="testname" placeholder="Give your test a name." style="display:inline; width:55%">
 	<button type="submit" name="action" value="savetest" >Save</button> |
 	<button type="submit" name="action" value="deleteall" >Delete</button>
 </form>
