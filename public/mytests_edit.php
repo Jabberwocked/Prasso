@@ -32,8 +32,8 @@ if (isset($_POST['editquestion']))
 		
 	$questionidsqry = "'".implode("','", $questionids)."'";
 	
-	$qry2 = $db->prepare("SELECT * FROM Questions WHERE QuestionId IN ".$questionidsqry);
-	$result2 = $qry->execute();
+	$sql2 = "SELECT * FROM Questions WHERE QuestionId IN ".$questionidsqry;
+	$result2 = $db->query($sql2);
 	print_r($result2);
 	
 	foreach ($result2 as $questionobject)
