@@ -15,12 +15,14 @@ if (isset($_SESSION['HTTP_USER_AGENT']))
 	}
 	else
 	{
-		// Continue session. Check if logged in.
-// 		if (!isset($_SESSION['username']))
-// 		{
-// 			header("Location:loginpage.php?location=" . urlencode($_SERVER['REQUEST_URI']));
-		
-// 		}
+		// Continue session. Check if logged in on certain pages.
+		if ($_SERVER['REQUEST_URI'] == "/mytests_edit.php")
+		{
+			if (!isset($_SESSION['username']))
+				{
+					header("Location:loginpage.php?location=" . urlencode($_SERVER['REQUEST_URI']));
+				}
+		}	
 	}
 }
 else
