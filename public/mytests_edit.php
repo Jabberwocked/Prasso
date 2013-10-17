@@ -160,7 +160,8 @@ elseif ($_POST['action'] == "save")
 		
 		echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p>"; // echo success
 		echo "<p>Go to <a href='mytests.php'>My Tests</a></p>";
-		echo "<p style='font-weight:bold; color:green'>Test saved as ".$_POST['testname']."</p><br>";
+		echo "<br><br>";
+		echo "<p style='font-weight:bold; font-style:italic'>".$_POST['testname']."</p><br>";
 		
 		/**
 		 * End connection
