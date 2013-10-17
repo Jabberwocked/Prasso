@@ -55,8 +55,8 @@ td {
 			<td><?php echo $labels ?></td>
 			<td>
 				<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="get">
-				<button type="submit" name="editquestion" value="<?php echo $testid ?>" >Take</button> |
-				<button type="submit" name="" value="<?php echo $testid ?>" >Edit</button> |
+				<button type="submit" name="" value="<?php echo $testid ?>" >Take</button> |
+				<button type="submit" name="editquestion" value="<?php echo $testid ?>" >Edit</button> |
 				<button type="submit" name="" value="<?php echo $testid ?>" >Results</button> |
 				<button type="submit" name="" value="<?php echo $testid ?>" >Administer</button>
 			</nav></td>
