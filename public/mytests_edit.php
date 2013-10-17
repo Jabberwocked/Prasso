@@ -12,8 +12,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 /**
  * If a test is selected to edit, copy questions from db to session.
  */
-
-if /* (isset($_POST['editquestion']))
+/* 
+if (isset($_POST['editquestion']))
 {
 	$testid = $_POST['editquestion'];
 
@@ -46,9 +46,9 @@ if /* (isset($_POST['editquestion']))
 	}
 	echo "<br><br>";
 	print_r($_SESSION['questions']);
-}  */
+} 
 
-
+ */
 
 /**
  * Process form depending on button pressed.
