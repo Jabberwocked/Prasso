@@ -31,9 +31,9 @@ if (isset($_POST['editquestion']))
 	$questionidsqry = "'".implode("','", $questionids)."'";
 	
 	print_r($questionidsqry);
-	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-	$sql2 = "SELECT * FROM Questions WHERE QuestionId IN ".$questionidsqry;
-	$result2 = $db->query($sql2);
+
+	$sql = "SELECT * FROM Questions WHERE QuestionId IN ".$questionidsqry;
+	$result = $db->query($sql);
 	print_r($result2);
 	echo "lalala";
 	
