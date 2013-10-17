@@ -40,6 +40,7 @@ if (isset($_POST['editquestion']))
 	foreach ($result2 as $questionobject)
 	{
 		print_r($questionobject);
+		echo "<br>";
 		$_SESSION['questions'][] = $questionobject;
 	}
 } 
