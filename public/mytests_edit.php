@@ -12,31 +12,35 @@ include_once (TEMPLATES_PATH . "/header.php");
 /**
  * If a test is selected to edit, copy questions from db to session.
  */
-// if (isset($_POST['editquestion']))
-// {
-// 	$testid = $_POST['editquestion'];
+
+if (isset($_POST['editquestion']))
+{
+	$testid = $_POST['editquestion'];
 
 	
 	
-// 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-// 	$sql = "SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo";
-// 	$result = $db->query($sql);
+	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+	$sql = "SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo";
+	$result = $db->query($sql);
 
-// 	foreach ($result as $relation)
-// 	{
+	foreach ($result as $relation)
+	{
+		print_r($relation);
 // 		$questionids[] = $relation['QuestionId'];
-// 	}
+		
+	}
 	
-// 	print_r($questionids);
 	
-// 	$qry2 = $db->prepare("SELECT * FROM Questions WHERE QuestionId IN ".$questionids);
-// 	$result2 = $qry->execute();
 	
-// 	foreach ($result2 as $questionobject)
-// 	{
-// 		$_SESSION['questions'][] = $questionobject;
-// 	}
-// }
+	$qry2 = $db->prepare("SELECT * FROM Questions WHERE QuestionId IN ".$questionids);
+	$result2 = $qry->execute();
+	
+	foreach ($result2 as $questionobject)
+	{
+		$_SESSION['questions'][] = $questionobject;
+	}
+} 
+
 
 
 /**
