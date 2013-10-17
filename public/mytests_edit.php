@@ -99,7 +99,7 @@ elseif ($_POST['action'] == "save")
 	}
 	else 
 	{
-		echo "<p style='font-weight:bold'>" . $_POST['testname'] . "</p><br>";
+		echo "<p style='font-weight:bold; color:green'>Test saved as " . $_POST['testname'] . "</p><br>";
 	/**
 	 * Save questionobjects from SESSION to table QUESTIONS
 	 */
@@ -159,14 +159,14 @@ elseif ($_POST['action'] == "save")
 		}
 		
 		echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p><br><br>"; // echo success
+		echo "<a href='mytests.php'>Go to My Tests</a>";
 		
 		/**
 		 * End connection
 		 */
 		mysqli_close($db);
 	
-	$_SESSION['questionobjects'] = array();
-	header("Location: mytests.php");
+
 	}	
 	
 
