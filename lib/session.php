@@ -15,7 +15,7 @@ if (isset($_SESSION['HTTP_USER_AGENT']))
 	}
 	else
 	{
-		// Continue session. Check if logged in on certain pages (set in config.php).
+		// Continue session. Check if logged in, only on predefined pages ($loginrequired is set in config.php).
 		
 		if (in_array($_SERVER['REQUEST_URI'], $loginrequired))
 		{
