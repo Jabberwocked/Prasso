@@ -137,6 +137,7 @@ elseif ($_POST['action'] == "save")
 			{
 				$qry = $db->prepare("INSERT INTO Answers (QuestionId, Answer".$n2.") VALUES (:questionid,:answer)");
 				$qry->execute(array(':questionid'=>$questionid,':answer'=>$answer));
+				$n2 ++;
 			}
 			
 				
