@@ -20,11 +20,6 @@ if (isset($_POST['editquestion']))
 	
 	
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-	
-	$sql2 = "SELECT * FROM Questions WHERE QuestionId IN ".$questionidsqry;
-	$result2 = $db->query($sql2);
-	print_r($result2);
-	
 	$sql = "SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo";
 	$result = $db->query($sql);
 	
@@ -37,9 +32,10 @@ if (isset($_POST['editquestion']))
 	
 	print_r($questionidsqry);
 
-// 	$sql2 = "SELECT * FROM Questions WHERE QuestionId IN ".$questionidsqry;
-// 	$result2 = $db->query($sql2);
-// 	print_r($result2);
+	$sql2 = "SELECT * FROM Questions";  
+// 		WHERE QuestionId IN ".$questionidsqry;
+	$result2 = $db->query($sql2);
+	print_r($result2);
 	echo "lalala";
 	
 // 	foreach ($result2 as $questionobject)
