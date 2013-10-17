@@ -12,7 +12,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 /**
  * If a test is selected to edit, copy questions from db to session.
  */
-/* 
+
 if (isset($_POST['editquestion']))
 {
 	$testid = $_POST['editquestion'];
@@ -36,19 +36,25 @@ if (isset($_POST['editquestion']))
 	$result2 = $db->query($sql2);
 	print_r($result2);
 	
+	$questionno = 1;
 	
 	foreach ($result2 as $questionobject)
 	{
 		echo "<br><br>";
 		print_r($questionobject);
-		$_SESSION['questions'][] = $questionobject;
+				
+		$question = $questionobject['question'];
+		$type = $questionobject['type'];
+		$answers = $questionobject['answer'];
+		$_SESSION['questions'][] = new question($questionno, $question, $type, $answers);
 		
+		$questionno ++
 	}
 	echo "<br><br>";
 	print_r($_SESSION['questions']);
 } 
 
- */
+
 
 /**
  * Process form depending on button pressed.
