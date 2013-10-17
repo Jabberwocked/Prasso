@@ -50,6 +50,7 @@ if (isset($_POST['editquestion']))
 	}
 } 
 // temp
+print_r($_SESSION['questions']);
 foreach ($_SESSION['questions'] as $key => $question)
 {
 	$question->show();
