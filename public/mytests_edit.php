@@ -34,13 +34,17 @@ if (isset($_POST['editquestion']))
 	$sql2 = "SELECT * FROM Questions WHERE QuestionId IN (".$questionidsqry.")";
 	$result2 = $db->query($sql2);
 	
-	$sql3 = "SELECT * FROM Answers WHERE QuestionId IN (".$questionidsqry.")";
-	$result3 = $db->query($sql3);
-	
-	foreach ($result3 as $answers)
+	foreach ($questionids as $questionid)
 	{
-		// NOT DONE YET
+		$sql3 = "SELECT * FROM Answers WHERE QuestionId=".$questionid;
+		$result3 = $db->query($sql3);
+		
+		foreach ($result3 as $answer)
+		{
+			// NOT DONE YET
+		}	
 	}
+	
 	
 	$questionno = 1;
 	foreach ($result2 as $questionobject)
