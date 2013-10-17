@@ -231,6 +231,7 @@ foreach ($_SESSION['questionobjects'] as $key => $questionobject)
 			
 	<button type="button" id="addOption" value="Add" >+</button> |
 	<button type="submit" name="action" value="savequestion" >Save</button><br>
+	<br>
 </form>
 				
 		
