@@ -130,8 +130,7 @@ elseif ($_POST['action'] == "save")
 			foreach ($questionobject->answers as $answer)
 			{
 				print_r($answer);
-				echo $answer;
-				$qry = $db->prepare("INSERT INTO Answers (QuestionId, Answer1) VALUES (:questionid,:answer)");
+				$qry = $db->prepare("INSERT INTO Answers (QuestionId, Answer) VALUES (:questionid,:answer)");
 				$qry->execute(array(':questionid'=>$questionid,':answer'=>$answer));
 			}
 			
@@ -222,7 +221,7 @@ foreach ($_SESSION['questionobjects'] as $key => $questionobject)
 		}
 		if ($answerno == 1)
 		{ ?>
-			<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
+			<input type="text" name="answers[]" class="answers" value='3' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
 		<?php 
 		}
 		?>
