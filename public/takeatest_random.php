@@ -40,6 +40,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 		$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
 		$questionsquery = $db->query($sql);
 		
+		print_r($questionsquery);
 		
 		/**
 		 * Save some arrays 
