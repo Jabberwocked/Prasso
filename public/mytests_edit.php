@@ -44,10 +44,16 @@ if (isset($_POST['editquestion']))
 		$answers = $questionobject['answer'];
 		$_SESSION['questions'][] = new question($questionno, $question, $type, $answers);
 		
+		question();
+		
 		$questionno ++;
 	}
 } 
-
+// temp
+foreach ($_SESSION['questions'] as $key => $question)
+{
+	$question->show();
+}
 
 
 /**
