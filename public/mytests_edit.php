@@ -38,7 +38,7 @@ if (isset($_POST['editquestion']))
 	
 	foreach ($result2 as $questionobject)
 	{
-				
+		print_r($questionobject);
 		$question = $questionobject['question'];
 		print_r($question);
 		echo "<br>";
