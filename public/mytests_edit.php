@@ -35,6 +35,7 @@ if (isset($_POST['editquestion']))
 	$sql2 = "SELECT * FROM Questions WHERE QuestionId IN ".$questionidsqry;
 	$result2 = $db->query($sql2);
 	print_r($result2);
+	echo "lalala";
 	
 // 	foreach ($result2 as $questionobject)
 // 	{
