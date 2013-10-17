@@ -7,12 +7,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 
 
-if (!isset($_SESSION['username']))
-{
-	header("Location:loginpage.php?location=" . urlencode($_SERVER['REQUEST_URI']));
 
-}
-else
 { ?>
 
 
