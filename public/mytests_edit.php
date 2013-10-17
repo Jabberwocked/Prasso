@@ -39,9 +39,9 @@ if (isset($_POST['editquestion']))
 		$sql3 = "SELECT * FROM Answers WHERE QuestionId=".$questionid;
 		$result3 = $db->query($sql3);
 		
-		foreach ($result3 as $answer)
+		foreach ($result3 as $answerobject)
 		{
-			// NOT DONE YET
+			$answerarray[] = $answerobject['Answer'];
 		}	
 	}
 	
@@ -51,7 +51,7 @@ if (isset($_POST['editquestion']))
 	{
 		$question = $questionobject['Question'];
 		$type = $questionobject['Type'];
-		$answers = "";
+		$answers = $answerarray;
 		$_SESSION['questionobjects'][] = new questionobject($questionno, $question, $type, $answers);
 		
 		
