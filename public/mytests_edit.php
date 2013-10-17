@@ -29,15 +29,16 @@ if (isset($_POST['editquestion']))
 		$questionids[] = $relation['QuestionId'];
 		
 	}
-	print_r($questionids);
-	
+		
 	$questionidsqry = "'".implode("','", $questionids)."'";
-	print_r($questionidsqry);
+	
 	$qry2 = $db->prepare("SELECT * FROM Questions WHERE QuestionId IN ".$questionidsqry);
 	$result2 = $qry->execute();
 	
+	
 	foreach ($result2 as $questionobject)
 	{
+		print_r($questionobject);
 		$_SESSION['questions'][] = $questionobject;
 	}
 } 
