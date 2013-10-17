@@ -37,7 +37,8 @@ if (isset($_POST['editquestion']))
 	$sql3 = "SELECT * FROM Answers WHERE QuestionId IN (".$questionidsqry.")";
 	$result3 = $db->query($sql3);
 	
-	print_r($result3);
+	$answers=$result3->fetchall();
+	print_r($answers);
 	
 	$questionno = 1;
 	foreach ($result2 as $questionobject)
