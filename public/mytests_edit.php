@@ -1,8 +1,6 @@
 <?php
-
 include_once ("../config/config.php");
 include_once (TEMPLATES_PATH . "/header.php");
-// include_once (MENU_PATH . "/menu_mytests_new.php");
 ?>
 
 
@@ -10,7 +8,32 @@ include_once (TEMPLATES_PATH . "/header.php");
 		
 <?php 
 	
+/**
+ * If a test is selected to edit, copy questions from db to session.
+ */
+if (isset($_POST['editquestion']))
+{
+	$testid = $_POST['editquestion'];
+
+	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+	$qry = $db->prepare("SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo");
+	$result = $qry->execute();
+
+	foreach ($result as $relation)
+	{
+		$questionids[] = $relation['QuestionId'];
+	}
 	
+	$qry2 = $db->prepare("SELECT * FROM Questions WHERE QuestionId IN ".$questionids);
+	$result2 = $qry->execute();
+	
+	foreach ($result2 as $questionobject)
+	{
+		$_SESSION['questions'][] = $questionobject;
+	}
+}
+
+
 /**
  * Process form depending on button pressed.
  */
