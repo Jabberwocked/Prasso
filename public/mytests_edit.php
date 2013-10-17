@@ -44,7 +44,6 @@ if (isset($_POST['editquestion']))
 		$answers = $questionobject['answer'];
 		$_SESSION['questions'][] = new question($questionno, $question, $type, $answers);
 		
-		question();
 		
 		$questionno ++;
 	}
