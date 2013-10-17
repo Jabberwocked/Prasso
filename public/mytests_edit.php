@@ -8,9 +8,6 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php 
 	
-echo $_POST['editquestion'];
-echo "lala";
-print_r($_POST['editquestion']);
 
 /**
  * If a test is selected to edit, copy questions from db to session.
@@ -19,6 +16,8 @@ if (isset($_POST['editquestion']))
 {
 	$testid = $_POST['editquestion'];
 
+	echo $testid;
+	
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 	$qry = $db->prepare("SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo");
 	$result = $qry->execute();
