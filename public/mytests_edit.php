@@ -23,7 +23,6 @@ if (isset($_POST['editquestion']))
 	$sql = "SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo";
 	$result = $db->query($sql);
 	
-	print_r($result);
 	
 	foreach ($result as $relation)
 	{
@@ -32,6 +31,7 @@ if (isset($_POST['editquestion']))
 	$questionidsqry = "'".implode("','", $questionids)."'";
 	
 	print_r($questionidsqry);
+	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 	$sql2 = "SELECT * FROM Questions WHERE QuestionId IN ".$questionidsqry;
 	$result2 = $db->query($sql2);
 	print_r($result2);
