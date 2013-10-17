@@ -34,8 +34,12 @@ if (isset($_POST['editquestion']))
 	$sql2 = "SELECT * FROM Questions WHERE QuestionId IN (".$questionidsqry.")";
 	$result2 = $db->query($sql2);
 	
-	$questionno = 1;
+	$sql3 = "SELECT * FROM Answers WHERE QuestionId IN (".$questionidsqry.")";
+	$result3 = $db->query($sql3);
 	
+	print_r($result3);
+	
+	$questionno = 1;
 	foreach ($result2 as $questionobject)
 	{
 		$question = $questionobject['Question'];
@@ -47,12 +51,7 @@ if (isset($_POST['editquestion']))
 		$questionno ++;
 	}
 } 
-// temp
-print_r($_SESSION['questions']);
-foreach ($_SESSION['questions'] as $key => $question)
-{
-	$question->show();
-}
+
 
 
 /**
