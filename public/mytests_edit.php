@@ -26,7 +26,7 @@ if (isset($_POST['editquestion']))
 	foreach ($result as $relation)
 	{
 		print_r($relation);
-// 		$questionids[] = $relation['QuestionId'];
+		$questionids[] = $relation['QuestionId'];
 		
 	}
 	
