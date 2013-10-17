@@ -19,8 +19,8 @@ if (isset($_POST['editquestion']))
 	
 	
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-	$qry = $db->prepare("SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo");
-	$result = $qry->execute();
+	$sql = "SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo";
+	$result = $db->query($sql);
 
 	print_r($result);
 	
