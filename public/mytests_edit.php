@@ -216,22 +216,21 @@ foreach ($_SESSION['questionobjects'] as $key => $questionobject)
 ?>
 
 	<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
-		<?php 
-		$answerno ++;
-		}
-		if ($answerno == 1)
-		{ ?>
-			<input type="text" name="answers[]" class="answers" value='3' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
-		<?php 
-		}
-		?>
-		<script>
-    	var answernojs = <?php echo json_encode($answerno); ?>;
-		</script>	
+<?php 
+	$answerno ++;
+	}
+	if ($answerno == 1)
+	{ ?>
+	<input type="text" name="answers[]" class="answers" placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
+<?php 
+	}
+?>
+	<script>
+	   	var answernojs = <?php echo json_encode($answerno); ?>;
+	</script>	
 			
-			<button type="button" id="addOption" value="Add" >+</button> |
-			
-			<button type="submit" name="action" value="savequestion" >Save</button><br>
+	<button type="button" id="addOption" value="Add" >+</button> |
+	<button type="submit" name="action" value="savequestion" >Save</button><br>
 </form>
 				
 		
