@@ -19,7 +19,7 @@ if (isset($_POST['testtoedit']))
 
 	$testid = $_POST['testtoedit'];
 	$_SESSION['test']->pullfromdb($testid);
-	$_SESSION['test']->testing();
+// 	$_SESSION['test']->testing();
 } 
 
 /**
