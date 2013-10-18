@@ -17,12 +17,12 @@ $(document).ready(function(){
 	
 	
 	$("#addOption").click (function(){
-		answernojs ++;  
 		$("<input type='text' value='' style='display:inline; width:60%' />")
 		 .attr("name", "answers[]")
 		 .attr("class", "answers")
 		 .attr("placeholder", "Answer " + answernojs)
 	     .insertAfter(".answers:last");
+		answernojs ++;  
 	});
 		
 		

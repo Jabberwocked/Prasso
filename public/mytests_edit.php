@@ -270,30 +270,31 @@ if ($questionno != "testname")
 				
 <?php 
 		
-		$answerno = 1; 
+	$answerno = 1; 
 		
-		foreach ($_SESSION['questionobjects'][$questionno-1]->answers as $answer)
-		{ 
+	foreach ($_SESSION['questionobjects'][$questionno-1]->answers as $answer)
+	{ 
 ?>
 	
 		<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
 <?php 
 		$answerno ++;
-		}
-		if ($answerno == 1)
-		{ 
+	}
+	if ($answerno == 1)
+	{ 
 ?>
 		<input type="text" name="answers[]" class="answers" placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
 <?php 
-		}
+		$answerno ++;
+	}
 ?>
-		<script>
-		   	var answernojs = <?php echo json_encode($answerno); ?>;
-		</script>	
+	<script>
+	   	var answernojs = <?php echo json_encode($answerno); ?>;
+	</script>	
 				
-		<button type="button" id="addOption" value="Add" >+</button> |
-		<button type="submit" name="action" value="save" >Save</button><br>
-		<br>
+	<button type="button" id="addOption" value="Add" >+</button> |
+	<button type="submit" name="action" value="save" >Save</button><br>
+	<br>
 	</form>
 				
 		
