@@ -59,7 +59,10 @@ if (isset($_POST['edittest']))
 			$question = $questionobject['Question'];
 			$type = $questionobject['Type'];
 			$answers = $answerarray;
-			$_SESSION['questionobjects'][] = new questionobject($questionno, $question, $type, $answers);
+			$_SESSION['questionobjects'][] = new questionobject(array(	'questionno' => $questionno, 
+																		'question' => $question, 
+																		'type' => $type, 
+																		'answers' => $answers));
 		}
 		$questionno ++;
 		
@@ -99,7 +102,7 @@ elseif ($_POST['action'] == "save")
 	}
 	else 
 	{
-		$_SESSION['questionobjects'][$_POST['questionno']-1] = new questionobject($_POST['questionno'], $_POST['question'], $_POST['type'], $_POST['answers']);
+		$_SESSION['questionobjects'][$_POST['questionno']-1] = new questionobject($_POST);
 	
 		header("Location: mytests_edit.php");
 	}

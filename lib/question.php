@@ -10,14 +10,15 @@ class questionobject {
 	public $questionno;
 	public $question;
 	public $type;
-	public $answer1;
+	public $typeshort;
+	public $answers;
 
-	function __construct($questionno, $question, $type, $answers)
+	function __construct($post)
 	{
-		$this->questionno = $questionno;
-		$this->question = $question;
-		$this->type = $type;
-		$this->answers = $answers;
+		$this->questionno = $post['questionno'];
+		$this->question = $post['question'];
+		$this->type = $post['type'];
+		$this->answers = $post['answers'];
 		
 		if ($this->type == "shortanswer")
 		{
