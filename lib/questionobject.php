@@ -8,17 +8,18 @@
 
 class questionobject {
 	public $questionno;
+	public $questionid;
 	public $question;
 	public $type;
 	public $typeshort;
 	public $answers;
 
-	function __construct($post) //input an array, usually from a post
+	function __construct( $data = array() ) //input an array, usually from a post
 	{
-		$this->questionno = $post['questionno'];
-		$this->question = $post['question'];
-		$this->type = $post['type'];
-		$this->answers = $post['answers'];
+		if (isset($data['questionno'])) $this->questionno = $data['questionno'];
+		if (isset($data['question'])) $this->question = $data['question'];
+		if (isset($data['type'])) $this->type = $data['type'];
+		if (isset($data['answers'])) $this->answers = $data['answers'];
 		
 		if ($this->type == "shortanswer")
 		{
@@ -31,6 +32,49 @@ class questionobject {
 		
 	}
 
+	
+	
+	
+	function pullfromdb($questionno, $questionid)
+	{
+		$sql = "SELECT * FROM Questions WHERE QuestionId=".$questionid;
+		$resultquestions = $db->query($sql);
+		
+		$sql = "SELECT * FROM Answers WHERE QuestionId=".$questionid;
+		$resultanswers = $db->query($sql);
+		
+		foreach ($resultanswers as $tempanswersobject)
+		{
+			$tempanswersarray[] = $tempanswersobject['Answer'];
+		}
+		
+		
+		foreach ($resultquestions as $tempquestionobject)
+		{
+			$this->questionno = $questionno;
+			$this->questionid = $questionid;
+			$this->question = $tempquestionobject['Question'];
+			$this->type = $tempquestionobject['Type'];
+			$this->answers = $tempanswersarray;
+		}
+		
+		
+		if ($this->type == "shortanswer")
+		{
+			$this->typeshort = "SA";
+		}
+		if ($this->type == "multichoice")
+		{
+			$this->typeshort = "MC";
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
 	function show()
 	{
 		?>

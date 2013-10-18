@@ -10,11 +10,15 @@ class test
 	{
 		$this->testid;
 		$this->testname;
-		$this->questionids = array();
+		$this->questionids = array(); // questionno => questionid
 		$this->questionobjects = array();
 	}
 	
 
+	
+	
+	
+	
 	
 	/** 
 	 * Pull test details to object (which will usually be saved as $_SESSION['test'])
@@ -51,38 +55,26 @@ class test
 		}
 		
 		/**
-		 * Pull questions and answers to questionobjects in object
+		 * Pull questions and answers to questionobjects in object (session)
 		 */
 		
 		
 		foreach ($this->questionids as $questionno => $questionid)
 		{
-			$sql = "SELECT * FROM Questions WHERE QuestionId=".$questionid;
-			$resultquestions = $db->query($sql);
-		
-			$sql = "SELECT * FROM Answers WHERE QuestionId=".$questionid;
-			$resultanswers = $db->query($sql);
-		
-			foreach ($resultanswers as $tempanswersobject)
-			{
-				$tempanswersarray[] = $tempanswersobject['Answer'];
-			}
-		
-		
-			foreach ($resultquestions as $tempquestionobject)
-			{
-				$this->questionobjects[$questionno] = new questionobject(array(	'questionno' => $questionno,
-																				'question' => $tempquestionobject['Question'],
-																				'type' => $tempquestionobject['Type'],
-																				'answers' => $tempanswersarray));
-			}
-		
+			$this->questionobjects[$questionno] = new questionobject;
+			$this->questionobjects[$questionno]->pullfromdb($questionno, $questionid);
 		}	
 	}
 	
 	
+	
+	
+	
+	
+	
+	
 	/** 
-	 * Save question or test name to object
+	 * Save question or test name to object (session)
 	 */
 	
 	function saveitem()
@@ -99,10 +91,15 @@ class test
 		}
 	}
 	
+	
+	
+	
+	
+	
 	/**
-	 * Save object properties to database tables
+	 * Add object properties to database tables
 	 */
-	function save()
+	function add()
 	{
 		/**
 		 * Check if test name is given
@@ -186,6 +183,108 @@ class test
 		}
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * Update database tables with changed object properties
+	 */
+	function update()
+	{
+		/**
+		 * Check if test name is given
+		 */
+		if ($this->testname == false)
+		{
+			echo "<p style='color:red'>Please insert a test name</p><br>";
+		}
+		else
+		{
+		
+			/**
+			 * Save questionobjects from object to table QUESTIONS
+			 */
+			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+				
+			foreach ($this->questionobjects as $questionno => $questionobject)
+			{
+				$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
+				$qry->execute(array(':question'=>$questionobject->question,
+									':type'=>$questionobject->type));
+					
+				//		save ids to array for later use...
+				$this->questionids[$questionno] = $db->lastInsertId();
+					
+			}
+				
+		
+			/**
+			 * Save answers from object to table ANSWERS
+			 */
+			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+		
+			$n = 0;
+			foreach ($this->questionobjects as $questionno => $questionobject)
+			{
+				$questionid = $this->questionids[$n];
+				foreach ($questionobject->answers as $answer)
+				{
+					$qry = $db->prepare("INSERT INTO Answers (QuestionId, Answer) VALUES (:questionid,:answer)");
+					$qry->execute(array(':questionid'=>$questionid,':answer'=>$answer));
+				}
+					
+		
+				$n ++;
+			}
+				
+		
+			/**
+			 * Save test to table TESTS
+			 */
+		
+			$qry2 = $db->prepare("INSERT INTO Tests (TestName, UserId_Owner) VALUES (:TestName,:UserId_Owner)");
+			$qry2->execute(array(	':TestName'=>$this->testname,
+									':UserId_Owner'=>$_SESSION['userid']));
+		
+			// 	save testid for later use
+			$TestId = $db->lastInsertId();
+		
+			/**
+			 * Test name and owner are saved. Now save which questionids belong to testid in table QUESTION_TEST.
+			 */
+			//	
+			$qry3 = $db->prepare("INSERT INTO Question_Test (QuestionId, TestId, OrderNo) VALUES (:QuestionId,:TestId,:OrderNo)");
+			foreach ($this->questionids as $questionno=>$QuestionId)
+			{
+				$qry3->execute(array(':QuestionId'=>$QuestionId,':TestId'=>$TestId, ':OrderNo'=>$questionno));
+			}
+		
+			
+			echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p>"; // echo success (useless)
+					
+			header('location:mytests.php');
+		
+			/**
+			 * End connection
+			*/
+			mysqli_close($db);
+		
+		
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/**
 	 * Print test name, questionobjects and form
