@@ -126,7 +126,6 @@ class test
 									':type'=>$questionobject->type));
 					
 				//		save ids to array for later use...
-				$this->questionids = array();
 				$this->questionids[$questionno] = $db->lastInsertId();
 					
 			}
