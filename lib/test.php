@@ -11,7 +11,7 @@ class test
 		echo "lalalala";
 	}
 	
-	function edit($testid)
+	public static function edit($testid)
 	{
 		/** 
 		 * Pull test name to session
