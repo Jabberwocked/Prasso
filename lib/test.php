@@ -132,18 +132,14 @@ class test
 			 */
 			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 		
-			$n = 0;
 			foreach ($this->questionobjects as $orderno => $questionobject)
 			{
-				$questionid = $this->questionids[$n];
+				$questionid = $this->questionids[$orderno];
 				foreach ($questionobject->answers as $answer)
 				{
 					$qry = $db->prepare("INSERT INTO Answers (QuestionId, Answer) VALUES (:questionid,:answer)");
 					$qry->execute(array(':questionid'=>$questionid,':answer'=>$answer));
 				}
-					
-		
-				$n ++;
 			}
 				
 		
