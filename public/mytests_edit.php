@@ -238,7 +238,7 @@ else
 			text-transform: none;
 			letter-spacing: 1px;'>
 	
-			<p style='font-weight:bold'><?php if (isset($_SESSION['testname'])){ echo $_SESSION['testname']; } else { echo "Test name"; }; ?></p>
+			<p style='font-weight:bold'><?php if (isset($_SESSION['testname'])){ echo "<p>Test name: ".$_SESSION['testname']; } else { echo "Test name"; }; ?></p>
 		</button>	
 	</form>	
 	<br>
