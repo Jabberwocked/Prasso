@@ -62,9 +62,7 @@ class test
 		{
 			echo "lalauuu";
 			$this->questionobjects[$orderno] = new questionobject;
-			print_r($this->questionobjects[$orderno]);
 			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionid);
-			print_r($this->questionobjects[$orderno]);
 		}	
 	}
 	
