@@ -61,7 +61,8 @@ class test
 		foreach ($this->questionids as $questionno => $questionid)
 		{
 			echo "lalauuu";
-			$this->questionobjects[$questionno] = new questionobject;
+			$this->questionobjects[$questionno] = new questionobject("");
+			print_r($this->questionobjects[$questionno]);
 			$this->questionobjects[$questionno]->pullfromdb($questionno, $questionid);
 			print_r($this->questionobjects[$questionno]);
 		}	
