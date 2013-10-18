@@ -15,6 +15,11 @@ class test
 
 	}
 	
+	function testing()
+	{
+		echo "lalalala"
+	}
+	
 	/** 
 	 * Pull test details to object (which will usually be saved as $_SESSION['test'])
 	 */
