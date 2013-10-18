@@ -127,7 +127,7 @@ class test
 					
 				//		save ids to array for later use...
 				$this->questionids = array();
-				$this->questionids[] = $db->lastInsertId();
+				$this->questionids[$questionno] = $db->lastInsertId();
 					
 			}
 				
