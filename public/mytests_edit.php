@@ -14,50 +14,32 @@ include_once (TEMPLATES_PATH . "/header.php");
  * If a test is selected to edit, copy questions from db to session.
  */
 
-
-	
 if (isset($_POST['edittest']))
 {
-	test::edit($_POST['edittest']);
-
+	$_SESSION['test']->edit($_POST['edittest']);
 } 
 
-
-
 /**
- * Process form depending on button pressed.
+ * Process forms depending on button pressed.
  */
 /**
  * DELETE ALL
  */
 
-
 if ($_POST['action'] == "deleteall")
 {
-	$_SESSION['questionobjects'] = array();
-	unset($_SESSION['testname']);
-	
-	header("Location: mytests_edit.php");
+	$_SESSION['test']->reset();
 }
 
 /**
- * SAVE QUESTION or TEST NAME to session
+ * SAVE
  */
-
 
 elseif ($_POST['action'] == "save")
 {
-	if (isset($_POST['testname']))
-	{
-		$_SESSION['testname'] = $_POST['testname'];
-	}
-	else 
-	{
-		$_SESSION['questionobjects'][$_POST['questionno']-1] = new questionobject($_POST);
-	
-		header("Location: mytests_edit.php");
-	}
+	$_SESSION['test']->saveitem();
 }
+
 /**
  * SAVE to database
  */
