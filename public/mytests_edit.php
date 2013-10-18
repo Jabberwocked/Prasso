@@ -49,7 +49,7 @@ elseif ($_POST['action'] == "save")
 elseif ($_POST['action'] == "savetest")
 {
 	echo "lalal";
-	if (isset($this->testid))
+	if (isset($_SESSION['test']->testid))
 	{
 		$_SESSION['test']->update();
 	}
