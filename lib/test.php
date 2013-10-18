@@ -387,7 +387,7 @@ class test
 			</script>	
 						
 			<button type="button" id="addOption" value="Add" >+</button> |
-			<button type="submit" name="action" value="save" id="save" >Save</button><br>
+			<button type="submit" name="action" value="save" >Save</button><br>
 			<br>
 			</form>
 						
