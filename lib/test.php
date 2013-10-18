@@ -24,7 +24,7 @@ class test
 	{
 		$this->testid = $testid;
 		
-		print_r($this->questionids);
+		
 		/** 
 		 * Pull test name to object
 		 */
@@ -330,7 +330,7 @@ class test
 				<br>
 		<?php 
 		} 
-		
+		print_r($this->questionids);
 	}
 	
 	
