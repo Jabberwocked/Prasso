@@ -15,7 +15,7 @@ $(document).ready(function(){
 	 * Used in mytests_new to add fields to the form
  	 */
 	
-	
+//	click + to add another field
 	$("#addOption").click (function(){
 		$("<input type='text' value='' autofocus style='display:inline; width:60%' />")
 		 .attr("name", "answers[]")
@@ -25,6 +25,7 @@ $(document).ready(function(){
 		answernojs ++;  
 	});
 	
+//	or press tab twice to add another field
 	$('#addOption').keydown(function(e) {
 		var code = e.keyCode || e.which;
 		if (code == 9) {
