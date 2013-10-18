@@ -80,20 +80,6 @@ class test
 	
 	
 	/** 
-	 * Delete test details from object
-	 */
-	
-	function reset()
-	{
-		unset($this->testname);
-		$questionids = array();
-		$this->questionobjects = array();
-			
-		header("Location: mytests_edit.php");
-	}
-	
-	
-	/** 
 	 * Save question or test name to object
 	 */
 	
