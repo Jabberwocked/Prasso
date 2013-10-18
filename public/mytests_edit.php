@@ -241,6 +241,7 @@ else
 			<p style='font-weight:bold'><?php if (isset($_SESSION['testname'])){ echo $_SESSION['testname']; } else { echo "Test name"; }; ?></p>
 		</button>	
 	</form>	
+	<br>
 <?php 
 
 }
