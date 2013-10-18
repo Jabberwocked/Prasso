@@ -219,7 +219,7 @@ if ($questionno == "testname")
 ?>	
 
 <form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">	
-	<input type="text" name="testname" <?php if (isset($_SESSION['testname']){echo "value=".$_SESSION['testname'];}?> placeholder="Give your test a name." style="display:inline; width:55%">
+	<input type="text" name="testname" <?php if (isset($_SESSION['testname'])){echo "value=".$_SESSION['testname'];}?> placeholder="Give your test a name." style="display:inline; width:55%">
 	<button type="submit" name="action" value="save" >Save</button>
 </form>
 <br>
