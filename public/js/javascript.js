@@ -41,8 +41,8 @@ $(document).ready(function(){
 	
 	$(document).click(function() {
 		  $("form").submit();
-		});
-		$("form").click(function(e) {
+	});
+	$("form").click(function(e) {
 		  e.stopPropagation();
 	});
 		
