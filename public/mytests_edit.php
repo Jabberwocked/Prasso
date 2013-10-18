@@ -49,6 +49,7 @@ elseif ($_POST['action'] == "save")
 elseif ($_POST['action'] == "savetest")
 {
 	$_SESSION['test']->save();
+	$_SESSION['test'] = new test();
 
 };
 

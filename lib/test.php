@@ -172,13 +172,9 @@ class test
 				$qry3->execute(array(':QuestionId'=>$QuestionId,':TestId'=>$TestId, ':OrderNo'=>$questionno));
 			}
 		
-			// echoes useless?
-			echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p>"; // echo success
-			echo "<p>Go to <a href='mytests.php'>My Tests</a></p>";
-			echo "<br><br>";
-			echo "<p>Test name: <span style='font-weight:bold; font-style:italic'>".$_POST['testname']."</span></p><br>";
-		
-		
+			
+			echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p>"; // echo success (useless)
+					
 			header('location:mytests.php');
 		
 			/**
