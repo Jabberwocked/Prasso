@@ -38,7 +38,6 @@ class test
 		foreach ($result as $dbtest)
 		{
 			$this->testname = $dbtest['TestName'];
-			echo $this->testname;
 		}
 		
 		/**
@@ -52,6 +51,7 @@ class test
 		{
 			$questionno = $dbrelation['OrderNo'];
 			$this->questionids[$questionno] = $dbrelation['QuestionId'];
+			echo $this->questionids[$questionno];
 		}
 		
 		/**
