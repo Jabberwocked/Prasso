@@ -6,6 +6,11 @@
 
 class test 
 {
+
+	function testing()
+	{
+		echo "lala";
+	}
 	
 	function edit($testid)
 	{
