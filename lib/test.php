@@ -202,6 +202,149 @@ class test
 		}
 		
 	}
+	
+	/**
+	 * Print test name, questionobjects and form
+	 */
+	
+	function show()
+	{
+		if (!isset($_POST['itemtoedit']))
+		{
+			$itemtoedit = count($this->questionobjects) + 1;
+		}
+		else
+		{
+			$itemtoedit = $_POST['itemtoedit'];
+		}
+		
+		
+		if ($itemtoedit == "testname")
+		{
+			?>
+		
+		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">	
+			<input type="text" name="testname" <?php if (isset($_SESSION['testname'])){echo "value=".$_SESSION['testname'];}?> placeholder="Give your test a name." style="display:inline; width:55%">
+			<button type="submit" name="action" value="save" >Save</button>
+		</form>
+		<br>
+		
+		<?php 
+		}
+		else
+		{
+		?>
+		
+			<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+				<button type="submit" name="itemtoedit" value="testname" style='
+					width:auto; 
+					height:auto; 
+					margin:0; 
+					padding:0; 
+					border: 0;
+					background:none; 
+					color:#666; 
+					text-align:left; 
+					-moz-border-radius: 0px;
+					-webkit-border-radius: 0px;
+					border-radius: 0px;
+					-moz-box-shadow: 0;
+					-webkit-box-shadow: 0;
+					box-shadow: none;
+					-webkit-appearance: none;
+					text-transform: none;
+					letter-spacing: 1px;'>
+			
+					<p><?php if (isset($_SESSION['testname'])){ echo "Test name: <span style='font-weight:bold'>".$_SESSION['testname']."</span>"; } else { echo "Test name"; }; ?></p>
+				</button>	
+			</form>	
+			<br>
+		<?php 
+		
+		}
+		
+		foreach ($this->questionobjects as $questionno => $questionobject)
+		{
+			if ($questionno < $itemtoedit)
+			{
+				$questionobject->show();
+			}
+		};
+			
+		
+		if ($itemtoedit != "testname")
+		{
+		?>
+			
+			<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+				<input type="hidden" name="questionno" value='<?php echo $itemtoedit ?>'>
+				<input type="text" name="question" value='<?php echo $this->questionobjects[$itemtoedit]->question ?>' placeholder="Question <?php echo $itemtoedit ?>" style="display:inline; width:70%; font-weight:bold">
+					<select name="type" style="width:45px;">
+						<option value="shortanswer" <?php if ($this->questionobjects[$itemtoedit]->type == 'shortanswer' OR !isset($this->questionobjects[$itemtoedit])){echo 'selected';} ?>>SA: Short Answer</option>
+						<option value="multichoice" <?php if ($this->questionobjects[$itemtoedit]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
+					</select> 
+						
+		<?php 
+				
+			$answerno = 1; 
+				
+			foreach ($this->questionobjects[$itemtoedit]->answers as $answer)
+			{ 
+		?>
+			
+				<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
+		<?php 
+				$answerno ++;
+			}
+			if ($answerno == 1)
+			{ 
+		?>
+				<input type="text" name="answers[]" class="answers" placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
+		<?php 
+				$answerno ++;
+			}
+		?>
+			<script>
+			   	var answernojs = <?php echo json_encode($answerno); ?>;
+			</script>	
+						
+			<button type="button" id="addOption" value="Add" >+</button> |
+			<button type="submit" name="action" value="save" >Save</button><br>
+			<br>
+			</form>
+						
+				
+		<?php 
+		};
+		
+		
+		foreach ($this->questionobjects as $questionno => $questionobject)
+		{
+			if ($questionno > $itemtoedit)
+			{
+				$questionobject->show();
+			}
+		};
+		
+		
+		
+		/** 
+		 * Show Add button if not editing new question
+		 */
+		
+		if ($itemtoedit != count($this->questionobjects) + 1)
+		{ ?>
+			<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+				<button type="submit" name="edit" value="<?php echo count($this->questionobjects) + 1 ?>" >Add</button>
+			</form>
+				<br>
+				<br>
+		<?php 
+		} 
+		
+	}
+	
+	
 }
 
 ?>
