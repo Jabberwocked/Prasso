@@ -255,7 +255,7 @@ class test
 					letter-spacing: 1px;'>
 			
 		<?php 	echo "lalala";
-		echo $this->testname;
+		echo $_SESSION['test']->testname;
 		?>
 					<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
 				</button>	
