@@ -48,13 +48,13 @@ elseif ($_POST['action'] == "save")
 
 elseif ($_POST['action'] == "savetest")
 {
+	echo "lalal";
 	if (isset($this->testid))
 	{
 		$_SESSION['test']->update();
 	}
 	else 
 	{
-		echo "lalal";
 		$_SESSION['test']->add();
 	}
 	$_SESSION['test'] = new test();
