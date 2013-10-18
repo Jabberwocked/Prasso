@@ -8,7 +8,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 <?php 
 	
-$_SESSION['test'] = new test();
+
 
 /**
  * If a test is selected to edit, copy questions from db to session.
@@ -16,6 +16,7 @@ $_SESSION['test'] = new test();
 
 if (isset($_POST['testtoedit']))
 {
+	$_SESSION['test'] = new test();
 	$testid = $_POST['testtoedit'];
 	$_SESSION['test']->pullfromdb($testid);
 } 
