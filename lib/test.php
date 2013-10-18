@@ -17,7 +17,7 @@ class test
 	
 	function testing()
 	{
-		echo "lalalala"
+		echo "lalalala";
 	}
 	
 	/** 
