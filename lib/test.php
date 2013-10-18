@@ -24,7 +24,7 @@ class test
 	{
 		$this->testid = $testid;
 		
-		echo $this->questionids;
+		print_r($this->questionids);
 		/** 
 		 * Pull test name to object
 		 */
