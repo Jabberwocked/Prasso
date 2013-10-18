@@ -35,7 +35,7 @@ class questionobject {
 	{
 		?>
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-			<button type="submit" name="edit" value="<?php echo $this->questionno ?>" style='
+			<button type="submit" name="itemtoedit" value="<?php echo $this->questionno ?>" style='
 				width:auto; 
 				height:auto; 
 				margin:0; 
