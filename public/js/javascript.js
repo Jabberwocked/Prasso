@@ -25,7 +25,7 @@ $(document).ready(function(){
 		answernojs ++;  
 	});
 	
-	$('#addOption').keydown(function(e) {
+	$('.answers').keydown(function(e) {
 		var code = e.keyCode || e.which;
 		if (code == 9) {
 			$("<input type='text' value='' autofocus style='display:inline; width:60%' />")
