@@ -24,6 +24,18 @@ $(document).ready(function(){
 	     .insertAfter(".answers:last");
 		answernojs ++;  
 	});
-		
+	
+	$('#addOption').keydown(function(e) {
+		var code = e.keyCode || e.which;
+		if (code == 9) {
+			$("<input type='text' value='' autofocus style='display:inline; width:60%' />")
+			 .attr("name", "answers[]")
+			 .attr("class", "answers")
+			 .attr("placeholder", "Answer " + answernojs)
+		     .insertAfter(".answers:last");
+			answernojs ++;  
+		}
+		return false;
+	});
 		
 });
