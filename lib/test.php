@@ -28,7 +28,7 @@ class test
 	{
 		$this->testid = $testid;
 		
-		
+		echo "lalal";
 		/** 
 		 * Pull test name to object
 		 */

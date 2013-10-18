@@ -18,7 +18,6 @@ if (isset($_POST['testtoedit']))
 {
 	$_SESSION['test'] = new test();
 	$testid = $_POST['testtoedit'];
-	echo "lalal";
 	$_SESSION['test']->pullfromdb($testid);
 } 
 
