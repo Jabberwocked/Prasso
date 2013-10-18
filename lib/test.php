@@ -246,7 +246,7 @@ class test
 		<?php 
 		
 		}
-		
+	
 		foreach ($this->questionobjects as $questionno => $questionobject)
 		{
 			if ($questionno < $itemtoedit)
