@@ -28,7 +28,6 @@ class test
 	{
 		$this->testid = $testid;
 		
-		echo "lalaal";
 		/** 
 		 * Pull test name to object
 		 */
@@ -39,6 +38,7 @@ class test
 		foreach ($result as $dbtest)
 		{
 			$this->testname = $dbtest['TestName'];
+			echo $this->testname;
 		}
 		
 		/**
