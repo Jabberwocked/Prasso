@@ -18,6 +18,7 @@ if (isset($_POST['testtoedit']))
 {
 	$_SESSION['test'] = new test();
 	$testid = $_POST['testtoedit'];
+	echo "lalal";
 	$_SESSION['test']->pullfromdb($testid);
 } 
 
@@ -48,7 +49,6 @@ elseif ($_POST['action'] == "save")
 
 elseif ($_POST['action'] == "savetest")
 {
-	echo "lalal";
 	if (isset($_SESSION['test']->testid))
 	{
 		$_SESSION['test']->update();
