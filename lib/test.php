@@ -70,9 +70,10 @@ class test
 		
 			foreach ($resultquestions as $tempquestionobject)
 			{
-				$this->questionobjects[$questionno] = new questionobject(array(	'question' => $tempquestionobject['Question'],
-																		'type' => $tempquestionobject['Type'],
-																		'answers' => $tempanswersarray));
+				$this->questionobjects[$questionno] = new questionobject(array(	'questionno' => $questionno,
+																				'question' => $tempquestionobject['Question'],
+																				'type' => $tempquestionobject['Type'],
+																				'answers' => $tempanswersarray));
 			}
 		
 		}	
