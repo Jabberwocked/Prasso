@@ -20,6 +20,9 @@ class test
 		echo "lalalala";
 	}
 }
+
+$lala = new $test;
+$lala->testing();
 	
 if (isset($_POST['edittest']))
 {
