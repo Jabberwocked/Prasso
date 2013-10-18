@@ -60,7 +60,6 @@ class test
 		
 		foreach ($this->questionids as $orderno => $questionid)
 		{
-			echo "lalauuu";
 			$this->questionobjects[$orderno] = new questionobject;
 			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionid);
 		}	
