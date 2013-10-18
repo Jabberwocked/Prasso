@@ -53,7 +53,7 @@ elseif ($_POST['action'] == "savetest")
 
 }
 
-else 
+elseif ($_SESSION['test'] != new test()) 
 {
 ?>
 	<p>The last test you were editing wasn't saved. Do you wish to continue?</p>
