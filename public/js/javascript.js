@@ -38,5 +38,12 @@ $(document).ready(function(){
 		}
 		return false;
 	});
+	
+	$(document).click(function() {
+		  $("#questionform").submit();
+		});
+		$("#questionform").click(function(e) {
+		  e.stopPropagation();
+	});
 		
 });
