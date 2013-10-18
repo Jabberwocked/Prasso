@@ -51,7 +51,19 @@ elseif ($_POST['action'] == "savetest")
 	$_SESSION['test']->save();
 	$_SESSION['test'] = new test();
 
-};
+}
+
+else 
+{
+?>
+	<p>The last test you were editing wasn't saved. Do you wish to continue?</p>
+	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">	
+		<button type="submit" name="action" value="continue" >Continue</button> |
+		<button type="submit" name="action" value="deleteall" >Delete and start over</button>
+	</form>
+<?php 	
+	break;
+}
 
 
 
