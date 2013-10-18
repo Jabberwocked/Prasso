@@ -208,15 +208,12 @@ class test
 	
 	function show()
 	{
-		echo "lalala";
-		echo $_POST['itemtoedit'];
 		if (!isset($_POST['itemtoedit']))
 		{
 			$itemtoedit = count($this->questionobjects) + 1;
 		}
 		else
 		{
-			
 			$itemtoedit = $_POST['itemtoedit'];
 		}
 		
@@ -257,6 +254,9 @@ class test
 					text-transform: none;
 					letter-spacing: 1px;'>
 			
+		<?php 	echo "lalala";
+		echo $this->testname;
+		?>
 					<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
 				</button>	
 			</form>	
