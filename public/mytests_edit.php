@@ -25,10 +25,10 @@ if (isset($_POST['testtoedit']))
  * Process forms depending on button pressed.
  */
 /**
- * DELETE ALL
+ * RESET
  */
 
-if ($_POST['action'] == "deleteall")
+if ($_POST['action'] == "reset")
 {
 	$_SESSION['test'] = new test();
 }
@@ -54,7 +54,7 @@ elseif ($_POST['action'] == "savetest")
 	}
 	else 
 	{
-		$_SESSION['test']->update();
+		$_SESSION['test']->add();
 	}
 	$_SESSION['test'] = new test();
 }
@@ -79,7 +79,7 @@ $_SESSION['test']->show();
 	
 <form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">	
 	<button type="submit" name="action" value="savetest" >Save</button> |
-	<button type="submit" name="action" value="deleteall" >Delete</button>
+	<button type="submit" name="action" value="reset" >Reset</button>
 </form>
 <br>
 <br>
