@@ -207,13 +207,14 @@ class test
 	
 	function show()
 	{
+		echo $_POST['itemtoedit'];
 		if (!isset($_POST['itemtoedit']))
 		{
 			$itemtoedit = count($this->questionobjects) + 1;
 		}
 		else
 		{
-			echo $_POST['itemtoedit'];
+			
 			$itemtoedit = $_POST['itemtoedit'];
 		}
 		
