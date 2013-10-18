@@ -86,7 +86,9 @@ class test
 	
 	function reset()
 	{
-		$this->__construct();
+		unset($this->testname);
+		$questionids = array();
+		$this->questionobjects = array();
 			
 		header("Location: mytests_edit.php");
 	}
