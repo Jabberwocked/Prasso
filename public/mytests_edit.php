@@ -30,7 +30,7 @@ if (isset($_POST['testtoedit']))
 
 if ($_POST['action'] == "deleteall")
 {
-	$_SESSION['test']->reset();
+	$_SESSION['test'] = new test();
 }
 
 /**

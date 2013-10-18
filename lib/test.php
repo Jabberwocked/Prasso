@@ -5,14 +5,13 @@
 
 class test 
 {
-	public $testid;
-	public $testname;
-	public $questionids = array();
-	public $questionobjects = array();
-	
+		
 	function __construct()
 	{
-
+		$this->testid;
+		$this->testname;
+		$this->questionids = array();
+		$this->questionobjects = array();
 	}
 	
 
