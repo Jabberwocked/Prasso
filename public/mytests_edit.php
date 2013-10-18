@@ -20,7 +20,7 @@ if (isset($_POST['edittest']))
 {
 	$lala = new $test;
 	$lala->testing();
-// 	$lala->edit($_POST['edittest']);
+	$lala->edit($_POST['edittest']);
 
 } 
 
