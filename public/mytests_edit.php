@@ -15,9 +15,6 @@ include_once (TEMPLATES_PATH . "/header.php");
  */
 
 
-$lala = new test;
-
-$lala->testing();
 	
 if (isset($_POST['edittest']))
 {
