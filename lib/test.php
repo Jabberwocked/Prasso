@@ -15,17 +15,15 @@ class test
 
 	}
 	
-	function testing()
-	{
-		echo "lalalala";
-	}
+
 	
 	/** 
 	 * Pull test details to object (which will usually be saved as $_SESSION['test'])
 	 */
 	
-	function pullfromdb()
+	function pullfromdb($testid)
 	{
+		$this->testid = $testid;
 		/** 
 		 * Pull test name to object
 		 */
