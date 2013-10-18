@@ -50,11 +50,11 @@ elseif ($_POST['action'] == "savetest")
 {
 	if (isset($this->testid))
 	{
-		echo "lalal";
 		$_SESSION['test']->update();
 	}
 	else 
 	{
+		echo "lalal";
 		$_SESSION['test']->add();
 	}
 	$_SESSION['test'] = new test();
