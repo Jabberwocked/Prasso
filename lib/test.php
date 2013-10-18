@@ -212,7 +212,6 @@ class test
 		if (!isset($_POST['itemtoedit']))
 		{
 			$itemtoedit = count($this->questionobjects) + 1;
-			echo $itemtoedit;
 		}
 		else
 		{
@@ -256,7 +255,7 @@ class test
 					text-transform: none;
 					letter-spacing: 1px;'>
 			
-					<p><?php if (isset($_SESSION['testname'])){ echo "Test name: <span style='font-weight:bold'>".$_SESSION['testname']."</span>"; } else { echo "Test name"; }; ?></p>
+					<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
 				</button>	
 			</form>	
 			<br>
