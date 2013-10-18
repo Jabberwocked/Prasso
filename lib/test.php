@@ -1,16 +1,11 @@
 <?php
 
 /**
- * Class questionobject
+ * Class test
  */
 
 class test 
 {
-
-	function testing()
-	{
-		echo "lala";
-	}
 	
 	function edit($testid)
 	{

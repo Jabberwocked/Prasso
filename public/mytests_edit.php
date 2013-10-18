@@ -16,8 +16,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 if (isset($_POST['edittest']))
 {
-	$test->testing();
-	$test->edit($_POST['edittest']);
+	$lala = new $test;
+	$lala->edit($_POST['edittest']);
 
 } 
 
