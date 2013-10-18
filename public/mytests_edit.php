@@ -81,7 +81,7 @@ if (isset($_POST['editquestion']))
 if ($_POST['action'] == "deleteall")
 {
 	$_SESSION['questionobjects'] = array();
-	$_SESSION['testname'] = "";
+	unset($_SESSION['testname']);
 	
 	header("Location: mytests_edit.php");
 }
@@ -183,6 +183,7 @@ elseif ($_POST['action'] == "savetest")
 		echo "<p>Go to <a href='mytests.php'>My Tests</a></p>";
 		echo "<br><br>";
 		echo "<p>Test name: <span style='font-weight:bold; font-style:italic'>".$_POST['testname']."</span></p><br>";
+		
 		
 		header('location:mytests.php');
 		
