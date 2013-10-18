@@ -329,7 +329,7 @@ class test
 				<br>
 		<?php 
 		} 
-		print_r($this->questionids);
+		
 	}
 	
 	
