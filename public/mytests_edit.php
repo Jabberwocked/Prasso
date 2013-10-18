@@ -13,7 +13,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 /**
  * If a test is selected to edit, copy questions from db to session.
  */
-echo "lulu";
+
 class test
 {
 	function testing()
@@ -21,7 +21,7 @@ class test
 		echo "lalalala";
 	}
 }
-
+echo "lulu";
 $lala = new $test;
 $lala->testing();
 	
