@@ -6,6 +6,10 @@
 
 class test 
 {
+	function testin()
+	{
+		echo "lalalala";
+	}
 	
 	function edit($testid)
 	{
