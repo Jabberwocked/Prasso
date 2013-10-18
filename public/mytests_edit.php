@@ -21,8 +21,9 @@ class test
 		echo "lalalala";
 	}
 }
-echo "lulu";
+
 $lala = new $test;
+echo "lululu";
 $lala->testing();
 	
 if (isset($_POST['edittest']))
