@@ -212,6 +212,7 @@ class test
 		if (!isset($_POST['itemtoedit']))
 		{
 			$itemtoedit = count($this->questionobjects) + 1;
+			echo $itemtoedit;
 		}
 		else
 		{
