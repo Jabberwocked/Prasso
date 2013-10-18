@@ -197,7 +197,7 @@ if (!isset($_POST['edit']))
 {
 	$questionno = count($_SESSION['questionobjects']) + 1;
 }
-if ($_POST['edit'] == "testname")
+if ($_POST['edit'] == 0)
 {
 ?>	
 
@@ -213,7 +213,7 @@ else
 ?>
 
 	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-		<button type="submit" name="edit" value="testname" style='
+		<button type="submit" name="edit" value='0' style='
 			width:auto; 
 			height:auto; 
 			margin:0; 
@@ -250,10 +250,8 @@ foreach ($_SESSION['questionobjects'] as $key => $questionobject)
 };
 	
 
-foreach ($_SESSION['questionobjects'] as $key => $questionobject)
+if ($questionno != 0)
 {
-	if ($key + 1 == $questionno OR $key + 1 == count($_SESSION['questionobjects']) + 1)
-	{
 ?>
 	
 	<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
@@ -294,7 +292,6 @@ foreach ($_SESSION['questionobjects'] as $key => $questionobject)
 				
 		
 <?php 
-	}
 };
 
 
@@ -309,7 +306,7 @@ foreach ($_SESSION['questionobjects'] as $key => $question)
 
 
 /** 
- * Form
+ * Show Add button if not editing new question
  */
 
 if ($questionno != count($_SESSION['questionobjects']) + 1)
@@ -320,9 +317,15 @@ if ($questionno != count($_SESSION['questionobjects']) + 1)
 		<br>
 		<br>
 <?php 
-} ?>	
+} 
 
 
+/** 
+ * Buttons: Save test or delete questions
+ */
+
+ 
+ ?>	
 
 	
 <form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">	
