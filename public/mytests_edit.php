@@ -48,21 +48,18 @@ if (isset($_POST['edittest']))
 		$result3 = $db->query($sql3);
 		
 		$answerarray = array();
-		foreach ($result3 as $answerobject)
+		foreach ($result3 as $tempanswersobject)
 		{
-			$answerarray[] = $answerobject['Answer'];
+			$tempanswersarray[] = $tempanswersobject['Answer'];
 		}	
 		
 		
-		foreach ($result2 as $questionobject)
+		foreach ($result2 as $tempquestionobject)
 		{
-			$question = $questionobject['Question'];
-			$type = $questionobject['Type'];
-			$answers = $answerarray;
 			$_SESSION['questionobjects'][] = new questionobject(array(	'questionno' => $questionno, 
-																		'question' => $question, 
-																		'type' => $type, 
-																		'answers' => $answers));
+																		'question' => $tempquestionobject['Question'], 
+																		'type' => $tempquestionobject['Type'], 
+																		'answers' => $tempanswersarray));
 		}
 		$questionno ++;
 		

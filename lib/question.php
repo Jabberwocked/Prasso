@@ -13,7 +13,7 @@ class questionobject {
 	public $typeshort;
 	public $answers;
 
-	function __construct($post)
+	function __construct($post) //input an array, usually from a post
 	{
 		$this->questionno = $post['questionno'];
 		$this->question = $post['question'];
