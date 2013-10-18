@@ -7,7 +7,7 @@
 
 
 class questionobject {
-	public $questionno;
+	public $orderno;
 	public $questionid;
 	public $question;
 	public $type;
@@ -16,7 +16,7 @@ class questionobject {
 
 	function __construct( $data = array() ) //input an array, usually from a post
 	{
-		if (isset($data['questionno'])) $this->questionno = $data['questionno'];
+		if (isset($data['orderno'])) $this->orderno = $data['orderno'];
 		if (isset($data['question'])) $this->question = $data['question'];
 		if (isset($data['type'])) $this->type = $data['type'];
 		if (isset($data['answers'])) $this->answers = $data['answers'];
@@ -35,7 +35,7 @@ class questionobject {
 	
 	
 	
-	function pullfromdb($questionno, $questionid)
+	function pullfromdb($orderno, $questionid)
 	{
 		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 		$sql = "SELECT * FROM Questions WHERE QuestionId=".$questionid;
@@ -52,7 +52,7 @@ class questionobject {
 		
 		foreach ($resultquestions as $tempquestionobject)
 		{
-			$this->questionno = $questionno;
+			$this->orderno = $orderno;
 			$this->questionid = $questionid;
 			$this->question = $tempquestionobject['Question'];
 			$this->type = $tempquestionobject['Type'];
@@ -80,7 +80,7 @@ class questionobject {
 	{
 		?>
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-			<button type="submit" name="itemtoedit" value="<?php echo $this->questionno ?>" style='
+			<button type="submit" name="itemtoedit" value="<?php echo $this->orderno ?>" style='
 				width:auto; 
 				height:auto; 
 				margin:0; 
@@ -99,7 +99,7 @@ class questionobject {
 				text-transform: none;
 				letter-spacing: 1px;'>
 					<p style='font-weight:bold'>
-					<?php echo $this->questionno . " " . $this->question ; ?>
+					<?php echo $this->orderno . " " . $this->question ; ?>
 					<span style='font-weight:normal'>
 					(<?php echo $this->typeshort ?>)
 					</span></p>

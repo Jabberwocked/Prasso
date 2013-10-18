@@ -10,7 +10,7 @@ class test
 	{
 		$this->testid;
 		$this->testname;
-		$this->questionids = array(); // questionno => questionid
+		$this->questionids = array(); // orderno => questionid
 		$this->questionobjects = array();
 	}
 	
@@ -49,8 +49,8 @@ class test
 		
 		foreach ($result as $dbrelation)
 		{
-			$questionno = $dbrelation['OrderNo'];
-			$this->questionids[$questionno] = $dbrelation['QuestionId'];
+			$orderno = $dbrelation['OrderNo'];
+			$this->questionids[$orderno] = $dbrelation['QuestionId'];
 		}
 		
 		/**
@@ -58,13 +58,13 @@ class test
 		 */
 		
 		
-		foreach ($this->questionids as $questionno => $questionid)
+		foreach ($this->questionids as $orderno => $questionid)
 		{
 			echo "lalauuu";
-			$this->questionobjects[$questionno] = new questionobject;
-			print_r($this->questionobjects[$questionno]);
-			$this->questionobjects[$questionno]->pullfromdb($questionno, $questionid);
-			print_r($this->questionobjects[$questionno]);
+			$this->questionobjects[$orderno] = new questionobject;
+			print_r($this->questionobjects[$orderno]);
+			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionid);
+			print_r($this->questionobjects[$orderno]);
 		}	
 	}
 	
@@ -87,7 +87,7 @@ class test
 		}
 		else
 		{
-			$this->questionobjects[$_POST['questionno']] = new questionobject($_POST);
+			$this->questionobjects[$_POST['orderno']] = new questionobject($_POST);
 		
 			header("Location: mytests_edit.php");
 		}
@@ -118,14 +118,14 @@ class test
 			 */
 			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 				
-			foreach ($this->questionobjects as $questionno => $questionobject)
+			foreach ($this->questionobjects as $orderno => $questionobject)
 			{
 				$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
 				$qry->execute(array(':question'=>$questionobject->question,
 									':type'=>$questionobject->type));
 					
 				//		save ids to array for later use...
-				$this->questionids[$questionno] = $db->lastInsertId();
+				$this->questionids[$orderno] = $db->lastInsertId();
 					
 			}
 				
@@ -136,7 +136,7 @@ class test
 			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 		
 			$n = 0;
-			foreach ($this->questionobjects as $questionno => $questionobject)
+			foreach ($this->questionobjects as $orderno => $questionobject)
 			{
 				$questionid = $this->questionids[$n];
 				foreach ($questionobject->answers as $answer)
@@ -166,9 +166,9 @@ class test
 			 */
 			//	
 			$qry3 = $db->prepare("INSERT INTO Question_Test (QuestionId, TestId, OrderNo) VALUES (:QuestionId,:TestId,:OrderNo)");
-			foreach ($this->questionids as $questionno=>$QuestionId)
+			foreach ($this->questionids as $orderno=>$QuestionId)
 			{
-				$qry3->execute(array(':QuestionId'=>$QuestionId,':TestId'=>$TestId, ':OrderNo'=>$questionno));
+				$qry3->execute(array(':QuestionId'=>$QuestionId,':TestId'=>$TestId, ':OrderNo'=>$orderno));
 			}
 		
 			
@@ -212,14 +212,14 @@ class test
 			 */
 			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 				
-			foreach ($this->questionobjects as $questionno => $questionobject)
+			foreach ($this->questionobjects as $orderno => $questionobject)
 			{
 				$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
 				$qry->execute(array(':question'=>$questionobject->question,
 									':type'=>$questionobject->type));
 					
 				//		save ids to array for later use...
-				$this->questionids[$questionno] = $db->lastInsertId();
+				$this->questionids[$orderno] = $db->lastInsertId();
 					
 			}
 				
@@ -230,7 +230,7 @@ class test
 			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 		
 			$n = 0;
-			foreach ($this->questionobjects as $questionno => $questionobject)
+			foreach ($this->questionobjects as $orderno => $questionobject)
 			{
 				$questionid = $this->questionids[$n];
 				foreach ($questionobject->answers as $answer)
@@ -260,9 +260,9 @@ class test
 			 */
 			//	
 			$qry3 = $db->prepare("INSERT INTO Question_Test (QuestionId, TestId, OrderNo) VALUES (:QuestionId,:TestId,:OrderNo)");
-			foreach ($this->questionids as $questionno=>$QuestionId)
+			foreach ($this->questionids as $orderno=>$QuestionId)
 			{
-				$qry3->execute(array(':QuestionId'=>$QuestionId,':TestId'=>$TestId, ':OrderNo'=>$questionno));
+				$qry3->execute(array(':QuestionId'=>$QuestionId,':TestId'=>$TestId, ':OrderNo'=>$orderno));
 			}
 		
 			
@@ -348,9 +348,9 @@ class test
 		
 		}
 	
-		foreach ($this->questionobjects as $questionno => $questionobject)
+		foreach ($this->questionobjects as $orderno => $questionobject)
 		{
-			if ($questionno < $itemtoedit)
+			if ($orderno < $itemtoedit)
 			{
 				$questionobject->show();
 			}
@@ -362,7 +362,7 @@ class test
 		?>
 			
 			<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-				<input type="hidden" name="questionno" value='<?php echo $itemtoedit; ?>'>
+				<input type="hidden" name="orderno" value='<?php echo $itemtoedit; ?>'>
 				<input type="text" name="question" value='<?php echo $this->questionobjects[$itemtoedit]->question ?>' placeholder="Question <?php echo $itemtoedit ?>" style="display:inline; width:70%; font-weight:bold">
 					<select name="type" style="width:45px;">
 						<option value="shortanswer" <?php if ($this->questionobjects[$itemtoedit]->type == 'shortanswer' OR !isset($this->questionobjects[$itemtoedit])){echo 'selected';} ?>>SA: Short Answer</option>
@@ -403,9 +403,9 @@ class test
 		};
 		
 		
-		foreach ($this->questionobjects as $questionno => $questionobject)
+		foreach ($this->questionobjects as $orderno => $questionobject)
 		{
-			if ($questionno > $itemtoedit)
+			if ($orderno > $itemtoedit)
 			{
 				$questionobject->show();
 			}
