@@ -13,12 +13,19 @@ include_once (TEMPLATES_PATH . "/header.php");
 /**
  * If a test is selected to edit, copy questions from db to session.
  */
-
+class test
+{
+	function testing()
+	{
+		echo "lalalala";
+	}
+}
+	
 if (isset($_POST['edittest']))
 {
 	$lala = new $test;
 	$lala->testing();
-	$lala->edit($_POST['edittest']);
+// 	$lala->edit($_POST['edittest']);
 
 } 
 
