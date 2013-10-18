@@ -197,7 +197,13 @@ if (!isset($_POST['edit']))
 {
 	$questionno = count($_SESSION['questionobjects']) + 1;
 }
-if ($_POST['edit'] == "testname")
+else 
+{
+	$questionno = $_POST['edit'];
+}
+
+
+if ($questionno == "testname")
 {
 ?>	
 
@@ -236,8 +242,6 @@ else
 		</button>	
 	</form>	
 <?php 
-
-$questionno = $_POST['edit'];
 
 }
 
