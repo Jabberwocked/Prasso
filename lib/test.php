@@ -23,6 +23,8 @@ class test
 	function pullfromdb($testid)
 	{
 		$this->testid = $testid;
+		
+		echo $this->questionids;
 		/** 
 		 * Pull test name to object
 		 */
