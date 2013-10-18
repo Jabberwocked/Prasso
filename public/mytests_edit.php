@@ -14,16 +14,9 @@ include_once (TEMPLATES_PATH . "/header.php");
  * If a test is selected to edit, copy questions from db to session.
  */
 
-class test
-{
-	function testing()
-	{
-		echo "lalalala";
-	}
-}
 
 $lala = new test;
-echo "lululu";
+
 $lala->testing();
 	
 if (isset($_POST['edittest']))
