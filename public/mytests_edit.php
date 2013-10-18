@@ -14,10 +14,11 @@ include_once (TEMPLATES_PATH . "/header.php");
  * If a test is selected to edit, copy questions from db to session.
  */
 
-if (isset($_POST['edittest']))
+if (isset($_POST['testtoedit']))
 {
-	echo "lalal";
-	$_SESSION['test']->edit($_POST['edittest']);
+	$testid = $_POST['testtoedit'];
+	$_SESSION['test'] = new test($testid);
+	$_SESSION['test']->edit();
 } 
 
 /**

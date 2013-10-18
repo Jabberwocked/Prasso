@@ -5,23 +5,28 @@
 
 class test 
 {
+	public $testid;
 	public $testname;
 	public $questionids = array();
 	public $questionobjects = array();
 	
+	function __construct($testid)
+	{
+		$this->testid = $testid;
+	}
 	
 	/** 
 	 * Pull test details to object (which will usually be saved as $_SESSION['test'])
 	 */
 	
-	function edit($testid)
+	function edit()
 	{
 		/** 
 		 * Pull test name to object
 		 */
 		
 		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-		$sql = "SELECT * FROM Tests WHERE TestId=".$testid;
+		$sql = "SELECT * FROM Tests WHERE TestId=".$this->testid;
 		$result = $db->query($sql);
 		foreach ($result as $dbtest)
 		{
@@ -32,7 +37,7 @@ class test
 		 * Pull questionids to session
 		 */
 		
-		$sql = "SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo";
+		$sql = "SELECT * FROM Question_Test WHERE TestId=".$this->testid." ORDER BY OrderNo";
 		$result = $db->query($sql);
 		
 		foreach ($result as $dbrelation)
@@ -159,10 +164,9 @@ class test
 			 * Save test to table TESTS
 			 */
 		
-			$TestName = $_SESSION['testname'];
-			$UserId_Owner = $_SESSION['userid'];
 			$qry2 = $db->prepare("INSERT INTO Tests (TestName, UserId_Owner) VALUES (:TestName,:UserId_Owner)");
-			$qry2->execute(array(':TestName'=>$TestName,':UserId_Owner'=>$UserId_Owner));
+			$qry2->execute(array(	':TestName'=>$this->testname,
+									':UserId_Owner'=>$_SESSION['userid']));
 		
 			// 	save testid for later use
 			$TestId = $db->lastInsertId();
