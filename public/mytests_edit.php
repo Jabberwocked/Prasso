@@ -18,10 +18,16 @@ if (isset($_POST['editquestion']))
 {
 	$testid = $_POST['editquestion'];
 
-	$_SESSION['questionobjects'] = array();
-	
-	
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+	$sql0 = "SELECT * FROM Tests WHERE TestId=".$testid;
+	$result0 = $db->query($sql0);
+	foreach ($result0 as $test)
+	{
+			$_SESSION['testname'] = $test['TestName'];
+	}
+	
+	$_SESSION['questionobjects'] = array();
+		
 	$sql = "SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo";
 	$result = $db->query($sql);
 	
@@ -75,6 +81,7 @@ if (isset($_POST['editquestion']))
 if ($_POST['action'] == "deleteall")
 {
 	$_SESSION['questionobjects'] = array();
+	$_SESSION['testname'] = "";
 	
 	header("Location: mytests_edit.php");
 }
@@ -106,7 +113,7 @@ elseif ($_POST['action'] == "savetest")
 	/**
 	 * Check if test name is given
 	 */
-	if ($_POST['testname'] == false)
+	if ($_SESSION['testname'] == false)
 	{
 		echo "<p style='color:red'>Please insert a test name</p><br>";
 	}
@@ -171,10 +178,13 @@ elseif ($_POST['action'] == "savetest")
 			$qry3->execute(array(':QuestionId'=>$QuestionId,':TestId'=>$TestId, ':OrderNo'=>$OrderNo));
 		}
 		
+		// echoes useless?
 		echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p>"; // echo success
 		echo "<p>Go to <a href='mytests.php'>My Tests</a></p>";
 		echo "<br><br>";
 		echo "<p>Test name: <span style='font-weight:bold; font-style:italic'>".$_POST['testname']."</span></p><br>";
+		
+		header('location:mytests.php');
 		
 		/**
 		 * End connection
