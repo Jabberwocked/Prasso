@@ -16,9 +16,10 @@ $_SESSION['test'] = new test();
 
 if (isset($_POST['testtoedit']))
 {
-	$_SESSION['test']->testing();
+
 	$testid = $_POST['testtoedit'];
 	$_SESSION['test']->pullfromdb($testid);
+	$_SESSION['test']->testing();
 } 
 
 /**
