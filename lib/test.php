@@ -6,7 +6,7 @@
 
 class test 
 {
-	function testin()
+	function testing()
 	{
 		echo "lalalala";
 	}
