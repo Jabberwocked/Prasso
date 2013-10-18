@@ -16,56 +16,8 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 if (isset($_POST['edittest']))
 {
-	$testid = $_POST['edittest'];
+	$test->edit($_POST['edittest']);
 
-	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-	$sql0 = "SELECT * FROM Tests WHERE TestId=".$testid;
-	$result0 = $db->query($sql0);
-	foreach ($result0 as $test)
-	{
-			$_SESSION['testname'] = $test['TestName'];
-	}
-	
-	$_SESSION['questionobjects'] = array();
-		
-	$sql = "SELECT * FROM Question_Test WHERE TestId=".$testid." ORDER BY OrderNo";
-	$result = $db->query($sql);
-	
-	
-	foreach ($result as $relation)
-	{
-		$questionids[] = $relation['QuestionId'];
-	}
-		
-	
-	$questionno = 1;
-	foreach ($questionids as $questionid)
-	{
-		$sql2 = "SELECT * FROM Questions WHERE QuestionId=".$questionid;
-		$result2 = $db->query($sql2);
-		
-		$sql3 = "SELECT * FROM Answers WHERE QuestionId=".$questionid;
-		$result3 = $db->query($sql3);
-		
-		$answerarray = array();
-		foreach ($result3 as $tempanswersobject)
-		{
-			$tempanswersarray[] = $tempanswersobject['Answer'];
-		}	
-		
-		
-		foreach ($result2 as $tempquestionobject)
-		{
-			$_SESSION['questionobjects'][] = new questionobject(array(	'questionno' => $questionno, 
-																		'question' => $tempquestionobject['Question'], 
-																		'type' => $tempquestionobject['Type'], 
-																		'answers' => $tempanswersarray));
-		}
-		$questionno ++;
-		
-	}
-	
-	
 } 
 
 

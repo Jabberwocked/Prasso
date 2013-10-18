@@ -2,7 +2,7 @@
 
 	
 /**
- * Class question
+ * Class questionobject
  */
 
 
