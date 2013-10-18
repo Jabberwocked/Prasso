@@ -40,7 +40,7 @@ $(document).ready(function(){
 	});
 	
 	$(document).click(function() {
-		  $("form").get(0).submit();
+		  $("form").submit();
 	});
 	$("form").click(function(e) {
 		  e.stopPropagation();
