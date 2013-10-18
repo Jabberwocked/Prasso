@@ -37,6 +37,7 @@ class questionobject {
 	
 	function pullfromdb($questionno, $questionid)
 	{
+		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 		$sql = "SELECT * FROM Questions WHERE QuestionId=".$questionid;
 		$resultquestions = $db->query($sql);
 		
