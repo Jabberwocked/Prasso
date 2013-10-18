@@ -190,7 +190,7 @@ elseif ($_POST['action'] == "savetest")
 
 
 /** 
- * Print test name and questionobjects
+ * Print test name, questionobjects and form
  */
 
 if (!isset($_POST['edit']))
