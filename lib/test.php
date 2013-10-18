@@ -10,16 +10,16 @@ class test
 	public $questionids = array();
 	public $questionobjects = array();
 	
-	function __construct($testid)
+	function __construct()
 	{
-		$this->testid = $testid;
+
 	}
 	
 	/** 
 	 * Pull test details to object (which will usually be saved as $_SESSION['test'])
 	 */
 	
-	function edit()
+	function pullfromdb()
 	{
 		/** 
 		 * Pull test name to object
@@ -34,7 +34,7 @@ class test
 		}
 		
 		/**
-		 * Pull questionids to session
+		 * Pull questionids to object
 		 */
 		
 		$sql = "SELECT * FROM Question_Test WHERE TestId=".$this->testid." ORDER BY OrderNo";
@@ -47,7 +47,7 @@ class test
 		}
 		
 		/**
-		 * Pull questions and answers to class in questionobjects
+		 * Pull questions and answers to questionobjects in object
 		 */
 		
 		
