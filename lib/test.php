@@ -207,6 +207,7 @@ class test
 	
 	function show()
 	{
+		echo "lalala";
 		echo $_POST['itemtoedit'];
 		if (!isset($_POST['itemtoedit']))
 		{
