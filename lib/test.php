@@ -161,12 +161,14 @@ class test
 			// 	save testid for later use
 			$TestId = $db->lastInsertId();
 		
-			//	Test name and owner are saved. Now save which questionids belong to testid.
-			$qry3 = $db->prepare("INSERT INTO Question_Test (QuestionId, TestId, Orderno) VALUES (:QuestionId,:TestId,:OrderNo)");
-			foreach ($questionids as $OrderNo=>$QuestionId)
+			/**
+			 * Test name and owner are saved. Now save which questionids belong to testid in table QUESTION_TEST.
+			 */
+			//	
+			$qry3 = $db->prepare("INSERT INTO Question_Test (QuestionId, TestId, OrderNo) VALUES (:QuestionId,:TestId,:OrderNo)");
+			foreach ($this->questionids as $questionno=>$QuestionId)
 			{
-				$OrderNo ++;
-				$qry3->execute(array(':QuestionId'=>$QuestionId,':TestId'=>$TestId, ':OrderNo'=>$OrderNo));
+				$qry3->execute(array(':QuestionId'=>$QuestionId,':TestId'=>$TestId, ':OrderNo'=>$questionno));
 			}
 		
 			// echoes useless?
