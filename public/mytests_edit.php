@@ -22,7 +22,7 @@ class test
 	}
 }
 
-$lala = new $test;
+$lala = new test;
 echo "lululu";
 $lala->testing();
 	
