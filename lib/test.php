@@ -261,7 +261,7 @@ class test
 		?>
 			
 			<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-				<input type="text" name="questionno" value='<?php echo $itemtoedit ?>'>
+				<input type="hidden" name="questionno" value='<?php echo $itemtoedit +1; ?>'>
 				<input type="text" name="question" value='<?php echo $this->questionobjects[$itemtoedit]->question ?>' placeholder="Question <?php echo $itemtoedit ?>" style="display:inline; width:70%; font-weight:bold">
 					<select name="type" style="width:45px;">
 						<option value="shortanswer" <?php if ($this->questionobjects[$itemtoedit]->type == 'shortanswer' OR !isset($this->questionobjects[$itemtoedit])){echo 'selected';} ?>>SA: Short Answer</option>
