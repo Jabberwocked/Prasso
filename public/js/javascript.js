@@ -39,12 +39,14 @@ $(document).ready(function(){
 		return false;
 	});
 	
+	$("questionform").submit(function(){
+		    alert("Submitted");
+	});
 	$(document).click(function() {
 		  $('#questionform').submit();
-		  alert("Submitted");
 	}); 
-	$("form").click(function(e) {
-		  e.stopPropagation();
-	});
+//	$("form").click(function(e) {
+//		  e.stopPropagation();
+//	});
 		
 });
