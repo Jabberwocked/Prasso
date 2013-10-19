@@ -24,7 +24,7 @@ td {
 
 	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 	
-	$testsquery = $db->prepare("SELECT * FROM Tests WHERE UserId_Owner=:UserId");
+	$testsquery = $db->prepare("SELECT * FROM Tests WHERE UserId_Owner=:UserId SORT BY TestId");
 	$testsquery->execute(array(
 		':UserId' => $_SESSION['userid'],
 	));
