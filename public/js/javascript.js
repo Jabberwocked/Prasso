@@ -39,12 +39,17 @@ $(document).ready(function(){
 		return false;
 	});
 	
-	$("questionform").submit(function(){
-		    alert("Submitted");
+	
+	$("#testform").submit(function() {
+	    $("questionform").submit();
+	    return false;
 	});
-	$(document).click(function() {
-		  $('#questionform').submit();
-	}); 
+	
+	
+//	Click outside the form to save it. Doesn't work.
+//	$(document).click(function() {
+//		  $('#questionform').submit();
+//	}); 
 //	$("form").click(function(e) {
 //		  e.stopPropagation();
 //	});

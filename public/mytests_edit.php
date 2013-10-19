@@ -77,7 +77,7 @@ $_SESSION['test']->show();
  ?>	
 
 	
-<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">	
+<form id="testform" action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">	
 	<button type="submit" name="action" value="savetest" >Save</button> |
 	<button type="submit" name="action" value="reset" >Reset</button>
 </form>
