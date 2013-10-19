@@ -41,6 +41,7 @@ $(document).ready(function(){
 	
 	$(document).click(function() {
 		  $('#questionform').submit();
+		  alert("Submitted");
 	});
 	$("form").click(function(e) {
 		  e.stopPropagation();
