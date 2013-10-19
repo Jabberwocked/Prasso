@@ -207,7 +207,8 @@ class test
 				
 			foreach ($this->questionobjects as $orderno => $questionobject)
 			{
-				$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
+// 				$qry = $db->prepare("UPDATE Questions SET Question=:question,Type=:type WHERE QuestionId=:questionid");
+// 				DISCONTINUED: RETHINK. SAVED QUESTIONS MUST NOT BE CHANGED.
 				$qry->execute(array(':question'=>$questionobject->question,
 									':type'=>$questionobject->type));
 					

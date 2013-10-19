@@ -48,14 +48,14 @@ elseif ($_POST['action'] == "save")
 
 elseif ($_POST['action'] == "savetest")
 {
-	if (isset($_SESSION['test']->testid))
-	{
-		$_SESSION['test']->update();
-	}
-	else 
-	{
+// 	if (isset($_SESSION['test']->testid))
+// 	{
+// 		$_SESSION['test']->update();
+// 	}
+// 	else 
+// 	{
 		$_SESSION['test']->add();
-	}
+// 	}
 	$_SESSION['test'] = new test();
 }
 
