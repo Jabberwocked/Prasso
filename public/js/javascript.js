@@ -40,10 +40,11 @@ $(document).ready(function(){
 	});
 	
 	
-	$("#testform").submit(function() {
-	    $("questionform").submit();
-	    return false;
-	});
+//	Save an open question before saving the test. Doesn't work.
+//	$("#testform").submit(function() {
+//	    $("questionform").submit();
+//	    return false;
+//	});
 	
 	
 //	Click outside the form to save it. Doesn't work.
