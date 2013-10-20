@@ -56,8 +56,8 @@ foreach($answersqueryarray as $questionid)
 {
 	foreach($questionid as $answerrow)	
 	{
-// 		echo $questionid;
-// 		echo $answerrow;
+		print_r($questionid);
+		print_r($answerrow);
 		$answer = $answerrow['Answer'];
 		$answers[$questionid][] = $answer;
 	}
