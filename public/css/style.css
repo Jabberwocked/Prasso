@@ -119,12 +119,9 @@ header#head p a:hover #register {
 /* Navigation */
 
 nav {
-	/* If this isn't here 'nav a' does not work for some reason */
-	
-	/* Can't figure out why this doesn't do anything */
-	
+	/* If nav isn't here, even without styles, 'nav a' does not work for some reason */
 	overflow:hidden;
-	margin:300px 0px;
+	margin:20px 0px;
 }
 
 nav a {
