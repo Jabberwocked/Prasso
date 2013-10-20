@@ -23,10 +23,14 @@ if (isset($_POST['testtoedit']))
 } 
 
 /**
- * If an item to edit was selected, save it to session.
+ * If an item to edit was selected, update session, but not if the fields are empty.
  */
 
-if (isset($_POST['itemtoedit']))
+if ($_POST['question'] == "" AND $_POST['answers'][0] == "")
+{
+	// 		Don't change itemtoedit in session
+}
+elseif (isset($_POST['itemtoedit']))
 {
 	$_SESSION['itemtoedit'] = $_POST['itemtoedit'];
 }
@@ -34,7 +38,6 @@ elseif (!isset($_SESSION['itemtoedit']))
 {
 	$_SESSION['itemtoedit'] = count($_SESSION['test']->questionobjects) + 1;
 };
-
 
 /**
  * Process forms depending on button pressed.
@@ -57,7 +60,7 @@ elseif ($_POST['action'] == "save")
 {
 	if ($_POST['question'] == "" AND $_POST['answers'][0] == "")
 	{
-// 		Don't save
+// 		Don't save and
 	}
 	else 
 	{
