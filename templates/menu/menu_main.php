@@ -1,5 +1,5 @@
 
-			<div style="text-align:center">
+			
 				<nav>
 					<a href="takeatest_random.php">Tests</a><br>
 					<br>
@@ -10,7 +10,7 @@
 					<a href="results.php">Results</a><br>		
 					<?php } ?>	
 				</nav>
-			</div>
+			
 		
 
 	

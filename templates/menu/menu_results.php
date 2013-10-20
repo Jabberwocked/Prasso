@@ -1,5 +1,5 @@
 
-<div style="text-align:center">
+
 	<nav>
 		<a href="" style="font-size: small">Show all results</a>
 		<a href="" style="font-size: small">Show in folders</a>
@@ -10,5 +10,5 @@
 		<a href="" style="font-size: small; margin: 10px 2px">user</a>
 		<a href="" style="font-size: small; margin: 10px 2px">test</a>
 	</nav>
-</div>
+
 
