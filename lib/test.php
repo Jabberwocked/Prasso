@@ -410,7 +410,7 @@ class test
  		?>	
 		
 		<br>	
-		<button type="submit" name="action" value="savetest" >Save</button> |
+		<button type="submit" name="action2" value="savetest" >Save</button> |
 		<button type="submit" name="action" value="reset" >Reset</button>
 		
 		</form>

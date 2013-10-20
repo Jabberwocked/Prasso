@@ -72,7 +72,7 @@ elseif ($_POST['action'] == "save")
  * SAVE to database
  */
 
-elseif ($_POST['action'] == "savetest")
+elseif ($_POST['action2'] == "savetest")
 {
 // 	if (isset($_SESSION['test']->testid))
 // 	{
