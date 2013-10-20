@@ -14,7 +14,12 @@ class questionobject {
 	public $typeshort;
 	public $answers;
 
-	function __construct( $data = array() ) //input an array, usually from a post
+/**
+ * To make a new questionobject with questionno, question, type, answers
+ * based on array-input (e.g. form)
+ */
+	
+	function __construct( $data = array() )
 	{
 		if (isset($data['orderno'])) $this->orderno = $data['orderno'];
 		if (isset($data['question'])) $this->question = $data['question'];
@@ -33,7 +38,11 @@ class questionobject {
 	}
 
 	
-	
+/**
+ * To make a new questionobject with questionno, question, type, answers
+ * based on questionid and pulled from db
+ * orderno given manually
+ */
 	
 	function pullfromdb($orderno, $questionid)
 	{
@@ -72,10 +81,10 @@ class questionobject {
 	
 	
 	
-	
-	
-	
-	
+/**
+ * Show a questionobject as a clickable button.
+ */
+		
 	function show()
 	{
 		?>

@@ -283,7 +283,7 @@ class test
 	
 	
 	/**
-	 * Print test name, questionobjects and form
+	 * Print test name and questionobjects as buttons and a form for the item that's being edited
 	 */
 	
 	function show()
@@ -303,7 +303,7 @@ class test
 		}
 		
 		/**
-		 * Test name is edited.
+		 * If test name is being edited. 
 		 */
 		
 		if ($itemtoedit == "testname")
@@ -321,7 +321,7 @@ class test
 		
 		
 		/**
-		 * Question is edited. Output testname first.
+		 * A question is being edited. Output testname first.
 		 */
 		
 		else
@@ -329,25 +329,7 @@ class test
 		?>
 		
 			<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-				<button type="submit" name="itemtoedit" value="testname" style='
-					width:auto; 
-					height:auto; 
-					margin:0; 
-					padding:0; 
-					border: 0;
-					background:none; 
-					color:#666; 
-					text-align:left; 
-					-moz-border-radius: 0px;
-					-webkit-border-radius: 0px;
-					border-radius: 0px;
-					-moz-box-shadow: 0;
-					-webkit-box-shadow: 0;
-					box-shadow: none;
-					-webkit-appearance: none;
-					text-transform: none;
-					letter-spacing: 1px;'>
-			
+				<button class='textlayout' type="submit" name="itemtoedit" value="testname" >
 					<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
 				</button>	
 			</form>	
@@ -356,6 +338,10 @@ class test
 		
 		}
 	
+		/**
+		 * Then output all questions that come before the edited question.
+		 */
+		
 		foreach ($this->questionobjects as $orderno => $questionobject)
 		{
 			if ($orderno < $itemtoedit)
@@ -364,52 +350,34 @@ class test
 			}
 		};
 			
+		/**
+		 * Then output an editing form for the chosen question.
+		 */
 		
 		if ($itemtoedit != "testname")
-		{
-		?>
-			
+		{ ?>
 			<form id='questionform' action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 				<input type="hidden" name="orderno" value='<?php echo $itemtoedit; ?>'>
 				<input type="text" name="question" value='<?php echo $this->questionobjects[$itemtoedit]->question ?>' placeholder="Question <?php echo $itemtoedit ?>" autofocus style="display:inline; width:70%; font-weight:bold">
-					<select name="type" style="width:45px;">
-						<option value="shortanswer" <?php if ($this->questionobjects[$itemtoedit]->type == 'shortanswer' OR !isset($this->questionobjects[$itemtoedit])){echo 'selected';} ?>>SA: Short Answer</option>
-						<option value="multichoice" <?php if ($this->questionobjects[$itemtoedit]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
-					</select> 
-						
-		<?php 
-				
-			$answerno = 1; 
-				
-			foreach ($this->questionobjects[$itemtoedit]->answers as $answer)
-			{ 
-		?>
-			
+				<select name="type" style="width:45px;">
+				<option value="shortanswer" <?php if ($this->questionobjects[$itemtoedit]->type == 'shortanswer' OR !isset($this->questionobjects[$itemtoedit])){echo 'selected';} ?>>SA: Short Answer</option>
+				<option value="multichoice" <?php if ($this->questionobjects[$itemtoedit]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
+				</select> 
+				<?php $answerno = 1; foreach ($this->questionobjects[$itemtoedit]->answers as $answer){	?>
 				<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
-		<?php 
-				$answerno ++;
-			}
-			if ($answerno == 1)
-			{ 
-		?>
+				<?php $answerno ++;} if ($answerno == 1){ ?>
 				<input type="text" name="answers[]" class="answers" placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
-		<?php 
-				$answerno ++;
-			}
-		?>
-			<script>
-			   	var answernojs = <?php echo json_encode($answerno); ?>;
-			</script>	
-						
-			<button type="button" id="addOption" value="Add" >+</button> |
-			<button type="submit" name="action" value="save" >Save</button><br>
-			<br>
+				<?php $answerno ++;}?><script> var answernojs = <?php echo json_encode($answerno); ?>;</script>	
+				<button type="button" id="addOption" value="Add" >+</button> |
+				<button type="submit" name="action" value="save" >Save</button><br>
+				<br>
 			</form>
-						
-				
 		<?php 
 		};
 		
+		/**
+		 * Then output all questions that come after the edited question.
+		 */
 		
 		foreach ($this->questionobjects as $orderno => $questionobject)
 		{
@@ -422,7 +390,7 @@ class test
 		
 		
 		/** 
-		 * Show Add button if not editing new question
+		 * Show Add Question button if not editing new question
 		 */
 		
 		if ($itemtoedit != count($this->questionobjects) + 1)
