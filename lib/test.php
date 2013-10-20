@@ -355,7 +355,7 @@ class test
 		{
 		?>
 			
-			<form id='questionform' action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+			<form id='questionform' method="post">
 				<input type="hidden" name="orderno" value='<?php echo $itemtoedit; ?>'>
 				<input type="text" name="question" value='<?php echo $this->questionobjects[$itemtoedit]->question ?>' placeholder="Question <?php echo $itemtoedit ?>" autofocus style="display:inline; width:70%; font-weight:bold">
 					<select name="type" style="width:45px;">
