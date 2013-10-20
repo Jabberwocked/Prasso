@@ -56,8 +56,6 @@ foreach($answersqueryarray as $questionid => $answerquery)
 {
 	foreach($answerquery as $answerrow)	
 	{
-// 		print_r($id);
-// 		print_r($answerrow);
 		$answer = $answerrow['Answer'];
 		$answers[$questionid][] = $answer;
 	}
@@ -67,21 +65,6 @@ print_r($answers);
 
 
 
-// $answers = array();
-
-// foreach($answersquery as $answersrow)
-// {
-// 	$id = $answersrow['QuestionId'];
-// 	$multipleanswers = array();
-// 	foreach($answersrow as $column => $value)
-// 	{
-// 		if (strpos($column,'Answer') !== false)
-// 		{
-// 			$multipleanswers[] = $value;
-// 		}
-// 	}
-// 	$answers[$id] = $multipleanswers;
-// }
 
 
 /**
@@ -93,7 +76,7 @@ $totalscore = 0;
 
 foreach($questionids as $n => $id)
 {
-	if ($useranswers[$id] == $answers[$id])
+	if (in_array($useranswers[$id] == $answers[$id]))
 	{
 		$correct = true;
 		$score = 1;
@@ -110,7 +93,7 @@ foreach($questionids as $n => $id)
 	
 	echo "<p><span style='font-weight:bold;'>$n " . $questions[$id] . "</span><br>";
 	echo "<span style='display:inline-block; min-width:100px; background-color:" . $colour . "'>x" . $useranswers[$id] . "</span><br>";
-	echo "<span> Score: " . $score . "</span> | <span> Answer: " . $answers[$id] . "</span></p>";
+	echo "<span> Score: " . $score . "</span> | <span> Answer: "; foreach ($answers[$id] as $answer){echo $answer . ", ";};echo "</span></p>";
 	
 }
 
