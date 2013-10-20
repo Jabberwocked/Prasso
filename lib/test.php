@@ -295,10 +295,11 @@ class test
 		
 		if (!isset($_SESSION['itemtoedit']))
 		{
-			$itemtoedit = 3;
+			$itemtoedit = count($this->questionobjects) + 1;
 		}
 		else
 		{
+			$itemtoedit = count($this->questionobjects) + 1;
 			$itemtoedit = $_SESSION['itemtoedit'];
 // 			unset($_SESSION['itemtoedit']);
 		}
