@@ -99,7 +99,7 @@ class questionobject {
 				text-transform: none;
 				letter-spacing: 1px;'>
 					<p style='font-weight:bold'>
-					<?php echo $this->orderno . " " . $this->question ; ?>
+					<?php echo $this->orderno . ". " . $this->question ; ?>
 					<span style='font-weight:normal'>
 					(<?php echo $this->typeshort ?>)
 					</span></p>
