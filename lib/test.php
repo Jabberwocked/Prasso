@@ -308,6 +308,7 @@ class test
 		 */
 		echo $_POST['itemtoedit'];
 		echo $_SESSION['itemtoedit'];
+		echo 'lala';
 		echo $itemtoedit;
 		?>
 				
