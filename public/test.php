@@ -7,9 +7,10 @@ include_once (TEMPLATES_PATH . "/footer.php");
 
 
 
-<form id='questionform' action="test.php" method="get">
+<form action="test.php" method="get">
 	<button type=button name=1 value=on>asdfasdf</button>
 	<button type=button name=2 value=on>asdfas</button>
-	<button type=button name=3 value=on>asdfsa</button>
+	<button type=submit name=3 value=on>asdfsa</button>
+<form id='questionform' method="get">
 	<input type=text name=lala>
 </form>
