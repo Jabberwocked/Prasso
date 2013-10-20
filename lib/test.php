@@ -329,7 +329,24 @@ class test
 		?>
 		
 			<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-				<button class='textlayout' type="submit" name="itemtoedit" value="testname">
+				<button type="submit" name="itemtoedit" value="testname" style='
+					width:auto; 
+					height:auto; 
+					margin:0; 
+					padding:0; 
+					border: 0;
+					background:none; 
+					color:#666; 
+					text-align:left; 
+					-moz-border-radius: 0px;
+					-webkit-border-radius: 0px;
+					border-radius: 0px;
+					-moz-box-shadow: 0;
+					-webkit-box-shadow: 0;
+					box-shadow: none;
+					-webkit-appearance: none;
+					text-transform: none;
+					letter-spacing: 1px;'>
 			
 					<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
 				</button>	
