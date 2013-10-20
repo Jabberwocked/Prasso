@@ -306,6 +306,8 @@ class test
 		/** 
 		 * Output form
 		 */
+		echo $_POST['itemtoedit'];
+		echo $_SESSION['itemtoedit'];
 		echo $itemtoedit;
 		?>
 				
