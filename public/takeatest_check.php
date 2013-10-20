@@ -22,9 +22,13 @@ $useranswers = $_POST; // array(questionid => answer)
 
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
-$questionidssql = "'".implode("','", $_SESSION["questionids"])."'";
+$questionidssql = "'".implode("','", $questionids)."'";
 $questionsquery = $db->query("SELECT * FROM Questions WHERE QuestionId IN (".$questionidssql.")");
-$answersquery = $db->query("SELECT * FROM Answers WHERE QuestionId IN (".$questionidssql.")");
+foreach ($questionids as $questionid)
+{
+	$answersqueryarray[$questionid] = $db->query("SELECT * FROM Answers WHERE QuestionId=".$questionid);
+}
+
 
 
 /** 
@@ -48,11 +52,13 @@ foreach($questionsquery as $questionrow)
 
 $answers = array();
 
-foreach($answersquery as $answersrow)
+foreach($answersqueryarray as $questionid)
 {
-	$id = $answersrow['QuestionId'];
-	$answer1 = $answersrow['Answer1'];
-	$answers[$id] = $answer1;
+	foreach($questionid as $answerrow)	
+	{
+		$answer = $answerrow['Answer'];
+		$answers[$questionid][] = $answer;
+	}
 }
 
 print_r($answers);
