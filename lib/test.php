@@ -303,10 +303,6 @@ class test
 // 			unset($_SESSION['itemtoedit']);
 		}
 
-		echo "post" . $_POST['itemtoedit'] . "<br>";
-		echo "session" . $_SESSION['itemtoedit'] . "<br>";
-		echo 'lala' . "<br>";
-		echo "var" . $itemtoedit . "<br>";
 		
 		/** 
 		 * Output form
