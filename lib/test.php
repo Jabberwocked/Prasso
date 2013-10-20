@@ -300,7 +300,6 @@ class test
 		else
 		{
 			$itemtoedit = $_SESSION['itemtoedit'];
-// 			unset($_SESSION['itemtoedit']);
 		}
 
 		
@@ -360,7 +359,6 @@ class test
 				<input type="text" name="answers[]" class="answers" placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
 				<?php $answerno ++;}?><script> var answernojs = <?php echo json_encode($answerno); ?>;</script>	
 				<button type="button" id="addOption" value="Add" >+</button>
-				<input type="hidden" name="itemtoedit" value=3>
 			 	<input type="hidden" name="action" value="save"> 
 				<br>
 			
