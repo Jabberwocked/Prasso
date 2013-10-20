@@ -1,11 +1,11 @@
 <style>
-	nav a[href="takeatest_random.php"] {
+	nav a[href="<?php echo str_replace('/', '', $_SERVER['PHP_SELF']); ?>"] {
 	color: orange;
 	outline: none;
 	border-bottom: 2px solid #eee; /* Bottom border style on hover */
 }
 </style>
-<?php echo $_SERVER['PHP_SELF']?>
+<?php echo str_replace('/', '', $_SERVER['PHP_SELF']); ?>
 		<nav>
 			<a href="takeatest_random.php">Selftest</a>
 			<a href="">Code</a>
