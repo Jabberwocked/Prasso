@@ -369,7 +369,8 @@ class test
 				<button type="button" id="addOption" value="Add" >+</button>
 			 	<input type="hidden" name="action" value="save"> 
 				<br>
-			
+				<br>
+				
 		<?php 
 		};
 		
