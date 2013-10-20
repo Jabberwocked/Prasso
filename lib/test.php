@@ -186,7 +186,7 @@ class test
 	
 	
 	/**
-	 * Update database tables with changed object properties
+	 * Update database tables with changed object properties. NOT WORKING YET
 	 */
 	function update()
 	{

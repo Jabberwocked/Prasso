@@ -89,7 +89,7 @@ class questionobject {
 	{
 		?>
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-<!-- 			<input type="hidden" name="action" value='save'> -->
+			<input type="hidden" name="action" value="save">
 			<button class='textlayout' type="submit" name="itemtoedit" value="<?php echo $this->orderno ?>" >
 					<p>
 					<span style='font-weight:bold'><?php echo $this->orderno . ". " . $this->question ; ?></span>
