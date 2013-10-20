@@ -288,6 +288,11 @@ class test
 	
 	function show()
 	{
+		
+		/**
+		 * Set which item is being edited. If none then new question.
+		 */
+		
 		if (!isset($_POST['itemtoedit']))
 		{
 			$itemtoedit = count($this->questionobjects) + 1;
@@ -297,6 +302,9 @@ class test
 			$itemtoedit = $_POST['itemtoedit'];
 		}
 		
+		/**
+		 * Test name is edited.
+		 */
 		
 		if ($itemtoedit == "testname")
 		{
@@ -310,29 +318,18 @@ class test
 		
 		<?php 
 		}
+		
+		
+		/**
+		 * Question is edited. Output testname first.
+		 */
+		
 		else
 		{
 		?>
 		
 			<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-				<button type="submit" name="itemtoedit" value="testname" style='
-					width:auto; 
-					height:auto; 
-					margin:0; 
-					padding:0; 
-					border: 0;
-					background:none; 
-					color:#666; 
-					text-align:left; 
-					-moz-border-radius: 0px;
-					-webkit-border-radius: 0px;
-					border-radius: 0px;
-					-moz-box-shadow: 0;
-					-webkit-box-shadow: 0;
-					box-shadow: none;
-					-webkit-appearance: none;
-					text-transform: none;
-					letter-spacing: 1px;'>
+				<button class='textlayout' type="submit" name="itemtoedit" value="testname">
 			
 					<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
 				</button>	
@@ -355,7 +352,7 @@ class test
 		{
 		?>
 			
-			<form id='questionform' method="post">
+			<form id='questionform' action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 				<input type="hidden" name="orderno" value='<?php echo $itemtoedit; ?>'>
 				<input type="text" name="question" value='<?php echo $this->questionobjects[$itemtoedit]->question ?>' placeholder="Question <?php echo $itemtoedit ?>" autofocus style="display:inline; width:70%; font-weight:bold">
 					<select name="type" style="width:45px;">

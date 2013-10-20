@@ -233,4 +233,25 @@ button:hover,button:active, input[type="submit"]:hover,input[type="submit"]:acti
 	border-bottom: 2px solid #eee; /* Bottom border style on hover */
 }
 
+/* Button with text layout */
 
+button.textlayout
+{
+	width:auto; 
+	height:auto; 
+	margin:0; 
+	padding:0; 
+	border: 0;
+	background:none; 
+	color:#666; 
+	text-align:left; 
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	-moz-box-shadow: 0;
+	-webkit-box-shadow: 0;
+	box-shadow: none;
+	-webkit-appearance: none;
+	text-transform: none;
+	letter-spacing: 1px;
+}
