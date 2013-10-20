@@ -30,10 +30,10 @@ if (isset($_POST['itemtoedit']))
 {
 	$_SESSION['itemtoedit'] = $_POST['itemtoedit'];
 }
-// else 
-// {
-// 	$_SESSION['itemtoedit'] = count($this->questionobjects) + 1;
-// };
+else 
+{
+	$_SESSION['itemtoedit'] = count($_SESSION['test']->questionobjects) + 1;
+};
 
 
 /**
