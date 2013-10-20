@@ -98,6 +98,15 @@ class questionobject {
 		
 		<?php 
 	}
+	
+	
+	
+	function showintest()
+	{
+		
+	}
+	
+	
 }
 
 

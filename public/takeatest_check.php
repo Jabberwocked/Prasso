@@ -39,6 +39,8 @@ foreach($questionsquery as $questionrow)
 	$questions[$id] = $question;
 }
 
+print_r($questions);
+
 /**
  * Save answers in array(id => answer)
  */
