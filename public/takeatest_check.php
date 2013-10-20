@@ -15,6 +15,9 @@ include_once (TEMPLATES_PATH . "/header.php");
 $questionids = $_SESSION['questionids']; // array(questionno => questionid)
 $useranswers = $_POST; // array(questionid => answer)
 
+print_r($questionids);
+print_r($useranswers);
+
 /**
  * Query db
  */
