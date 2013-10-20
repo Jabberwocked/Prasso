@@ -358,7 +358,7 @@ class test
 				<?php $answerno ++;}?><script> var answernojs = <?php echo json_encode($answerno); ?>;</script>	
 				<button type="button" id="addOption" value="Add" >+</button> |
 			 	<input type="hidden" name="action" value="save"> 
-				<button type="submit" name="action" value="save" >Save</button><br>
+				<button type="submit">Save</button><br>
 				<br>
 			
 		<?php 
