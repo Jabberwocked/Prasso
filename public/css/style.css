@@ -124,7 +124,7 @@ nav {
 	/* Can't figure out why this doesn't do anything */
 	display: block;
 	overflow:hidden;
-	margin-top:300px;
+	margin:300px 0px;
 }
 
 nav a {
