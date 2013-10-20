@@ -303,6 +303,11 @@ class test
 		}
 
 		
+		echo "lala<br>";
+		echo "post" . $_POST['itemtoedit'];
+		echo "session" . $_SESSION['itemtoedit'];
+		echo "var" . $itemtoedit;
+		
 		/** 
 		 * Output form
 		 */
