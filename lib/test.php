@@ -86,7 +86,7 @@ class test
 		{
 			$this->questionobjects[$_POST['orderno']] = new questionobject($_POST);
 		
-			header("Location: mytests_edit.php");
+// 			header("Location: mytests_edit.php");
 		}
 	}
 	
