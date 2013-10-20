@@ -1,7 +1,7 @@
 
 			<div style="text-align:center">
 				<nav>
-					<a href="takeatest.php">Tests</a><br>
+					<a href="mytests.php">Tests</a><br>
 					<br>
 					<br>
 					<?php if (!isset($_SESSION['username'])) { ?>

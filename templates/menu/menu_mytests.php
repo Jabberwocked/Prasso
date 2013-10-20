@@ -4,6 +4,13 @@
 			<a href="">Code</a>
 			<a href="mytests.php">My Tests</a>
 			<a href="mytests_edit.php">New</a><br>
+			<?php if (!isset($_SESSION['username'])) { ?>
+			<a href="mytests.php">My Tests</a>
+			<a href="mytests_edit.php">New</a><br>
+			<?php } else { ?>
+			<a href="mytests.php" style="color:lightgrey">My Tests</a>
+			<a href="mytests_edit.php" style="color:lightgrey">New</a><br>
+			<?php } ?>
 		</nav>
 		
 	</div>
