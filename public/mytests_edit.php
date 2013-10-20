@@ -82,7 +82,7 @@ elseif ($_POST['action'] == "savetest")
 // 	{
 		$_SESSION['test']->add();
 // 	}
-	$_SESSION['test'] = new test();
+	
 }
 
 

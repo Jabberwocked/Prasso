@@ -176,7 +176,8 @@ class test
 		
 		
 		}
-		
+
+		$_SESSION['test'] = new test();
 	}
 	
 	
