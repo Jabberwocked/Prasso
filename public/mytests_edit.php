@@ -47,10 +47,10 @@ if ($_POST['action'] == "reset")
  * SAVE
  */
 
-elseif ($_POST['action'] == "save")
-{
-	$_SESSION['test']->saveitem();
-}
+// elseif ($_POST['action'] == "save")
+// {
+// 	$_SESSION['test']->saveitem();
+// }
 
 /**
  * SAVE to database
