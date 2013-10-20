@@ -1,3 +1,11 @@
+
+
+
+<?php
+include_once ("../config/config.php");
+include_once (TEMPLATES_PATH . "/header.php");
+?>
+
 <script>
 $(document).ready(function(){
 
@@ -6,15 +14,7 @@ $(document).ready(function(){
 	$('#question4').submit();
 
 });
-</script> 
-
-
-<?php
-include_once ("../config/config.php");
-include_once (TEMPLATES_PATH . "/header.php");
-?>
-
-	
+</script> 	
 
 
 <form action="test123.php" method="get">
