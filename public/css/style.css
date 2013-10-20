@@ -118,6 +118,7 @@ header#head p a:hover #register {
 
 nav {
 	/* If this isn't here 'nav a' does not work for some reason */
+	display: block;
 	margin: 100px 0px;	
 }
 
@@ -125,15 +126,15 @@ nav a {
 	/* Inspired by http://tympanus.net/codrops/2013/08/06/creative-link-effects */
 	position: relative;
 	display: inline-block;
-	color: black; /* font color */
+	color: black; 
 	text-decoration: none;
-/* 	margin: 10px 20px; */
+	margin: 10px 20px;
 	text-transform: uppercase;
 	font-family: 'Raleway', sans-serif;
 	/* font style (uses Google fonts) */
-	font-size: 22px; /* font size */
-	letter-spacing: 2px; /* letter spacing */
-	border-bottom: 2px solid transparent; /* Bottom border style */
+	font-size: 22px; 
+	letter-spacing: 2px;
+	border-bottom: 2px solid transparent; 
 }
 
 nav a:hover,nav a:focus {
