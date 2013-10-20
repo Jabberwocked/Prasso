@@ -22,7 +22,9 @@ $useranswers = $_POST; // array(questionid => answer)
 
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
-$questionidssql = "'".implode("','", $_SESSION["QuestionIds"])."'";
+$questionidsimplode = implode(',', $_SESSION['QuestionIds']);
+print_r($questionidsimplode);
+$questionidssql = "$questionidsimplode";
 print_r($questionidssql);
 $questionsquery = $db->query("SELECT * FROM Questions WHERE QuestionId IN (".$questionidssql.")");
 $answersquery = $db->query("SELECT * FROM Answers WHERE QuestionId IN (".$questionidssql.")");
