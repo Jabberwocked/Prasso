@@ -60,7 +60,7 @@ elseif ($_POST['action'] == "save")
 {
 	if ($_POST['question'] == "" AND $_POST['answers'][0] == "")
 	{
-// 		Don't save and
+// 		Don't save 
 	}
 	else 
 	{
