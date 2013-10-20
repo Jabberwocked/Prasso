@@ -52,18 +52,20 @@ foreach($questionsquery as $questionrow)
 
 $answers = array();
 
-foreach($answersqueryarray as $questionid)
+foreach($answersqueryarray as $questionid => $answerquery)
 {
-	foreach($questionid as $id => $answerrow)	
+	foreach($answerquery as $answerrow)	
 	{
 // 		print_r($id);
 // 		print_r($answerrow);
 		$answer = $answerrow['Answer'];
-		$answers[$id][] = $answer;
+		$answers[$questionid][] = $answer;
 	}
 }
 
 print_r($answers);
+
+
 
 // $answers = array();
 
