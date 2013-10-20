@@ -23,7 +23,6 @@ $useranswers = $_POST; // array(questionid => answer)
 $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
 $questionidssql = "'".implode("','", $_SESSION["questionids"])."'";
-print_r($questionidssql);
 $questionsquery = $db->query("SELECT * FROM Questions WHERE QuestionId IN (".$questionidssql.")");
 $answersquery = $db->query("SELECT * FROM Answers WHERE QuestionId IN (".$questionidssql.")");
 
@@ -41,7 +40,7 @@ foreach($questionsquery as $questionrow)
 	$questions[$id] = $question;
 }
 
-print_r($questions);
+
 
 /**
  * Save answers in array(id => answer)
@@ -56,6 +55,7 @@ foreach($answersquery as $answersrow)
 	$answers[$id] = $answer1;
 }
 
+print_r($answers);
 
 // $answers = array();
 
