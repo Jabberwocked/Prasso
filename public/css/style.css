@@ -120,6 +120,8 @@ header#head p a:hover #register {
 
 nav {
 	/* If this isn't here 'nav a' does not work for some reason */
+	
+	/* Can't figure out why this doesn't do anything */
 	display: block;
 	overflow:hidden;
 	margin-top:300px;
