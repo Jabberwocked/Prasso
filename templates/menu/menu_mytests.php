@@ -1,5 +1,5 @@
 	<div style="text-align:center">
-		<nav style="margin-top:0px;">
+		<nav>
 			<a href="takeatest_random.php">Selftest</a>
 			<a href="">Code</a>
 			<?php if (!isset($_SESSION['username'])) { ?>
