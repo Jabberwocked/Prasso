@@ -26,10 +26,10 @@ if (isset($_POST['testtoedit']))
  * If an item to edit was selected, save it to session.
  */
 
-// if (isset($_POST['itemtoedit']))
-// {
-// 	$_SESSION['itemtoedit'] = $_POST['itemtoedit'];
-// }
+if (isset($_POST['itemtoedit']))
+{
+	$_SESSION['itemtoedit'] = $_POST['itemtoedit'];
+}
 
 
 

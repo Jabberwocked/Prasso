@@ -300,7 +300,7 @@ class test
 		else
 		{
 			$itemtoedit = $_SESSION['itemtoedit'];
-			unset($_SESSION['itemtoedit']);
+// 			unset($_SESSION['itemtoedit']);
 		}
 
 		echo "post" . $_POST['itemtoedit'] . "<br>";
