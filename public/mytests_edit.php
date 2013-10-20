@@ -55,7 +55,11 @@ if ($_POST['action'] == "reset")
 
 elseif ($_POST['action'] == "save")
 {
-	if (!$_POST['question'] == $_POST['answers'][0] == "")
+	if ($_POST['question'] == "" AND $_POST['answers'][0] == "")
+	{
+// 		Don't save
+	}
+	else 
 	{
 		$_SESSION['test']->saveitem();
 	}
