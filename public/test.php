@@ -11,4 +11,5 @@ include_once (TEMPLATES_PATH . "/footer.php");
 	<button name=1 value=on>asdfasdf</button>
 	<button name=2 value=on>asdfas</button>
 	<button name=3 value=on>asdfsa</button>
+	<input type=text name=lala>
 </form>
