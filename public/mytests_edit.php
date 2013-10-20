@@ -63,7 +63,7 @@ elseif ($_POST['action'] == "savetest")
 
 
 /** 
- * Print test name, questionobjects and form
+ * Print test name and questionobjects as buttons and a form for the item that's being edited
  */
 
 $_SESSION['test']->show();
