@@ -4,6 +4,15 @@ include_once (TEMPLATES_PATH . "/header.php");
 include_once (MENU_PATH . "/menu_mytests.php");
 ?>
 
+
+
+<style type="text/css">
+td {
+	padding: 0px 10px
+}
+</style>
+		
+<div style="width: 800px; margin-left: auto; margin-right: auto; border: 1px dotted; padding: 20px 20px 100px 20px">
 	<div style="text-align:center">
 		<nav>
 			<a href="" style="font-size: small">Show all tests</a>
@@ -13,14 +22,6 @@ include_once (MENU_PATH . "/menu_mytests.php");
 			<a href="" style="font-size: small; margin: 10px 2px">label</a>
 		</nav>
 	</div>
-
-<style type="text/css">
-td {
-	padding: 0px 10px
-}
-</style>
-		
-<div style="width: 800px; margin-left: auto; margin-right: auto; border: 1px dotted; padding: 20px 20px 100px 20px">
 	<table>
 		<tr style="font-weight: bold; margin-bottom: 20px;">
 			<td>Test</td>
