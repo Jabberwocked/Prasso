@@ -299,7 +299,6 @@ class test
 		}
 		else
 		{
-			$itemtoedit = count($this->questionobjects) + 1;
 			$itemtoedit = $_SESSION['itemtoedit'];
 // 			unset($_SESSION['itemtoedit']);
 		}
@@ -312,7 +311,7 @@ class test
 		?>
 				
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-		
+		<input type="hidden" name="itemtoedit" value="3">
 		<?php 
 		/**
 		 * Test name 
