@@ -380,8 +380,22 @@ class test
 		{ ?>
 			<button type="submit" name="edit" value="<?php echo count($this->questionobjects) + 1 ?>" >Add question</button><br>
 				<br>
-		<?php } ?> 
+		<?php }  
+		
+		
+		/** 
+		 * Buttons: Save test or delete questions
+		 */
+
+ 		?>	
+	
+		<button type="submit" name="action" value="savetest" >Save</button> |
+		<button type="submit" name="action" value="reset" >Reset</button>
 		</form>
+		<br>
+		<br>
+	
+	
 	<?php 
 	}
 	

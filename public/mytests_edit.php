@@ -70,22 +70,7 @@ $_SESSION['test']->show();
 
 
 
-/** 
- * Buttons: Save test or delete questions
- */
-
- 
- ?>	
-
-	
-<form id="testform" action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">	
-	<button type="submit" name="action" value="savetest" >Save</button> |
-	<button type="submit" name="action" value="reset" >Reset</button>
-</form>
-<br>
-<br>
-	
-	
+?>
 	
 	
 </div>
