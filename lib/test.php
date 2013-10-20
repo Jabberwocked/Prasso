@@ -311,7 +311,7 @@ class test
 		?>
 				
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-		<input type="hidden" name="itemtoedit" value=3>
+		
 		<?php 
 		/**
 		 * Test name 
@@ -399,6 +399,7 @@ class test
 	
 		<button type="submit" name="action" value="savetest" >Save</button> |
 		<button type="submit" name="action" value="reset" >Reset</button>
+		<input type="hidden" name="itemtoedit" value=3>
 		</form>
 		<br>
 		<br>
