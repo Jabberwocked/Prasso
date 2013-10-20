@@ -29,7 +29,7 @@ foreach ($questionids as $questionid)
 	$answersqueryarray[$questionid] = $db->query("SELECT * FROM Answers WHERE QuestionId=".$questionid);
 }
 
-
+print_r($answersqueryarray);
 
 /** 
  * Save questions in array(id => question)
