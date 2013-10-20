@@ -9,7 +9,10 @@ include_once (MENU_PATH . "/menu_mytests.php");
 
 <?php 
 	
-
+echo "post" . $_POST['itemtoedit'] . "<br>";
+echo "session" . $_SESSION['itemtoedit'] . "<br>";
+echo 'lala' . "<br>";
+echo "var" . $itemtoedit . "<br>";
 
 /**
  * If a test is selected to edit (not new), copy questions from db to session.

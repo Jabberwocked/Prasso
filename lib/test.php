@@ -306,10 +306,7 @@ class test
 		/** 
 		 * Output form
 		 */
-		echo $_POST['itemtoedit'];
-		echo $_SESSION['itemtoedit'];
-		echo 'lala';
-		echo $itemtoedit;
+
 		?>
 				
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
