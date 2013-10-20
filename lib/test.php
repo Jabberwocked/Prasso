@@ -313,22 +313,15 @@ class test
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 		
 		<?php 
-		/**
-		 * Test name 
-		 */
-		
-		if ($itemtoedit == "testname") { 	?>
-					
-			<input type="text" name="testname" <?php if (isset($this->testname)){echo "value=".$this->testname;}?> placeholder="Give your test a name." autofocus style="display:inline; width:55%"><br>
 	
 		
-		<?php } else { ?>
 		
-			<button class='textlayout' type="submit" name="itemtoedit" value="testname" >
-				<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
-			</button><br>
 		
-		<?php }
+		
+		
+		
+		
+		
 	
 		/**
 		 * Then output all questions that come before the edited question.
@@ -377,6 +370,29 @@ class test
 				$questionobject->show();
 			}
 		};
+		
+		
+		
+			/**
+		 * Test name 
+		 */
+		
+		if ($itemtoedit == "testname") { 	?>
+					
+			<input type="text" name="testname" <?php if (isset($this->testname)){echo "value=".$this->testname;}?> placeholder="Give your test a name." autofocus style="display:inline; width:55%"><br>
+	
+		
+		<?php } else { ?>
+		
+			<button class='textlayout' type="submit" name="itemtoedit" value="testname" >
+				<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
+			</button><br>
+		
+		<?php }
+		
+		
+		
+		
 		
 		
 		

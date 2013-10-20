@@ -30,7 +30,7 @@ if (isset($_POST['itemtoedit']))
 {
 	$_SESSION['itemtoedit'] = $_POST['itemtoedit'];
 }
-echo $_SESSION['itemtoedit'];
+
 
 
 /**
