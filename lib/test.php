@@ -414,7 +414,7 @@ class test
 		if ($itemtoedit != count($this->questionobjects) + 1)
 		{ ?>
 			<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-				<button type="submit" name="edit" value="<?php echo count($this->questionobjects) + 1 ?>" >Add</button>
+				<button type="submit" name="edit" value="<?php echo count($this->questionobjects) + 1 ?>" >Add question</button>
 			</form>
 				<br>
 				<br>
