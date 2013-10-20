@@ -45,7 +45,7 @@
 <div style="margin-left: auto; margin-right: auto; width: 500px">
 
 lala17				
-		<form action=test123.php method="post">
+		<form action=test123.php method="get">
 		
 				
 			<button class='textlayout' type="submit" name="itemtoedit" value="testname" >
