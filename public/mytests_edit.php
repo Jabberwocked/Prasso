@@ -26,7 +26,7 @@ if (isset($_POST['testtoedit']))
  * If an item to edit was selected, update session, but not if the fields are empty.
  */
 
-if ($_POST['question'] == "" AND $_POST['answers'][0] == "" AND $_SESSION['itemtoedit'] == ($_SESSION['test']->questionobjects))
+if ($_POST['question'] == "" AND $_POST['answers'][0] == "" AND $_SESSION['itemtoedit'] == ($_SESSION['test']->questionobjects) + 1)
 {
 	// 		Don't change itemtoedit in session
 }
