@@ -315,7 +315,8 @@ class test
 		?>
 				
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-		<button type=hidden type="submit" name="itemtoedit" value="3" ></button>
+<!-- 	First button needs to have the default value. When enter is pressed this value for itemtoedit is used. -->
+		<button type=hidden type="submit" name="itemtoedit" value=<?php echo count($_SESSION['test']->questionobjects) + 1; ?> ></button>
 		
 		<?php 
 		/**
