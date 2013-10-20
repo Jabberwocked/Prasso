@@ -88,16 +88,14 @@ class questionobject {
 	function show()
 	{
 		?>
-		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-			<input type="hidden" name="action" value="save">
-			<button class='textlayout' type="submit" name="itemtoedit" value="<?php echo $this->orderno ?>" >
-					<p>
-					<span style='font-weight:bold'><?php echo $this->orderno . ". " . $this->question ; ?></span>
-					<span style='font-weight:normal'>(<?php echo $this->typeshort; ?>)</span><br>
-					<span><?php $n = 1; foreach($this->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;}?></span>
-			</button>
-		</form>
-		<br>
+<!-- 	<input type="hidden" name="action" value="save"> -->
+		<button class='textlayout' type="submit" name="itemtoedit" value="<?php echo $this->orderno ?>" >
+			<p>
+			<span style='font-weight:bold'><?php echo $this->orderno . ". " . $this->question ; ?></span>
+			<span style='font-weight:normal'>(<?php echo $this->typeshort; ?>)</span><br>
+			<span><?php $n = 1; foreach($this->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;}?></span>
+		</button><br>
+		
 		<?php 
 	}
 }

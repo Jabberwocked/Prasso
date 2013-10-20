@@ -303,40 +303,24 @@ class test
 		}
 		
 		/**
-		 * If test name is being edited. 
+		 * Test name 
 		 */
 		
-		if ($itemtoedit == "testname")
-		{
-			?>
-		
-		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">	
-			<input type="text" name="testname" <?php if (isset($this->testname)){echo "value=".$this->testname;}?> placeholder="Give your test a name." autofocus style="display:inline; width:55%">
-			<button type="submit" name="action" value="save" >Save</button>
-		</form>
-		<br>
-		
-		<?php 
-		}
-		
-		
-		/**
-		 * A question is being edited. Output testname first.
-		 */
-		
-		else
-		{
 		?>
+		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 		
-			<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-				<button class='textlayout' type="submit" name="itemtoedit" value="testname" >
-					<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
-				</button>	
-			</form>	
-			<br>
-		<?php 
+		<?php if ($itemtoedit == "testname") { 	?>
+					
+			<input type="text" name="testname" <?php if (isset($this->testname)){echo "value=".$this->testname;}?> placeholder="Give your test a name." autofocus style="display:inline; width:55%">
+			<button type="submit" name="action" value="save" >Save</button><br>
 		
-		}
+		<?php } else { ?>
+		
+			<button class='textlayout' type="submit" name="itemtoedit" value="testname" >
+				<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
+			</button><br>
+		
+		<?php }
 	
 		/**
 		 * Then output all questions that come before the edited question.
@@ -351,17 +335,16 @@ class test
 		};
 			
 		/**
-		 * Then output an editing form for the chosen question.
+		 * Then output editing fields for the chosen question.
 		 */
 		
 		if ($itemtoedit != "testname")
 		{ ?>
-			<form id='questionform' action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
 				<input type="hidden" name="orderno" value='<?php echo $itemtoedit; ?>'>
 				<input type="text" name="question" value='<?php echo $this->questionobjects[$itemtoedit]->question ?>' placeholder="Question <?php echo $itemtoedit ?>" autofocus style="display:inline; width:70%; font-weight:bold">
 				<select name="type" style="width:45px;">
-				<option value="shortanswer" <?php if ($this->questionobjects[$itemtoedit]->type == 'shortanswer' OR !isset($this->questionobjects[$itemtoedit])){echo 'selected';} ?>>SA: Short Answer</option>
-				<option value="multichoice" <?php if ($this->questionobjects[$itemtoedit]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
+					<option value="shortanswer" <?php if ($this->questionobjects[$itemtoedit]->type == 'shortanswer' OR !isset($this->questionobjects[$itemtoedit])){echo 'selected';} ?>>SA: Short Answer</option>
+					<option value="multichoice" <?php if ($this->questionobjects[$itemtoedit]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
 				</select> 
 				<?php $answerno = 1; foreach ($this->questionobjects[$itemtoedit]->answers as $answer){	?>
 				<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
@@ -371,7 +354,7 @@ class test
 				<button type="button" id="addOption" value="Add" >+</button> |
 				<button type="submit" name="action" value="save" >Save</button><br>
 				<br>
-			</form>
+			
 		<?php 
 		};
 		
@@ -395,14 +378,11 @@ class test
 		
 		if ($itemtoedit != count($this->questionobjects) + 1)
 		{ ?>
-			<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-				<button type="submit" name="edit" value="<?php echo count($this->questionobjects) + 1 ?>" >Add question</button>
-			</form>
+			<button type="submit" name="edit" value="<?php echo count($this->questionobjects) + 1 ?>" >Add question</button><br>
 				<br>
-				<br>
-		<?php 
-		} 
-		
+		<?php } ?> 
+		</form>
+	<?php 
 	}
 	
 	
