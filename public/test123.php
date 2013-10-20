@@ -1,11 +1,3 @@
-<?php
-include_once ("../config/config.php");
-include_once (TEMPLATES_PATH . "/header.php");
-
-include_once (TEMPLATES_PATH . "/footer.php");
-?>
-
-	
 <script>
 $(document).ready(function(){
 
@@ -15,6 +7,15 @@ $(document).ready(function(){
 
 });
 </script> 
+
+
+<?php
+include_once ("../config/config.php");
+include_once (TEMPLATES_PATH . "/header.php");
+?>
+
+	
+
 
 <form action="test123.php" method="get">
 	<button type=button name=1 value=on>Example question 1</button><br>
