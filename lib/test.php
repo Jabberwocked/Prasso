@@ -391,7 +391,7 @@ class test
 		
 		if ($itemtoedit != count($this->questionobjects) + 1)
 		{ ?>
-			<button type="submit" name="edit" value="<?php echo count($this->questionobjects) + 1 ?>" >Add question</button><br>
+			<button type="submit" name="itemtoedit" value="<?php echo count($this->questionobjects) + 1 ?>" >Add question</button><br>
 				<br>
 		<?php }  
 		
