@@ -4,7 +4,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 include_once (MENU_PATH . "/menu_mytests.php");
 ?>
 
-
+	<div style="text-align:center">
 		<nav>
 			<a href="" style="font-size: small">Show all tests</a>
 			<a href="" style="font-size: small">Show in folders</a>
@@ -12,7 +12,6 @@ include_once (MENU_PATH . "/menu_mytests.php");
 			<a href="" style="font-size: small; margin: 10px 2px">topic</a>
 			<a href="" style="font-size: small; margin: 10px 2px">label</a>
 		</nav>
-		
 	</div>
 
 <style type="text/css">
