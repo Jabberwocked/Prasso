@@ -174,10 +174,12 @@ class test
 			*/
 			mysqli_close($db);
 		
-		
+			
+			/* Reset test in session  */
+			$_SESSION['test'] = new test();
 		}
 
-		$_SESSION['test'] = new test();
+
 	}
 	
 	
