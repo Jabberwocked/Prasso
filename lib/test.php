@@ -328,6 +328,7 @@ class test
 		
 		<?php } else { ?>
 		
+			<button class='textlayout' type="submit" name="itemtoedit" value="3" >3</button><br>
 			<button class='textlayout' type="submit" name="itemtoedit" value="testname" >
 				<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
 			</button><br>
