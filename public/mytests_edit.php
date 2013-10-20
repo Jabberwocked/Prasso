@@ -33,7 +33,7 @@ if (isset($_POST['itemtoedit']))
 else 
 {
 	$_SESSION['itemtoedit'] = count($this->questionobjects) + 1;
-}
+};
 
 
 /**
