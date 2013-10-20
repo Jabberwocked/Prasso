@@ -54,12 +54,12 @@ $answers = array();
 
 foreach($answersqueryarray as $questionid)
 {
-	foreach($questionid as $answerrow)	
+	foreach($questionid as $id => $answerrow)	
 	{
-		print_r($questionid);
+		print_r($id);
 		print_r($answerrow);
 		$answer = $answerrow['Answer'];
-		$answers[$questionid][] = $answer;
+		$answers[$id][] = $answer;
 	}
 }
 
