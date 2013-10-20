@@ -369,7 +369,7 @@ class test
 				<button type="button" id="addOption" value="Add" >+</button>
 			 	<input type="hidden" name="action" value="save"> 
 				<br>
-				<br>
+				
 				
 		<?php 
 		};
@@ -394,6 +394,7 @@ class test
 		
 		if ($itemtoedit != count($this->questionobjects) + 1)
 		{ ?>
+			<br>
 			<button type="submit" name="itemtoedit" value="<?php echo count($this->questionobjects) + 1 ?>" >Add question</button><br>
 				<br>
 		<?php }  
@@ -404,7 +405,8 @@ class test
 		 */
 
  		?>	
-	
+		
+		<br>	
 		<button type="submit" name="action" value="savetest" >Save</button> |
 		<button type="submit" name="action" value="reset" >Reset</button>
 		
