@@ -1,17 +1,4 @@
 
-<?php if (!isset($_SESSION['username'])) { ?>
-
-	<div style="text-align:center">
-		<nav>
-			<a href="takeatest_random.php">Random by topic</a><br>
-			<a href="">Administered tests</a><br>
-			<br>
-			<a href="mytests.php" style="color:lightgrey">My tests <!-- and shared tests --> </a><br>
-		</nav>
-	</div>
-
-
-<?php } else { ?>
 
 
 	<div style="text-align:center">
@@ -19,10 +6,18 @@
 			<a href="takeatest_random.php">Random by topic</a><br>
 			<a href="">Administered tests</a><br>
 			<br>
-			<a href="mytests.php">My tests <!-- and shared tests --> </a><br>
+			<?php if (!isset($_SESSION['username'])) { ?>
+			<a href="mytests.php" style="color:lightgrey">My tests</a><br>
+			<?php } else { ?>
+			<a href="mytests.php">My tests</a><br>
+			<?php } ?>
 		</nav>
 	</div>
 
-		
-<?php } ?>	
+
+
+
+
+
+	
 	
