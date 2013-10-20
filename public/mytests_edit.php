@@ -30,7 +30,7 @@ if (isset($_POST['itemtoedit']))
 {
 	$_SESSION['itemtoedit'] = $_POST['itemtoedit'];
 }
-else 
+elseif (!isset($_SESSION['itemtoedit'])) 
 {
 	$_SESSION['itemtoedit'] = count($_SESSION['test']->questionobjects) + 1;
 };
