@@ -145,6 +145,11 @@ nav a:hover,nav a:focus {
 	border-bottom: 2px solid #eee; /* Bottom border style on hover */
 }
 
+nav a[href="$_SERVER['PHP_SELF']"] {
+	color: orange;
+	outline: none;
+	border-bottom: 2px solid #eee; /* Bottom border style on hover */
+}
 
 /* Styling the login wrapper */
 #login-wrapper {
