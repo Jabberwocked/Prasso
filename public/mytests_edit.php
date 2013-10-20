@@ -55,7 +55,7 @@ if ($_POST['action'] == "reset")
 
 elseif ($_POST['action'] == "save")
 {
-	if ($_POST['question'] == "" AND $_POST['answers'] == "")
+	if ($_POST['question'] == "" AND $_POST['answers'][0] == "")
 	{
 // 		Don't save
 	}
