@@ -118,6 +118,8 @@ header#head p a:hover #register {
 
 nav {
 	/* If this isn't here 'nav a' does not work for some reason */
+	display: inline-block;
+	margin: 100px 0px; 
 }
 
 nav a {
@@ -140,10 +142,6 @@ nav a:hover,nav a:focus {
 	border-bottom: 2px solid #eee; /* Bottom border style on hover */
 }
 
-nav a:active {
-	outline: none;
-	border-bottom: 2px solid #eee; /* Bottom border style on hover */
-}
 
 /* Styling the login wrapper */
 #login-wrapper {
