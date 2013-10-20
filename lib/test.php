@@ -293,13 +293,14 @@ class test
 		 * Set which item is being edited. If none then new question.
 		 */
 		
-		if (!isset($_POST['itemtoedit']))
+		if (!isset($_SESSION['itemtoedit']))
 		{
 			$itemtoedit = count($this->questionobjects) + 1;
 		}
 		else
 		{
-			$itemtoedit = $_POST['itemtoedit'];
+			$itemtoedit = $_SESSION['itemtoedit'];
+			unset($_SESSION['itemtoedit']);
 		}
 		
 		/** 
