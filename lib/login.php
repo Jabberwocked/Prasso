@@ -3,7 +3,7 @@
 
 
 
-	<div id="main-wrapper">
+	<div id="main-wrapper" style="margin-top:50px;">
 		
 		<?php 	if (isset($_SESSION['registrationsuccessful']))
 				{
