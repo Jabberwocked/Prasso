@@ -43,6 +43,7 @@ if (isset($_POST['itemtoedit']))
 if ($_POST['action'] == "reset")
 {
 	$_SESSION['test'] = new test();
+	unset($_SESSION['itemtoedit']);
 }
 
 /**
