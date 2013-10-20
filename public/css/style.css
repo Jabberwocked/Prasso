@@ -135,12 +135,15 @@ nav a {
 	border-bottom: 2px solid transparent; 
 }
 
-nav a:hover,nav a:focus, nav a:active {
+nav a:hover,nav a:focus {
 	outline: none;
 	border-bottom: 2px solid #eee; /* Bottom border style on hover */
 }
 
-
+nav a:active {
+	outline: none;
+	border-bottom: 2px solid #eee; /* Bottom border style on hover */
+}
 
 /* Styling the login wrapper */
 #login-wrapper {
