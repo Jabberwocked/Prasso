@@ -304,9 +304,9 @@ class test
 
 		
 		echo "lala<br>";
-		echo "post" . $_POST['itemtoedit'];
-		echo "session" . $_SESSION['itemtoedit'];
-		echo "var" . $itemtoedit;
+		echo "post" . $_POST['itemtoedit'] . "<br>";
+		echo "session" . $_SESSION['itemtoedit'] . "<br>";
+		echo "var" . $itemtoedit . "<br>";
 		
 		/** 
 		 * Output form
