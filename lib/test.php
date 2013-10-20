@@ -302,14 +302,19 @@ class test
 			$itemtoedit = $_POST['itemtoedit'];
 		}
 		
+		/** 
+		 * Output form
+		 */
+		?>
+				
+		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+		
+		<?php 
 		/**
 		 * Test name 
 		 */
 		
-		?>
-		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
-		
-		<?php if ($itemtoedit == "testname") { 	?>
+		if ($itemtoedit == "testname") { 	?>
 					
 			<input type="text" name="testname" <?php if (isset($this->testname)){echo "value=".$this->testname;}?> placeholder="Give your test a name." autofocus style="display:inline; width:55%">
 			<button type="submit" name="action" value="save" >Save</button><br>
@@ -352,6 +357,7 @@ class test
 				<input type="text" name="answers[]" class="answers" placeholder="Answer <?php echo $answerno ?>" style="display:inline; width:60%">
 				<?php $answerno ++;}?><script> var answernojs = <?php echo json_encode($answerno); ?>;</script>	
 				<button type="button" id="addOption" value="Add" >+</button> |
+			 	<input type="hidden" name="action" value="save"> 
 				<button type="submit" name="action" value="save" >Save</button><br>
 				<br>
 			
