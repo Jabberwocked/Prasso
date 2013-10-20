@@ -118,7 +118,7 @@ header#head p a:hover #register {
 
 nav {
 	/* If this isn't here 'nav a' does not work for some reason */
-	margin: 20px 0px;	
+	margin: 100px 0px;	
 }
 
 nav a {
