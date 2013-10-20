@@ -9,7 +9,7 @@ include_once (MENU_PATH . "/menu_mytests.php");
 
 <?php 
 	
-echo $_SESSION['itemtoedit'];
+
 
 /**
  * If a test is selected to edit (not new), copy questions from db to session.
@@ -30,7 +30,7 @@ if (isset($_POST['itemtoedit']))
 {
 	$_SESSION['itemtoedit'] = $_POST['itemtoedit'];
 }
-
+echo $_SESSION['itemtoedit'];
 
 
 /**

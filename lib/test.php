@@ -320,7 +320,7 @@ class test
 		if ($itemtoedit == "testname") { 	?>
 					
 			<input type="text" name="testname" <?php if (isset($this->testname)){echo "value=".$this->testname;}?> placeholder="Give your test a name." autofocus style="display:inline; width:55%">
-			<button type="submit" name="action" value="save" >Save</button><br>
+	
 		
 		<?php } else { ?>
 		
