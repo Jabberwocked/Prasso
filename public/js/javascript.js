@@ -48,9 +48,9 @@ $(document).ready(function(){
 	
 	
 //	Save question (is submit form) when another question is clicked. Doesn't work.
-	$("button").click(function() {
-		  $('#questionform').submit();
-	}); 
+//	$("button").click(function() {
+//		  $('#questionform').submit();
+//	}); 
 //	$("form").click(function(e) {
 //		  e.stopPropagation();
 //	});
