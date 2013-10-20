@@ -98,24 +98,10 @@ class questionobject {
 				-webkit-appearance: none;
 				text-transform: none;
 				letter-spacing: 1px;'>
-					<p style='font-weight:bold'>
-					<?php echo $this->orderno . ". " . $this->question ; ?>
-					<span style='font-weight:normal'>
-					(<?php echo $this->typeshort ?>)
-					</span></p>
-					<?php ;
-					echo "<p style='font-weight:normal'>Answers: " ;
-					$n = 1;
-					foreach($this->answers as $answer) 
-					{
-			    	if ($n > 1)
-			    	{
-			    		echo ", ";
-			    	}
-			    	$n ++;
-					echo $answer;
-					}
-					?>
+					<p>
+					<span style='font-weight:bold'><?php echo $this->orderno . ". " . $this->question ; ?></span>
+					<span style='font-weight:normal'>(<?php echo $this->typeshort; ?>)</span><br>
+					<span><?php echo $n = 1; foreach($this->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;}?></span>
 			</button>
 		</form>
 		<br>
