@@ -70,7 +70,7 @@ include_once (MENU_PATH . "/menu_mytests.php");
 		
 		foreach($questionids as $n => $id)
 		{
-			echo "<p><span style='font-weight:bold;'>".$n."</span> ".$questions[$id]." </p>";
+			echo "<p><span style='font-weight:bold;'>".$n.".</span> ".$questions[$id]." </p>";
 			echo "<input type='text' name='".$id."' ><br>";
 		
 		}
