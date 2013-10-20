@@ -39,20 +39,5 @@ $(document).ready(function(){
 		return false;
 	});
 	
-	
-//	Save an open question before saving the test. Doesn't work.
-//	$("#testform").submit(function() {
-//	    $("questionform").submit();
-//	    return false;
-//	});
-	
-	
-//	Save question (is submit form) when another question is clicked. Doesn't work.
-//	$("button").click(function() {
-//		  $('#questionform').submit();
-//	}); 
-//	$("form").click(function(e) {
-//		  e.stopPropagation();
-//	});
 		
 });
