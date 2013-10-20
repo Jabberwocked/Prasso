@@ -117,7 +117,8 @@ header#head p a:hover #register {
 <link href ='http: //fonts.googleapis.com /css?family=Raleway: 600' rel='stylesheet ' type ='text /css'>
 
 nav {
-/* If this isn't here 'nav a' does not work for some reason */	
+	/* If this isn't here 'nav a' does not work for some reason */
+	margin: 20px 0px;	
 }
 
 nav a {
