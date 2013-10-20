@@ -2,7 +2,7 @@
 <?php if( !(isset( $_POST['register'] ) ) ) { ?>
 
 
-	<div id="main-wrapper">
+	<div id="main-wrapper" style="margin-top:50px; ">
 		<div id="register-wrapper">
 			<form method="post" action="">
 				<label for="usn">Username : </label> 
