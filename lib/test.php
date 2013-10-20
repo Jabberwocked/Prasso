@@ -315,6 +315,7 @@ class test
 		?>
 				
 		<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post">
+		<button type=hidden type="submit" name="itemtoedit" value="3" ></button>
 		
 		<?php 
 		/**
@@ -328,7 +329,7 @@ class test
 		
 		<?php } else { ?>
 		
-			<input type=hidden type="submit" name="itemtoedit" value="3" >
+			
 			<button class='textlayout' type="submit" name="itemtoedit" value="testname" >
 				<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
 			</button><br>
