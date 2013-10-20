@@ -92,7 +92,7 @@ foreach($questionids as $n => $id)
 	
 	
 	echo "<p><span style='font-weight:bold;'>$n " . $questions[$id] . "</span><br>";
-	echo "<span style='display:inline-block; min-width:100px; background-color:" . $colour . "'> " . $useranswers[$id] . "</span><br>";
+	echo "<span style='display:inline-block; min-width:100px; background-color:" . $colour . "'>x" . $useranswers[$id] . "</span><br>";
 	echo "<span> Score: " . $score . "</span> | <span> Answer: "; foreach ($answers[$id] as $answer){echo $answer . ", ";};echo "</span></p>";
 	
 }
