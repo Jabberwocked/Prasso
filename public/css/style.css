@@ -122,6 +122,7 @@ nav {
 	/* If nav isn't here, even without styles, 'nav a' does not work for some reason */
 	overflow:hidden;
 	margin:20px 0px;
+	text-align:center;
 }
 
 nav a {
