@@ -12,54 +12,54 @@ include_once (TEMPLATES_PATH . "/header.php");
  * Get questionids from SESSION and user answers from POST
  */
 
-$questionids = $_SESSION['questionids']; // array(questionno => questionid)
+$questionids = $_SESSION['test']->questionids; // array(questionno => questionid)
 $useranswers = $_POST; // array(questionid => answer)
 
 
-/**
- * Query db
- */
+// /**
+//  * Query db
+//  */
 
-$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+// $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 
-$questionidssql = "'".implode("','", $questionids)."'";
-$questionsquery = $db->query("SELECT * FROM Questions WHERE QuestionId IN (".$questionidssql.")");
-foreach ($questionids as $questionid)
-{
-	$answersqueryarray[$questionid] = $db->query("SELECT * FROM Answers WHERE QuestionId=".$questionid);
-}
-
-
-
-/** 
- * Save questions in array(id => question)
- */
-
-$questions = array();
-
-foreach($questionsquery as $questionrow)
-{
-	$id = $questionrow['QuestionId'];
-	$question = $questionrow['Question'];
-	$questions[$id] = $question;
-}
+// $questionidssql = "'".implode("','", $questionids)."'";
+// $questionsquery = $db->query("SELECT * FROM Questions WHERE QuestionId IN (".$questionidssql.")");
+// foreach ($questionids as $questionid)
+// {
+// 	$answersqueryarray[$questionid] = $db->query("SELECT * FROM Answers WHERE QuestionId=".$questionid);
+// }
 
 
 
-/**
- * Save answers in array(id => answer)
- */
+// /** 
+//  * Save questions in array(id => question)
+//  */
 
-$answers = array();
+// $questions = array();
 
-foreach($answersqueryarray as $questionid => $answerquery)
-{
-	foreach($answerquery as $answerrow)	
-	{
-		$answer = $answerrow['Answer'];
-		$answers[$questionid][] = $answer;
-	}
-}
+// foreach($questionsquery as $questionrow)
+// {
+// 	$id = $questionrow['QuestionId'];
+// 	$question = $questionrow['Question'];
+// 	$questions[$id] = $question;
+// }
+
+
+
+// /**
+//  * Save answers in array(id => answer)
+//  */
+
+// $answers = array();
+
+// foreach($answersqueryarray as $questionid => $answerquery)
+// {
+// 	foreach($answerquery as $answerrow)	
+// 	{
+// 		$answer = $answerrow['Answer'];
+// 		$answers[$questionid][] = $answer;
+// 	}
+// }
 
 
 
@@ -73,9 +73,9 @@ foreach($answersqueryarray as $questionid => $answerquery)
 
 $totalscore = 0;
 
-foreach($questionids as $orderno => $id)
+foreach($questionids as $orderno => $questionid)
 {
-	if (in_array($useranswers[$id], $answers[$id]))
+	if (in_array($useranswers[$questionid], $_SESSION['test']->questionobjects[$questionid]->answers))
 	{
 		$correct = true;
 		$score = 1;
@@ -90,8 +90,8 @@ foreach($questionids as $orderno => $id)
 	}
 	
 	echo "<p style='background-color:" . $colour . "'>";
-	echo "<span style='font-weight:bold;'> ".$orderno.". ".$questions[$id]."</span><span style='display: block; float:right'> Score: " . $score . "</span><br>";
-	echo "<span>>" . $useranswers[$id] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($answers[$id] as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
+	echo "<span style='font-weight:bold;'> ".$orderno.". ".$_SESSION['test']->questionobjects[$questionid]->question."</span><span style='display: block; float:right'> Score: " . $score . "</span><br>";
+	echo "<span>>" . $useranswers[$id] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($_SESSION['test']->questionobjects[$questionid]->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
 	echo "</p>";
 	
 
