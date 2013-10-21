@@ -502,7 +502,7 @@ class test
 		foreach ($questionsquery as $questionrow)
 		{
 			$n++;
-			print_r($questionrow['questionid']);
+			print_r($questionrow['QuestionId']);
 			$this->questionobjects[$n] = new questionobject;
 			$this->questionobjects[$n]->pullfromdb($n, $questionrow['questionid']);	
 		}
