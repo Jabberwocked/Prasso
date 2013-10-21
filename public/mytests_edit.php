@@ -30,7 +30,7 @@ if (isset($_POST['testtoedit']))
 if ($_POST['question'] == "" AND $_POST['answers'][0] == "" AND $_POST['testname'] == "" AND $_SESSION['itemtoedit'] == count($_SESSION['test']->questionobjects) + 1 AND $_POST['itemtoedit'] == count($_SESSION['test']->questionobjects) + 2)
 {
 	// 		Don't change itemtoedit in session
-	echo "debugging";
+	
 }
 elseif (isset($_POST['itemtoedit']))
 {
@@ -38,6 +38,7 @@ elseif (isset($_POST['itemtoedit']))
 }
 elseif (!isset($_SESSION['itemtoedit'])) 
 {
+	echo "debugging";
 	if (!isset($_SESSION['test']))
 	{
 		$_SESSION['test'] = new test();
