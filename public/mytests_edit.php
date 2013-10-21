@@ -92,7 +92,7 @@ if ($_POST['action2'] == "savetest")
  */
 ?>
 
-<div style="width: 500px; margin: 0px auto; border: 1px dotted; padding: 20px 170px 100px 170px">
+<div style="position:relative; width: 500px; margin: 0px auto; border: 1px dotted; padding: 20px 170px 100px 170px">
 
 <?php $_SESSION['test']->show(); ?>
 
