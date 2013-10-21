@@ -5,11 +5,7 @@ include_once (MENU_PATH . "/menu_mytests.php");
 ?>
 
 
-<div style="margin-left: auto; margin-right: auto; width: 500px">
-
 <?php 
-	
-
 
 /**
  * If a test is selected to edit (not new), copy questions from db to session.
@@ -94,17 +90,15 @@ if ($_POST['action2'] == "savetest")
 /** 
  * Print test name and questionobjects as buttons and a form for the item that's being edited
  */
-
-$_SESSION['test']->show();
-
-
-
 ?>
-	
-	
+
+<div style="width: 800px; margin: 0px auto; border: 1px dotted; padding: 20px 20px 100px 20px">
+<?php $_SESSION['test']->show(); ?>
 </div>
 
-<?php
 
+
+
+<?php
 include_once (TEMPLATES_PATH . "/footer.php");
 ?>
