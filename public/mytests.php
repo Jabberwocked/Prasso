@@ -14,7 +14,7 @@ td {
 		
 <div style="width: 800px; margin: 0px auto; border: 1px dotted; padding: 20px 20px 100px 20px">
 	<div style="text-align:center">
-		<nav>
+		<nav style="margin:0px auto;">
 			<a href="" style="font-size: small">Show all tests</a>
 			<a href="" style="font-size: small">Show in folders</a>
 			<div style="display:inline; margin: 0px 0px 0px 20px">Filter by:</div>
