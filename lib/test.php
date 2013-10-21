@@ -508,6 +508,7 @@ class test
 		foreach ($questionsquery as $orderno => $questionrow)
 		{
 			$orderno++; //now starts at 1
+			$this->questionids[$orderno] = $questionrow['QuestionId'];
 			$this->questionobjects[$orderno] = new questionobject;
 			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionrow['QuestionId']);	
 		}
