@@ -1,7 +1,7 @@
 <!-- NAV STYLE IF HREF IS CURRENT -->
 <style>
 	nav a[href="<?php echo str_replace('/', '', $_SERVER['PHP_SELF']); ?>"] {
-	color: orange;
+	color: black;
 	outline: none;
 	border-bottom: 2px solid #eee;
 }
@@ -14,7 +14,7 @@
 			<a href="mytests.php" style="color:lightgrey">My Tests</a>
 			<a href="mytests_edit.php" style="color:lightgrey">New</a><br>
 			<?php } else { ?>
-			<a href="mytests.php">My Tests</a>
+			<a href="mytests.php" style="color:grey">My Tests</a>
 			<?php } ?>
 			
 <!-- 		TEMP	 -->
