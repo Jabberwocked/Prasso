@@ -9,7 +9,7 @@ include_once (MENU_PATH . "/menu_mytests.php");
 
 <?php 
 	
-echo "debugging";
+
 
 /**
  * If a test is selected to edit (not new), copy questions from db to session.
@@ -20,8 +20,9 @@ if (isset($_POST['testtoedit']))
 	$_SESSION['test'] = new test();
 	$testid = $_POST['testtoedit'];
 	$_SESSION['test']->pullfromdb($testid);
+	echo "debugging";
 } 
-
+echo "debugging2";
 /**
  * If an item to edit was selected, update session, but not if the fields are empty.
  */
