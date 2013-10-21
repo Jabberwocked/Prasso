@@ -75,7 +75,7 @@ $totalscore = 0;
 
 foreach($questionids as $orderno => $id)
 {
-	if (in_array($useranswers[$id] == $answers[$id]))
+	if (in_array($useranswers[$id], $answers[$id]))
 	{
 		$correct = true;
 		$score = 1;
