@@ -410,7 +410,7 @@ class test
  		?>	
 		
 		<br>	
-		<div style="position:absolute; bottom:100px">
+		<div style="position:absolute; bottom:50px">
 		<button type="submit" name="action2" value="savetest" >Save Test</button> |
 		<button type="submit" name="action" value="reset" >Reset</button>
 		</div>
