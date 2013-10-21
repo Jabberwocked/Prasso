@@ -81,7 +81,8 @@ td {
 	} ?>
 		
 	</table>
-	
+	<br>
+	<br>
 	<nav><a href="mytests_edit.php" style="margin:0px">New</a></nav>
 	
 	</div>
