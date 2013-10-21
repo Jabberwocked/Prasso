@@ -437,7 +437,7 @@ class test
 	{
 		
 		echo "<form action=".htmlspecialchars('takeatest_check.php')." method='post'>";
-		echo "<p> ".$this->testname." </p>";
+		echo "<p style='font-weight:bold;'> ".$this->testname." </p><br>";
 		
 				
 		/**
