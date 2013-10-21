@@ -8,9 +8,7 @@ include_once (MENU_PATH . "/menu_mytests.php");
 
 <div style="width: 500px; margin: 0px auto; border: 1px dotted; padding: 20px 170px 100px 170px">
 
-<!-- Form to generate a test -->
-
-	<form action=<?php echo htmlspecialchars('takeatest_random.php');?> method="get">
+	<form action=<?php echo htmlspecialchars('mytests_take.php');?> method="get">
 		Filter by type<br> 
 		<input type="checkbox" style="display:inline; width:20px;" name="selectall" value="yes" class="selectall" <? if($_GET['selectall'] == 'yes'){ echo 'checked';}?>>All<br>
 		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="shortanswer" <? if(in_array("shortanswer", $_GET['type'])){ echo 'checked';}?>>Short Answer<br>
@@ -20,27 +18,11 @@ include_once (MENU_PATH . "/menu_mytests.php");
 		<input type="number" name="number" value="<?php if($_GET['number'] > 0) { echo $_GET['number']; } else { echo 10; } ?>">
 
 		<br> 
-		<input type="submit" value="Generate Test">
+		<button type="submit" name="generaterandom">Generate Test</button>
 	</form>
 	<br>
 	<br>
 	
-<!-- The test itself -->
-		
-			
-	<?php
-			
-	$_SESSION['test']->showastest();
-		
-
-		
-	
-	
-		?>
-	
-	</form>
-
-	<br><br><br>
 	
 </div>
 
