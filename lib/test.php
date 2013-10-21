@@ -462,17 +462,15 @@ class test
 			{
 				echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
 			}
-		}
+		};
 		
 		/**
 		 * Submit button
 		 */
 		
-		if($number > 0)
-		{
-			echo "<input type='submit' value='Submit Answers'>";
-			echo "</form>";
-		}
+		echo "<input type='submit' value='Submit Answers'>";
+		echo "</form>";
+		
 		
 	}
 
