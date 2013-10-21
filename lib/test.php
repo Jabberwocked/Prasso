@@ -484,7 +484,7 @@ class test
  * Pull random questions from db and output as test
  */
 
-	function pullrandomfromdb()
+	function pullrandomfromdb($data) // $data from $_GET
 	{
 
 		/**
@@ -493,10 +493,12 @@ class test
 		
 		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 		
-		$type = "'".implode("','", $_GET["type"])."'";
-		$number = $_GET["number"];
+		$type = "'".implode("','", $data["type"])."'";
+		$number = $data["number"];
 		$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
 		$questionsquery = $db->query($sql);
+		
+		print_r($questionsquery);
 		
 		foreach ($questionsquery as $orderno => $questionrow)
 		{
