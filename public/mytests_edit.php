@@ -99,7 +99,7 @@ if ($_POST['action2'] == "savetest")
 /** 
  * Print test name and questionobjects as buttons and a form for the item that's being edited
  */
-echo "debugging";
+
 $_SESSION['test']->show();
 
 
