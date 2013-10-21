@@ -82,7 +82,7 @@ foreach($questionids as $orderno => $questionid)
 	print_r($_SESSION['test']->questionobjects[$questionid]->answers);
 	
 	
-	if (in_array($useranswers[$questionid], $_SESSION['test']->questionobjects[$questionid]->answers))
+	if (in_array($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers))
 	{
 		$correct = true;
 		$score = 1;
