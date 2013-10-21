@@ -504,7 +504,7 @@ class test
 			$n++;
 			print_r($questionrow['QuestionId']);
 			$this->questionobjects[$n] = new questionobject;
-			$this->questionobjects[$n]->pullfromdb($n, $questionrow['questionid']);	
+			$this->questionobjects[$n]->pullfromdb($n, $questionrow['QuestionId']);	
 		}
 		
 	}
