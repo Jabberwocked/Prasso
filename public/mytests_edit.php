@@ -30,7 +30,6 @@ if (isset($_POST['testtoedit']))
 if ($_POST['question'] == "" AND $_POST['answers'][0] == "" AND $_POST['testname'] == "" AND $_SESSION['itemtoedit'] == count($_SESSION['test']->questionobjects) + 1 AND $_POST['itemtoedit'] == count($_SESSION['test']->questionobjects) + 2)
 {
 	// 		Don't change itemtoedit in session
-	
 }
 elseif (isset($_POST['itemtoedit']))
 {
@@ -42,10 +41,7 @@ if (!isset($_SESSION['test']))
 	$_SESSION['test'] = new test();
 }
 
-if (!isset($_SESSION['itemtoedit'])) 
-{
-	$_SESSION['itemtoedit'] = count($_SESSION['test']->questionobjects) + 1;
-};
+
 
 /**
  * Process forms depending on button pressed.
