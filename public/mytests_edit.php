@@ -20,9 +20,9 @@ if (isset($_POST['testtoedit']))
 	$_SESSION['test'] = new test();
 	$testid = $_POST['testtoedit'];
 	$_SESSION['test']->pullfromdb($testid);
-	echo "debugging";
+	
 } 
-echo "debugging2";
+
 /**
  * If an item to edit was selected, update session, but not if the fields are empty.
  */
@@ -30,6 +30,7 @@ echo "debugging2";
 if ($_POST['question'] == "" AND $_POST['answers'][0] == "" AND $_POST['testname'] == "" AND $_SESSION['itemtoedit'] == count($_SESSION['test']->questionobjects) + 1 AND $_POST['itemtoedit'] == count($_SESSION['test']->questionobjects) + 2)
 {
 	// 		Don't change itemtoedit in session
+	echo "debugging";
 }
 elseif (isset($_POST['itemtoedit']))
 {
