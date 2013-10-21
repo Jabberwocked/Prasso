@@ -36,6 +36,10 @@ elseif (isset($_POST['itemtoedit']))
 }
 elseif (!isset($_SESSION['itemtoedit'])) 
 {
+	if (!isset($_SESSION['test']))
+	{
+		$_SESSION['test'] = new test();
+	}
 	$_SESSION['itemtoedit'] = count($_SESSION['test']->questionobjects) + 1;
 };
 
