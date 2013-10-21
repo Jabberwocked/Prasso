@@ -80,13 +80,13 @@ foreach($questionids as $orderno => $id)
 		$correct = true;
 		$score = 1;
 		$totalscore ++;
-		$colour = "green";
+		$colour = "lightgreen";
 	}
 	else 
 	{
 		$correct = false;
 		$score = 0;
-		$colour = "red";
+		$colour = "lightred";
 	}
 	
 	
