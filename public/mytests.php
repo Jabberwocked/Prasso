@@ -22,6 +22,7 @@ td {
 			<a href="" style="font-size: small; margin: 0px 2px">label</a>
 		</nav>
 	</div>
+	<br>
 	<table>
 		<tr style="font-weight: bold; margin-bottom: 20px;">
 			<td>Test</td>
