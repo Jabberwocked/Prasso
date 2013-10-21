@@ -38,6 +38,7 @@ class test
 		foreach ($result as $dbtest)
 		{
 			$this->testname = $dbtest['TestName'];
+			echo $dbtest['TestName'];
 		}
 		
 		/**
