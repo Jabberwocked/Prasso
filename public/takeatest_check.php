@@ -86,7 +86,7 @@ foreach($questionids as $orderno => $id)
 	{
 		$correct = false;
 		$score = 0;
-		$colour = "lightred";
+		$colour = "lightcoral";
 	}
 	
 	
