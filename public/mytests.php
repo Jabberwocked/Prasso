@@ -12,7 +12,7 @@ td {
 }
 </style>
 		
-<div style="width: 800px; margin-left: auto; margin-right: auto; border: 1px dotted; padding: 20px 20px 100px 20px">
+<div style="width: 800px; margin: 0px auto; border: 1px dotted; padding: 20px 20px 100px 20px">
 	<div style="text-align:center">
 		<nav>
 			<a href="" style="font-size: small">Show all tests</a>
