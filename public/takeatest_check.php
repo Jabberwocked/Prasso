@@ -89,8 +89,8 @@ foreach($questionids as $orderno => $id)
 		$colour = "lightcoral";
 	}
 	
-	echo "<div style='display: block; float:right'> Score: " . $score . "</span> | <span> Answer: "; $n = 1; foreach ($answers[$id] as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</div>";
-	echo "<p style='background-color:" . $colour . "'><span style='font-weight:bold;'> ".$orderno.". ".$questions[$id]."</span><br>";
+	echo "<p style='background-color:" . $colour . "'><div style='display: block; float:right'> Score: " . $score . "</span> | <span> Answer: "; $n = 1; foreach ($answers[$id] as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</div>";
+	echo "<span style='font-weight:bold;'> ".$orderno.". ".$questions[$id]."</span><br>";
 	echo "<span>" . $useranswers[$id] . "</span></p><br>";
 	
 
