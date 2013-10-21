@@ -11,6 +11,7 @@ include_once (MENU_PATH . "/menu_mytests.php");
 <?php 
 $testid = $_POST['testtotake'];
 $_SESSION['test']->pullfromdb($testid);
+print_r($_SESSION['test']);
 $_SESSION['test']->showastest();
 	
 
