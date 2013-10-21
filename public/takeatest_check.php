@@ -78,6 +78,8 @@ foreach($questionids as $orderno => $questionid)
 {	
 	print_r($orderno);
 	print_r($questionid);
+	print_r($useranswers[$questionid]);
+	print_r($_SESSION['test']->questionobjects[$questionid]->answers);
 	if (in_array($useranswers[$questionid], $_SESSION['test']->questionobjects[$questionid]->answers))
 	{
 		$correct = true;
