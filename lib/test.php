@@ -436,7 +436,7 @@ class test
 	function showastest()
 	{
 		
-		echo "<form action=".htmlspecialchars('takeatest_check.php')." method='post'>";
+		echo "<form action=".htmlspecialchars('test_check.php')." method='post'>";
 		if (isset($this->testname))
 		{
 			echo "<p style='font-weight:bold;'> ".$this->testname." </p><br>";
