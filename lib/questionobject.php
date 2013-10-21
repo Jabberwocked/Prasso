@@ -101,11 +101,7 @@ class questionobject {
 	}
 	
 	
-	
-	function showintest()
-	{
-		
-	}
+
 	
 	
 }

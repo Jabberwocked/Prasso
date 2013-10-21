@@ -449,12 +449,27 @@ class test
 		
 		};
 		
-		echo "<input type='submit' value='Submit Answers'>";
-		echo "</form>";
-		 
+		
+		/**
+		 * Error message for random tests
+		 */
+		
+		if($orderno < $_GET['number'])
+		{
+			echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
+		}
+		
+		/**
+		 * Submit button
+		 */
+		
+		if($number > 0)
+		{
+			echo "<input type='submit' value='Submit Answers'>";
+			echo "</form>";
+		}
+		
 	}
-	
-
 
 
 
@@ -463,7 +478,7 @@ class test
 
 
 /**
- * Query based on criteria
+ * Pull random questions from db and output as test
  */
 
 	function pullrandomfromdb()
@@ -480,28 +495,10 @@ class test
 		$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
 		$questionsquery = $db->query($sql);
 		
-		
-		/**
-		 * Save some arrays
-		*/
-		
-		
-		$this->questionids = array();  // array(orderno => questionid)
-		$this->questionobjects = array();
-		
-		// VANAF HIER AFMAKEN. VERVANGEN DOOR saveitem() met array(orderno, question, type, answers)
-		
-		$orderno = 0;
-		foreach ($questionsquery as $questionrow)
+		foreach ($questionsquery as $orderno => $questionrow)
 		{
-			$orderno ++;
-			$questionid = $questionrow['QuestionId'];
-			$question = $questionrow['Question'];
-				
-			$questionids[$n] = $id;	// Save questionids in array(questionno => id)
-			$questions[$id] = $question;	// Save questions in array(id => question)
-				
-			$_SESSION['questionids'] = $questionids;	// Save questionids in SESSION
+			$this->questionobjects[$orderno] = new questionobject;
+			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionid);	
 		}
 	}
 }

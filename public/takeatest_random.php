@@ -27,74 +27,13 @@ include_once (MENU_PATH . "/menu_mytests.php");
 	
 <!-- The test itself -->
 		
-	<form action="<?php echo htmlspecialchars('takeatest_check.php');?>" method="post">
-		
-		<?php
 			
-		/**
-		 * Query based on criteria 
-		 */
-		
-		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-		
-		$type = "'".implode("','", $_GET["type"])."'";
-		$number = $_GET["number"];
-		$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
-		$questionsquery = $db->query($sql);
-		
-		
-		/**
-		 * Save some arrays 
-		 */
-		
-		$n = 0;
-		$questionids = array();
-		$questions = array();
-		
-		foreach ($questionsquery as $questionrow)
-		{
-			$n ++;
-			$id = $questionrow['QuestionId'];
-			$question = $questionrow['Question'];
+	<?php
 			
-			$questionids[$n] = $id;	// Save questionids in array(questionno => id)
-			$questions[$id] = $question;	// Save questions in array(id => question)
-			
-			$_SESSION['questionids'] = $questionids;	// Save questionids in SESSION
-		}
+	$_SESSION['test']->showastest();
 		
+
 		
-		
-		/**
-		 * Output questions and form
-		 */
-		
-		foreach($questionids as $n => $id)
-		{
-			echo "<p><span style='font-weight:bold;'>".$n.".</span> ".$questions[$id]." </p>";
-			echo "<input type='text' name='".$id."' ><br>";
-		
-		}
-		
-				
-		
-		/**
-		 * Error message 
-		 */
-		
-		if($n < $number)
-		{
-			echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
-		}
-		
-		/**
-		 * Submit button 
-		 */
-		
-		if($number > 0)
-		{
-			echo "<input type='submit' value='Submit Answers'>";
-		}
 	
 	
 		?>
