@@ -23,6 +23,7 @@ td {
 		</nav>
 	</div>
 	<br>
+	<div style='display:block; float:right'><nav><a href="mytests_edit.php">New</a></nav></div>
 	<table>
 		<tr style="font-weight: bold; margin-bottom: 20px;">
 			<td>Test</td>
