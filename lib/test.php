@@ -450,14 +450,14 @@ class test
 		};
 		
 		
-		/**
-		 * Error message for random tests
-		 */
+// 		/**
+// 		 * Error message for random tests
+// 		 */
 		
-		if($orderno < $_GET['number'])
-		{
-			echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
-		}
+// 		if($orderno < $_GET['number'])
+// 		{
+// 			echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
+// 		}
 		
 		/**
 		 * Submit button
