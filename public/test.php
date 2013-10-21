@@ -21,9 +21,7 @@ if (isset($_POST['testtotake']))
 
 if (isset($_GET['generaterandom']))
 {
-	echo "lala";
 	$_SESSION['test']->pullrandomfromdb($_GET);
-	print_r($_SESSION['test']);
 	$_SESSION['test']->showastest();
 }
 

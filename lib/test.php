@@ -498,12 +498,10 @@ class test
 		$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
 		$questionsquery = $db->query($sql);
 		
-		print_r($questionsquery);
-		
-		foreach ($questionsquery as $orderno => $questionrow)
+		foreach ($questionsquery as $questionrow)
 		{
-			$this->questionobjects[$orderno] = new questionobject;
-			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionid);	
+			$this->questionobjects[1] = new questionobject;
+			$this->questionobjects[1]->pullfromdb($orderno, $questionid);	
 		}
 	}
 }
