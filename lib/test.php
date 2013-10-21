@@ -498,9 +498,9 @@ class test
 		$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
 		$questionsquery = $db->query($sql);
 		
-		foreach ($questionsquery as $questionrow)
+		foreach ($questionsquery as $orderno => $questionrow)
 		{
-			print_r($questionrow);
+			print_r($orderno);
 			$this->questionobjects[1] = new questionobject;
 			$this->questionobjects[1]->pullfromdb(1, $questionid);	
 		}
