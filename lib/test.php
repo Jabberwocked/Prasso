@@ -501,8 +501,9 @@ class test
 		foreach ($questionsquery as $questionrow)
 		{
 			$this->questionobjects[1] = new questionobject;
-			$this->questionobjects[1]->pullfromdb($orderno, $questionid);	
+			$this->questionobjects[1]->pullfromdb(1, $questionid);	
 		}
+		
 	}
 }
 ?>
