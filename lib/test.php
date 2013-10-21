@@ -38,7 +38,7 @@ class test
 		foreach ($result as $dbtest)
 		{
 			$this->testname = $dbtest['TestName'];
-			print_r($dbtest['TestName']);
+
 		}
 		
 		/**
@@ -437,6 +437,7 @@ class test
 	{
 		
 		echo "<form action=".htmlspecialchars('takeatest_check.php')." method='post'>";
+		echo "<p> ".$this->testname." </p>";
 		
 				
 		/**
