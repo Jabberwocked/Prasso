@@ -1,7 +1,7 @@
 
 			
 				<nav>
-					<a href="takeatest_random.php">Tests</a><br>
+					<a href="test_generate.php">Tests</a><br>
 					<br>
 					<br>
 					<?php if (!isset($_SESSION['username'])) { ?>
