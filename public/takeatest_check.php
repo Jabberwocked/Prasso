@@ -77,7 +77,7 @@ foreach($questionids as $orderno => $questionid)
 	
 	echo "Debugging";
 	print_r($questionid);
-	print_r($_SESSION['test']->questionobjects['$questionid']);
+	print_r($_SESSION['test']->questionobjects->questionid);
 	print_r($_SESSION['test']->questionobjects[$questionid]->answers);
 	
 	
