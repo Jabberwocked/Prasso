@@ -23,6 +23,7 @@ if (isset($_GET['generaterandom']))
 {
 	echo "lala";
 	$_SESSION['test']->pullrandomfromdb();
+	print_r($_SESSION['test']);
 	$_SESSION['test']->showastest();
 }
 
