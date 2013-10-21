@@ -9,7 +9,7 @@
 
 
 		<nav>
-			<a href="takeatest_random.php">Quick Test</a>
+			<a href="test_generate.php">Quick Test</a>
 			<?php if (!isset($_SESSION['username'])) { ?>
 			<a href="mytests.php" style="color:lightgrey">My Tests</a>
 			<?php } else { ?>
