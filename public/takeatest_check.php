@@ -75,7 +75,9 @@ print_r($useranswers);
 $totalscore = 0;
 
 foreach($questionids as $orderno => $questionid)
-{
+{	
+	print_r($orderno);
+	print_r($questionid);
 	if (in_array($useranswers[$questionid], $_SESSION['test']->questionobjects[$questionid]->answers))
 	{
 		$correct = true;
