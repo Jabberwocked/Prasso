@@ -6,7 +6,7 @@ include_once (MENU_PATH . "/menu_mytests.php");
 
 
 
-<div style="width: 800px; margin: 0px auto; border: 1px dotted; padding: 20px 20px 100px 20px">
+<div style="width: 500px; margin: 0px auto; border: 1px dotted; padding: 20px 170px 100px 170px">
 
 <!-- Form to generate a test -->
 
