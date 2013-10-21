@@ -5,7 +5,7 @@ include_once (MENU_PATH . "/menu_tests.php");
 ?>
 
 
-<div style="margin-left: auto; margin-right: auto; width: 500px">
+<div style="width: 500px; margin: 0px auto; border: 1px dotted; padding: 20px 170px 100px 170px">
 
 <?php 
 
