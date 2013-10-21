@@ -15,7 +15,6 @@
 			<a href="mytests_edit.php" style="color:lightgrey">New</a><br>
 			<?php } else { ?>
 			<a href="mytests.php">My Tests</a>
-			<a href="mytests_edit.php">New</a><br>
 			<?php } ?>
 			
 <!-- 		TEMP	 -->
