@@ -66,8 +66,8 @@ td {
 			<td><?php echo $topic ?></td>
 			<td><?php echo $labels ?></td>
 			<td>
-				<form action=<?php echo htmlspecialchars('mytests_take.php');?> method="post"><button type="submit" name="testtotake" value="<?php echo $testid ?>" >Take</button></form> |
-				<form action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post"><button type="submit" name="testtoedit" value="<?php echo $testid ?>" >Edit</button></form> |
+				<form style="display:inline" action=<?php echo htmlspecialchars('mytests_take.php');?> method="post"><button type="submit" name="testtotake" value="<?php echo $testid ?>" >Take</button></form> |
+				<form style="display:inline" action=<?php echo htmlspecialchars('mytests_edit.php');?> method="post"><button type="submit" name="testtoedit" value="<?php echo $testid ?>" >Edit</button></form> |
 				<button type="submit" name="" value="<?php echo $testid ?>" >Results</button> |
 				<button type="submit" name="" value="<?php echo $testid ?>" >Administer</button>
 			</nav></td>
