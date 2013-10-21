@@ -291,7 +291,7 @@ class test
 	
 	function show()
 	{
-		echo "debugging";
+		echo "debugging3";
 		/**
 		 * Set which item is being edited. If none then new question.
 		 */
