@@ -13,9 +13,7 @@ include_once (TEMPLATES_PATH . "/header.php");
  */
 
 $questionids = $_SESSION['test']->questionids; // array(questionno => questionid)
-print_r($questionids);
 $useranswers = $_POST; // array(questionid => answer)
-print_r($useranswers);
 
 // /**
 //  * Query db
@@ -76,10 +74,11 @@ $totalscore = 0;
 
 foreach($questionids as $orderno => $questionid)
 {	
-	print_r($orderno);
-	print_r($questionid);
-	print_r($useranswers[$questionid]);
+	
+	echo "Debugging";
 	print_r($_SESSION['test']->questionobjects[$questionid]->answers);
+	
+	
 	if (in_array($useranswers[$questionid], $_SESSION['test']->questionobjects[$questionid]->answers))
 	{
 		$correct = true;
