@@ -286,7 +286,7 @@ class test
 	
 	
 	/**
-	 * Print test name and questionobjects as buttons and a form for the item that's being edited
+	 * Shows questions for editing: Prints test name and questionobjects as buttons and a form for the item that's being edited
 	 */
 	
 	function show()
@@ -423,6 +423,36 @@ class test
 	<?php 
 	}
 	
+	
+	
+	
+	
+	
+	/** 
+	 * Output as test
+	 */
+	
+	function showastest()
+	{
+		
+		echo "<form action=".htmlspecialchars('takeatest_check.php')." method='post'>";
+		
+				
+		/**
+		 * Output questions and form
+		 */
+		
+		foreach($this->questionobjects as $orderno => $questionobject)
+		{
+			echo "<p><span style='font-weight:bold;'>".$orderno.".</span> ".$questionobject->question." </p>";
+			echo "<input type='text' name='".$questionobject->questionid."' ><br>";
+		
+		};
+		
+		echo "<input type='submit' value='Submit Answers'>";
+		echo "</form>";
+		 
+	}
 	
 }
 
