@@ -95,7 +95,7 @@ if ($_POST['action2'] == "savetest")
 <div style="width: 800px; margin: 0px auto; border: 1px dotted; padding: 20px 150px 100px 150px">
 
 <?php $_SESSION['test']->show(); ?>
-</div>
+
 </div>
 
 
