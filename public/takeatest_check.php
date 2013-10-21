@@ -75,13 +75,6 @@ $totalscore = 0;
 foreach($questionids as $orderno => $questionid)
 {	
 	
-	echo "Debugging";
-	print_r($questionid);
-	print_r($_SESSION['test']->questionobjects);
-	print_r($_SESSION['test']->questionobjects['$questionid']);
-	print_r($_SESSION['test']->questionobjects[$questionid]->answers);
-	
-	
 	if (in_array($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers))
 	{
 		$correct = true;
@@ -97,8 +90,8 @@ foreach($questionids as $orderno => $questionid)
 	}
 	
 	echo "<p style='background-color:" . $colour . "'>";
-	echo "<span style='font-weight:bold;'> ".$orderno.". ".$_SESSION['test']->questionobjects[$questionid]->question."</span><span style='display: block; float:right'> Score: " . $score . "</span><br>";
-	echo "<span>>" . $useranswers[$id] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($_SESSION['test']->questionobjects[$questionid]->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
+	echo "<span style='font-weight:bold;'> ".$orderno.". ".$_SESSION['test']->questionobjects[$orderno]->question."</span><span style='display: block; float:right'> Score: " . $score . "</span><br>";
+	echo "<span>>" . $useranswers[$questionid] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($_SESSION['test']->questionobjects[$orderno]->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
 	echo "</p>";
 	
 
