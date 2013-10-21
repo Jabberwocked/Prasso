@@ -27,7 +27,6 @@ class test
 	function pullfromdb($testid)
 	{
 		$this->testid = $testid;
-		print_r($this->testid);
 		
 		/** 
 		 * Pull test name to object
