@@ -23,7 +23,7 @@ td {
 		</nav>
 	</div>
 	<br>
-	<div style='display:block; float:right; margin:0px'><nav style="margin:0px"><a href="mytests_edit.php" style="margin:0px">New</a></nav></div>
+	<nav style="display:block; float:right; margin:0px"><a href="mytests_edit.php" style="margin:0px">New</a></nav>
 	<table>
 		<tr style="font-weight: bold; margin-bottom: 20px;">
 			<td>Test</td>
