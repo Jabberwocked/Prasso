@@ -20,9 +20,9 @@ class test
 	
 	
 	
-	/** 
-	 * Pull test details to object (which will usually be saved as $_SESSION['test'])
-	 */
+/** 
+ * Pull test details to object (which will usually be saved as $_SESSION['test'])
+ */
 	
 	function pullfromdb($testid)
 	{
@@ -72,9 +72,9 @@ class test
 	
 	
 	
-	/** 
-	 * Save question or test name to object (session)
-	 */
+/** 
+ * Save question or test name to object (session)
+ */
 	
 	function saveitem()
 	{
@@ -95,9 +95,9 @@ class test
 	
 	
 	
-	/**
-	 * Add object properties to database tables
-	 */
+/**
+ * Add object properties to database tables
+ */
 	function add()
 	{
 		/**
@@ -188,9 +188,9 @@ class test
 	
 	
 	
-	/**
-	 * Update database tables with changed object properties. NOT WORKING YET
-	 */
+/**
+ * Update database tables with changed object properties. NOT WORKING YET
+ */
 	function update()
 	{
 		/**
@@ -285,9 +285,9 @@ class test
 	
 	
 	
-	/**
-	 * Shows questions for editing: Prints test name and questionobjects as buttons and a form for the item that's being edited
-	 */
+/**
+ * Shows questions for editing: Prints test name and questionobjects as buttons and a form for the item that's being edited
+ */
 	
 	function show()
 	{
@@ -454,6 +454,55 @@ class test
 		 
 	}
 	
-}
 
+
+
+
+
+
+
+
+/**
+ * Query based on criteria
+ */
+
+	function pullrandomfromdb()
+	{
+
+		/**
+		 * Query based on criteria
+		 */
+		
+		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+		
+		$type = "'".implode("','", $_GET["type"])."'";
+		$number = $_GET["number"];
+		$sql = "SELECT * FROM Questions WHERE Type IN (".$type.") ORDER BY RAND() LIMIT $number";
+		$questionsquery = $db->query($sql);
+		
+		
+		/**
+		 * Save some arrays
+		*/
+		
+		
+		$this->questionids = array();  // array(orderno => questionid)
+		$this->questionobjects = array();
+		
+		// VANAF HIER AFMAKEN. VERVANGEN DOOR saveitem() met array(orderno, question, type, answers)
+		
+		$orderno = 0;
+		foreach ($questionsquery as $questionrow)
+		{
+			$orderno ++;
+			$questionid = $questionrow['QuestionId'];
+			$question = $questionrow['Question'];
+				
+			$questionids[$n] = $id;	// Save questionids in array(questionno => id)
+			$questions[$id] = $question;	// Save questions in array(id => question)
+				
+			$_SESSION['questionids'] = $questionids;	// Save questionids in SESSION
+		}
+	}
+}
 ?>

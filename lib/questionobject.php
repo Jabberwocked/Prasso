@@ -15,7 +15,7 @@ class questionobject {
 	public $answers;
 
 /**
- * To make a new questionobject with questionno, question, type, answers
+ * To make a new questionobject with orderno, question, type, answers
  * based on array-input (e.g. form)
  */
 	
