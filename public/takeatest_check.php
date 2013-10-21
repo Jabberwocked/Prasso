@@ -92,7 +92,7 @@ foreach($questionids as $orderno => $id)
 	echo "<p style='background-color:" . $colour . "'>";
 	echo "<span style='font-weight:bold;'> ".$orderno.". ".$questions[$id]."</span><span style='display: block; float:right'> Score: " . $score . "</span><br>";
 	echo "<span>x" . $useranswers[$id] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($answers[$id] as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
-	echo "</p><br>";
+	echo "</p>";
 	
 
 	
