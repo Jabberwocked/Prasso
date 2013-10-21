@@ -61,7 +61,6 @@ foreach($answersqueryarray as $questionid => $answerquery)
 	}
 }
 
-print_r($answers);
 
 
 
@@ -74,7 +73,7 @@ print_r($answers);
 
 $totalscore = 0;
 
-foreach($questionids as $n => $id)
+foreach($questionids as $orderno => $id)
 {
 	if (in_array($useranswers[$id] == $answers[$id]))
 	{
@@ -91,9 +90,10 @@ foreach($questionids as $n => $id)
 	}
 	
 	
-	echo "<p><span style='font-weight:bold;'>$n " . $questions[$id] . "</span><br>";
+	echo "<p><span style='font-weight:bold;'>$orderno " . $questions[$id] . "</span><br>";
 	echo "<span style='display:inline-block; min-width:100px; background-color:" . $colour . "'>x" . $useranswers[$id] . "</span><br>";
-	echo "<span> Score: " . $score . "</span> | <span> Answer: "; foreach ($answers[$id] as $answer){echo $answer . ", ";};echo "</span></p>";
+	echo "<span> Score: " . $score . "</span> | <span> Answer: "; $n = 1; foreach ($answers[$id] as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span></p>";
+
 	
 }
 

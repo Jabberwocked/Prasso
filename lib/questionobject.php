@@ -94,6 +94,7 @@ class questionobject {
 			<span style='font-weight:bold'><?php echo $this->orderno . ". " . $this->question ; ?></span>
 			<span style='font-weight:normal'>(<?php echo $this->typeshort; ?>)</span><br>
 			<span><?php $n = 1; foreach($this->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;}?></span>
+			</p>
 		</button><br>
 		
 		<?php 
