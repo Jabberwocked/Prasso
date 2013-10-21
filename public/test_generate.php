@@ -18,7 +18,6 @@ include_once (MENU_PATH . "/menu_tests.php");
 		<input type="number" name="number" value="<?php if($_GET['number'] > 0) { echo $_GET['number']; } else { echo 10; } ?>">
 
 		<br> 
-		<input type="hidden" name="generaterandom" value="yes">
 		<button type="submit" name="generaterandom" value="yes">Generate Test</button>
 	</form>
 	<br>
