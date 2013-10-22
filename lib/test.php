@@ -521,39 +521,39 @@ class test
 		return $scoresearned;
 	}	
 
-// /** 
-//  * Saves user answers, score and test data to db 
-//  */
-// 	function saveresultstodb($useranswers, $scoresearned)
-// 	{
-// 		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+/** 
+ * Saves user answers, score and test data to db 
+ */
+	function saveresultstodb($useranswers, $scoresearned)
+	{
+		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 			
-// 		$qry = $db->prepare("INSERT INTO Testresults (TestId, UserIdOwner) VALUES (:TestId, :UserIdOwner)");
-// 		$qry->execute(array(
-// 			':TestId' => $this->testid,
-// 			':UserIdOwner' => $_SESSION['userid']));
-// 		$resultid = $db->lastInsertId();
+		$qry = $db->prepare("INSERT INTO Testresults (TestId, UserIdOwner) VALUES (:TestId, :UserIdOwner)");
+		$qry->execute(array(
+			':TestId' => $this->testid,
+			':UserIdOwner' => $_SESSION['userid']));
+		$resultid = $db->lastInsertId();
 
-// 		foreach ($this->questionids as $orderno => $questionid)
-// 		{
-// 			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
-// 			$qry->execute(array(
-// 				':UserAnswer' => $useranswers[$questionid], 
-// 				':ScoreEarned' => $scoresearned[$questionid], 
-// 				':QuestionId' => $questionid, 
-// 				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
-// 				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
-// 				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
+		foreach ($this->questionids as $orderno => $questionid)
+		{
+			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
+			$qry->execute(array(
+				':UserAnswer' => $useranswers[$questionid], 
+				':ScoreEarned' => $scoresearned[$questionid], 
+				':QuestionId' => $questionid, 
+				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
+				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
+				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
 
-// 			$useranswerid = $db->lastInsertId();
+			$useranswerid = $db->lastInsertId();
 			
-// 			$qry = $db->prepare("INSERT INTO Testresults_UserAnswers (ResultId, UserAnswerId) VALUES (:ResultId, :UserAnswerId)");
-// 			$qry->execute(array(
-// 				':ResultId' => $resultid,
-// 				':UserAnswerId' => $useranswerid));
+			$qry = $db->prepare("INSERT INTO Testresults_UserAnswers (ResultId, UserAnswerId) VALUES (:ResultId, :UserAnswerId)");
+			$qry->execute(array(
+				':ResultId' => $resultid,
+				':UserAnswerId' => $useranswerid));
 		
-// 		};
-// 	}	
+		};
+	}	
 
 // /** 
 //  * Echo question, answer, useranswer, score and totalscore
