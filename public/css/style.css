@@ -130,7 +130,7 @@ nav a {
 	/* Inspired by http://tympanus.net/codrops/2013/08/06/creative-link-effects */
 	position: relative;
 	display: inline-block;
-	color: darkgray; 
+	color: red; 
 	text-decoration: none;
 	margin: 10px 20px;
 	text-transform: uppercase;
