@@ -77,6 +77,7 @@ td {
 			
 			
 	<?php 
+		}
 	} ?>
 		
 	</table>
@@ -86,9 +87,8 @@ td {
 	
 	</div>
 	
-<?php 
-}
 
-
-include_once (TEMPLATES_PATH . "/footer.php");
-?>
+	
+	
+	
+<?php include_once (TEMPLATES_PATH . "/footer.php"); ?>
