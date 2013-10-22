@@ -583,7 +583,7 @@ class test
 // 			echo "<span>>" . $useranswers[$questionid] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($this->questionobjects[$orderno]->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
 // 			echo "</p>";
 // 		};
-		echo "<p style='font-weight:bold'> Totalscore: " . $scoresearned['totalscore']' . "</p><br><br>";
+// 		echo "<p style='font-weight:bold'> Totalscore: " . $scoresearned['totalscore']' . "</p><br><br>";
 	}
 
 	
