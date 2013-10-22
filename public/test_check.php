@@ -16,56 +16,6 @@ include_once (MENU_PATH . "/menu_tests.php");
 $questionids = $_SESSION['test']->questionids; // array(orderno => questionid)
 $useranswers = $_POST; // array(questionid => answer)
 
-// /**
-//  * Query db
-//  */
-
-// $db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-
-// $questionidssql = "'".implode("','", $questionids)."'";
-// $questionsquery = $db->query("SELECT * FROM Questions WHERE QuestionId IN (".$questionidssql.")");
-// foreach ($questionids as $questionid)
-// {
-// 	$answersqueryarray[$questionid] = $db->query("SELECT * FROM Answers WHERE QuestionId=".$questionid);
-// }
-
-
-
-// /** 
-//  * Save questions in array(id => question)
-//  */
-
-// $questions = array();
-
-// foreach($questionsquery as $questionrow)
-// {
-// 	$id = $questionrow['QuestionId'];
-// 	$question = $questionrow['Question'];
-// 	$questions[$id] = $question;
-// }
-
-
-
-// /**
-//  * Save answers in array(id => answer)
-//  */
-
-// $answers = array();
-
-// foreach($answersqueryarray as $questionid => $answerquery)
-// {
-// 	foreach($answerquery as $answerrow)	
-// 	{
-// 		$answer = $answerrow['Answer'];
-// 		$answers[$questionid][] = $answer;
-// 	}
-// }
-
-
-
-
-
-
 /**
  * Score berekenen en
  * Output question, answer, user answer and score
