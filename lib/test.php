@@ -515,6 +515,7 @@ class test
 			':TestId' => $this->testid,
 			':UserIdOwner' => $_SESSION['userid']));
 		$resultid = $db->lastInsertId();
+		echo $resultid;
 
 		foreach ($this->questionids as $orderno => $questionid)
 		{
