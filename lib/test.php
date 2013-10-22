@@ -520,13 +520,13 @@ class test
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers); 
-			if ($answerkey)
+			if ($answerkey == false)
 			{
-				$score = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] * $_SESSION['test']->questionobjects[$orderno]->questionscore;
+				$score = 0;
 			}
 			else 
 			{
-				$score = 0;
+				$score = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] * $_SESSION['test']->questionobjects[$orderno]->questionscore;
 			};
 
 			echo "debugging" . $score;
