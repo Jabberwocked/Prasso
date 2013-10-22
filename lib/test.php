@@ -512,35 +512,31 @@ class test
 			':TestId' => $this->testid,
 			':UserIdOwner' => $_SESSION['userid']));
 		$resultid = $db->lastInsertId();
-		
+		echo $resultid;
 
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers); 
 			if (is_int($answerkey))
 			{
-				echo "test";
-				$score = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] * $_SESSION['test']->questionobjects[$orderno]->questionscore;
+				$scoreearned = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] * $_SESSION['test']->questionobjects[$orderno]->questionscore;
 			}
 			else 
 			{
-				$score = 0;
+				$scoreearned = 0;
 			};
-			echo "<br>debugging: scorepercentage:" . $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey];
-			echo "<br>debugging: questionscore: " . $_SESSION['test']->questionobjects[$orderno]->questionscore;
-			echo "<br>debugging: score: " . $score;
-			
 			
 			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
 			$qry->execute(array(
 				':UserAnswer' => $useranswers[$questionid], 
-				':ScoreEarned' => $score, 
+				':ScoreEarned' => $scoreearned, 
 				':QuestionId' => $questionid, 
 				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
-				':AnswerLogged' => "'" . implode("','", $_SESSION['test']->questionobjects[$orderno]->answers) . "'", 
+				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
 				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
 
 			$useranswerid = $db->lastInsertId();
+			echo $db->lastInsertId();
 			
 			$qry = $db->prepare("INSERT INTO TestResults_UserAnswers (ResultId, UserAnswerId) VALUES (:ResultId, :UserAnswerId)");
 			$qry->execute(array(
