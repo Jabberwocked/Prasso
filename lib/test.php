@@ -498,28 +498,28 @@ class test
 		}
 	}
 
-// /**
-//  * Returns array scoresearned
-//  */
-// 	function checkanswers($useranswers)
-// 	{
-// 		$totalscore = 0;
-// 		foreach ($this->questionids as $orderno => $questionid)
-// 		{
-// 			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers);
-// 			if (is_int($answerkey))
-// 			{
-// 				$scoresearned['$questionid'] = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] / 100 * $_SESSION['test']->questionobjects[$orderno]->questionscore;
-// 			}
-// 			else
-// 			{
-// 				$scoresearned['$questionid'] = 0;
-// 			};
-// 			$totalscore += $scoresearned['$questionid'];
-// 		}
-// 		$scoresearned['totalscore'] = $totalscore;
-// 		return $scoresearned;
-// 	}	
+/**
+ * Returns array scoresearned
+ */
+	function checkanswers($useranswers)
+	{
+		$totalscore = 0;
+		foreach ($this->questionids as $orderno => $questionid)
+		{
+			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers);
+			if (is_int($answerkey))
+			{
+				$scoresearned['$questionid'] = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] / 100 * $_SESSION['test']->questionobjects[$orderno]->questionscore;
+			}
+			else
+			{
+				$scoresearned['$questionid'] = 0;
+			};
+			$totalscore += $scoresearned['$questionid'];
+		}
+		$scoresearned['totalscore'] = $totalscore;
+		return $scoresearned;
+	}	
 
 // /** 
 //  * Saves user answers, score and test data to db 
