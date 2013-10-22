@@ -78,7 +78,7 @@ class test
 		{
 			$this->questionobjects[$_POST['orderno']] = new questionobject($_POST);
 			
-			// header("Location: mytests_edit.php");
+			// header("Location: test_edit.php");
 		}
 	}
 
@@ -293,7 +293,7 @@ class test
 		
 		?>
 
-<form action=<?php echo htmlspecialchars('mytests_edit.php');?>
+<form action=<?php echo htmlspecialchars('test_edit.php');?>
 	method="post">
 	<!-- 	First button needs to have the default value. When enter is pressed this value for itemtoedit is used. -->
 	<button type=hidden type="submit" name="itemtoedit"
