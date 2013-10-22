@@ -50,6 +50,8 @@ class test
 			$orderno = $dbrelation['OrderNo'];
 			$this->questionids[$orderno] = $dbrelation['QuestionId'];
 			$tempscoreperquestion[$orderno] = $dbrelation['score']; //see below
+			echo "<br>debugging: tempscoreperquestion:";
+			print_r($tempscoreperquestion);
 		}
 		
 		/**

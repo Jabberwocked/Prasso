@@ -57,8 +57,8 @@ class questionobject {
 		$sql = "SELECT * FROM Answers WHERE QuestionId=".$questionid;
 		$resultanswers = $db->query($sql);
 		
-		$sql = "SELECT * FROM Answers WHERE QuestionId=".$questionid;
-		$resultquestionscores = $db->query($sql);
+// 		$sql = "SELECT * FROM Test_Question WHERE QuestionId=".$questionid;
+// 		$resultquestionscores = $db->query($sql);
 		
 		foreach ($resultanswers as $tempanswersobject)
 		{
@@ -74,6 +74,7 @@ class questionobject {
 			$this->questionid = $questionid;
 			$this->question = $tempquestionobject['Question'];
 			$this->type = $tempquestionobject['Type'];
+// 			$this->$questionscore = $questionscore;
 			$this->answers = $tempanswersarray;
 			$this->scorepercentages = $tempscorepercentagesarray;
 		}
