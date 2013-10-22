@@ -50,8 +50,6 @@ class test
 			$orderno = $dbrelation['OrderNo'];
 			$this->questionids[$orderno] = $dbrelation['QuestionId'];
 			$tempscoreperquestion[$orderno] = $dbrelation['Score']; //see below
-			echo "<br>debugging: tempscoreperquestion:";
-			print_r($tempscoreperquestion);
 		}
 		
 		/**
@@ -283,11 +281,7 @@ class test
 		{
 			$itemtoedit = $_SESSION['itemtoedit'];
 		}
-		
-		// echo "Debugging<br>";
-		// echo "post" . $_POST['itemtoedit'] . "<br>";
-		// echo "session" . $_SESSION['itemtoedit'] . "<br>";
-		// echo "var" . $itemtoedit . "<br>";
+
 		
 		/**
 		 * Output form
@@ -523,7 +517,9 @@ class test
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers); 
-			echo "<br>debugging" . $answerkey;
+			echo "<br>debugging: useranswer: " . $useranswers[$questionid];
+			echo "<br>debugging: useranswer: "; print_r($_SESSION['test']->questionobjects[$orderno]->answers);
+			echo "<br>debugging: answerkey: " . $answerkey;
 			if ($answerkey == false)
 			{
 				$score = 0;
