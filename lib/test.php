@@ -512,7 +512,6 @@ class test
 			':TestId' => $this->testid,
 			':UserIdOwner' => $_SESSION['userid']));
 		$resultid = $db->lastInsertId();
-		echo $resultid;
 
 		foreach ($this->questionids as $orderno => $questionid)
 		{
@@ -536,7 +535,6 @@ class test
 				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
 
 			$useranswerid = $db->lastInsertId();
-			echo $db->lastInsertId();
 			
 			$qry = $db->prepare("INSERT INTO Testresults_UserAnswers (ResultId, UserAnswerId) VALUES (:ResultId, :UserAnswerId)");
 			$qry->execute(array(
