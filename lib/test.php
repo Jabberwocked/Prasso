@@ -473,9 +473,9 @@ class test
 	}
 
 
-	/**
-	 * Pull random questions from db and output as test
-	 */
+/**
+ * Pull random questions from db and output as test
+ */
 	function pullrandomfromdb( $data ) // $data from $_GET
 	{
 		
@@ -498,12 +498,33 @@ class test
 		}
 	}
 
+/**
+ * Returns array scoresearned
+ */
+	function checkanswers($useranswers)
+	{
+		$totalscore = 0;
+		foreach ($this->questionids as $orderno => $questionid)
+		{
+			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers);
+			if (is_int($answerkey))
+			{
+				$scoresearned['$questionid'] = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] / 100 * $_SESSION['test']->questionobjects[$orderno]->questionscore;
+			}
+			else
+			{
+				$scoresearned['$questionid'] = 0;
+			};
+			$totalscore += $scoresearned['$questionid'];
+		}
+		$scoresearned['totalscore'] = $totalscore;
+		return $scoresearned;
+	}	
 
 /** 
- * Saves user answers and test data to db 
- * TODO fix
+ * Saves user answers, score and test data to db 
  */
-	function saveresults($useranswers)
+	function saveresultstodb($useranswers, $scoresearned)
 	{
 		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 			
@@ -515,20 +536,10 @@ class test
 
 		foreach ($this->questionids as $orderno => $questionid)
 		{
-			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers); 
-			if (is_int($answerkey))
-			{
-				$scoreearned = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] * $_SESSION['test']->questionobjects[$orderno]->questionscore;
-			}
-			else 
-			{
-				$scoreearned = 0;
-			};
-			
 			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
 			$qry->execute(array(
 				':UserAnswer' => $useranswers[$questionid], 
-				':ScoreEarned' => $scoreearned, 
+				':ScoreEarned' => $scoresearned[$questionid], 
 				':QuestionId' => $questionid, 
 				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
 				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
@@ -540,45 +551,39 @@ class test
 			$qry->execute(array(
 				':ResultId' => $resultid,
 				':UserAnswerId' => $useranswerid));
-
-
-		
-			
 		
 		};
 	}	
 
-	/** 
-	 * TODO update
-	 */
-	function showresults($resultids = array())
+/** 
+ * Echo question, answer, useranswer, score and totalscore
+ * TODO update
+ */
+	function showresults($useranswers, $scoresearned)
 	{
 	
-		$totalscore = 0;
-		
-		foreach($questionids as $orderno => $questionid)
+		foreach ($this->questionids as $orderno => $questionid)
 		{
 	
-			if (in_array($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers))
+			if ($scoresearned['questionid'] == $_SESSION['test']->questionobjects[$orderno]->questionscore)
 			{
-				$correct = true;
-				$score = 1;
-				$totalscore ++;
 				$colour = "lightgreen";
 			}
-			else
+			elseif ($scoresearned['questionid'] == 0)
 			{
-				$correct = false;
-				$score = 0;
 				$colour = "lightcoral";
+			}
+			else 
+			{
+				$colour = "yellow";
 			};
 			
 			echo "<p style='background-color:" . $colour . "'>";
-			echo "<span style='font-weight:bold;'> ".$orderno.". ".$_SESSION['test']->questionobjects[$orderno]->question."</span><span style='display: block; float:right'> Score: " . $score . "</span><br>";
+			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$_SESSION['test']->questionobjects[$orderno]->question."</span><span style='display: block; float:right'> Score: " . $scoresearned['questionid'] . "</span><br>";
 			echo "<span>>" . $useranswers[$questionid] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($_SESSION['test']->questionobjects[$orderno]->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
 			echo "</p>";
 		};
-		echo "<p style='font-weight:bold'> Totalscore: " . $totalscore . "</p><br><br>";
+		echo "<p style='font-weight:bold'> Totalscore: " . $scoresearned['totalscore']' . "</p><br><br>";
 	}
 
 	
