@@ -521,7 +521,7 @@ class test
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers); 
-			echo "debugging" . $answerkey;
+			echo "<br>debugging" . $answerkey;
 			if ($answerkey == false)
 			{
 				$score = 0;
@@ -530,9 +530,9 @@ class test
 			{
 				$score = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] * $_SESSION['test']->questionobjects[$orderno]->questionscore;
 			};
-			echo "debugging: scorepercentage:" . $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey];
-			echo "debugging: questionscore: " . $_SESSION['test']->questionobjects[$orderno]->questionscore;
-			echo "debugging: score: " . $score;
+			echo "<br>debugging: scorepercentage:" . $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey];
+			echo "<br>debugging: questionscore: " . $_SESSION['test']->questionobjects[$orderno]->questionscore;
+			echo "<br>debugging: score: " . $score;
 			
 			
 			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
