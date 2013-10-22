@@ -529,7 +529,9 @@ class test
 			{
 				$score = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] * $_SESSION['test']->questionobjects[$orderno]->questionscore;
 			};
-
+			echo "debugging: scorepercentage:" . $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey];
+			echo "debugging: questionscore: " . $_SESSION['test']->questionobjects[$orderno]->questionscore;
+			echo "debugging: score: " . $score;
 			
 			
 			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
