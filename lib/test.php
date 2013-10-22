@@ -517,7 +517,7 @@ class test
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers); 
-			if ($answerkey == false)
+			if ($answerkey == 0)
 			{
 				echo "test";
 				$score = 0;
