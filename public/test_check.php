@@ -21,9 +21,9 @@ $useranswers = $_POST; // array(questionid => answer)
  * TODO fix
  */
 
-$scoresearned = $_SESSION['test']->saveresultstodb($checkanswers);
-$_SESSION['test']->saveresultstodb($useranswers, $scoresearned);
-$_SESSION['test']->showresults($useranswers, $scoresearned);
+// $scoresearned = $_SESSION['test']->saveresultstodb($checkanswers);
+// $_SESSION['test']->saveresultstodb($useranswers, $scoresearned);
+// $_SESSION['test']->showresults($useranswers, $scoresearned);
 
 
 
