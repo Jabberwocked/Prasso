@@ -498,93 +498,93 @@ class test
 		}
 	}
 
-/**
- * Returns array scoresearned
- */
-	function checkanswers($useranswers)
-	{
-		$totalscore = 0;
-		foreach ($this->questionids as $orderno => $questionid)
-		{
-			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers);
-			if (is_int($answerkey))
-			{
-				$scoresearned['$questionid'] = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] / 100 * $_SESSION['test']->questionobjects[$orderno]->questionscore;
-			}
-			else
-			{
-				$scoresearned['$questionid'] = 0;
-			};
-			$totalscore += $scoresearned['$questionid'];
-		}
-		$scoresearned['totalscore'] = $totalscore;
-		return $scoresearned;
-	}	
+// /**
+//  * Returns array scoresearned
+//  */
+// 	function checkanswers($useranswers)
+// 	{
+// 		$totalscore = 0;
+// 		foreach ($this->questionids as $orderno => $questionid)
+// 		{
+// 			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers);
+// 			if (is_int($answerkey))
+// 			{
+// 				$scoresearned['$questionid'] = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] / 100 * $_SESSION['test']->questionobjects[$orderno]->questionscore;
+// 			}
+// 			else
+// 			{
+// 				$scoresearned['$questionid'] = 0;
+// 			};
+// 			$totalscore += $scoresearned['$questionid'];
+// 		}
+// 		$scoresearned['totalscore'] = $totalscore;
+// 		return $scoresearned;
+// 	}	
 
-/** 
- * Saves user answers, score and test data to db 
- */
-	function saveresultstodb($useranswers, $scoresearned)
-	{
-		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+// /** 
+//  * Saves user answers, score and test data to db 
+//  */
+// 	function saveresultstodb($useranswers, $scoresearned)
+// 	{
+// 		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 			
-		$qry = $db->prepare("INSERT INTO Testresults (TestId, UserIdOwner) VALUES (:TestId, :UserIdOwner)");
-		$qry->execute(array(
-			':TestId' => $this->testid,
-			':UserIdOwner' => $_SESSION['userid']));
-		$resultid = $db->lastInsertId();
+// 		$qry = $db->prepare("INSERT INTO Testresults (TestId, UserIdOwner) VALUES (:TestId, :UserIdOwner)");
+// 		$qry->execute(array(
+// 			':TestId' => $this->testid,
+// 			':UserIdOwner' => $_SESSION['userid']));
+// 		$resultid = $db->lastInsertId();
 
-		foreach ($this->questionids as $orderno => $questionid)
-		{
-			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
-			$qry->execute(array(
-				':UserAnswer' => $useranswers[$questionid], 
-				':ScoreEarned' => $scoresearned[$questionid], 
-				':QuestionId' => $questionid, 
-				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
-				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
-				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
+// 		foreach ($this->questionids as $orderno => $questionid)
+// 		{
+// 			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
+// 			$qry->execute(array(
+// 				':UserAnswer' => $useranswers[$questionid], 
+// 				':ScoreEarned' => $scoresearned[$questionid], 
+// 				':QuestionId' => $questionid, 
+// 				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
+// 				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
+// 				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
 
-			$useranswerid = $db->lastInsertId();
+// 			$useranswerid = $db->lastInsertId();
 			
-			$qry = $db->prepare("INSERT INTO Testresults_UserAnswers (ResultId, UserAnswerId) VALUES (:ResultId, :UserAnswerId)");
-			$qry->execute(array(
-				':ResultId' => $resultid,
-				':UserAnswerId' => $useranswerid));
+// 			$qry = $db->prepare("INSERT INTO Testresults_UserAnswers (ResultId, UserAnswerId) VALUES (:ResultId, :UserAnswerId)");
+// 			$qry->execute(array(
+// 				':ResultId' => $resultid,
+// 				':UserAnswerId' => $useranswerid));
 		
-		};
-	}	
+// 		};
+// 	}	
 
-/** 
- * Echo question, answer, useranswer, score and totalscore
- * TODO update
- */
-	function showresults($useranswers, $scoresearned)
-	{
+// /** 
+//  * Echo question, answer, useranswer, score and totalscore
+//  * TODO update
+//  */
+// 	function showresults($useranswers, $scoresearned)
+// 	{
 	
-		foreach ($this->questionids as $orderno => $questionid)
-		{
+// 		foreach ($this->questionids as $orderno => $questionid)
+// 		{
 	
-			if ($scoresearned['questionid'] == $_SESSION['test']->questionobjects[$orderno]->questionscore)
-			{
-				$colour = "lightgreen";
-			}
-			elseif ($scoresearned['questionid'] == 0)
-			{
-				$colour = "lightcoral";
-			}
-			else 
-			{
-				$colour = "yellow";
-			};
+// 			if ($scoresearned['questionid'] == $_SESSION['test']->questionobjects[$orderno]->questionscore)
+// 			{
+// 				$colour = "lightgreen";
+// 			}
+// 			elseif ($scoresearned['questionid'] == 0)
+// 			{
+// 				$colour = "lightcoral";
+// 			}
+// 			else 
+// 			{
+// 				$colour = "yellow";
+// 			};
 			
-			echo "<p style='background-color:" . $colour . "'>";
-			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$_SESSION['test']->questionobjects[$orderno]->question."</span><span style='display: block; float:right'> Score: " . $scoresearned['questionid'] . "</span><br>";
-			echo "<span>>" . $useranswers[$questionid] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($_SESSION['test']->questionobjects[$orderno]->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
-			echo "</p>";
-		};
-		echo "<p style='font-weight:bold'> Totalscore: " . $scoresearned['totalscore']' . "</p><br><br>";
-	}
+// 			echo "<p style='background-color:" . $colour . "'>";
+// 			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$_SESSION['test']->questionobjects[$orderno]->question."</span><span style='display: block; float:right'> Score: " . $scoresearned['questionid'] . "</span><br>";
+// 			echo "<span>>" . $useranswers[$questionid] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($_SESSION['test']->questionobjects[$orderno]->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
+// 			echo "</p>";
+// 		};
+// 		echo "<p style='font-weight:bold'> Totalscore: " . $scoresearned['totalscore']' . "</p><br><br>";
+// 	}
 
 	
 	
