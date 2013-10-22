@@ -517,14 +517,14 @@ class test
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers); 
-			if ($answerkey == 0)
+			if (is_int($answerkey))
 			{
 				echo "test";
-				$score = 0;
+				$score = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] * $_SESSION['test']->questionobjects[$orderno]->questionscore;
 			}
 			else 
 			{
-				$score = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] * $_SESSION['test']->questionobjects[$orderno]->questionscore;
+				$score = 0;
 			};
 			echo "<br>debugging: scorepercentage:" . $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey];
 			echo "<br>debugging: questionscore: " . $_SESSION['test']->questionobjects[$orderno]->questionscore;
