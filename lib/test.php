@@ -505,6 +505,7 @@ class test
 
 /** 
  * Saves user answers and test data to db 
+ * TODO fix
  */
 	function saveresults($useranswers)
 	{
@@ -558,7 +559,7 @@ class test
 	}	
 
 	/** 
-	 * TODO
+	 * TODO update
 	 */
 	function showresults($resultids = array())
 	{
