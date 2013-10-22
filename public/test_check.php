@@ -17,6 +17,15 @@ $questionids = $_SESSION['test']->questionids; // array(orderno => questionid)
 $useranswers = $_POST; // array(questionid => answer)
 
 /**
+ * Save useranswers and test to db
+ */
+
+
+	
+
+
+
+/**
  * Score berekenen en
  * Output question, answer, user answer and score
  */

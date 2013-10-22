@@ -12,7 +12,9 @@ class questionobject {
 	public $question;
 	public $type;
 	public $typeshort;
+	public $questionscore;
 	public $answers;
+	public $scorepercentages;
 
 /**
  * To make a new questionobject with orderno, question, type, answers
@@ -24,7 +26,9 @@ class questionobject {
 		if (isset($data['orderno'])) $this->orderno = $data['orderno'];
 		if (isset($data['question'])) $this->question = $data['question'];
 		if (isset($data['type'])) $this->type = $data['type'];
+		if (isset($data['questionscore'])) $this->questionscore = $data['questionscore'];
 		if (isset($data['answers'])) $this->answers = $data['answers'];
+		if (isset($data['scorepercentages'])) $this->scorepercentages = $data['scorepercentages'];
 		
 		if ($this->type == "shortanswer")
 		{
@@ -53,10 +57,15 @@ class questionobject {
 		$sql = "SELECT * FROM Answers WHERE QuestionId=".$questionid;
 		$resultanswers = $db->query($sql);
 		
+		$sql = "SELECT * FROM Answers WHERE QuestionId=".$questionid;
+		$resultquestionscores = $db->query($sql);
+		
 		foreach ($resultanswers as $tempanswersobject)
 		{
 			$tempanswersarray[] = $tempanswersobject['Answer'];
+			$tempscorepercentagesarray[] = $tempanswersobject['Scorepercentage'];
 		}
+		
 		
 		
 		foreach ($resultquestions as $tempquestionobject)
@@ -66,6 +75,7 @@ class questionobject {
 			$this->question = $tempquestionobject['Question'];
 			$this->type = $tempquestionobject['Type'];
 			$this->answers = $tempanswersarray;
+			$this->scorepercentages = $tempscorepercentagesarray;
 		}
 		
 		

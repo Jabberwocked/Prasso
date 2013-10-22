@@ -49,6 +49,7 @@ class test
 		{
 			$orderno = $dbrelation['OrderNo'];
 			$this->questionids[$orderno] = $dbrelation['QuestionId'];
+			$tempscoreperquestion[$orderno] = $dbrelation['score']; //see below
 		}
 		
 		/**
@@ -59,6 +60,7 @@ class test
 		{
 			$this->questionobjects[$orderno] = new questionobject();
 			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionid);
+			$this->questionobjects[$orderno]->questionscore = $tempscoreperquestion[$orderno]; 
 		}
 	}
 
@@ -499,5 +501,90 @@ class test
 			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionrow['QuestionId']);
 		}
 	}
-}
+
+
+/** 
+ * Saves user answers and test data to db 
+ */
+	function saveresults($useranswers)
+	{
+		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+			
+		$qry = $db->prepare("INSERT INTO Testresults (TestId, UserIdOwner) VALUES (:TestId, :UserIdOwner)");
+		$qry->execute(array(
+			':TestId' => $this->testid,
+			':UserIdOwner' => $_SESSION['userid']));
+		$resultid = $db->lastInsertId();
+
+		foreach ($this->questionids as $orderno => $questionid)
+		{
+			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers); 
+			if ($answerkey)
+			{
+				$score = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] * $_SESSION['test']->questionobjects[$orderno]->questionscore;
+			}
+			else 
+			{
+				$score = 0;
+			};
+
+			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
+			$qry->execute(array(
+				':UserAnswer' => $useranswers[$questionid], 
+				':ScoreEarned' => $score, 
+				':QuestionId' => $questionid, 
+				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
+				':AnswerLogged' => "'" . implode("','", $_SESSION['test']->questionobjects[$orderno]->answers) . "'", 
+				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
+
+			$useranswerid = $db->lastInsertId();
+			
+			$qry = $db->prepare("INSERT INTO TestResults_UserAnswers (ResultId, UserAnswerId) VALUES (:ResultId, :UserAnswerId)");
+			$qry->execute(array(
+				':ResultId' => $resultid,
+				':UserAnswerId' => $useranswerid));
+
+
+		
+			
+		
+		};
+	}	
+
+	/** 
+	 * TODO
+	 */
+	function showresults($resultids = array())
+	{
+	
+		$totalscore = 0;
+		
+		foreach($questionids as $orderno => $questionid)
+		{
+	
+			if (in_array($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers))
+			{
+				$correct = true;
+				$score = 1;
+				$totalscore ++;
+				$colour = "lightgreen";
+			}
+			else
+			{
+				$correct = false;
+				$score = 0;
+				$colour = "lightcoral";
+			};
+			
+			echo "<p style='background-color:" . $colour . "'>";
+			echo "<span style='font-weight:bold;'> ".$orderno.". ".$_SESSION['test']->questionobjects[$orderno]->question."</span><span style='display: block; float:right'> Score: " . $score . "</span><br>";
+			echo "<span>>" . $useranswers[$questionid] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($_SESSION['test']->questionobjects[$orderno]->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
+			echo "</p>";
+		};
+		echo "<p style='font-weight:bold'> Totalscore: " . $totalscore . "</p><br><br>";
+	}
+
+	
+	
+};
 ?>
