@@ -538,7 +538,7 @@ class test
 			$useranswerid = $db->lastInsertId();
 			echo $db->lastInsertId();
 			
-			$qry = $db->prepare("INSERT INTO TestResults_UserAnswers (ResultId, UserAnswerId) VALUES (:ResultId, :UserAnswerId)");
+			$qry = $db->prepare("INSERT INTO Testresults_UserAnswers (ResultId, UserAnswerId) VALUES (:ResultId, :UserAnswerId)");
 			$qry->execute(array(
 				':ResultId' => $resultid,
 				':UserAnswerId' => $useranswerid));
