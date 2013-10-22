@@ -6,11 +6,12 @@ include_once (MENU_PATH . "/menu_tests.php");
 
 
 
-<div style="width: 500px; margin: 0px auto; border: 1px dotted; padding: 20px 170px 100px 170px">
+<div
+	style="width: 500px; margin: 0px auto; border: 1px dotted; padding: 20px 170px 100px 170px">
 
-<?php 
+<?php
 
-$_SESSION['test'] = new test;
+$_SESSION['test'] = new test();
 
 if (isset($_POST['testtotake']))
 {
@@ -24,9 +25,6 @@ if (isset($_GET['generaterandom']))
 	$_SESSION['test']->pullrandomfromdb($_GET);
 	$_SESSION['test']->showastest();
 }
-
-
-
 
 ?>
 </div>

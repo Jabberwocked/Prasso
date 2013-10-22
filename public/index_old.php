@@ -11,8 +11,8 @@ if (isset($_SESSION['HTTP_USER_AGENT']))
 	{
 		// Someone is attempting hijacking of the user agent.
 		session_destroy();
-    	header('Location: ./index.php');
-    	exit();   
+		header('Location: ./index.php');
+		exit();
 	}
 	else
 	{
@@ -23,8 +23,8 @@ else
 // New session.
 {
 	$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
-
+	
 	header('Location: ./index.php');
-    exit();
+	exit();
 }
 ?>

@@ -68,14 +68,14 @@ td {
 			<td>
 				<form style="display:inline" action=<?php echo htmlspecialchars('test.php');?> method="post"><button type="submit" name="testtotake" value="<?php echo $testid ?>" >Take</button></form> |
 				<form style="display:inline" action=<?php echo htmlspecialchars('test_edit.php');?> method="post"><button type="submit" name="testtoedit" value="<?php echo $testid ?>" >Edit</button></form> |
-				<button type="submit" name="" value="<?php echo $testid ?>" >Results</button> |
-				<button type="submit" name="" value="<?php echo $testid ?>" >Administer</button>
-			</nav></td>
-			<!--		<a href=''>Discuss</a>			-->
+				<form><button type="submit" name="" value="<?php echo $testid ?>" >Results</button></form> |
+				<Form><button type="submit" name="" value="<?php echo $testid ?>" >Administer</button></Form>
+			<!--<button>Discuss</button>			-->
+			</td>
 			</tr>
 		
-			</button>
-			</form>
+			
+			
 	<?php 
 	} ?>
 		

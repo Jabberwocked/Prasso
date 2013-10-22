@@ -5,7 +5,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 
 
-<?php 
+<?php
 session_destroy();
 header("Location:index.php");
 ?>
