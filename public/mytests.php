@@ -47,7 +47,6 @@ td {
 	{ ?>
 		</table>
 		<br><br><br><p style='font-style:italic'>You have no tests.</p>
-		</div>
 	<?php  }
 	
 	else 
