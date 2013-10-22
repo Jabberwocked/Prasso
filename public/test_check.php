@@ -18,9 +18,10 @@ $useranswers = $_POST; // array(questionid => answer)
 
 /**
  * Save useranswers and test to db
+ * TODO
  */
 
-
+$_SESSION['test']->saveresults($useranswers);
 	
 
 
