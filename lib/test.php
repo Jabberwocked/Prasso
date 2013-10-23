@@ -571,11 +571,11 @@ class test
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 	
-			if ($scoresearned['questionid'] == $_SESSION['test']->questionobjects[$orderno]->questionscore)
+			if ($scoresearned[$questionid] == $_SESSION['test']->questionobjects[$orderno]->questionscore)
 			{
 				$colour = "lightgreen";
 			}
-			elseif ($scoresearned['questionid'] == 0)
+			elseif ($scoresearned[$questionid] == 0)
 			{
 				$colour = "lightcoral";
 			}
@@ -585,7 +585,7 @@ class test
 			};
 			
 			echo "<p style='background-color:" . $colour . "'>";
-			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$this->questionobjects[$orderno]->question."</span><span style='display: block; float:right'> Score: " . $scoresearned['questionid'] . "</span><br>";
+			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$this->questionobjects[$orderno]->question."</span><span style='display: block; float:right'> Score: " . $scoresearned[$questionid] . "</span><br>";
 			echo "<span>>" . $useranswers[$questionid] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($this->questionobjects[$orderno]->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
 			echo "</p>";
 		};
