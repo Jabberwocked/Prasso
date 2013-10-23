@@ -540,7 +540,7 @@ class test
 
 		foreach ($this->questionids as $orderno => $questionid)
 		{
-			echo "debugging";
+	
 			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
 			$qry->execute(array(
 				':UserAnswer' => $useranswers[$questionid], 
@@ -549,7 +549,7 @@ class test
 				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
 				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
 				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
-
+			echo "debugging";
 			$useranswerid = $db->lastInsertId();
 			
 			$qry = $db->prepare("INSERT INTO Testresults_UserAnswers (ResultId, UserAnswerId) VALUES (:ResultId, :UserAnswerId)");
