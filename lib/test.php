@@ -540,15 +540,15 @@ class test
 
 		foreach ($this->questionids as $orderno => $questionid)
 		{
-			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
+			
+			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer) VALUES (:UserAnswer)");
 			$qry->execute(array(
 				':UserAnswer' => $useranswers[$questionid], 
-				':ScoreEarned' => $scoresearned[$questionid], 
-				':QuestionId' => $questionid, 
-				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
-				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
-				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
+// 				':ScoreEarned' => $scoresearned[$questionid], 
+// 				':QuestionId' => $questionid, 
+// 				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
+// 				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
+// 				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
 			echo "debugging";
 			$useranswerid = $db->lastInsertId();
 			
