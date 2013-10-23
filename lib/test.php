@@ -296,7 +296,7 @@ class test
 	method="post">
 	<!-- 	First button needs to have the default value. When enter is pressed this value for itemtoedit is used. -->
 	<button type=hidden type="submit" name="itemtoedit"
-		value=<?php if ($itemtoedit == count($_SESSION['test']->questionobjects) + 1){echo count($_SESSION['test']->questionobjects) + 2; } else {echo count($_SESSION['test']->questionobjects) + 1; }; ?>></button>
+		value=<?php if ($itemtoedit == count($this->questionobjects) + 1){echo count($this->questionobjects) + 2; } else {echo count($this->questionobjects) + 1; }; ?>></button>
 		
 		<?php
 		/**
@@ -510,10 +510,10 @@ class test
 		$totalscore = 0;
 		foreach ($this->questionids as $orderno => $questionid)
 		{
-			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers);
+			$answerkey = array_search($useranswers[$questionid], $this->questionobjects[$orderno]->answers);
 			if (is_int($answerkey))
 			{
-				$scoresearned[$questionid] = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] / 100 * $_SESSION['test']->questionobjects[$orderno]->questionscore;
+				$scoresearned[$questionid] = $this->questionobjects[$orderno]->scorepercentages[$answerkey] / 100 * $this->questionobjects[$orderno]->questionscore;
 			}
 			else
 			{
@@ -547,9 +547,9 @@ class test
 				':UserAnswer' => $useranswers[$questionid], 
 				':ScoreEarned' => $scoresearned[$questionid], 
 				':QuestionId' => $questionid, 
-				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
-				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
-				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
+				':QuestionLogged' => $this->questionobjects[$orderno]->question, 
+				':AnswerLogged' => implode("','", $this->questionobjects[$orderno]->answers), 
+				':MaxScoreLogged' => $this->questionobjects[$orderno]->questionscore));		
 			
 			$useranswerid = $db->lastInsertId();
 			
@@ -563,7 +563,6 @@ class test
 
 /** 
  * Echo question, answer, useranswer, score and totalscore
- * TODO update
  */
 	function showresults($useranswers, $scoresearned)
 	{
@@ -571,7 +570,7 @@ class test
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 	
-			if ($scoresearned[$questionid] == $_SESSION['test']->questionobjects[$orderno]->questionscore)
+			if ($scoresearned[$questionid] == $this->questionobjects[$orderno]->questionscore)
 			{
 				$colour = "lightgreen";
 			}
