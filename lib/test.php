@@ -503,6 +503,7 @@ class test
  */
 	function checkanswers($useranswers)
 	{
+		$scoreearned = array();
 		$totalscore = 0;
 		foreach ($this->questionids as $orderno => $questionid)
 		{
