@@ -543,7 +543,7 @@ class test
 			
 			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer) VALUES (:UserAnswer)");
 			$qry->execute(array(
-				':UserAnswer' => $useranswers[$questionid], 
+				':UserAnswer' => $useranswers[$questionid], ));
 // 				':ScoreEarned' => $scoresearned[$questionid], 
 // 				':QuestionId' => $questionid, 
 // 				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
