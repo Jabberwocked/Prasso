@@ -522,6 +522,7 @@ class test
 			$totalscore += $scoresearned['$questionid'];
 		}
 		$scoresearned['totalscore'] = $totalscore;
+		print_r($scoresearned);
 		return $scoresearned;
 	}	
 
@@ -549,7 +550,7 @@ class test
 				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
 				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
 				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
-			echo "debugging";
+			
 			$useranswerid = $db->lastInsertId();
 			
 			$qry = $db->prepare("INSERT INTO Testresults_UserAnswers (ResultId, UserAnswerId) VALUES (:ResultId, :UserAnswerId)");
