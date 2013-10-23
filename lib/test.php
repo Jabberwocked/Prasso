@@ -541,14 +541,14 @@ class test
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			
-			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned) VALUES (:UserAnswer, :ScoreEarned)");
+			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
 			$qry->execute(array(
 				':UserAnswer' => $useranswers[$questionid], 
-				':ScoreEarned' => $scoresearned[$questionid], ));
-// 				':QuestionId' => $questionid, 
-// 				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
-// 				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
-// 				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
+// 				':ScoreEarned' => $scoresearned[$questionid], 
+				':QuestionId' => $questionid, 
+				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
+				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
+				':MaxScoreLogged' => $_SESSION['test']->questionobjects[$orderno]->questionscore));		
 			echo "debugging";
 			$useranswerid = $db->lastInsertId();
 			
