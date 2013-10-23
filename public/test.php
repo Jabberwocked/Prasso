@@ -24,7 +24,6 @@ if (isset($_GET['generaterandom']))
 {
 	$_SESSION['test']->pullrandomfromdb($_GET);
 	$_SESSION['test']->showastest();
-	print_r($_SESSION['test']);
 }
 
 ?>
