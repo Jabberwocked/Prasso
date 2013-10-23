@@ -5,16 +5,19 @@
  */
 class test
 {
-
+	public $testid;
+	public $testname;
+	public $questionids = array(); // orderno => questionid
+	public $questionobjects = array(); //orderno => questionobject	
 
 	/**
-	 * New
+	 * New, also used to reset object
 	 */
 	function __construct( )
 	{
 		$this->testid;
 		$this->testname;
-		$this->questionids = array(); // orderno => questionid
+		$this->questionids = array(); 
 		$this->questionobjects = array();
 	}
 
@@ -537,6 +540,7 @@ class test
 
 		foreach ($this->questionids as $orderno => $questionid)
 		{
+			echo "debugging";
 			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
 			$qry->execute(array(
 				':UserAnswer' => $useranswers[$questionid], 
