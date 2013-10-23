@@ -513,13 +513,13 @@ class test
 			$answerkey = array_search($useranswers[$questionid], $_SESSION['test']->questionobjects[$orderno]->answers);
 			if (is_int($answerkey))
 			{
-				$scoresearned['$questionid'] = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] / 100 * $_SESSION['test']->questionobjects[$orderno]->questionscore;
+				$scoresearned[$questionid] = $_SESSION['test']->questionobjects[$orderno]->scorepercentages[$answerkey] / 100 * $_SESSION['test']->questionobjects[$orderno]->questionscore;
 			}
 			else
 			{
-				$scoresearned['$questionid'] = 0;
+				$scoresearned[$questionid] = 0;
 			};
-			$totalscore += $scoresearned['$questionid'];
+			$totalscore += $scoresearned[$questionid];
 		}
 		$scoresearned['totalscore'] = $totalscore;
 		print_r($scoresearned);
