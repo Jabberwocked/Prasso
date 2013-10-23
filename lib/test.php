@@ -485,6 +485,8 @@ class test
 		/**
 		 * Query based on criteria
 		 */
+		
+		$this->testid = 0;
 		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 		
 		$type = "'" . implode("','", $data["type"]) . "'";
