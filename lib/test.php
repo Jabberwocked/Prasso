@@ -541,10 +541,10 @@ class test
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			
-			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer) VALUES (:UserAnswer)");
+			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned) VALUES (:UserAnswer, :ScoreEarned)");
 			$qry->execute(array(
-				':UserAnswer' => $useranswers[$questionid], ));
-// 				':ScoreEarned' => $scoresearned[$questionid], 
+				':UserAnswer' => $useranswers[$questionid], 
+				':ScoreEarned' => $scoresearned[$questionid], ));
 // 				':QuestionId' => $questionid, 
 // 				':QuestionLogged' => $_SESSION['test']->questionobjects[$orderno]->question, 
 // 				':AnswerLogged' => implode("','", $_SESSION['test']->questionobjects[$orderno]->answers), 
