@@ -498,6 +498,7 @@ class test
 			$this->questionids[$orderno] = $questionrow['QuestionId'];
 			$this->questionobjects[$orderno] = new questionobject();
 			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionrow['QuestionId']);
+			$this->questionobjects[$orderno]->questionscore = 1;
 		}
 	}
 
