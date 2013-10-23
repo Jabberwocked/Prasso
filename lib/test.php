@@ -540,7 +540,7 @@ class test
 
 		foreach ($this->questionids as $orderno => $questionid)
 		{
-	
+			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
 			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
 			$qry->execute(array(
 				':UserAnswer' => $useranswers[$questionid], 
