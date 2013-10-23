@@ -522,7 +522,7 @@ class test
 			$totalscore += $scoresearned[$questionid];
 		}
 		$scoresearned['totalscore'] = $totalscore;
-		print_r($scoresearned);
+		
 		return $scoresearned;
 	}	
 
