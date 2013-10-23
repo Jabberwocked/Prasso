@@ -75,7 +75,12 @@ else {
 		</tr>
 	</table>
 </div>
-	
+
+
+<?php } ?>
+
+
+
 <!-- The code below is placeholder code for *following* options, to be added later.
 	 	
 <center>
