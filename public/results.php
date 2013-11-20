@@ -60,7 +60,7 @@ if (!$results)
 		foreach ($results as $resultrow)
 		{
 			$resultid = $resultrow['ResultId'];
-			$testid = $testrow['TestId'];
+			$testid = $resultrow['TestId'];
 			$topic = "";
 			$labels = "";
 			
