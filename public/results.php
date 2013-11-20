@@ -2,9 +2,96 @@
 include_once ("../config/config.php");
 include_once (TEMPLATES_PATH . "/header.php");
 include_once (MENU_PATH . "/menu_tests.php");
+?>
 
 
 
+<style type="text/css">
+td {
+	padding: 0px 10px
+}
+</style>
+
+<div style="width: 800px; margin: 0px auto; border: 1px dotted; padding: 20px 20px 100px 20px">
+<div style="text-align:center">
+<nav style="margin:0px auto;">
+<a href="" style="font-size: small; margin-top:0px">Show all results</a>
+<a href="" style="font-size: small; margin-top:0px">Show in folders</a>
+<div style="display:inline; margin: 0px 0px 0px 20px">Filter by:</div>
+<a href="" style="font-size: small; margin: 0px 2px">topic</a>
+<a href="" style="font-size: small; margin: 0px 2px">label</a>
+<a href="" style="font-size: small; margin: 0px 2px">user</a>
+<a href="" style="font-size: small; margin: 0px 2px">test</a>
+</nav>
+</div>
+<br>
+<table>
+<tr style="font-weight: bold; margin-bottom: 20px;">
+<td>Date</td>
+<td>Test</td>
+<td>User</td>
+<td>Owner</td>
+<td>Topic</td>
+<td>Labels</td>
+<td>Result</td>
+<td></td>
+<td></td>
+</tr>
+	
+<?php
+
+$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+
+$testsquery = $db->prepare("SELECT * FROM Testresults WHERE UserIdOwner=:UserId ORDER BY ResultId");
+$testsquery->execute(array(
+	':UserId' => $_SESSION['userid'],
+));
+$results = $testsquery->fetchAll();
+
+
+if (!$results)
+	{ ?>
+		</table>
+		<br><br><br><p style='font-style:italic'>You have no saved results.</p>
+	<?php  }
+	
+	else 
+	{
+		foreach ($results as $resultrow)
+		{
+			$resultid = $resultrow['ResultId'];
+			$testid = $testrow['TestId'];
+			$topic = "";
+			$labels = "";
+			
+			?>
+				
+			<tr>
+			<td><?php echo $resultid ?></td>
+			<td><?php echo $testid ?></td>
+			<td><?php echo $topic ?></td>
+			<td><?php echo $labels ?></td>
+			<td>
+				<form style="display:inline" action=<?php echo htmlspecialchars('results.php');?> method="post"><button type="submit" name="resultid" value="<?php echo $resultid ?>" >View</button></form>
+			</td>
+			</tr>
+		
+			
+			
+	<?php 
+		}
+	} ?>
+		
+	</table>
+	</div>
+	
+
+	
+<?php 	
+/*  Backup
+ 
+ 
+ 
 if (isset($_POST['testid']))
 {
 	echo "hello";
@@ -88,7 +175,11 @@ else {
 </div>
 
 
-<?php } ?>
+<?php } 
+
+end backup */
+
+?>
 
 
 
