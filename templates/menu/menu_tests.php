@@ -12,9 +12,12 @@
 			<a href="test_generate.php">Quick Test</a>
 			<?php if (!isset($_SESSION['username'])) { ?>
 			<a href="mytests.php" style="color:lightgrey">My Tests</a>
+			<a href="results.php" style="color:lightgrey">My Results</a>
 			<?php } else { ?>
 			<a href="mytests.php">My Tests</a>
+			<a href="mytests.php">My Results</a>
 			<?php } ?>
+			
 			
 <!-- 		TEMP	 -->
 			<?php if ($invitation) {?>
