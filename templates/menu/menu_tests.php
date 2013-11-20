@@ -15,7 +15,7 @@
 			<a href="results.php" style="color:lightgrey">My Results</a>
 			<?php } else { ?>
 			<a href="mytests.php">My Tests</a>
-			<a href="mytests.php">My Results</a>
+			<a href="results.php">My Results</a>
 			<?php } ?>
 			
 			
