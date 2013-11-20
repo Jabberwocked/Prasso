@@ -67,8 +67,11 @@ if (!$results)
 			?>
 				
 			<tr>
-			<td><?php echo $resultid ?></td>
-			<td><?php echo $testid ?></td>
+			<td></td>
+			<td><?php echo "Resultid: ".$resultid." TestId: ".$testid ?></td>
+			<td></td>
+			<td></td>
+			<td></td>
 			<td><?php echo $topic ?></td>
 			<td><?php echo $labels ?></td>
 			<td>
