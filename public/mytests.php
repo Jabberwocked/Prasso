@@ -13,6 +13,7 @@ td {
 </style>
 		
 <div style="width: 800px; margin: 0px auto; border: 1px dotted; padding: 20px 20px 100px 20px">
+<!-- TO DO	
 	<div style="text-align:center">
 		<nav style="margin:0px auto;">
 			<a href="" style="font-size: small; margin-top:0px">Show all tests</a>
@@ -22,12 +23,15 @@ td {
 			<a href="" style="font-size: small; margin: 0px 2px">label</a>
 		</nav>
 	</div>
+-->
 	<br>
 	<table>
 		<tr style="font-weight: bold; margin-bottom: 20px;">
 			<td>Test</td>
+<!--  TO DO
 			<td>Topic</td>
 			<td>Labels</td>
+-->
 			<td></td>
 			<td></td>
 		</tr>
@@ -68,8 +72,10 @@ td {
 				<form style="display:inline" action=<?php echo htmlspecialchars('test.php');?> method="post"><button type="submit" name="testtotake" value="<?php echo $testid ?>" >Take</button></form> |
 				<form style="display:inline" action=<?php echo htmlspecialchars('test_edit.php');?> method="post"><button type="submit" name="testtoedit" value="<?php echo $testid ?>" >Edit</button></form> |
 				<form style="display:inline" action=<?php echo htmlspecialchars('results.php');?> method="post"><button type="submit" name="testid" value="<?php echo $testid ?>" >Results</button></form> |
+<!--  TO DO
 				<Form style="display:inline"><button type="submit" name="" value="<?php echo $testid ?>" >Administer</button></Form>
-			<!--<button>Discuss</button>			-->
+				<button>Discuss</button>
+-->
 			</td>
 			</tr>
 		
