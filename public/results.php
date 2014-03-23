@@ -13,30 +13,36 @@ td {
 </style>
 
 <div style="width: 800px; margin: 0px auto; border: 1px dotted; padding: 20px 20px 100px 20px">
-<div style="text-align:center">
-<nav style="margin:0px auto;">
-<a href="" style="font-size: small; margin-top:0px">Show all results</a>
-<a href="" style="font-size: small; margin-top:0px">Show in folders</a>
-<div style="display:inline; margin: 0px 0px 0px 20px">Filter by:</div>
-<a href="" style="font-size: small; margin: 0px 2px">topic</a>
-<a href="" style="font-size: small; margin: 0px 2px">label</a>
-<a href="" style="font-size: small; margin: 0px 2px">user</a>
-<a href="" style="font-size: small; margin: 0px 2px">test</a>
-</nav>
-</div>
+
+<!-- TO DO
+	<div style="text-align:center">
+		<nav style="margin:0px auto;">
+			<a href="" style="font-size: small; margin-top:0px">Show all results</a>
+			<a href="" style="font-size: small; margin-top:0px">Show in folders</a>
+			<div style="display:inline; margin: 0px 0px 0px 20px">Filter by:</div>
+			<a href="" style="font-size: small; margin: 0px 2px">topic</a>
+			<a href="" style="font-size: small; margin: 0px 2px">label</a>
+			<a href="" style="font-size: small; margin: 0px 2px">user</a>
+			<a href="" style="font-size: small; margin: 0px 2px">test</a>
+		</nav>
+	</div>
+-->
+
 <br>
 <table>
-<tr style="font-weight: bold; margin-bottom: 20px;">
-<td>Date</td>
-<td>Test</td>
-<td>User</td>
-<td>Owner</td>
-<td>Topic</td>
-<td>Labels</td>
-<td>Result</td>
-<td></td>
-<td></td>
-</tr>
+	<tr style="font-weight: bold; margin-bottom: 20px;">
+		<td>Date</td>
+		<td>Test</td>
+		<td>User</td>
+		<td>Owner</td>
+<!--  TO DO
+		<td>Topic</td>
+		<td>Labels</td>
+-->
+		<td>Result</td>
+		<td></td>
+		<td></td>
+	</tr>
 	
 <?php
 
@@ -51,8 +57,10 @@ $results = $testsquery->fetchAll();
 
 if (!$results)
 	{ ?>
-		</table>
-		<br><br><br><p style='font-style:italic'>You have no saved results.</p>
+
+</table>
+<br><br><br><p style='font-style:italic'>You have no saved results.</p>
+
 	<?php  }
 	
 	else 
