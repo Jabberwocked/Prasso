@@ -540,10 +540,11 @@ class test
 	{
 		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 			
-		$qry = $db->prepare("INSERT INTO test_attempts (testid, userid) VALUES (:testid, :userid)");
+		$qry = $db->prepare("INSERT INTO test_attempts (testid, userid, sumgrades) VALUES (:testid, :userid, :sumgrades)");
 		$qry->execute(array(
 			':testid' => $this->testid,
-			':userid' => $_SESSION['userid']));
+			':userid' => $_SESSION['userid'],
+			':sumgrades' => $grades_logged['sumgrades']));
 		$resultid = $db->lastInsertId();
 
 		foreach ($this->questionids as $orderno => $questionid)
