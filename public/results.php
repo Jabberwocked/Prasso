@@ -70,8 +70,16 @@ if (!$results)
 			$attemptid = $resultrow['attemptid'];
 			$testid = $resultrow['testid'];
 			$date = $resultrow['datetime'];
-			$testname = $resultrow['testname'];
 			$sumgrades = $resultrow['sumgrades'];
+			
+			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
+			$sql = "SELECT * FROM tests WHERE testid=" . $testid;
+			$tests = $db->query($sql);
+			foreach ($tests as $test)
+			{
+				$testname = $test['testname'];
+			}
+			
 			$topic = "";
 			$labels = "";
 			
