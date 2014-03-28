@@ -10,6 +10,7 @@ include_once (MENU_PATH . "/menu_tests.php");
 	style="width: 500px; margin: 0px auto; border: 1px dotted; padding: 20px 170px 100px 170px">
 
 <?php
+echo $_POST['testtotake'];
 
 $_SESSION['test'] = new test();
 
