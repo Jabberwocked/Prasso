@@ -46,7 +46,7 @@ class test
 		 */
 		
 		$sql = "SELECT * FROM test_items WHERE testid=" . $this->testid . " ORDER BY orderno";
-		$result = $db->query($sql);
+		$test_items = $db->query($sql);
 		
 		foreach ($test_items as $test_item)
 		{
