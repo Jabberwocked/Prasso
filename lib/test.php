@@ -38,6 +38,7 @@ class test
 		$result = $db->query($sql);
 		foreach ($dbtests as $dbtest)
 		{
+			echo $dbtest['testname'];
 			$this->testname = $dbtest['testname'];
 		}
 		
