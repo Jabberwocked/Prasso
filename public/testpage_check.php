@@ -18,7 +18,7 @@ $useranswers = $_POST; // array(questionid => answer)
 
 /**
  * Check answers
- * Save useranswers, results and test data to db
+ * Save useranswers, grades and test data to db
  * Show results
  */
 

@@ -528,7 +528,7 @@ class test
 			};
 			$sumgrades += $grades_logged[$questionid];
 		}
-		$gradeslogged['sumgrades'] = $sumgrades;
+		$grades_logged['sumgrades'] = $sumgrades;
 		
 		return $grades_logged;
 	}	
