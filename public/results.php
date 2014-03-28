@@ -46,11 +46,11 @@ td {
 	
 <?php
 
-$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 
-$testsquery = $db->prepare("SELECT * FROM Testresults WHERE UserIdOwner=:UserId ORDER BY ResultId");
+$testsquery = $db->prepare("SELECT * FROM test_attempts WHERE userid=:userid ORDER BY attemptid");
 $testsquery->execute(array(
-	':UserId' => $_SESSION['userid'],
+	':userid' => $_SESSION['userid'],
 ));
 $results = $testsquery->fetchAll();
 
@@ -67,8 +67,8 @@ if (!$results)
 	{
 		foreach ($results as $resultrow)
 		{
-			$resultid = $resultrow['ResultId'];
-			$testid = $resultrow['TestId'];
+			$resultid = $resultrow['attemptid'];
+			$testid = $resultrow['testid'];
 			$topic = "";
 			$labels = "";
 			

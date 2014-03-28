@@ -12,9 +12,9 @@ class questionobject {
 	public $question;
 	public $type;
 	public $typeshort;
-	public $questionscore;
+	public $grade;
 	public $answers;
-	public $scorepercentages;
+	public $gradepercentages;
 
 /**
  * To make a new questionobject with orderno, question, type, answers
@@ -26,9 +26,9 @@ class questionobject {
 		if (isset($data['orderno'])) $this->orderno = $data['orderno'];
 		if (isset($data['question'])) $this->question = $data['question'];
 		if (isset($data['type'])) $this->type = $data['type'];
-		if (isset($data['questionscore'])) $this->questionscore = $data['questionscore'];
+		if (isset($data['grade'])) $this->grade = $data['grade'];
 		if (isset($data['answers'])) $this->answers = $data['answers'];
-		if (isset($data['scorepercentages'])) $this->scorepercentages = $data['scorepercentages'];
+		if (isset($data['gradepercentages'])) $this->gradepercentages = $data['gradepercentages'];
 		
 		if ($this->type == "shortanswer")
 		{
@@ -50,18 +50,18 @@ class questionobject {
 	
 	function pullfromdb($orderno, $questionid)
 	{
-		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-		$sql = "SELECT * FROM Questions WHERE QuestionId=".$questionid;
+		$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
+		$sql = "SELECT * FROM Questions WHERE questionid=".$questionid;
 		$resultquestions = $db->query($sql);
 		
-		$sql = "SELECT * FROM Answers WHERE QuestionId=".$questionid;
+		$sql = "SELECT * FROM Answers WHERE questionid=".$questionid;
 		$resultanswers = $db->query($sql);
 		
 		
 		foreach ($resultanswers as $tempanswersobject)
 		{
-			$tempanswersarray[] = $tempanswersobject['Answer'];
-			$tempscorepercentagesarray[] = $tempanswersobject['Scorepercentage'];
+			$tempanswersarray[] = $tempanswersobject['answer'];
+			$tempgradepercentagesarray[] = $tempanswersobject['gradepercentage'];
 		}
 		
 		
@@ -70,11 +70,11 @@ class questionobject {
 		{
 			$this->orderno = $orderno;
 			$this->questionid = $questionid;
-			$this->question = $tempquestionobject['Question'];
-			$this->type = $tempquestionobject['Type'];
-// 			$this->$questionscore = ""; // Set in class test
+			$this->question = $tempquestionobject['question'];
+			$this->type = $tempquestionobject['type'];
+// 			$this->$grade = ""; // Set in class test
 			$this->answers = $tempanswersarray;
-			$this->scorepercentages = $tempscorepercentagesarray;
+			$this->gradepercentages = $tempgradepercentagesarray;
 		}
 		
 		

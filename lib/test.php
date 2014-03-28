@@ -33,26 +33,26 @@ class test
 		 * Pull test name to object
 		 */
 		
-		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-		$sql = "SELECT * FROM Tests WHERE TestId=" . $this->testid;
+		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
+		$sql = "SELECT * FROM tests WHERE testid=" . $this->testid;
 		$result = $db->query($sql);
 		foreach ($result as $dbtest)
 		{
-			$this->testname = $dbtest['TestName'];
+			$this->testname = $dbtest['testname'];
 		}
 		
 		/**
 		 * Pull questionids to object
 		 */
 		
-		$sql = "SELECT * FROM Question_Test WHERE TestId=" . $this->testid . " ORDER BY OrderNo";
+		$sql = "SELECT * FROM test_items WHERE testid=" . $this->testid . " ORDER BY orderno";
 		$result = $db->query($sql);
 		
-		foreach ($result as $dbrelation)
+		foreach ($test_items as $test_item)
 		{
-			$orderno = $dbrelation['OrderNo'];
-			$this->questionids[$orderno] = $dbrelation['QuestionId'];
-			$tempscoreperquestion[$orderno] = $dbrelation['Score']; //see below
+			$orderno = $test_item['orderno'];
+			$this->questionids[$orderno] = $test_item['questionid'];
+			$tempgradeperquestion[$orderno] = $test_item['grade']; //see below
 		}
 		
 		/**
@@ -63,7 +63,7 @@ class test
 		{
 			$this->questionobjects[$orderno] = new questionobject();
 			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionid);
-			$this->questionobjects[$orderno]->questionscore = $tempscoreperquestion[$orderno]; 
+			$this->questionobjects[$orderno]->grade = $tempgradeperquestion[$orderno]; 
 		}
 	}
 
@@ -104,11 +104,11 @@ class test
 			/**
 			 * Save questionobjects from object to table QUESTIONS
 			 */
-			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+			$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
 			
 			foreach ($this->questionobjects as $orderno => $questionobject)
 			{
-				$qry = $db->prepare("INSERT INTO Questions (Question, Type) VALUES (:question,:type)");
+				$qry = $db->prepare("INSERT INTO questions (question, type) VALUES (:question,:type)");
 				$qry->execute(array(
 					':question' => $questionobject->question,
 					':type' => $questionobject->type));
@@ -120,14 +120,14 @@ class test
 			/**
 			 * Save answers from object to table ANSWERS
 			 */
-			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+			$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
 			
 			foreach ($this->questionobjects as $orderno => $questionobject)
 			{
 				$questionid = $this->questionids[$orderno];
 				foreach ($questionobject->answers as $answer)
 				{
-					$qry = $db->prepare("INSERT INTO Answers (QuestionId, Answer) VALUES (:questionid,:answer)");
+					$qry = $db->prepare("INSERT INTO answers (questionid, answer) VALUES (:questionid,:answer)");
 					$qry->execute(array(
 						':questionid' => $questionid,
 						':answer' => $answer));
@@ -137,27 +137,29 @@ class test
 			/**
 			 * Save test to table TESTS
 			 */
+					
+			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 			
-			$qry2 = $db->prepare("INSERT INTO Tests (TestName, UserId_Owner) VALUES (:TestName,:UserId_Owner)");
+			$qry2 = $db->prepare("INSERT INTO tests (testname, userid_owner) VALUES (:testname,:userid_owner)");
 			$qry2->execute(array(
-				':TestName' => $this->testname,
-				':UserId_Owner' => $_SESSION['userid']));
+				':testname' => $this->testname,
+				':userid_owner' => $_SESSION['userid']));
 			
 			// save testid for later use
-			$TestId = $db->lastInsertId();
+			$testid = $db->lastInsertId();
 			
 			/**
 			 * Test name and owner are saved.
-			 * Now save which questionids belong to testid in table QUESTION_TEST.
+			 * Now save which questionids belong to testid in table TEST_ITEMS.
 			 */
 			//
-			$qry3 = $db->prepare("INSERT INTO Question_Test (QuestionId, TestId, OrderNo) VALUES (:QuestionId,:TestId,:OrderNo)");
-			foreach ($this->questionids as $orderno => $QuestionId)
+			$qry3 = $db->prepare("INSERT INTO test_items (questionid, testid, orderno) VALUES (:questionid,:testid,:orderno)");
+			foreach ($this->questionids as $orderno => $questionid)
 			{
 				$qry3->execute(array(
-					':QuestionId' => $QuestionId,
-					':TestId' => $TestId,
-					':OrderNo' => $orderno));
+					':questionid' => $questionid,
+					':testid' => $testid,
+					':orderno' => $orderno));
 			}
 			
 			echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p>"; // echo success (useless)
@@ -194,11 +196,11 @@ class test
 			/**
 			 * Save questionobjects from object to table QUESTIONS
 			 */
-			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+			$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
 			
 			foreach ($this->questionobjects as $orderno => $questionobject)
 			{
-				// $qry = $db->prepare("UPDATE Questions SET Question=:question,Type=:type WHERE QuestionId=:questionid");
+				// $qry = $db->prepare("UPDATE questions SET question=:question,type=:type WHERE questionid=:questionid");
 				// DISCONTINUED: RETHINK. SAVED QUESTIONS MUST NOT BE CHANGED.
 				$qry->execute(array(
 					':question' => $questionobject->question,
@@ -211,7 +213,7 @@ class test
 			/**
 			 * Save answers from object to table ANSWERS
 			 */
-			$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+			$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
 			
 			$n = 0;
 			foreach ($this->questionobjects as $orderno => $questionobject)
@@ -219,7 +221,7 @@ class test
 				$questionid = $this->questionids[$n];
 				foreach ($questionobject->answers as $answer)
 				{
-					$qry = $db->prepare("INSERT INTO Answers (QuestionId, Answer) VALUES (:questionid,:answer)");
+					$qry = $db->prepare("INSERT INTO answers (questionid, answer) VALUES (:questionid,:answer)");
 					$qry->execute(array(
 						':questionid' => $questionid,
 						':answer' => $answer));
@@ -232,26 +234,28 @@ class test
 			 * Save test to table TESTS
 			 */
 			
-			$qry2 = $db->prepare("INSERT INTO Tests (TestName, UserId_Owner) VALUES (:TestName,:UserId_Owner)");
+			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
+			
+			$qry2 = $db->prepare("INSERT INTO tests (testname, userid_owner) VALUES (:testname,:userid_owner)");
 			$qry2->execute(array(
-				':TestName' => $this->testname,
-				':UserId_Owner' => $_SESSION['userid']));
+				':testname' => $this->testname,
+				':userid_owner' => $_SESSION['userid']));
 			
 			// save testid for later use
-			$TestId = $db->lastInsertId();
+			$testid = $db->lastInsertId();
 			
 			/**
 			 * Test name and owner are saved.
-			 * Now save which questionids belong to testid in table QUESTION_TEST.
+			 * Now save which questionids belong to testid in table TEST_ITEMS.
 			 */
 			//
-			$qry3 = $db->prepare("INSERT INTO Question_Test (QuestionId, TestId, OrderNo) VALUES (:QuestionId,:TestId,:OrderNo)");
-			foreach ($this->questionids as $orderno => $QuestionId)
+			$qry3 = $db->prepare("INSERT INTO test_items (questionId, testid, orderno) VALUES (:questionid,:testid,:orderno)");
+			foreach ($this->questionids as $orderno => $questionid)
 			{
 				$qry3->execute(array(
-					':QuestionId' => $QuestionId,
-					':TestId' => $TestId,
-					':OrderNo' => $orderno));
+					':questionid' => $questionid,
+					':testid' => $testid,
+					':orderno' => $orderno));
 			}
 			
 			echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p>"; // echo success (useless)
@@ -487,97 +491,93 @@ class test
 		 */
 		
 		$this->testid = 0;
-		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+		$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
 		
 		$type = "'" . implode("','", $data["type"]) . "'";
 		$number = $data["number"];
-		$sql = "SELECT * FROM Questions WHERE Type IN (" . $type . ") ORDER BY RAND() LIMIT $number";
+		$sql = "SELECT * FROM questions WHERE type IN (" . $type . ") ORDER BY RAND() LIMIT $number";
 		$questionsquery = $db->query($sql);
 		
 		foreach ($questionsquery as $orderno => $questionrow)
 		{
 			$orderno ++; // now starts at 1
-			$this->questionids[$orderno] = $questionrow['QuestionId'];
+			$this->questionids[$orderno] = $questionrow['questionid'];
 			$this->questionobjects[$orderno] = new questionobject();
-			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionrow['QuestionId']);
-			$this->questionobjects[$orderno]->questionscore = 1;
+			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionrow['questionid']);
+			$this->questionobjects[$orderno]->grade = 1;
 		}
 	}
 
 /**
- * Returns array scoresearned
+ * Returns array grades_logged
  */
 	function checkanswers($useranswers)
 	{
-		$scoresearned = array();
-		$totalscore = 0;
+		$grades_logged = array();
+		$sumgrades = 0;
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			$answerkey = array_search($useranswers[$questionid], $this->questionobjects[$orderno]->answers);
 			if (is_int($answerkey))
 			{
-				$scoresearned[$questionid] = $this->questionobjects[$orderno]->scorepercentages[$answerkey] / 100 * $this->questionobjects[$orderno]->questionscore;
+				$grades_logged[$questionid] = $this->questionobjects[$orderno]->gradepercentages[$answerkey] / 100 * $this->questionobjects[$orderno]->grade;
 			}
 			else
 			{
-				$scoresearned[$questionid] = 0;
+				$grades_logged[$questionid] = 0;
 			};
-			$totalscore += $scoresearned[$questionid];
+			$sumgrades += $grades_logged[$questionid];
 		}
-		$scoresearned['totalscore'] = $totalscore;
+		$gradeslogged['sumgrades'] = $sumgrades;
 		
-		return $scoresearned;
+		return $grades_logged;
 	}	
 
 /** 
- * Saves user answers, score and test data to db 
+ * Saves user answers, grade and test data to table TESTS 
  */
-	function saveresultstodb($useranswers, $scoresearned)
+	function saveresultstodb($useranswers, $grades_logged)
 	{
-		$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 			
-		$qry = $db->prepare("INSERT INTO Testresults (TestId, UserIdOwner) VALUES (:TestId, :UserIdOwner)");
+		$qry = $db->prepare("INSERT INTO test_attempts (testid, userid) VALUES (:testid, :userid)");
 		$qry->execute(array(
-			':TestId' => $this->testid,
-			':UserIdOwner' => $_SESSION['userid']));
+			':testid' => $this->testid,
+			':userid' => $_SESSION['userid']));
 		$resultid = $db->lastInsertId();
 
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			
-			$qry = $db->prepare("INSERT INTO UserAnswers (UserAnswer, ScoreEarned, QuestionId, QuestionLogged, AnswerLogged, MaxScoreLogged) VALUES (:UserAnswer, :ScoreEarned, :QuestionId, :QuestionLogged, :AnswerLogged, :MaxScoreLogged)");
+			$qry = $db->prepare("INSERT INTO test_responses (useranswer, gradepercentage_logged, questionid, question_logged, answer_logged, grade_logged) VALUES (:useranswer, :gradepercentage_logged, :questionid, :question_logged, :answer_logged, :grade_logged)");
 			$qry->execute(array(
-				':UserAnswer' => $useranswers[$questionid], 
-				':ScoreEarned' => $scoresearned[$questionid], 
-				':QuestionId' => $questionid, 
-				':QuestionLogged' => $this->questionobjects[$orderno]->question, 
-				':AnswerLogged' => implode("','", $this->questionobjects[$orderno]->answers), 
-				':MaxScoreLogged' => $this->questionobjects[$orderno]->questionscore));		
+				':useranswer' => $useranswers[$questionid], 
+				':grade_logged' => $grades_logged[$questionid], 
+				':questionid' => $questionid, 
+				':question_logged' => $this->questionobjects[$orderno]->question, 
+				':answer_logged' => implode("','", $this->questionobjects[$orderno]->answers), 
+				':grade_logged' => $this->questionobjects[$orderno]->grade));		
 			
 			$useranswerid = $db->lastInsertId();
 			
-			$qry = $db->prepare("INSERT INTO Testresults_UserAnswers (ResultId, UserAnswerId) VALUES (:ResultId, :UserAnswerId)");
-			$qry->execute(array(
-				':ResultId' => $resultid,
-				':UserAnswerId' => $useranswerid));
-		
+					
 		};
 	}	
 
 /** 
- * Echo question, answer, useranswer, score and totalscore
+ * Echo question, answer, useranswer, grades and sumgrades
  */
-	function showresults($useranswers, $scoresearned)
+	function showresults($useranswers, $grades_logged)
 	{
 	
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 	
-			if ($scoresearned[$questionid] == $this->questionobjects[$orderno]->questionscore)
+			if ($grades_logged[$questionid] == $this->questionobjects[$orderno]->grade)
 			{
 				$colour = "lightgreen";
 			}
-			elseif ($scoresearned[$questionid] == 0)
+			elseif ($grade_logged[$questionid] == 0)
 			{
 				$colour = "lightcoral";
 			}
@@ -587,11 +587,11 @@ class test
 			};
 			
 			echo "<p style='background-color:" . $colour . "'>";
-			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$this->questionobjects[$orderno]->question."</span><span style='display: block; float:right'> Score: " . $scoresearned[$questionid] . "</span><br>";
+			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$this->questionobjects[$orderno]->question."</span><span style='display: block; float:right'> Score: " . $grades_logged[$questionid] . "</span><br>";
 			echo "<span>>" . $useranswers[$questionid] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($this->questionobjects[$orderno]->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
 			echo "</p>";
 		};
-		echo "<p style='font-weight:bold'> Totalscore: " . $scoresearned['totalscore'] . "</p><br><br>";
+		echo "<p style='font-weight:bold'> Totalscore: " . $grades_logged['sumgrades'] . "</p><br><br>";
 	}
 
 	

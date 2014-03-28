@@ -38,11 +38,11 @@ td {
 			
 <?php 
 
-	$db = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+	$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 	
-	$testsquery = $db->prepare("SELECT * FROM Tests WHERE UserId_Owner=:UserId ORDER BY TestId");
+	$testsquery = $db->prepare("SELECT * FROM tests WHERE userid_owner=:userid ORDER BY testid");
 	$testsquery->execute(array(
-		':UserId' => $_SESSION['userid'],
+		':userid' => $_SESSION['userid'],
 	));
 	$tests = $testsquery->fetchAll();
 	
@@ -57,8 +57,8 @@ td {
 	{
 		foreach ($tests as $testrow)
 		{
-			$testid = $testrow['TestId'];
-			$testname = $testrow['TestName'];
+			$testid = $testrow['testid'];
+			$testname = $testrow['testname'];
 			$topic = "";
 			$labels = "";
 			
