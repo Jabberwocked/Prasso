@@ -552,12 +552,11 @@ class test
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			
-			$qry = $db->prepare("INSERT INTO test_responses (attemptid, itemid, useranswer, gradepercentage_logged, question_logged, answer_logged, grade_logged) VALUES (:attemptid, :itemid, :useranswer, :gradepercentage_logged, :question_logged, :answer_logged, :grade_logged)");
+			$qry = $db->prepare("INSERT INTO test_responses (attemptid, itemid, useranswer, question_logged, answer_logged, grade_logged) VALUES (:attemptid, :itemid, :useranswer, :question_logged, :answer_logged, :grade_logged)");
 			$qry->execute(array(
 				':attemptid' => $attemptid,
 				':itemid' => $this->questionobjects[$orderno]->itemid,
 				':useranswer' => $useranswers[$questionid], 
-				':gradepercentage_logged' => $grades_logged[$questionid],  
 				':question_logged' => $this->questionobjects[$orderno]->question, 
 				':answer_logged' => implode("','", $this->questionobjects[$orderno]->answers), 
 				':grade_logged' => $grades_logged[$questionid]));		
