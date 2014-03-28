@@ -5,7 +5,7 @@ include_once (TEMPLATES_PATH . "/header.php");
 
 
 <?php 
-header("Location:test_generate.php");
+header("Location:testpage_generate.php");
 ?>
 
 
