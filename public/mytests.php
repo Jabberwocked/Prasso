@@ -65,8 +65,7 @@ td {
 			?>
 				
 			<tr>
-			<td><?php echo $testname ?></td>
-			<td><?php echo $testid ?></td>
+			<td><?php echo $testname ?><?php echo $testid ?></td>
 <?php /** TO DO			
 			<td><?php echo $topic ?></td>
 			<td><?php echo $labels ?></td>
