@@ -35,10 +35,9 @@ class test
 		
 		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 		$sql = "SELECT * FROM tests WHERE testid=" . $this->testid;
-		$result = $db->query($sql);
+		$dbtests = $db->query($sql);
 		foreach ($dbtests as $dbtest)
 		{
-			echo $dbtest['testname'];
 			$this->testname = $dbtest['testname'];
 		}
 		
