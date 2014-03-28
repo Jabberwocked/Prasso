@@ -553,7 +553,7 @@ class test
 			$qry = $db->prepare("INSERT INTO test_responses (useranswer, gradepercentage_logged, questionid, question_logged, answer_logged, grade_logged) VALUES (:useranswer, :gradepercentage_logged, :questionid, :question_logged, :answer_logged, :grade_logged)");
 			$qry->execute(array(
 				':useranswer' => $useranswers[$questionid], 
-				':grade_logged' => $grades_logged[$questionid], 
+				':gradepercentage_logged' => $grades_logged[$questionid], 
 				':questionid' => $questionid, 
 				':question_logged' => $this->questionobjects[$orderno]->question, 
 				':answer_logged' => implode("','", $this->questionobjects[$orderno]->answers), 
