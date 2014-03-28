@@ -69,13 +69,14 @@ if (!$results)
 		{
 			$resultid = $resultrow['attemptid'];
 			$testid = $resultrow['testid'];
+			$date = $resultrow['datetime'];
 			$topic = "";
 			$labels = "";
 			
 			?>
 				
 			<tr>
-			<td></td>
+			<td><?php echo $date ?></td>
 			<td><?php echo "Resultid: ".$resultid." TestId: ".$testid ?></td>
 			<td></td>
 			<td></td>
