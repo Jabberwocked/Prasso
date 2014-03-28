@@ -66,8 +66,10 @@ td {
 				
 			<tr>
 			<td><?php echo $testname ?></td>
+<!--  TO DO			
 			<td><?php echo $topic ?></td>
 			<td><?php echo $labels ?></td>
+-->
 			<td>
 				<form style="display:inline" action=<?php echo htmlspecialchars('testpage.php');?> method="post"><button type="submit" name="testtotake" value="<?php echo $testid ?>" >Take</button></form> |
 				<form style="display:inline" action=<?php echo htmlspecialchars('testpage_edit.php');?> method="post"><button type="submit" name="testtoedit" value="<?php echo $testid ?>" >Edit</button></form> |

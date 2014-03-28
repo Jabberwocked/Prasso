@@ -51,10 +51,10 @@ class questionobject {
 	function pullfromdb($orderno, $questionid)
 	{
 		$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
-		$sql = "SELECT * FROM Questions WHERE questionid=".$questionid;
+		$sql = "SELECT * FROM questions WHERE questionid=".$questionid;
 		$resultquestions = $db->query($sql);
 		
-		$sql = "SELECT * FROM Answers WHERE questionid=".$questionid;
+		$sql = "SELECT * FROM answers WHERE questionid=".$questionid;
 		$resultanswers = $db->query($sql);
 		
 		
