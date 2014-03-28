@@ -8,7 +8,7 @@ include_once (MENU_PATH . "/menu_tests.php");
 
 <div style="width: 500px; margin: 0px auto; border: 1px dotted; padding: 20px 170px 100px 170px">
 
-	<form action=<?php echo htmlspecialchars('test.php');?> method="get">
+	<form action=<?php echo htmlspecialchars('testpage.php');?> method="get">
 		Filter by type<br> 
 		<input type="checkbox" style="display:inline; width:20px;" name="selectall" value="yes" class="selectall" <? if($_GET['selectall'] == 'yes'){ echo 'checked';}?>>All<br>
 		<input type="checkbox" style="display:inline; width:20px;" name="type[]" value="shortanswer" <? if(in_array("shortanswer", $_GET['type'])){ echo 'checked';}?>>Short Answer<br>

@@ -88,7 +88,7 @@ td {
 	</table>
 	<br>
 	<br>
-	<nav><a href="test_edit.php" style="margin:0px; color:black;">New</a></nav>
+	<nav><a href="testpage_edit.php" style="margin:0px; color:black;">New</a></nav>
 	
 	</div>
 	
