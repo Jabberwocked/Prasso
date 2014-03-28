@@ -33,10 +33,10 @@ class User
 	 */
 	public function isDuplicateUserName( $userName )
 	{
-		$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+		$con = new PDO(DB_USERS, DB_USERNAME, DB_PASSWORD);
 		$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		
-		$sql = "SELECT * FROM user WHERE username = :username";
+		$sql = "SELECT * FROM users WHERE username = :username";
 		
 		$stmt = $con->prepare($sql);
 		$stmt->bindValue("username", $this->username, PDO::PARAM_STR);
@@ -71,9 +71,9 @@ class User
 		$success = false;
 		try
 		{
-			$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+			$con = new PDO(DB_USERS, DB_USERNAME, DB_PASSWORD);
 			$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$sql = "SELECT * FROM user WHERE username = :username AND password = :password LIMIT 1";
+			$sql = "SELECT * FROM users WHERE username = :username AND password = :password LIMIT 1";
 			
 			$stmt = $con->prepare($sql);
 			$stmt->bindValue("username", $this->username, PDO::PARAM_STR);
@@ -86,7 +86,7 @@ class User
 			if ($userfound)
 			{
 				$success = true;
-				$_SESSION['userid'] = $userfound['userID'];	// saved to session for later db actions (e.g. saving a test)
+				$_SESSION['userid'] = $userfound['userid'];	// saved to session for later db actions (e.g. saving a test)
 				$_SESSION['username'] = $userfound['username']; // saved to session to update top-right corner
 			}
 			
@@ -112,10 +112,10 @@ class User
 		
 		try
 		{
-			$con = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+			$con = new PDO(DB_USERS, DB_USERNAME, DB_PASSWORD);
 			$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			
-			$sql = "INSERT INTO user(username, password) VALUES(:username, :password)";
+			$sql = "INSERT INTO users(username, password) VALUES(:username, :password)";
 			$stmt = $con->prepare($sql);
 			$stmt->bindValue("username", $this->username, PDO::PARAM_STR);
 			$stmt->bindValue("password", hash("sha256", $this->password . $this->salt), PDO::PARAM_STR);

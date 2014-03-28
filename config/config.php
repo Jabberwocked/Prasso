@@ -8,7 +8,10 @@
 // Creating constants for heavily used paths makes things a lot easier e.g. when folder structure changes.
 // ex. require_once(LIBRARY_PATH . "user.php")
 
-define("DB_DSN", "mysql:host=localhost;dbname=miljoenenidee");
+define("DB_DSN", "mysql:host=localhost;dbname=miljoenenidee"); // soon obsolete
+define("DB_USERS", "mysql:host=localhost;dbname=users");
+define("DB_QUESTIONS", "mysql:host=localhost;dbname=questions");
+define("DB_TESTS", "mysql:host=localhost;dbname=tests");
 define("DB_USERNAME", "root");
 define("DB_PASSWORD", "miljoen");
 define("LIBRARY_PATH", "../lib/");
@@ -38,7 +41,7 @@ include_once (LIBRARY_PATH . "test.php");
 // all pages that require login. Used in session.php.
 $loginrequired = array(
 	"/mytests.php", 
-	"/mytests_edit.php", 
+	"/testpage_edit.php", 
 	"/results.php", 
 	"/profile.php" 
 );
