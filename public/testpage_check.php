@@ -22,9 +22,9 @@ $useranswers = $_POST; // array(questionid => answer)
  * Show results
  */
 
-$scoresearned = $_SESSION['test']->checkanswers($useranswers);
-$_SESSION['test']->saveresultstodb($useranswers, $scoresearned);
-$_SESSION['test']->showresults($useranswers, $scoresearned);
+$grades_logged = $_SESSION['test']->checkanswers($useranswers);
+$_SESSION['test']->saveresultstodb($useranswers, $grades_logged);
+$_SESSION['test']->showresults($useranswers, $grades_logged);
 
 
 ?>
