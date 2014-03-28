@@ -69,8 +69,10 @@ if (!$results)
 		{
 			$attemptid = $resultrow['attemptid'];
 			$testid = $resultrow['testid'];
+			$userid = $resultrow['userid'];
 			$date = $resultrow['datetime'];
 			$sumgrades = $resultrow['sumgrades'];
+			
 			
 			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 			$sql = "SELECT * FROM tests WHERE testid=" . $testid;
@@ -78,7 +80,23 @@ if (!$results)
 			foreach ($tests as $test)
 			{
 				$testname = $test['testname'];
+				$userid_owner = $test['userid_owner'];
 			}
+			
+			$db = new PDO(DB_USERS, DB_USERNAME, DB_PASSWORD);
+			$sql = "SELECT * FROM users WHERE userid=" . $userid_owner;
+			$dbusers = $db->query($sql);
+			foreach ($dbusers as $dbuser)
+			{
+				$owner = $dbuser['username'];
+			}
+			$sql = "SELECT * FROM users WHERE userid=" . $userid;
+			$dbusers = $db->query($sql);
+			foreach ($dbusers as $dbuser)
+			{
+				$user = $dbuser['username'];
+			}	
+				
 			
 			$topic = "";
 			$labels = "";
@@ -88,8 +106,8 @@ if (!$results)
 			<tr>
 			<td><?php echo $date ?></td>
 			<td><?php echo $testname ?></td>
-			<td></td>
-			<td></td>
+			<td><?php echo $user ?></td>
+			<td><?php echo $owner ?></td>
 			<td><?php echo $sumgrades ?></td>
 			<td><?php echo $topic ?></td>
 			<td><?php echo $labels ?></td>
