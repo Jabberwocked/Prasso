@@ -67,9 +67,11 @@ if (!$results)
 	{
 		foreach ($results as $resultrow)
 		{
-			$resultid = $resultrow['attemptid'];
+			$attemptid = $resultrow['attemptid'];
 			$testid = $resultrow['testid'];
 			$date = $resultrow['datetime'];
+			$testname = $resultrow['testname'];
+			$sumgrades = $resultrow['sumgrades'];
 			$topic = "";
 			$labels = "";
 			
@@ -77,10 +79,10 @@ if (!$results)
 				
 			<tr>
 			<td><?php echo $date ?></td>
-			<td><?php echo "Resultid: ".$resultid." TestId: ".$testid ?></td>
+			<td><?php echo $testname ?></td>
 			<td></td>
 			<td></td>
-			<td></td>
+			<td><?php echo $sumgrades ?></td>
 			<td><?php echo $topic ?></td>
 			<td><?php echo $labels ?></td>
 			<td>
