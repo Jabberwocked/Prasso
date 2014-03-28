@@ -560,7 +560,7 @@ class test
 				':gradepercentage_logged' => $grades_logged[$questionid],  
 				':question_logged' => $this->questionobjects[$orderno]->question, 
 				':answer_logged' => implode("','", $this->questionobjects[$orderno]->answers), 
-				':grade_logged' => $this->questionobjects[$orderno]->grade));		
+				':grade_logged' => $grades_logged[$questionid]));		
 			
 			$responseid = $db->lastInsertId();
 			
