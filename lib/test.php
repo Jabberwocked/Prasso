@@ -53,6 +53,7 @@ class test
 			$orderno = $test_item['orderno'];
 			$this->questionids[$orderno] = $test_item['questionid'];
 			$tempgradeperquestion[$orderno] = $test_item['grade']; //see below
+			$tempitemids[$orderno] = $test_item['itemid']; //see below
 		}
 		
 		/**
@@ -63,7 +64,8 @@ class test
 		{
 			$this->questionobjects[$orderno] = new questionobject();
 			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionid);
-			$this->questionobjects[$orderno]->grade = $tempgradeperquestion[$orderno]; 
+			$this->questionobjects[$orderno]->grade = $tempgradeperquestion[$orderno];
+			$this->questionobjects[$orderno]->itemid = $tempitemids[$orderno];
 		}
 	}
 
@@ -545,21 +547,22 @@ class test
 			':testid' => $this->testid,
 			':userid' => $_SESSION['userid'],
 			':sumgrades' => $grades_logged['sumgrades']));
-		$resultid = $db->lastInsertId();
+		$attemptid = $db->lastInsertId();
 
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			
-			$qry = $db->prepare("INSERT INTO test_responses (useranswer, gradepercentage_logged, questionid, question_logged, answer_logged, grade_logged) VALUES (:useranswer, :gradepercentage_logged, :questionid, :question_logged, :answer_logged, :grade_logged)");
+			$qry = $db->prepare("INSERT INTO test_responses (attemptid, itemid, useranswer, gradepercentage_logged, question_logged, answer_logged, grade_logged) VALUES (:attemptid, :itemid, :useranswer, :gradepercentage_logged, :question_logged, :answer_logged, :grade_logged)");
 			$qry->execute(array(
+				':attemptid' => $attemptid,
+				':itemid' => $this->questionobjects[$orderno]->itemid,
 				':useranswer' => $useranswers[$questionid], 
-				':gradepercentage_logged' => $grades_logged[$questionid], 
-				':questionid' => $questionid, 
+				':gradepercentage_logged' => $grades_logged[$questionid],  
 				':question_logged' => $this->questionobjects[$orderno]->question, 
 				':answer_logged' => implode("','", $this->questionobjects[$orderno]->answers), 
 				':grade_logged' => $this->questionobjects[$orderno]->grade));		
 			
-			$useranswerid = $db->lastInsertId();
+			$responseid = $db->lastInsertId();
 			
 					
 		};

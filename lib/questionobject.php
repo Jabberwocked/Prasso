@@ -8,6 +8,7 @@
 
 class questionobject {
 	public $orderno;
+	public $itemid;
 	public $questionid;
 	public $question;
 	public $type;
@@ -56,7 +57,6 @@ class questionobject {
 		
 		$sql = "SELECT * FROM answers WHERE questionid=".$questionid;
 		$resultanswers = $db->query($sql);
-		
 		
 		foreach ($resultanswers as $tempanswersobject)
 		{
