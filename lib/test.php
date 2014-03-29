@@ -78,9 +78,6 @@ class test
 		$sql = "SELECT * FROM test_responses WHERE attemptid=" . $attemptid . " ORDER BY responseid";
 		$dbresponses = $db->query($sql);
 		
-		echo "lala2";
-		print_r($dbresponses);
-		
 		$orderno = 0;
 		foreach ($dbresponses as $dbresponse)
 		{
@@ -106,7 +103,7 @@ class test
 				
 			echo "<p style='background-color:" . $colour . "'>";
 			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$question_logged."</span><span style='display: block; float:right'> Score: " . $grade_logged . "</span><br>";
-			echo "<span>>" . $useranswer . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($answer_logged as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
+			echo "<span>>" . $useranswer . "</span><span style='display: block; float:right'> Answer: " . $answer_logged . "</span>";
 			echo "</p>";
 		}
 
