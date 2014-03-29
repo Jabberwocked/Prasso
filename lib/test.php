@@ -595,7 +595,7 @@ class test
 		print_r($_SESSION['test']);
 		if (!isset($_SESSION['test']->testname))
 		{
-			$_SESSION['test']->testname = "random";
+			$_SESSION['test']->testname = "random"; //working on it (doesn't work yet?)
 		}
 		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 			
