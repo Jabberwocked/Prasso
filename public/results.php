@@ -71,7 +71,7 @@ if (!$results)
 			$testid = $resultrow['testid'];
 			$userid = $resultrow['userid'];
 			$date = $resultrow['datetime'];
-			$sumgrades = $resultrow['sumgrades'];
+			$sumscores = $resultrow['sumscores'];
 			
 			
 			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
@@ -108,7 +108,7 @@ if (!$results)
 			<td><?php echo $testname ?></td>
 			<td><?php echo $user ?></td>
 			<td><?php echo $owner ?></td>
-			<td><?php echo $sumgrades ?></td>
+			<td><?php echo $sumscores ?></td>
 			<td><?php echo $topic ?></td>
 			<td><?php echo $labels ?></td>
 			<td>

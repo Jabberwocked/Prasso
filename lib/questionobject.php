@@ -13,9 +13,9 @@ class questionobject {
 	public $question;
 	public $type;
 	public $typeshort;
-	public $grade;
+	public $maxscore;
 	public $answers;
-	public $gradepercentages;
+	public $scorepercentages;
 
 /**
  * To make a new questionobject with orderno, question, type, answers
@@ -27,9 +27,9 @@ class questionobject {
 		if (isset($data['orderno'])) $this->orderno = $data['orderno'];
 		if (isset($data['question'])) $this->question = $data['question'];
 		if (isset($data['type'])) $this->type = $data['type'];
-		if (isset($data['grade'])) $this->grade = $data['grade'];
+		if (isset($data['maxscore'])) $this->maxscore = $data['maxscore'];
 		if (isset($data['answers'])) $this->answers = $data['answers'];
-		if (isset($data['gradepercentages'])) $this->gradepercentages = $data['gradepercentages'];
+		if (isset($data['scorepercentages'])) $this->scorepercentages = $data['scorepercentages'];
 		
 		if ($this->type == "shortanswer")
 		{
@@ -61,7 +61,7 @@ class questionobject {
 		foreach ($resultanswers as $tempanswersobject)
 		{
 			$tempanswersarray[] = $tempanswersobject['answer'];
-			$tempgradepercentagesarray[] = $tempanswersobject['gradepercentage'];
+			$tempscorepercentagesarray[] = $tempanswersobject['scorepercentage'];
 		}
 		
 		
@@ -72,9 +72,9 @@ class questionobject {
 			$this->questionid = $questionid;
 			$this->question = $tempquestionobject['question'];
 			$this->type = $tempquestionobject['type'];
-// 			$this->$grade = ""; // Set in class test
+// 			$this->$maxscore = ""; // Set in class test
 			$this->answers = $tempanswersarray;
-			$this->gradepercentages = $tempgradepercentagesarray;
+			$this->scorepercentages = $tempscorepercentagesarray;
 		}
 		
 		

@@ -52,7 +52,7 @@ class test
 		{
 			$orderno = $test_item['orderno'];
 			$this->questionids[$orderno] = $test_item['questionid'];
-			$tempgradeperquestion[$orderno] = $test_item['grade']; //see below
+			$tempmaxscoreperquestion[$orderno] = $test_item['maxscore']; //see below
 			$tempitemids[$orderno] = $test_item['itemid']; //see below
 		}
 		
@@ -64,7 +64,7 @@ class test
 		{
 			$this->questionobjects[$orderno] = new questionobject();
 			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionid);
-			$this->questionobjects[$orderno]->grade = $tempgradeperquestion[$orderno];
+			$this->questionobjects[$orderno]->maxscore = $tempmaxscoreperquestion[$orderno];
 			$this->questionobjects[$orderno]->itemid = $tempitemids[$orderno];
 		}
 	}
@@ -84,15 +84,16 @@ class test
 			
 			$orderno ++;
 			$useranswer = $dbresponse['useranswer'];
+			$userscore = $dbresponse['userscore'];
 			$question_logged = $dbresponse['question_logged'];
 			$answer_logged = $dbresponse['answer_logged'];
-			$grade_logged = $dbresponse['grade_logged'];
+			$maxscore_logged = $dbresponse['maxscore_logged'];
 			
-			if ($grade_logged == 999 ) //compare to maxgrade??
+			if ($userscore == $maxscore_logged )
 			{
 				$colour = "lightgreen";
 			}
-			elseif ($grade_logged == 0)
+			elseif ($userscore == 0)
 			{
 				$colour = "lightcoral";
 			}
@@ -102,7 +103,7 @@ class test
 			};
 				
 			echo "<p style='background-color:" . $colour . "'>";
-			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$question_logged."</span><span style='display: block; float:right'> Score: " . $grade_logged . "</span><br>";
+			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$question_logged."</span><span style='display: block; float:right'> Score: " . $userscore . "/" . $maxscore_logged . "</span><br>";
 			echo "<span>>" . $useranswer . "</span><span style='display: block; float:right'> Answer: " . $answer_logged . "</span>";
 			echo "</p>";
 		}
@@ -112,8 +113,8 @@ class test
 		$dbattempts = $db->query($sql);
 		foreach ($dbattempts as $dbattempt)
 		{
-			$sumgrades = $dbattempt['sumgrades'];
-			echo "<p style='font-weight:bold'> Totalscore: " . $sumgrades . "</p><br><br>";
+			$sumscores = $dbattempt['sumscores'];
+			echo "<p style='font-weight:bold'> Totalscore: " . $sumscores . "</p><br><br>";
 		}	
 			
 	}
@@ -555,60 +556,60 @@ class test
 			$this->questionids[$orderno] = $questionrow['questionid'];
 			$this->questionobjects[$orderno] = new questionobject();
 			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionrow['questionid']);
-			$this->questionobjects[$orderno]->grade = 1;
+			$this->questionobjects[$orderno]->maxscore = 1;
 		}
 	}
 
 /**
- * Returns array grades_logged
+ * Returns array userscores
  */
 	function checkanswers($useranswers)
 	{
-		$grades_logged = array();
-		$sumgrades = 0;
+		$userscores = array();
+		$sumscores = 0;
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			$answerkey = array_search($useranswers[$questionid], $this->questionobjects[$orderno]->answers);
 			if (is_int($answerkey))
 			{
-				$grades_logged[$questionid] = $this->questionobjects[$orderno]->gradepercentages[$answerkey] / 100 * $this->questionobjects[$orderno]->grade;
+				$userscores[$questionid] = $this->questionobjects[$orderno]->scorepercentages[$answerkey] / 100 * $this->questionobjects[$orderno]->maxscore;
 			}
 			else
 			{
-				$grades_logged[$questionid] = 0;
+				$userscores[$questionid] = 0;
 			};
-			$sumgrades += $grades_logged[$questionid];
+			$sumscores += $userscores[$questionid];
 		}
-		$grades_logged['sumgrades'] = $sumgrades;
+		$userscores['sumscores'] = $sumscores;
 		
-		return $grades_logged;
+		return $userscores;
 	}	
 
 /** 
- * Saves user answers, grade and test data to table TESTS 
+ * Saves user answers, score and test data to table TESTS 
  */
-	function saveresultstodb($useranswers, $grades_logged)
+	function saveresultstodb($useranswers, $userscores)
 	{
 		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 			
-		$qry = $db->prepare("INSERT INTO test_attempts (testid, userid, sumgrades) VALUES (:testid, :userid, :sumgrades)");
+		$qry = $db->prepare("INSERT INTO test_attempts (testid, userid, sumscores) VALUES (:testid, :userid, :sumscores)");
 		$qry->execute(array(
 			':testid' => $this->testid,
 			':userid' => $_SESSION['userid'],
-			':sumgrades' => $grades_logged['sumgrades']));
+			':sumscores' => $userscores['sumscores']));
 		$attemptid = $db->lastInsertId();
 
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			
-			$qry = $db->prepare("INSERT INTO test_responses (attemptid, itemid, useranswer, question_logged, answer_logged, grade_logged) VALUES (:attemptid, :itemid, :useranswer, :question_logged, :answer_logged, :grade_logged)");
+			$qry = $db->prepare("INSERT INTO test_responses (attemptid, itemid, useranswer, question_logged, answer_logged, userscores) VALUES (:attemptid, :itemid, :useranswer, :question_logged, :answer_logged, :userscores)");
 			$qry->execute(array(
 				':attemptid' => $attemptid,
 				':itemid' => $this->questionobjects[$orderno]->itemid,
 				':useranswer' => $useranswers[$questionid], 
 				':question_logged' => $this->questionobjects[$orderno]->question, 
 				':answer_logged' => implode("','", $this->questionobjects[$orderno]->answers), 
-				':grade_logged' => $grades_logged[$questionid]));		
+				':userscores' => $userscores[$questionid]));		
 			
 			$responseid = $db->lastInsertId();
 			
@@ -617,19 +618,19 @@ class test
 	}	
 
 /** 
- * Echo question, answer, useranswer, grades and sumgrades
+ * Echo question, answer, useranswer, score and sumscores
  */
-	function showresults($useranswers, $grades_logged)
+	function showresults($useranswers, $userscores)
 	{
 	
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 	
-			if ($grades_logged[$questionid] == $this->questionobjects[$orderno]->grade)
+			if ($userscores[$questionid] == $this->questionobjects[$orderno]->maxscore)
 			{
 				$colour = "lightgreen";
 			}
-			elseif ($grade_logged[$questionid] == 0)
+			elseif ($userscores[$questionid] == 0)
 			{
 				$colour = "lightcoral";
 			}
@@ -639,11 +640,11 @@ class test
 			};
 			
 			echo "<p style='background-color:" . $colour . "'>";
-			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$this->questionobjects[$orderno]->question."</span><span style='display: block; float:right'> Score: " . $grades_logged[$questionid] . "</span><br>";
+			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$this->questionobjects[$orderno]->question."</span><span style='display: block; float:right'> Score: " . $userscores[$questionid] . "</span><br>";
 			echo "<span>>" . $useranswers[$questionid] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($this->questionobjects[$orderno]->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
 			echo "</p>";
 		};
-		echo "<p style='font-weight:bold'> Totalscore: " . $grades_logged['sumgrades'] . "</p><br><br>";
+		echo "<p style='font-weight:bold'> Totalscore: " . $userscores['sumscores'] . "</p><br><br>";
 	}
 
 	

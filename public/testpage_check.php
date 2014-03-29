@@ -35,13 +35,13 @@ else
 	
 	/**
 	 * Check answers
-	 * Save useranswers, grades and test data to db
+	 * Save useranswers, scores and test data to db
 	 * Show results
 	 */
 	
-	$grades_logged = $_SESSION['test']->checkanswers($useranswers);
-	$_SESSION['test']->saveresultstodb($useranswers, $grades_logged);
-	$_SESSION['test']->showresults($useranswers, $grades_logged);
+	$userscores = $_SESSION['test']->checkanswers($useranswers);
+	$_SESSION['test']->saveresultstodb($useranswers, $userscores);
+	$_SESSION['test']->showresults($useranswers, $userscores);
 }
 
 
