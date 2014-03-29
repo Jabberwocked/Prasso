@@ -9,22 +9,37 @@ include_once (MENU_PATH . "/menu_tests.php");
 
 <?php 
 
-/** 
- * Get questionids from SESSION and user answers from POST
- */
-
-$questionids = $_SESSION['test']->questionids; // array(orderno => questionid)
-$useranswers = $_POST; // array(questionid => answer)
-
 /**
- * Check answers
- * Save useranswers, grades and test data to db
- * Show results
+ * VIEW OLD ATTEMPT
  */
+if (isset($_POST['attemptid']))
+{
+	// TO DO
+}
 
-$grades_logged = $_SESSION['test']->checkanswers($useranswers);
-$_SESSION['test']->saveresultstodb($useranswers, $grades_logged);
-$_SESSION['test']->showresults($useranswers, $grades_logged);
+
+/** 
+ * REVIEW A NEW TEST SUBMISSION
+ */
+else 
+{		
+	/** 
+	 * Get questionids from SESSION and user answers from POST
+	 */
+	
+	$questionids = $_SESSION['test']->questionids; // array(orderno => questionid)
+	$useranswers = $_POST; // array(questionid => answer)
+	
+	/**
+	 * Check answers
+	 * Save useranswers, grades and test data to db
+	 * Show results
+	 */
+	
+	$grades_logged = $_SESSION['test']->checkanswers($useranswers);
+	$_SESSION['test']->saveresultstodb($useranswers, $grades_logged);
+	$_SESSION['test']->showresults($useranswers, $grades_logged);
+}
 
 
 ?>

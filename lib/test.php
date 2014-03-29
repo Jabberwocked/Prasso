@@ -69,6 +69,22 @@ class test
 		}
 	}
 
+	/**
+	 * Pull logged test details from old attempt to object (which will usually be saved as $_SESSION['test'])
+	 */
+	function pulloldattemptfromdb( $attemptid )
+	{
+		$this->attemptid = $attemptid;
+		
+		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
+		$sql = "SELECT * FROM test_attempts WHERE attemptid=" . $attemptid;
+		$dbattempts = $db->query($sql);
+		foreach ($dbattempts as $dbattempt)
+		{
+				// TO DO
+		}
+	}
+	
 
 	/**
 	 * Save question or test name to object (session)
