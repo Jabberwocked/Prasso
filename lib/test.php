@@ -592,6 +592,7 @@ class test
  */
 	function saveresultstodb($useranswers, $userscores)
 	{
+		print_r($_SESSION['test']);
 		
 		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 			
