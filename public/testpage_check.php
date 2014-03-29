@@ -9,18 +9,18 @@ include_once (MENU_PATH . "/menu_tests.php");
 
 <?php 
 
-echo "hohooho";
+echo "2";
 
 /**
  * VIEW OLD ATTEMPT
  */
 if (isset($_POST['attemptid']))
 {
-	echo "oahhao";
+	
 	echo $_POST['attemptid'];
-	echo "alalala";
+	
 	$attemptid=$_POST['attemptid'];
-	echo "uhuh";
+	
 	echo $attemptid;
 	$_SESSION['test'] = new  test(); //is this necessary?
 	$_SESSION['test']->showoldattempt( $attemptid );
