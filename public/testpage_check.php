@@ -16,6 +16,8 @@ echo "hohooho";
  */
 if (isset($_POST['attemptid']))
 {
+	echo "oahhao";
+	echo $_POST['attemptid'];
 	echo "alalala";
 	$attemptid=$_POST['attemptid'];
 	echo "uhuh";
