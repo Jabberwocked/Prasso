@@ -592,6 +592,10 @@ class test
  */
 	function saveresultstodb($useranswers, $userscores)
 	{
+		if (!isset($this->testid))
+		{
+			$this->testid = 0;
+		}
 		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 			
 		$qry = $db->prepare("INSERT INTO test_attempts (testid, userid, sumscores) VALUES (:testid, :userid, :sumscores)");
