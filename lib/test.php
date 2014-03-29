@@ -79,6 +79,7 @@ class test
 		$dbresponses = $db->query($sql);
 		
 		$orderno = 0;
+		$summaxscore = 0;
 		foreach ($dbresponses as $dbresponse)
 		{
 			
@@ -88,6 +89,7 @@ class test
 			$question_logged = $dbresponse['question_logged'];
 			$answers_logged = $dbresponse['answers_logged'];
 			$maxscore_logged = $dbresponse['maxscore_logged'];
+			$summaxscore += $maxscore_logged;
 			
 			if ($userscore == $maxscore_logged )
 			{
@@ -114,7 +116,7 @@ class test
 		foreach ($dbattempts as $dbattempt)
 		{
 			$sumscores = $dbattempt['sumscores'];
-			echo "<p style='font-weight:bold'> Totalscore: " . $sumscores . "</p><br><br>";
+			echo "<p style='font-weight:bold'> Totalscore: " . $sumscores . "/" . $summaxscore . "</p><br><br>";
 		}	
 			
 	}
