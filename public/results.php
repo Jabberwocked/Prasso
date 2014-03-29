@@ -112,7 +112,7 @@ if (!$results)
 			<td><?php echo $topic ?></td>
 			<td><?php echo $labels ?></td>
 			<td>
-				<form style="display:inline" action=<?php echo htmlspecialchars('testpage_check.php');?> method="post"><button type="submit" name="attemptid" value="<?php echo $resultid ?>" >View</button></form>
+				<form style="display:inline" action=<?php echo htmlspecialchars('testpage_check.php');?> method="post"><button type="submit" name="attemptid" value="<?php echo $attemptid ?>" >View</button></form>
 			</td>
 			</tr>
 		
