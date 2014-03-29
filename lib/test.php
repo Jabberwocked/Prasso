@@ -78,6 +78,9 @@ class test
 		$sql = "SELECT * FROM test_responses WHERE attemptid=" . $attemptid . "ORDER BY responseid";
 		$dbresponses = $db->query($sql);
 		
+		echo "lala";
+		print_r($dbresponses);
+		
 		$orderno = 0;
 		foreach ($dbresponses as $dbresponse)
 		{

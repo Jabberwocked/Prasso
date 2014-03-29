@@ -16,12 +16,7 @@ echo "2";
  */
 if (isset($_POST['attemptid']))
 {
-	
-	echo $_POST['attemptid'];
-	
 	$attemptid=$_POST['attemptid'];
-	
-	echo $attemptid;
 	$_SESSION['test'] = new  test(); //is this necessary?
 	$_SESSION['test']->showoldattempt( $attemptid );
 }
