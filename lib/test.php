@@ -72,17 +72,50 @@ class test
 	/**
 	 * Pull logged test details from old attempt to object (which will usually be saved as $_SESSION['test'])
 	 */
-	function pulloldattemptfromdb( $attemptid )
+	function showoldattempt( $attemptid )
 	{
-		$this->attemptid = $attemptid;
+		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
+		$sql = "SELECT * FROM test_responses WHERE attemptid=" . $attemptid . "ORDER BY responseid";
+		$dbresponses = $db->query($sql);
 		
+		$orderno = 0;
+		foreach ($dbresponses as $dbresponse)
+		{
+			
+			$orderno ++;
+			$useranswer = $dbresponse['useranswer'];
+			$question_logged = $dbresponse['question_logged'];
+			$answer_logged = $dbresponse['answer_logged'];
+			$grade_logged = $dbresponse['grade_logged'];
+			
+			if ($grade_logged == 999 ) //compare to maxgrade??
+			{
+				$colour = "lightgreen";
+			}
+			elseif ($grade_logged == 0)
+			{
+				$colour = "lightcoral";
+			}
+			else
+			{
+				$colour = "yellow";
+			};
+				
+			echo "<p style='background-color:" . $colour . "'>";
+			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$question_logged."</span><span style='display: block; float:right'> Score: " . $grade_logged . "</span><br>";
+			echo "<span>>" . $useranswer . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($answer_logged as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
+			echo "</p>";
+		}
+
 		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 		$sql = "SELECT * FROM test_attempts WHERE attemptid=" . $attemptid;
 		$dbattempts = $db->query($sql);
 		foreach ($dbattempts as $dbattempt)
 		{
-				// TO DO
-		}
+			$sumgrades = $dbattempt['sumgrades'];
+			echo "<p style='font-weight:bold'> Totalscore: " . $sumgrades . "</p><br><br>";
+		}	
+			
 	}
 	
 

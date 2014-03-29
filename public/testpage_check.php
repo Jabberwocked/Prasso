@@ -14,7 +14,9 @@ include_once (MENU_PATH . "/menu_tests.php");
  */
 if (isset($_POST['attemptid']))
 {
-	// TO DO
+	$attemptid=$_POST['attemptid'];
+	$_SESSION['test'] = new  test(); //is this necessary?
+	$_SESSION['test']->showoldattempt( $attemptid );
 }
 
 
