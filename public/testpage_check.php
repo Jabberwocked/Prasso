@@ -38,7 +38,7 @@ else
 	 * Save useranswers, scores and test data to db
 	 * Show results
 	 */
-	
+	echo "hallo";
 	$userscores = $_SESSION['test']->checkanswers($useranswers);
 	$_SESSION['test']->saveresultstodb($useranswers, $userscores);
 	$_SESSION['test']->showresults($useranswers, $userscores);
