@@ -86,7 +86,7 @@ class test
 			$useranswer = $dbresponse['useranswer'];
 			$userscore = $dbresponse['userscore'];
 			$question_logged = $dbresponse['question_logged'];
-			$answer_logged = $dbresponse['answer_logged'];
+			$answers_logged = $dbresponse['answers_logged'];
 			$maxscore_logged = $dbresponse['maxscore_logged'];
 			
 			if ($userscore == $maxscore_logged )
@@ -104,7 +104,7 @@ class test
 				
 			echo "<p style='background-color:" . $colour . "'>";
 			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$question_logged."</span><span style='display: block; float:right'> Score: " . $userscore . "/" . $maxscore_logged . "</span><br>";
-			echo "<span>>" . $useranswer . "</span><span style='display: block; float:right'> Answer: " . $answer_logged . "</span>";
+			echo "<span>>" . $useranswer . "</span><span style='display: block; float:right'> Answer: " . $answers_logged . "</span>";
 			echo "</p>";
 		}
 
@@ -602,14 +602,15 @@ class test
 		foreach ($this->questionids as $orderno => $questionid)
 		{
 			
-			$qry = $db->prepare("INSERT INTO test_responses (attemptid, itemid, useranswer, question_logged, answer_logged, userscores) VALUES (:attemptid, :itemid, :useranswer, :question_logged, :answer_logged, :userscores)");
+			$qry = $db->prepare("INSERT INTO test_responses (attemptid, itemid, useranswer, userscore, question_logged, answers_logged, maxscore_logged) VALUES (:attemptid, :itemid, :useranswer, :userscore, :question_logged, :answers_logged, :maxscore_logged)");
 			$qry->execute(array(
 				':attemptid' => $attemptid,
 				':itemid' => $this->questionobjects[$orderno]->itemid,
 				':useranswer' => $useranswers[$questionid], 
+				':userscore' => $userscores[$questionid],
 				':question_logged' => $this->questionobjects[$orderno]->question, 
-				':answer_logged' => implode("','", $this->questionobjects[$orderno]->answers), 
-				':userscores' => $userscores[$questionid]));		
+				':answers_logged' => implode("','", $this->questionobjects[$orderno]->answers), 
+				':maxscore_logged' => $this->questionobjects[$orderno]->maxscore));		
 			
 			$responseid = $db->lastInsertId();
 			
