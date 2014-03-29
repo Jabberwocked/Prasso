@@ -9,6 +9,8 @@ include_once (MENU_PATH . "/menu_tests.php");
 
 <?php 
 
+echo "hohooho";
+
 /**
  * VIEW OLD ATTEMPT
  */
