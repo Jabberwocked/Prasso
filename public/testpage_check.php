@@ -18,6 +18,7 @@ if (isset($_POST['attemptid']))
 {
 	echo "alalala";
 	$attemptid=$_POST['attemptid'];
+	echo "uhuh";
 	echo $attemptid;
 	$_SESSION['test'] = new  test(); //is this necessary?
 	$_SESSION['test']->showoldattempt( $attemptid );
