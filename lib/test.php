@@ -75,10 +75,10 @@ class test
 	function showoldattempt( $attemptid )
 	{
 		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
-		$sql = "SELECT * FROM test_responses WHERE attemptid=" . $attemptid . "ORDER BY responseid";
+		$sql = "SELECT * FROM test_responses WHERE attemptid=" . $attemptid . " ORDER BY responseid";
 		$dbresponses = $db->query($sql);
 		
-		echo "lala";
+		echo "lala2";
 		print_r($dbresponses);
 		
 		$orderno = 0;
