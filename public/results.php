@@ -120,7 +120,7 @@ if (!$results)
 			<td><?php echo $user ?></td>
 			<td><?php echo $owner ?></td>
 			<td><?php echo $sumscores . " / " . $maxsumscores?></td>
-			<td><?php echo $percentage ?></td>
+			<td><?php echo round($percentage,0) . " %" ?></td>
 			<td>
 				<form style="display:inline" action=<?php echo htmlspecialchars('testpage_check.php');?> method="post"><button type="submit" name="attemptid" value="<?php echo $attemptid ?>" >View</button></form>
 			</td>
