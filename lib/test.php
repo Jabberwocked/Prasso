@@ -116,7 +116,9 @@ class test
 		foreach ($dbattempts as $dbattempt)
 		{
 			$sumscores = $dbattempt['sumscores'];
-			echo "<p style='font-weight:bold'> Totalscore: " . $sumscores . "/" . $summaxscore . "</p><br><br>";
+			echo "<p style='font-weight:bold'> Totalscore: " . $sumscores . "/" . $summaxscore . "</p>";
+			echo "<p style='font-weight:bold'> Percentage: " . $sumscores / $summaxscore * 100 . "</p>";
+			echo "<br><br>";
 		}	
 			
 	}
@@ -652,7 +654,9 @@ class test
 			echo "<span>>" . $useranswers[$questionid] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($this->questionobjects[$orderno]->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
 			echo "</p>";
 		};
-		echo "<p style='font-weight:bold'> Totalscore: " . $userscores['sumscores'] . "</p><br><br>";
+		echo "<p style='font-weight:bold'> Totalscore: " . $userscores['sumscores'] . "</p>";
+		echo "<p style='font-weight:bold'> Percentage: " . $userscores['sumscores'] . "</p>";
+		echo "<br><br>";
 	}
 
 	
