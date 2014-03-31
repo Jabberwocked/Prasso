@@ -117,7 +117,7 @@ class test
 		{
 			$sumscores = $dbattempt['sumscores'];
 			echo "<p style='font-weight:bold'> Totalscore: " . $sumscores . "/" . $summaxscore . "</p>";
-			echo "<p style='font-weight:bold'> Percentage: " . round($sumscores / $summaxscore * 100,0) . "</p>";
+			echo "<p style='font-weight:bold'> Percentage: " . round($sumscores / $summaxscore * 100,0) . " %</p>";
 			echo "<br><br>";
 		}	
 			
