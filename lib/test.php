@@ -602,6 +602,9 @@ class test
 		}
 
 		print_r($_SESSION['test']);
+		echo $this->testid;
+		echo $_SESSION['userid'];
+		echo $userscores['sumscores'];
 		
 		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 
