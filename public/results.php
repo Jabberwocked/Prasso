@@ -80,9 +80,7 @@ if (!$results)
 			foreach ($responses as $response)
 			{
 				$maxscore_logged = $response['maxscore_logged'];
-				echo $maxsumscores;
-				$maxsumscores += $maxscore_logged;
-				echo $maxsumscores; 
+				$maxsumscores += $maxscore_logged; 
 			}
 			
 			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
