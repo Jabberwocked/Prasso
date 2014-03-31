@@ -594,14 +594,17 @@ class test
  */
 	function saveresultstodb($useranswers, $userscores)
 	{
-		print_r($_SESSION['test']);
+		
 		if (!isset($_SESSION['test']->testname))
 		{
 			$_SESSION['test']->testname = "random"; //working on it (doesn't work yet?)
 			$_SESSION['test']->testid = 11; //working on it (doesn't work yet?)
 		}
+
+		print_r($_SESSION['test']);
+		
 		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
-			
+
 		$qry = $db->prepare("INSERT INTO test_attempts (testid, userid, sumscores) VALUES (:testid, :userid, :sumscores)");
 		$qry->execute(array(
 			':testid' => $this->testid,
