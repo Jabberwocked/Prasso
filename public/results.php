@@ -39,8 +39,8 @@ td {
 		<td>Topic</td>
 		<td>Labels</td>
 -->
-		<td>Result</td>
-		<td></td>
+		<td>Score</td>
+		<td>Percentage</td>
 		<td></td>
 	</tr>
 	
@@ -83,6 +83,8 @@ if (!$results)
 				$maxsumscores += $maxscore_logged; 
 			}
 			
+			$percentage = $sumscores / $maxsumscores * 100;
+						
 			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 			$sql = "SELECT * FROM tests WHERE testid=" . $testid;
 			$tests = $db->query($sql);
@@ -118,8 +120,7 @@ if (!$results)
 			<td><?php echo $user ?></td>
 			<td><?php echo $owner ?></td>
 			<td><?php echo $sumscores . " / " . $maxsumscores?></td>
-			<td><?php echo $topic ?></td>
-			<td><?php echo $labels ?></td>
+			<td><?php echo $percentage ?></td>
 			<td>
 				<form style="display:inline" action=<?php echo htmlspecialchars('testpage_check.php');?> method="post"><button type="submit" name="attemptid" value="<?php echo $attemptid ?>" >View</button></form>
 			</td>
@@ -129,7 +130,8 @@ if (!$results)
 			
 	<?php 
 		}
-	} ?>
+	} 
+	?>
 		
 	</table>
 	</div>
