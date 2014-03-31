@@ -79,7 +79,7 @@ if (!$results)
 			$responses = $db->query($sql);
 			foreach ($responses as $response)
 			{
-				$maxscore_logged = $test['maxscore_logged'];
+				$maxscore_logged = $response['maxscore_logged'];
 				echo $maxsumscores;
 				$maxsumscores += $maxscore_logged;
 				echo $maxsumscores; 
