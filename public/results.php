@@ -72,7 +72,16 @@ if (!$results)
 			$userid = $resultrow['userid'];
 			$date = $resultrow['datetime'];
 			$sumscores = $resultrow['sumscores'];
+			$maxsumscores = 0;
 			
+			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
+			$sql = "SELECT * FROM test_responses WHERE attemptid=" . $attemptid;
+			$responses = $db->query($sql);
+			foreach ($responses as $response)
+			{
+				$maxscore_logged = $test['maxscore_logged'];
+				$maxsumscores += $maxscore_logged; 
+			}
 			
 			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 			$sql = "SELECT * FROM tests WHERE testid=" . $testid;
@@ -108,7 +117,7 @@ if (!$results)
 			<td><?php echo $testname ?></td>
 			<td><?php echo $user ?></td>
 			<td><?php echo $owner ?></td>
-			<td><?php echo $sumscores ?></td>
+			<td><?php echo $sumscores . " / " . $maxsumscores?></td>
 			<td><?php echo $topic ?></td>
 			<td><?php echo $labels ?></td>
 			<td>
