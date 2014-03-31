@@ -81,7 +81,7 @@ if (!$results)
 			{
 				$maxscore_logged = $test['maxscore_logged'];
 				$maxsumscores += $maxscore_logged;
-				echo maxsumscores; 
+				echo $maxsumscores; 
 			}
 			
 			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
