@@ -127,7 +127,7 @@ class test
 	/**
 	 * Save question or test name to object (session)
 	 */
-	function saveitem( )
+	function saveitemtosession( )
 	{
 		if (isset($_POST['testname']))
 		{
@@ -145,13 +145,14 @@ class test
 	/**
 	 * Add object properties to database tables
 	 */
-	function add( )
+	function savequestionstodbquestions( )
 	{
 		/**
 		 * Check if test name is given
 		 */
 		if ($this->testname == false)
 		{
+			$testnamechecked = 1;
 			echo "<p style='color:red'>Please insert a test name</p><br>";
 		}
 		else
@@ -189,7 +190,17 @@ class test
 						':answer' => $answer));
 				}
 			}
-			
+		}	
+	}
+
+	function savetesttodbtests( )
+	{
+		if ($this->testname == false and $testnamechecked != 1)
+		{
+			echo "<p style='color:red'>Please insert a test name</p><br>";
+		}
+		else 
+		{	
 			/**
 			 * Save test to table TESTS
 			 */
@@ -203,6 +214,7 @@ class test
 			
 			// save testid for later use
 			$testid = $db->lastInsertId();
+			$this->testid = $testid;
 			
 			/**
 			 * Test name and owner are saved.
@@ -227,8 +239,8 @@ class test
 			 */
 			mysqli_close($db);
 			
-			/* Reset test in session */
-			$_SESSION['test'] = new test();
+// 			/* Reset test in session */
+// 			$_SESSION['test'] = new test();
 		}
 	}
 
@@ -329,7 +341,7 @@ class test
 	/**
 	 * Shows questions for editing: Prints test name and questionobjects as buttons and a form for the item that's being edited
 	 */
-	function show( )
+	function showeditabletest( )
 	{
 		
 		/**
@@ -595,11 +607,7 @@ class test
 	function saveresultstodb($useranswers, $userscores)
 	{
 		
-		if (!isset($_SESSION['test']->testname))
-		{
-			$_SESSION['test']->testname = "random"; //working on it (doesn't work yet?)
-			$_SESSION['test']->testid = 3; //working on it (doesn't work yet?)
-		}
+
 
 		print_r($_SESSION['test']);
 		echo $this->testid;

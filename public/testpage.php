@@ -23,6 +23,7 @@ if (isset($_POST['testtotake']))
 if (isset($_GET['generaterandom']))
 {
 	$_SESSION['test']->pullrandomfromdb($_GET);
+	$_SESSION['test']->testname = "random";
 	$_SESSION['test']->showastest();
 }
 

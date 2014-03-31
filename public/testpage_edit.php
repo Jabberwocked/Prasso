@@ -64,7 +64,7 @@ elseif ($_POST['action'] == "save")
 	}
 	else 
 	{
-		$_SESSION['test']->saveitem();
+		$_SESSION['test']->saveitemtosession();
 	}
 }
 
@@ -80,7 +80,8 @@ if ($_POST['action2'] == "savetest")
 // 	}
 // 	else 
 // 	{
-		$_SESSION['test']->add();
+		$_SESSION['test']->savequestionstodbquestions();
+		$_SESSION['test']->savetesttodbtests();
 // 	}
 	
 }
@@ -94,7 +95,7 @@ if ($_POST['action2'] == "savetest")
 
 <div style="position:relative; width: 500px; margin: 0px auto; border: 1px dotted; padding: 20px 170px 100px 170px">
 
-<?php $_SESSION['test']->show(); ?>
+<?php $_SESSION['test']->showeditabletest(); ?>
 
 </div>
 
