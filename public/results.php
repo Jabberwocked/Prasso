@@ -80,6 +80,7 @@ if (!$results)
 			foreach ($responses as $response)
 			{
 				$maxscore_logged = $test['maxscore_logged'];
+				echo $maxsumscores;
 				$maxsumscores += $maxscore_logged;
 				echo $maxsumscores; 
 			}
