@@ -598,7 +598,7 @@ class test
 		if (!isset($_SESSION['test']->testname))
 		{
 			$_SESSION['test']->testname = "random"; //working on it (doesn't work yet?)
-			$_SESSION['test']->testid = 11; //working on it (doesn't work yet?)
+			$_SESSION['test']->testid = 3; //working on it (doesn't work yet?)
 		}
 
 		print_r($_SESSION['test']);
