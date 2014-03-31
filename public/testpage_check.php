@@ -22,6 +22,33 @@ if (isset($_POST['attemptid']))
 
 
 /** 
+ * CHECK A RANDOM TEST
+ */
+ elseif($_SESSION['test']->testname == "random")
+{
+	/**
+	 * Get questionids from SESSION and user answers from POST
+	 */
+	
+	$questionids = $_SESSION['test']->questionids; // array(orderno => questionid)
+	$useranswers = $_POST; // array(questionid => answer)
+	
+	/**
+	 * Check answers
+	 * Save useranswers, scores and test data to db
+	 * Show results
+	 */
+	
+	$userscores = $_SESSION['test']->checkanswers($useranswers);
+	//save the random test for future reference and to be able to save results
+	$_SESSION['test']->savetesttodbtests( ); 
+	$_SESSION['test']->saveresultstodb($useranswers, $userscores);
+	$_SESSION['test']->showresults($useranswers, $userscores);
+
+}
+
+
+/** 
  * REVIEW A NEW TEST SUBMISSION
  */
 else 

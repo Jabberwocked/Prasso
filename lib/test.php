@@ -553,12 +553,14 @@ class test
  */
 	function pullrandomfromdb( $data ) // $data from $_GET
 	{
+		$_SESSION['test'] = new test();
+		$_SESSION['test']->testname = "random"; 
+		
 		
 		/**
 		 * Query based on criteria
 		 */
 		
-		$this->testid = 0;
 		$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
 		
 		$type = "'" . implode("','", $data["type"]) . "'";
@@ -606,13 +608,6 @@ class test
  */
 	function saveresultstodb($useranswers, $userscores)
 	{
-		
-
-
-		print_r($_SESSION['test']);
-		echo $this->testid;
-		echo $_SESSION['userid'];
-		echo $userscores['sumscores'];
 		
 		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 
