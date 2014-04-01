@@ -505,7 +505,7 @@ class test
 	function showastest( )
 	{
 		echo "<form action=" . htmlspecialchars('testpage_check.php') . " method='post'>";
-		if (isset($this->testname))
+		if (isset($this->testname) and $this->testname!="random")
 		{
 			echo "<p style='font-weight:bold;'> " . $this->testname . " </p><br>";
 		}
