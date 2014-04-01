@@ -62,28 +62,31 @@ td {
 			$topic = "";
 			$labels = "";
 			
+			if ($testname!="random")
+			{
 			?>
 				
-			<tr>
-			<td><?php echo $testname ?></td>
-<?php /** TO DO			
-			<td><?php echo $topic ?></td>
-			<td><?php echo $labels ?></td>
-*/ ?>
-			<td>
-				<form style="display:inline" action=<?php echo htmlspecialchars('testpage.php');?> method="post"><button type="submit" name="testtotake" value="<?php echo $testid ?>" >Take</button></form> |
-				<form style="display:inline" action=<?php echo htmlspecialchars('testpage_edit.php');?> method="post"><button type="submit" name="testtoedit" value="<?php echo $testid ?>" >Edit</button></form> |
-				<form style="display:inline" action=<?php echo htmlspecialchars('results.php');?> method="post"><button type="submit" name="testid" value="<?php echo $testid ?>" >Results</button></form> |
-<!--  TO DO
-				<Form style="display:inline"><button type="submit" name="" value="<?php echo $testid ?>" >Administer</button></Form>
-				<button>Discuss</button>
--->
-			</td>
-			</tr>
-		
+				<tr>
+				<td><?php echo $testname ?></td>
+				<?php /** TO DO			
+				<td><?php echo $topic ?></td>
+				<td><?php echo $labels ?></td>
+				*/ ?>
+				<td>
+					<form style="display:inline" action=<?php echo htmlspecialchars('testpage.php');?> method="post"><button type="submit" name="testtotake" value="<?php echo $testid ?>" >Take</button></form> |
+					<form style="display:inline" action=<?php echo htmlspecialchars('testpage_edit.php');?> method="post"><button type="submit" name="testtoedit" value="<?php echo $testid ?>" >Edit</button></form> |
+					<form style="display:inline" action=<?php echo htmlspecialchars('results.php');?> method="post"><button type="submit" name="testid" value="<?php echo $testid ?>" >Results</button></form> |
+					<!--  TO DO
+					<Form style="display:inline"><button type="submit" name="" value="<?php echo $testid ?>" >Administer</button></Form>
+					<button>Discuss</button>
+					-->
+				</td>
+				</tr>
+			
 			
 			
 	<?php 
+			}				
 		}
 	} ?>
 		
