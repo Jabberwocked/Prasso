@@ -31,7 +31,7 @@ td {
 <br>
 <table>
 	<tr style="font-weight: bold; margin-bottom: 20px;">
-		<td>Date</td>
+		
 		<td>Test</td>
 		<td>User</td>
 		<td>Owner</td>
@@ -41,6 +41,7 @@ td {
 -->
 		<td>Score</td>
 		<td>Percentage</td>
+		<td>Date</td>
 		<td></td>
 	</tr>
 	
@@ -115,12 +116,13 @@ if (!$results)
 			?>
 				
 			<tr>
-			<td><?php echo $date ?></td>
-			<td><?php echo $testname ?></td>
-			<td><?php echo $user ?></td>
-			<td><?php echo $owner ?></td>
+			
+			<td><?php echo ucfirst($testname) ?></td>
+			<td><?php echo ucfirst($user) ?></td>
+			<td><?php echo ucfirst($owner) ?></td>
 			<td><?php echo $sumscores . " / " . $maxsumscores?></td>
 			<td><?php echo round($percentage,0) . " %" ?></td>
+			<td><?php echo $date ?></td>
 			<td>
 				<form style="display:inline" action=<?php echo htmlspecialchars('testpage_check.php');?> method="post"><button type="submit" name="attemptid" value="<?php echo $attemptid ?>" >View</button></form>
 			</td>
