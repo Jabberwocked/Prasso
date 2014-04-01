@@ -231,7 +231,6 @@ class test
 				
 				//update SESSION with itemids
 				$this->questionobjects[$orderno]->itemid = $db->lastInsertId();
-				echo "testing";
 			 
 			}
 			
@@ -623,13 +622,6 @@ class test
 
 		foreach ($this->questionids as $orderno => $questionid)
 		{
-			echo 'attemptid: ' . $attemptid;
-			echo '<br>itemid: ' . $this->questionobjects[$orderno]->itemid;
-			echo '<br>useranswer: ' . $useranswers[$questionid];
-			echo '<br>userscore: ' . $userscores[$questionid];
-			echo '<br>question_logged: ' . $this->questionobjects[$orderno]->question;
-			echo '<br>answers_logged: ' . implode("','", $this->questionobjects[$orderno]->answers);
-			echo '<br>maxscore_logged: ' . $this->questionobjects[$orderno]->maxscore . "<br>";
 			
 			$qry = $db->prepare("INSERT INTO test_responses (attemptid, itemid, useranswer, userscore, question_logged, answers_logged, maxscore_logged) VALUES (:attemptid, :itemid, :useranswer, :userscore, :question_logged, :answers_logged, :maxscore_logged)");
 			$qry->execute(array(
