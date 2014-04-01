@@ -232,7 +232,7 @@ class test
 			
 			echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p>"; // echo success (useless)
 			
-			header('location:mytests.php');
+// 			header('location:mytests.php');
 			
 			/**
 			 * End connection
@@ -553,9 +553,7 @@ class test
  */
 	function pullrandomfromdb( $data ) // $data from $_GET
 	{
-// 		$_SESSION['test'] = new test();
-// 		$_SESSION['test']->testname = "random"; 
-		echo "lala";
+
 		
 		/**
 		 * Query based on criteria
