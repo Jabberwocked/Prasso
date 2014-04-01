@@ -228,6 +228,11 @@ class test
 					':questionid' => $questionid,
 					':testid' => $testid,
 					':orderno' => $orderno));
+				
+				//update SESSION with itemids
+				$this->questionobjects[$orderno]->itemid = $db->lastInsertId();
+				echo "testing";
+			 
 			}
 			
 			echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p>"; // echo success (useless)
