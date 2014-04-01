@@ -33,9 +33,9 @@ td {
 	<tr style="font-weight: bold; margin-bottom: 20px;">
 		
 		<td>Test</td>
+<!--  TO DO
 		<td>User</td>
 		<td>Owner</td>
-<!--  TO DO
 		<td>Topic</td>
 		<td>Labels</td>
 -->
@@ -118,8 +118,10 @@ if (!$results)
 			<tr>
 			
 			<td><?php echo ucfirst($testname) ?></td>
+<?php /* TO DO
 			<td><?php echo ucfirst($user) ?></td>
 			<td><?php echo ucfirst($owner) ?></td>
+*/?>
 			<td><?php echo $sumscores . " / " . $maxsumscores?></td>
 			<td><?php echo round($percentage,0) . " %" ?></td>
 			<td><?php echo $date ?></td>
