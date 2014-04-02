@@ -375,7 +375,7 @@ class test
 	 */
 	function savetesttodbtests( )
 	{
-		echo $this->testid;
+		echo "Editing test with testid " . $this->testid;
 			
 		/**
 		 * Update or add test to table TESTS
