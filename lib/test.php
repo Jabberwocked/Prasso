@@ -403,6 +403,7 @@ class test
 			foreach ($this->questionids as $orderno => $questionid)
 			{
 				echo $this->questionobjects[$orderno]->itemid;
+				echo "lala";
 				$qry3->execute(array(
 					':itemid' => $this->questionobjects[$orderno]->itemid,
 					':questionid' => $questionid,
