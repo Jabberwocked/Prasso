@@ -331,7 +331,7 @@ class test
 			$this->questionobjects[$_POST['orderno']] = new questionobject($_POST);
 			// remove empty answer strings
 			$emptyanswers[] = array_search('', $this->questionobjects[$_POST['orderno']]->answers);
-			print_r $emptyanswers;
+			print_r($emptyanswers);
 			foreach ($emptyanswers as $key)
 			{
 				unset($this->questionobjects[$_POST['orderno']]->answers[$key]);
