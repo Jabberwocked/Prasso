@@ -69,59 +69,239 @@ class test
 		}
 	}
 
-	/**
-	 * Pull logged test details from old attempt to object (which will usually be saved as $_SESSION['test'])
-	 */
-	function showoldattempt( $attemptid )
-	{
-		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
-		$sql = "SELECT * FROM test_responses WHERE attemptid=" . $attemptid . " ORDER BY responseid";
-		$dbresponses = $db->query($sql);
-		
-		$orderno = 0;
-		$summaxscore = 0;
-		foreach ($dbresponses as $dbresponse)
-		{
-			
-			$orderno ++;
-			$useranswer = $dbresponse['useranswer'];
-			$userscore = $dbresponse['userscore'];
-			$question_logged = $dbresponse['question_logged'];
-			$answers_logged = $dbresponse['answers_logged'];
-			$maxscore_logged = $dbresponse['maxscore_logged'];
-			$summaxscore += $maxscore_logged;
-			
-			if ($userscore == $maxscore_logged )
-			{
-				$colour = "lightgreen";
-			}
-			elseif ($userscore == 0)
-			{
-				$colour = "lightcoral";
-			}
-			else
-			{
-				$colour = "yellow";
-			};
-				
-			echo "<p style='background-color:" . $colour . "'>";
-			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$question_logged."</span><span style='display: block; float:right'> Score: " . $userscore . "/" . $maxscore_logged . "</span><br>";
-			echo "<span>>" . $useranswer . "</span><span style='display: block; float:right'> Answer: " . $answers_logged . "</span>";
-			echo "</p>";
-		}
 
-		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
-		$sql = "SELECT * FROM test_attempts WHERE attemptid=" . $attemptid;
-		$dbattempts = $db->query($sql);
-		foreach ($dbattempts as $dbattempt)
+	/**
+	 * Pull random questions from db and output as test
+	 */
+	function pullrandomfromdb( $data ) // $data from $_GET
+	{
+	
+	
+		/**
+		 * Query based on criteria
+		 */
+	
+		$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
+	
+		$type = "'" . implode("','", $data["type"]) . "'";
+		$number = $data["number"];
+		$sql = "SELECT * FROM questions WHERE type IN (" . $type . ") ORDER BY RAND() LIMIT $number";
+		$questionsquery = $db->query($sql);
+	
+		foreach ($questionsquery as $orderno => $questionrow)
 		{
-			$sumscores = $dbattempt['sumscores'];
-			echo "<p style='font-weight:bold'>Totalscore: " . $sumscores . "/" . $summaxscore . "</p>";
-			echo "<p style='font-weight:bold'>Percentage: " . round($sumscores / $summaxscore * 100,0) . " %</p>";
-			echo "<br><br>";
-		}	
+			$orderno ++; // now starts at 1
+			$this->questionids[$orderno] = $questionrow['questionid'];
+			$this->questionobjects[$orderno] = new questionobject();
+			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionrow['questionid']);
+			$this->questionobjects[$orderno]->maxscore = 1;
+		}
+	}
+	
+
+
+	/**
+	 * Output as test
+	 */
+	function showastest( )
+	{
+		echo "<form action=" . htmlspecialchars('testpage_check.php') . " method='post'>";
+		if (isset($this->testname) and $this->testname!="random")
+		{
+			echo "<p style='font-weight:bold;'> " . $this->testname . " </p><br>";
+		}
+		else
+		{
+			echo "<p style='font-weight:bold;'>Random Test</p><br>";
+		}
+		;
+	
+		/**
+		 * Output questions and form
+		 */
+	
+		foreach ($this->questionobjects as $orderno => $questionobject)
+		{
+			echo "<p><span style='font-weight:bold;'>" . $orderno . ".</span> " . $questionobject->question . " </p>";
+			echo "<input type='text' name='" . $questionobject->questionid . "' ><br>";
+		}
+		;
+	
+		/**
+		 * Error message for random tests
+		 */
+	
+		if (isset($_GET['number']))
+		{
+			if ($orderno < $_GET['number'])
+			{
+				echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
+			}
+		}
+		;
+	
+		/**
+		 * Submit button
+		 */
+	
+		echo "<input type='submit' value='Submit Answers'>";
+		echo "</form>";
+	}
+	
+	
+	
+	
+
+	/**
+	 * Shows questions for editing: Prints test name and questionobjects as buttons and a form for the item that's being edited
+	 */
+	function showeditabletest( )
+	{
+	
+		/**
+		 * Set which item is being edited.
+		 * If none then new question.
+		 */
+		if (! isset($_SESSION['itemtoedit']))
+		{
+			$itemtoedit = count($this->questionobjects) + 1;
+		}
+		else
+		{
+			$itemtoedit = $_SESSION['itemtoedit'];
+		}
+	
+	
+		/**
+		 * Output form
+		 */
+	
+		?>
+	
+	<form action=<?php echo htmlspecialchars('testpage_edit.php');?>
+		method="post">
+		<!-- 	First button needs to have the default value. When enter is pressed this value for itemtoedit is used. -->
+		<button type=hidden type="submit" name="itemtoedit"
+			value=<?php if ($itemtoedit == count($this->questionobjects) + 1){echo count($this->questionobjects) + 2; } else {echo count($this->questionobjects) + 1; }; ?>></button>
+			
+			<?php
+			/**
+			 * Test name
+			 */
+			
+			if ($itemtoedit == "testname")
+			{
+				?>
+						
+				<input type="text" name="testname"
+			<?php if (isset($this->testname)){echo "value=".$this->testname;}?>
+			placeholder="Give your test a name." autofocus
+			style="display: inline; width: 55%"><br> <input type="hidden"
+			name="action" value="save"> 
+			
+			<?php } else { ?>
+			
+				
+				<button class='textlayout' type="submit" name="itemtoedit"
+			value="testname">
+			<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
+		</button>
+		<br>
+			
+			<?php
 			
 	}
+			
+			/**
+			 * Then output all questions that come before the edited question.
+			 */
+			
+			foreach ($this->questionobjects as $orderno => $questionobject)
+			{
+				if ($orderno < $itemtoedit)
+				{
+					$questionobject->show();
+				}
+			}
+			;
+			
+			/**
+			 * Then output editing fields for the chosen question.
+			 */
+			
+			if ($itemtoedit != "testname")
+			{
+				?>
+					<input type="hidden" name="orderno" value='<?php echo $itemtoedit; ?>'> 
+					<input type="text" name="question" 	value='<?php echo $this->questionobjects[$itemtoedit]->question ?>' placeholder="Question <?php echo $itemtoedit ?>" autofocus style="display: inline; width: 70%; font-weight: bold"> 
+					<select name="type" style="width: 45px;">
+						<option value="shortanswer" <?php if ($this->questionobjects[$itemtoedit]->type == 'shortanswer' OR !isset($this->questionobjects[$itemtoedit])){echo 'selected';} ?>>SA: Short Answer</option>
+						<option value="multichoice" <?php if ($this->questionobjects[$itemtoedit]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
+					</select> 
+					<?php $answerno = 1; foreach ($this->questionobjects[$itemtoedit]->answers as $answer){	?>
+					<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display: inline; width: 60%">
+					<?php $answerno ++;} if ($answerno == 1){ ?>
+					<input type="text" name="answers[]" class="answers" placeholder="Answer <?php echo $answerno ?>" style="display: inline; width: 60%">
+					<?php $answerno ++;}?>
+					<script> var answernojs = <?php echo json_encode($answerno); ?>;</script>
+					<button type="button" id="addOption" value="Add">+</button>
+					<input type="hidden" name="action" value="save"> <br>
+					
+					
+			<?php
+			}
+			;
+			
+			/**
+			 * Then output all questions that come after the edited question.
+			 */
+			
+			foreach ($this->questionobjects as $orderno => $questionobject)
+			{
+				if ($orderno > $itemtoedit)
+				{
+					$questionobject->show();
+				}
+			}
+			;
+			
+			/**
+			 * Show Add Question button if not editing new question
+			 */
+			
+			if ($itemtoedit != count($this->questionobjects) + 1)
+			{
+				?>
+				<br>
+		<button type="submit" name="itemtoedit"
+			value="<?php echo count($this->questionobjects) + 1 ?>">Add question</button>
+		<br> <br>
+			<?php
+			
+	}
+			
+			/**
+			 * Buttons: Save test or delete questions
+			 */
+			
+			?>	
+			
+			<br>
+		<div style="position: absolute; bottom: 50px">
+			<button type="submit" name="action2" value="savetest">Save Test</button>
+			|
+			<button type="submit" name="action" value="reset">Reset</button>
+		</div>
+	
+	</form>
+	<br>
+	<br>
+	
+	
+	<?php
+		}
+	
+		
 	
 
 	/**
@@ -136,8 +316,13 @@ class test
 		else
 		{
 			$this->questionobjects[$_POST['orderno']] = new questionobject($_POST);
-			
-			// header("Location: testpage_edit.php");
+			// remove empty answer strings
+			$emptyanswers[] = array_search('', $this->questionobjects[$_POST['orderno']]->answers);
+			foreach ($emptyanswers as $key)
+			{
+				unset($this->questionobjects[$_POST['orderno']]->answers[$key]);
+			};
+
 		}
 	}
 
@@ -342,243 +527,6 @@ class test
 	}
 
 
-	/**
-	 * Shows questions for editing: Prints test name and questionobjects as buttons and a form for the item that's being edited
-	 */
-	function showeditabletest( )
-	{
-		
-		/**
-		 * Set which item is being edited.
-		 * If none then new question.
-		 */
-		if (! isset($_SESSION['itemtoedit']))
-		{
-			$itemtoedit = count($this->questionobjects) + 1;
-		}
-		else
-		{
-			$itemtoedit = $_SESSION['itemtoedit'];
-		}
-
-		
-		/**
-		 * Output form
-		 */
-		
-		?>
-
-<form action=<?php echo htmlspecialchars('testpage_edit.php');?>
-	method="post">
-	<!-- 	First button needs to have the default value. When enter is pressed this value for itemtoedit is used. -->
-	<button type=hidden type="submit" name="itemtoedit"
-		value=<?php if ($itemtoedit == count($this->questionobjects) + 1){echo count($this->questionobjects) + 2; } else {echo count($this->questionobjects) + 1; }; ?>></button>
-		
-		<?php
-		/**
-		 * Test name
-		 */
-		
-		if ($itemtoedit == "testname")
-		{
-			?>
-					
-			<input type="text" name="testname"
-		<?php if (isset($this->testname)){echo "value=".$this->testname;}?>
-		placeholder="Give your test a name." autofocus
-		style="display: inline; width: 55%"><br> <input type="hidden"
-		name="action" value="save"> 
-		
-		<?php } else { ?>
-		
-			
-			<button class='textlayout' type="submit" name="itemtoedit"
-		value="testname">
-		<p><?php if (isset($this->testname)){ echo "Test name: <span style='font-weight:bold'>".$this->testname."</span>"; } else { echo "Test name"; }; ?></p>
-	</button>
-	<br>
-		
-		<?php
-		
-}
-		
-		/**
-		 * Then output all questions that come before the edited question.
-		 */
-		
-		foreach ($this->questionobjects as $orderno => $questionobject)
-		{
-			if ($orderno < $itemtoedit)
-			{
-				$questionobject->show();
-			}
-		}
-		;
-		
-		/**
-		 * Then output editing fields for the chosen question.
-		 */
-		
-		if ($itemtoedit != "testname")
-		{
-			?>
-				<input type="hidden" name="orderno"
-		value='<?php echo $itemtoedit; ?>'> <input type="text" name="question"
-		value='<?php echo $this->questionobjects[$itemtoedit]->question ?>'
-		placeholder="Question <?php echo $itemtoedit ?>" autofocus
-		style="display: inline; width: 70%; font-weight: bold"> <select
-		name="type" style="width: 45px;">
-		<option value="shortanswer"
-			<?php if ($this->questionobjects[$itemtoedit]->type == 'shortanswer' OR !isset($this->questionobjects[$itemtoedit])){echo 'selected';} ?>>SA:
-			Short Answer</option>
-		<option value="multichoice"
-			<?php if ($this->questionobjects[$itemtoedit]->type == 'multichoice'){echo 'selected';} ?>>MC:
-			Multiple Choice</option>
-	</select> 
-				<?php $answerno = 1; foreach ($this->questionobjects[$itemtoedit]->answers as $answer){	?>
-				<input type="text" name="answers[]" class="answers"
-		value='<?php echo $answer ?>'
-		placeholder="Answer <?php echo $answerno ?>"
-		style="display: inline; width: 60%">
-				<?php $answerno ++;} if ($answerno == 1){ ?>
-				<input type="text" name="answers[]" class="answers"
-		placeholder="Answer <?php echo $answerno ?>"
-		style="display: inline; width: 60%">
-				<?php $answerno ++;}?><script> var answernojs = <?php echo json_encode($answerno); ?>;</script>
-	<button type="button" id="addOption" value="Add">+</button>
-	<input type="hidden" name="action" value="save"> <br>
-				
-				
-		<?php
-		}
-		;
-		
-		/**
-		 * Then output all questions that come after the edited question.
-		 */
-		
-		foreach ($this->questionobjects as $orderno => $questionobject)
-		{
-			if ($orderno > $itemtoedit)
-			{
-				$questionobject->show();
-			}
-		}
-		;
-		
-		/**
-		 * Show Add Question button if not editing new question
-		 */
-		
-		if ($itemtoedit != count($this->questionobjects) + 1)
-		{
-			?>
-			<br>
-	<button type="submit" name="itemtoedit"
-		value="<?php echo count($this->questionobjects) + 1 ?>">Add question</button>
-	<br> <br>
-		<?php
-		
-}
-		
-		/**
-		 * Buttons: Save test or delete questions
-		 */
-		
-		?>	
-		
-		<br>
-	<div style="position: absolute; bottom: 50px">
-		<button type="submit" name="action2" value="savetest">Save Test</button>
-		|
-		<button type="submit" name="action" value="reset">Reset</button>
-	</div>
-
-</form>
-<br>
-<br>
-
-
-<?php
-	}
-
-
-	/**
-	 * Output as test
-	 */
-	function showastest( )
-	{
-		echo "<form action=" . htmlspecialchars('testpage_check.php') . " method='post'>";
-		if (isset($this->testname) and $this->testname!="random")
-		{
-			echo "<p style='font-weight:bold;'> " . $this->testname . " </p><br>";
-		}
-		else
-		{
-			echo "<p style='font-weight:bold;'>Random Test</p><br>";
-		}
-		;
-		
-		/**
-		 * Output questions and form
-		 */
-		
-		foreach ($this->questionobjects as $orderno => $questionobject)
-		{
-			echo "<p><span style='font-weight:bold;'>" . $orderno . ".</span> " . $questionobject->question . " </p>";
-			echo "<input type='text' name='" . $questionobject->questionid . "' ><br>";
-		}
-		;
-		
-		/**
-		 * Error message for random tests
-		 */
-		
-		if (isset($_GET['number']))
-		{
-			if ($orderno < $_GET['number'])
-			{
-				echo "<p style='color:red'>There are no more questions of that type.</p><br><br>";
-			}
-		}
-		;
-		
-		/**
-		 * Submit button
-		 */
-		
-		echo "<input type='submit' value='Submit Answers'>";
-		echo "</form>";
-	}
-
-
-/**
- * Pull random questions from db and output as test
- */
-	function pullrandomfromdb( $data ) // $data from $_GET
-	{
-
-		
-		/**
-		 * Query based on criteria
-		 */
-		
-		$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
-		
-		$type = "'" . implode("','", $data["type"]) . "'";
-		$number = $data["number"];
-		$sql = "SELECT * FROM questions WHERE type IN (" . $type . ") ORDER BY RAND() LIMIT $number";
-		$questionsquery = $db->query($sql);
-		
-		foreach ($questionsquery as $orderno => $questionrow)
-		{
-			$orderno ++; // now starts at 1
-			$this->questionids[$orderno] = $questionrow['questionid'];
-			$this->questionobjects[$orderno] = new questionobject();
-			$this->questionobjects[$orderno]->pullfromdb($orderno, $questionrow['questionid']);
-			$this->questionobjects[$orderno]->maxscore = 1;
-		}
-	}
 
 /**
  * Returns array userscores
@@ -671,6 +619,61 @@ class test
 		echo "<br><br>";
 	}
 
+
+	/**
+	 * Pull logged test details from old attempt to object (which will usually be saved as $_SESSION['test'])
+	 */
+	function showoldattempt( $attemptid )
+	{
+		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
+		$sql = "SELECT * FROM test_responses WHERE attemptid=" . $attemptid . " ORDER BY responseid";
+		$dbresponses = $db->query($sql);
+	
+		$orderno = 0;
+		$summaxscore = 0;
+		foreach ($dbresponses as $dbresponse)
+		{
+				
+			$orderno ++;
+			$useranswer = $dbresponse['useranswer'];
+			$userscore = $dbresponse['userscore'];
+			$question_logged = $dbresponse['question_logged'];
+			$answers_logged = $dbresponse['answers_logged'];
+			$maxscore_logged = $dbresponse['maxscore_logged'];
+			$summaxscore += $maxscore_logged;
+				
+			if ($userscore == $maxscore_logged )
+			{
+				$colour = "lightgreen";
+			}
+			elseif ($userscore == 0)
+			{
+				$colour = "lightcoral";
+			}
+			else
+			{
+				$colour = "yellow";
+			};
+	
+			echo "<p style='background-color:" . $colour . "'>";
+			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$question_logged."</span><span style='display: block; float:right'> Score: " . $userscore . "/" . $maxscore_logged . "</span><br>";
+			echo "<span>>" . $useranswer . "</span><span style='display: block; float:right'> Answer: " . $answers_logged . "</span>";
+			echo "</p>";
+		}
+	
+		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
+		$sql = "SELECT * FROM test_attempts WHERE attemptid=" . $attemptid;
+		$dbattempts = $db->query($sql);
+		foreach ($dbattempts as $dbattempt)
+		{
+			$sumscores = $dbattempt['sumscores'];
+			echo "<p style='font-weight:bold'>Totalscore: " . $sumscores . "/" . $summaxscore . "</p>";
+			echo "<p style='font-weight:bold'>Percentage: " . round($sumscores / $summaxscore * 100,0) . " %</p>";
+			echo "<br><br>";
+		}
+			
+	}
+		
 	
 	
 };
