@@ -74,14 +74,12 @@ elseif ($_POST['action'] == "save")
 
 if ($_POST['action2'] == "savetest")
 {
-	echo "lulu";
 	if ($_SESSION['test']->testname == false)
 	{
 		echo "<p style='color:red'>Please insert a test name</p><br>";
 	}
 	else
 	{
-		echo "lala";
 		$_SESSION['test']->savequestionstodbquestions();
 		$_SESSION['test']->savetesttodbtests();
 	}
