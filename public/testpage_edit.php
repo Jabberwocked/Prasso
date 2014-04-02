@@ -74,15 +74,21 @@ elseif ($_POST['action'] == "save")
 
 if ($_POST['action2'] == "savetest")
 {
+	if ($this->testname == false)
+	{
+		echo "<p style='color:red'>Please insert a test name</p><br>";
+	}
+	else
+	{
+		$_SESSION['test']->savequestionstodbquestions();
+		$_SESSION['test']->savetesttodbtests();
+	}
+
 // 	if (isset($_SESSION['test']->testid))
 // 	{
 // 		$_SESSION['test']->update();
 // 	}
-// 	else 
-// 	{
-		$_SESSION['test']->savequestionstodbquestions();
-		$_SESSION['test']->savetesttodbtests();
-// 	}
+ 	
 	
 }
 

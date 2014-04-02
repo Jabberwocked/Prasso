@@ -331,69 +331,94 @@ class test
 
 
 	/**
-	 * Add object properties to database tables
+	 * Add questions from SESSION to db questions
 	 */
 	function savequestionstodbquestions( )
 	{
+			
 		/**
-		 * Check if test name is given
+		 * Save questionobjects from object to table QUESTIONS
 		 */
-		if ($this->testname == false)
+		$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
+		
+		foreach ($this->questionobjects as $orderno => $questionobject)
 		{
-			$testnamechecked = 1;
-			echo "<p style='color:red'>Please insert a test name</p><br>";
+			$qry = $db->prepare("INSERT INTO questions (question, type) VALUES (:question,:type)");
+			$qry->execute(array(
+				':question' => $questionobject->question,
+				':type' => $questionobject->type));
+			
+			// save ids to array for later use...
+			$this->questionids[$orderno] = $db->lastInsertId();
 		}
-		else
+		
+		/**
+		 * Save answers from object to table ANSWERS
+		 */
+		$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
+		
+		foreach ($this->questionobjects as $orderno => $questionobject)
 		{
-			
-			/**
-			 * Save questionobjects from object to table QUESTIONS
-			 */
-			$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
-			
-			foreach ($this->questionobjects as $orderno => $questionobject)
+			$questionid = $this->questionids[$orderno];
+			foreach ($questionobject->answers as $answer)
 			{
-				$qry = $db->prepare("INSERT INTO questions (question, type) VALUES (:question,:type)");
+				$qry = $db->prepare("INSERT INTO answers (questionid, answer) VALUES (:questionid,:answer)");
 				$qry->execute(array(
-					':question' => $questionobject->question,
-					':type' => $questionobject->type));
-				
-				// save ids to array for later use...
-				$this->questionids[$orderno] = $db->lastInsertId();
-			}
-			
-			/**
-			 * Save answers from object to table ANSWERS
-			 */
-			$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
-			
-			foreach ($this->questionobjects as $orderno => $questionobject)
-			{
-				$questionid = $this->questionids[$orderno];
-				foreach ($questionobject->answers as $answer)
-				{
-					$qry = $db->prepare("INSERT INTO answers (questionid, answer) VALUES (:questionid,:answer)");
-					$qry->execute(array(
-						':questionid' => $questionid,
-						':answer' => $answer));
-				}
+					':questionid' => $questionid,
+					':answer' => $answer));
 			}
 		}	
 	}
 
+	/** 
+	 * save test properties from SESSION to db tests
+	 */
 	function savetesttodbtests( )
 	{
-		if ($this->testname == false and $testnamechecked != 1)
+			
+		/**
+		 * Update or add test to table TESTS
+		 */
+
+		if(isset($this->testid))
 		{
-			echo "<p style='color:red'>Please insert a test name</p><br>";
+			/**
+			 * Update testname in table TESTS
+			 */
+			
+			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
+			
+			$qry2 = $db->prepare("UPDATE tests SET testname=:testname WHERE testid=:testid");
+			$qry2->execute(array(
+				':testid' => $this->testid,
+				':testname' => $this->testname));
+			
+			/**
+			 * Now update which questionids belong to testid in table TEST_ITEMS.
+			 */
+				
+			$qry3 = $db->prepare("UPDATE test_items SET questionid=:questionid, orderno=:orderno WHERE itemid=:itemid");
+			foreach ($this->questionids as $orderno => $questionid)
+			{
+				$qry3->execute(array(
+					':itemid' => $this->questionobjects[$orderno]->itemid,
+					':questionid' => $questionid,
+					':orderno' => $orderno));
+			
+			}
+				
+			/**
+			 * End connection
+			 */
+			mysqli_close($db);	
 		}
 		else 
-		{	
-			/**
-			 * Save test to table TESTS
-			 */
-					
+		{		
 			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
+			
+			/**
+			 * Save test name and owner in table TESTS.
+			 */
 			
 			$qry2 = $db->prepare("INSERT INTO tests (testname, userid_owner) VALUES (:testname,:userid_owner)");
 			$qry2->execute(array(
@@ -405,10 +430,9 @@ class test
 			$this->testid = $testid;
 			
 			/**
-			 * Test name and owner are saved.
 			 * Now save which questionids belong to testid in table TEST_ITEMS.
 			 */
-			//
+			
 			$qry3 = $db->prepare("INSERT INTO test_items (questionid, testid, orderno) VALUES (:questionid,:testid,:orderno)");
 			foreach ($this->questionids as $orderno => $questionid)
 			{
@@ -422,107 +446,11 @@ class test
 			 
 			}
 			
-			
 			/**
 			 * End connection
 			 */
 			mysqli_close($db);
-			
-// 			/* Reset test in session */
-// 			$_SESSION['test'] = new test();
-		}
-	}
 
-
-	/**
-	 * Update database tables with changed object properties.
-	 * NOT WORKING YET
-	 */
-	function update( )
-	{
-		/**
-		 * Check if test name is given
-		 */
-		if ($this->testname == false)
-		{
-			echo "<p style='color:red'>Please insert a test name</p><br>";
-		}
-		else
-		{
-			
-			/**
-			 * Save questionobjects from object to table QUESTIONS
-			 */
-			$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
-			
-			foreach ($this->questionobjects as $orderno => $questionobject)
-			{
-				// $qry = $db->prepare("UPDATE questions SET question=:question,type=:type WHERE questionid=:questionid");
-				// DISCONTINUED: RETHINK. SAVED QUESTIONS MUST NOT BE CHANGED.
-				$qry->execute(array(
-					':question' => $questionobject->question,
-					':type' => $questionobject->type));
-				
-				// save ids to array for later use...
-				$this->questionids[$orderno] = $db->lastInsertId();
-			}
-			
-			/**
-			 * Save answers from object to table ANSWERS
-			 */
-			$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
-			
-			$n = 0;
-			foreach ($this->questionobjects as $orderno => $questionobject)
-			{
-				$questionid = $this->questionids[$n];
-				foreach ($questionobject->answers as $answer)
-				{
-					$qry = $db->prepare("INSERT INTO answers (questionid, answer) VALUES (:questionid,:answer)");
-					$qry->execute(array(
-						':questionid' => $questionid,
-						':answer' => $answer));
-				}
-				
-				$n ++;
-			}
-			
-			/**
-			 * Save test to table TESTS
-			 */
-			
-			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
-			
-			$qry2 = $db->prepare("INSERT INTO tests (testname, userid_owner) VALUES (:testname,:userid_owner)");
-			$qry2->execute(array(
-				':testname' => $this->testname,
-				':userid_owner' => $_SESSION['userid']));
-			
-			// save testid for later use
-			$testid = $db->lastInsertId();
-			
-			/**
-			 * Test name and owner are saved.
-			 * Now save which questionids belong to testid in table TEST_ITEMS.
-			 */
-			//
-			$qry3 = $db->prepare("INSERT INTO test_items (questionId, testid, orderno) VALUES (:questionid,:testid,:orderno)");
-			foreach ($this->questionids as $orderno => $questionid)
-			{
-				$qry3->execute(array(
-					':questionid' => $questionid,
-					':testid' => $testid,
-					':orderno' => $orderno));
-			}
-			
-			echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p>"; // echo success (useless)
-			
-			header('location:mytests.php');
-			
-			/**
-			 * End connection
-			 */
-			mysqli_close($db);
 		}
 	}
 
