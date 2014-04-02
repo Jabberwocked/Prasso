@@ -97,10 +97,6 @@ if ($_POST['action2'] == "savetest")
 
 <?php 
 $_SESSION['test']->showeditabletest(); 
-if ($_POST['action2'] == "savetest")
-{
-	echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p>";
-}
 ?>
 
 </div>

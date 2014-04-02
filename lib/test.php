@@ -291,6 +291,10 @@ class test
 			<button type="submit" name="action" value="reset">Reset</button>
 		</div>
 	
+		<?php if ($_POST['action2'] == "savetest") { ?>
+		<p style='font-weight:bold; color:green'>Test is saved.</p>
+		<?php } ?>
+	
 	</form>
 	<br>
 	<br>
