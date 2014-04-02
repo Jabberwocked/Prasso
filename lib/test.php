@@ -321,7 +321,14 @@ class test
 		{
 			$this->questionobjects[$_POST['orderno']] = new questionobject($_POST);
 			// remove empty answer strings
-			$emptyanswers = array_keys($this->questionobjects[$_POST['orderno']]->answers, "");
+			$temp = $this->questionobjects[$_POST['orderno']]->answers;
+			$temp = array_diff($temp, array(""));
+			$temp = array_values($temp);
+			$this->questionobjects[$_POST['orderno']]->answers = $temp;
+			print_r($temp);
+			echo "lulu";
+			
+			/* $emptyanswers = array_keys($this->questionobjects[$_POST['orderno']]->answers, "");
 			print_r($emptyanswers);
 			echo " lala3" ;
 			foreach ($emptyanswers as $key)
@@ -332,7 +339,7 @@ class test
 				}
 			};
 			$this->questionobjects[$_POST['orderno']]->answers = array_values($this->questionobjects[$_POST['orderno']]->answers);
-			print_r($this->questionobjects[$_POST['orderno']]->answers);
+			print_r($this->questionobjects[$_POST['orderno']]->answers); */
 		}
 	}
 
