@@ -325,21 +325,7 @@ class test
 			$temp = array_diff($temp, array(""));
 			$temp = array_values($temp);
 			$this->questionobjects[$_POST['orderno']]->answers = $temp;
-			print_r($temp);
-			echo "lulu";
-			
-			/* $emptyanswers = array_keys($this->questionobjects[$_POST['orderno']]->answers, "");
-			print_r($emptyanswers);
-			echo " lala3" ;
-			foreach ($emptyanswers as $key)
-			{
-				if ($key != '')
-				{
-					unset($this->questionobjects[$_POST['orderno']]->answers[$key]);
-				}
-			};
-			$this->questionobjects[$_POST['orderno']]->answers = array_values($this->questionobjects[$_POST['orderno']]->answers);
-			print_r($this->questionobjects[$_POST['orderno']]->answers); */
+
 		}
 	}
 
