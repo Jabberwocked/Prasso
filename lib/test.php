@@ -269,35 +269,12 @@ class test
 			 * Show Add Question button
 			 */
 
-
-/* remove?			
-			if ($itemtoedit != count($this->questionobjects) + 1)
-
- 			{
-				echo "itemedit set -> this button:+1";
- 				?>
-				<br>
-				<button type="submit" name="itemtoedit" value="<?php echo count($this->questionobjects) + 1 ?>">Add question</button>
-				<br> <br>
-				<?php
-			}
-
-			
-
-			else 
-			{
-			
-			}
-*/				
-
-			echo "itemedit not set -> objects + 1 -> this button:not set";
-			echo "lala";
 			unset($_SESSION['itemtoedit']);
 			?>
-							<br>
-							<button type="submit">Add question</button>
-							<br> <br>				
-							<?php
+			<br>
+			<button type="submit">Add question</button>
+			<br> <br>				
+			<?php
 
 
 			
