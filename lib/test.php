@@ -420,9 +420,6 @@ class test
 			 
 			}
 			
-			echo "<br><p style='font-weight:bold; color:green'>Test is saved.</p>"; // echo success (useless)
-			
-// 			header('location:mytests.php');
 			
 			/**
 			 * End connection
