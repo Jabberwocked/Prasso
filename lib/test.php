@@ -269,7 +269,8 @@ class test
 			 * Show Add Question button
 			 */
 
-	
+
+/* remove?			
 			if ($itemtoedit != count($this->questionobjects) + 1)
 
  			{
@@ -285,16 +286,16 @@ class test
 
 			else 
 			{
-				echo "itemedit not set -> objects + 1 -> this button:not set";
-				?>
-				<br>
-				<button type="submit">Add question</button>
-				<br> <br>				
-				<?php
 			
 			}
-				
-			
+*/				
+
+			echo "itemedit not set -> objects + 1 -> this button:not set";
+			?>
+							<br>
+							<button type="submit">Add question</button>
+							<br> <br>				
+							<?php
 
 
 			
