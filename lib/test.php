@@ -269,7 +269,7 @@ class test
 			 * Show Add Question button
 			 */
 
-/*	remove?		
+	
 			if ($itemtoedit != count($this->questionobjects) + 1)
 			{
 				?>
@@ -278,8 +278,11 @@ class test
 				<br> <br>
 				<?php
 			}
+
+			
+/*	remove?
 			else 
-*/				
+				
 				
 			{
 				?>
@@ -288,7 +291,7 @@ class test
 				<br> <br>				
 				<?php
 			}
-
+*/
 			
 			/**
 			 * Buttons: Save test or delete questions
