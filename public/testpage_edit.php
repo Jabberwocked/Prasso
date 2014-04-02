@@ -74,6 +74,7 @@ elseif ($_POST['action'] == "save")
 
 if ($_POST['action2'] == "savetest")
 {
+	echo "lulu";
 	if ($this->testname == false)
 	{
 		echo "<p style='color:red'>Please insert a test name</p><br>";
