@@ -269,7 +269,7 @@ class test
 			 * Show Add Question button
 			 */
 
-/*	remove?	
+	
 			if ($itemtoedit != count($this->questionobjects) + 1)
 
  			{
@@ -284,16 +284,16 @@ class test
 
 			else 
 			{
-				
-			}
-*/				
-			
 				?>
 				<br>
 				<button type="submit">Add question</button>
 				<br> <br>				
 				<?php
 			
+			}
+				
+			
+
 
 			
 			/**
