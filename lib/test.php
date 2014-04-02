@@ -326,11 +326,12 @@ class test
 			echo " lala" ;
 			foreach ($emptyanswers as $key)
 			{
-				if ($key != 'd')
+				if ($key != '')
 				{
 					unset($this->questionobjects[$_POST['orderno']]->answers[$key]);
 				}
 			};
+			$this->questionobjects[$_POST['orderno']]->answers = array_values($this->questionobjects[$_POST['orderno']]->answers);
 
 		}
 	}
