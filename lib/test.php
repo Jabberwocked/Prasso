@@ -372,6 +372,7 @@ class test
 
 	/** 
 	 * save test properties from SESSION to db tests
+	 * UPDATES NOT WORKING YET
 	 */
 	function savetesttodbtests( )
 	{
@@ -404,7 +405,7 @@ class test
 			foreach ($this->questionids as $orderno => $questionid)
 			{
 				echo "itemid: " . $this->questionobjects[$orderno]->itemid;echo "<br>";
-				echo "lala";echo "<br>";
+
 				$qry3->execute(array(
 					':itemid' => $this->questionobjects[$orderno]->itemid,
 					':questionid' => $questionid,
