@@ -80,6 +80,7 @@ if ($_POST['action2'] == "savetest")
 	}
 	else
 	{
+		echo "lala";
 		$_SESSION['test']->savequestionstodbquestions();
 		$_SESSION['test']->savetesttodbtests();
 	}
