@@ -266,9 +266,10 @@ class test
 			;
 			
 			/**
-			 * Show Add Question button if not editing new question
+			 * Show Add Question button
 			 */
-			
+
+/*	remove?		
 			if ($itemtoedit != count($this->questionobjects) + 1)
 			{
 				?>
@@ -277,21 +278,16 @@ class test
 				<br> <br>
 				<?php
 			}
-
-			
-/* TESTING			
 			else 
+*/				
+				
 			{
 				?>
 				<br>
-				<button type="submit" name="itemtoedit" value="<?php echo count($this->questionobjects) + 1 ?>">Add question</button>
-				<br> <br>
-				
-				<button type="submit" name="itemtoedit" value="<?php echo $this->orderno ?>" >Add question</button><br>
-				
+				<button type="submit">Add question</button>
+				<br> <br>				
 				<?php
 			}
-*/
 
 			
 			/**
