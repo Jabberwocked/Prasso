@@ -289,11 +289,12 @@ class test
 			<button type="submit" name="action2" value="savetest">Save Test</button>
 			|
 			<button type="submit" name="action" value="reset">Reset</button>
+			<?php if ($_POST['action2'] == "savetest") { ?>
+			<p style='font-weight:bold; color:green'>Test is saved.</p>
+			<?php } ?>
 		</div>
 	
-		<?php if ($_POST['action2'] == "savetest") { ?>
-		<p style='font-weight:bold; color:green'>Test is saved.</p>
-		<?php } ?>
+		
 	
 	</form>
 	<br>
