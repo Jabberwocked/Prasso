@@ -273,12 +273,26 @@ class test
 			{
 				?>
 				<br>
-		<button type="submit" name="itemtoedit"
-			value="<?php echo count($this->questionobjects) + 1 ?>">Add question</button>
-		<br> <br>
-			<?php
+				<button type="submit" name="itemtoedit" value="<?php echo count($this->questionobjects) + 1 ?>">Add question</button>
+				<br> <br>
+				<?php
+			}
+
 			
-	}
+/* TESTING			
+			else 
+			{
+				?>
+				<br>
+				<button type="submit" name="itemtoedit" value="<?php echo count($this->questionobjects) + 1 ?>">Add question</button>
+				<br> <br>
+				
+				<button type="submit" name="itemtoedit" value="<?php echo $this->orderno ?>" >Add question</button><br>
+				
+				<?php
+			}
+*/
+
 			
 			/**
 			 * Buttons: Save test or delete questions
