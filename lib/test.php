@@ -283,15 +283,17 @@ class test
 			
 
 			else 
-				
-*/				
 			{
+				
+			}
+*/				
+			
 				?>
 				<br>
 				<button type="submit">Add question</button>
 				<br> <br>				
 				<?php
-			}
+			
 
 			
 			/**
