@@ -399,6 +399,7 @@ class test
 			 */
 				
 			$qry3 = $db->prepare("UPDATE test_items SET questionid=:questionid, orderno=:orderno WHERE itemid=:itemid");
+			print_r($this->questionids);
 			foreach ($this->questionids as $orderno => $questionid)
 			{
 				$qry3->execute(array(
