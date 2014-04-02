@@ -291,6 +291,7 @@ class test
 */				
 
 			echo "itemedit not set -> objects + 1 -> this button:not set";
+			unset($_SESSION['itemtoedit']);
 			?>
 							<br>
 							<button type="submit">Add question</button>
