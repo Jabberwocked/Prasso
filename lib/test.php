@@ -290,7 +290,7 @@ class test
 			|
 			<button type="submit" name="action" value="reset">Reset</button>
 			<?php if ($_POST['action2'] == "savetest") { ?>
-			<p style='font-weight:bold; color:green'>Test is saved.</p>
+			<p style='font-weight:bold; color:green'>Test is saved.2</p>
 			<?php } ?>
 		</div>
 	
