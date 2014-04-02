@@ -334,7 +334,10 @@ class test
 			print_r($emptyanswers);
 			foreach ($emptyanswers as $key)
 			{
-				unset($this->questionobjects[$_POST['orderno']]->answers[$key]);
+				if ($key != '')
+				{
+					unset($this->questionobjects[$_POST['orderno']]->answers[$key]);
+				}
 			};
 
 		}
