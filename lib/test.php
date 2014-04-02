@@ -399,12 +399,12 @@ class test
 			 */
 				
 			$qry3 = $db->prepare("UPDATE test_items SET questionid=:questionid, orderno=:orderno WHERE itemid=:itemid");
-			print_r($this->questionids);
-			print_r($this->questionobjects);
+			print_r($this->questionids); echo "<br>";
+			print_r($this->questionobjects); echo "<br>";
 			foreach ($this->questionids as $orderno => $questionid)
 			{
-				echo $this->questionobjects[$orderno]->itemid;
-				echo "lala";
+				echo $this->questionobjects[$orderno]->itemid;echo "<br>";
+				echo "lala";echo "<br>";
 				$qry3->execute(array(
 					':itemid' => $this->questionobjects[$orderno]->itemid,
 					':questionid' => $questionid,
