@@ -323,7 +323,7 @@ class test
 			// remove empty answer strings
 			$emptyanswers = array_keys($this->questionobjects[$_POST['orderno']]->answers, "");
 			print_r($emptyanswers);
-			echo " lala2" ;
+			echo " lala3" ;
 			foreach ($emptyanswers as $key)
 			{
 				if ($key != '')
