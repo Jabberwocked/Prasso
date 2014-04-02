@@ -375,7 +375,7 @@ class test
 	 */
 	function savetesttodbtests( )
 	{
-		echo "Editing test with testid " . $this->testid;
+		echo "Editing test with testid " . $this->testid . "<br>";
 			
 		/**
 		 * Update or add test to table TESTS
@@ -399,11 +399,11 @@ class test
 			 */
 				
 			$qry3 = $db->prepare("UPDATE test_items SET questionid=:questionid, orderno=:orderno WHERE itemid=:itemid");
-			print_r($this->questionids); echo "<br>";
-			print_r($this->questionobjects); echo "<br>";
+			echo "questionids: "; print_r($this->questionids); echo "<br>";
+			echo "questionobjects: "; print_r($this->questionobjects); echo "<br>";
 			foreach ($this->questionids as $orderno => $questionid)
 			{
-				echo $this->questionobjects[$orderno]->itemid;echo "<br>";
+				echo "itemid: " . $this->questionobjects[$orderno]->itemid;echo "<br>";
 				echo "lala";echo "<br>";
 				$qry3->execute(array(
 					':itemid' => $this->questionobjects[$orderno]->itemid,
