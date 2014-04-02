@@ -332,7 +332,7 @@ class test
 				}
 			};
 			$this->questionobjects[$_POST['orderno']]->answers = array_values($this->questionobjects[$_POST['orderno']]->answers);
-
+			print_r($this->questionobjects[$_POST['orderno']]->answers);
 		}
 	}
 
