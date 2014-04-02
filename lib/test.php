@@ -402,7 +402,7 @@ class test
 			print_r($this->questionids);
 			foreach ($this->questionids as $orderno => $questionid)
 			{
-				echo "$this->questionobjects[$orderno]->itemid";
+				echo $this->questionobjects[$orderno]->itemid;
 				$qry3->execute(array(
 					':itemid' => $this->questionobjects[$orderno]->itemid,
 					':questionid' => $questionid,
