@@ -287,7 +287,7 @@ class test
 			<br>
 		<div style="position: absolute; bottom: 50px">
 			<?php if ($_POST['action2'] == "savetest") { ?>
-			<p style='font-weight:bold; color:green'>Test is saved.2</p>
+			<p style='font-weight:bold; color:green'>Test is saved.</p>
 			<?php } ?>
 			<button type="submit" name="action2" value="savetest">Save Test</button>
 			|
