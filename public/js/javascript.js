@@ -40,4 +40,15 @@ $(document).ready(function(){
 	});
 	
 		
+	
+	/**
+	 * Used to change the colour of the bar
+ 	 */
+	var hexArray = ['red','green','blue', 'purple'];
+	var randomColor = hexArray[Math.floor(Math.random() * hexArray.length)];
+
+	$("header").css("border-bottom-color",randomColor);
+	
+	
+	
 });
