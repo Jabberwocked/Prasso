@@ -3,7 +3,7 @@
 	nav a[href="<?php echo str_replace('/', '', $_SERVER['PHP_SELF']); ?>"] {
 	color: black;
 	outline: none;
-	border-bottom: 2px solid #eee;
+	border-bottom: 2px solid blue;
 }
 </style>
 
