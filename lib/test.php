@@ -350,14 +350,31 @@ class test
 		
 		foreach ($this->questionobjects as $orderno => $questionobject)
 		{
-			$qry = $db->prepare("INSERT INTO questions (question, type) VALUES (:question,:type)");
-			$qry->execute(array(
-				':question' => $questionobject->question,
-				':type' => $questionobject->type));
+			if (!isset($questionobject->questionid))
+			{
+				$qry = $db->prepare("INSERT INTO questions (question, type) VALUES (:question,:type)");
+				$qry->execute(array(
+					':question' => $questionobject->question,
+					':type' => $questionobject->type));
 			
-			// save ids to array for later use...
-			$this->questionids[$orderno] = $db->lastInsertId();
-			$this->questionobjects[$orderno]->questionid = $db->lastInsertId();
+				// save ids to array for later use...
+				$this->questionids[$orderno] = $db->lastInsertId();
+				$questionobject->questionid = $db->lastInsertId();
+			}
+			else 
+			{
+				
+				// WORKING ON IT. Update formulering nog aanpassen:
+				
+				$qry = $db->prepare("INSERT INTO questions (question, type) VALUES (:question,:type)");
+				$qry->execute(array(
+					':question' => $questionobject->question,
+					':type' => $questionobject->type));
+					
+				// save ids to array for later use...
+				$this->questionids[$orderno] = $db->lastInsertId();
+				$this->questionobjects[$orderno]->questionid = $db->lastInsertId();
+			}
 		}
 		
 		/**

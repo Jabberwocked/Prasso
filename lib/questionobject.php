@@ -49,8 +49,16 @@ class questionobject {
 	function update( $data = array() )
 	{
 		if (isset($data['orderno'])) $this->orderno = $data['orderno'];
-		if (isset($data['question'])) $this->question = $data['question'];
-		if (isset($data['type'])) $this->type = $data['type'];
+		if (isset($data['question']) and $data['question']!=$this->question)
+		{
+			$this->question = $data['question'];
+			unset($this->questionid);
+		}
+		if (isset($data['type']) and $data['type']!=$this->type) 
+		{
+			$this->type = $data['type'];
+			unset($this->questionid);
+		}
 		if (isset($data['maxscore'])) $this->maxscore = $data['maxscore'];
 		if (isset($data['answers'])) $this->answers = $data['answers'];
 		if (isset($data['scorepercentages'])) $this->scorepercentages = $data['scorepercentages'];
