@@ -319,13 +319,20 @@ class test
 		}
 		else
 		{
-			$this->questionobjects[$_POST['orderno']] = new questionobject($_POST);
+			// if new then add, else update
+			if (!isset($this->questionobjects[$_POST['orderno']]))
+			{	
+				$this->questionobjects[$_POST['orderno']] = new questionobject($_POST);
+			}
+			else 
+			{
+				$this->questionobjects[$_POST['orderno']]->update($_POST);
+			}
 			// remove empty answer strings
 			$temp = $this->questionobjects[$_POST['orderno']]->answers;
 			$temp = array_diff($temp, array(""));
 			$temp = array_values($temp);
 			$this->questionobjects[$_POST['orderno']]->answers = $temp;
-
 		}
 	}
 
@@ -398,7 +405,14 @@ class test
 			/**
 			 * Now update which questionids belong to testid in table TEST_ITEMS.
 			 */
-				
+			
+			/* 
+			INSERT INTO <table> (field1, field2, field3, ...)
+			VALUES ('value1', 'value2','value3', ...)
+			ON DUPLICATE KEY UPDATE
+			field1='value1', field2='value2', field3='value3', ...
+ 			*/
+	
 			$qry3 = $db->prepare("UPDATE test_items SET questionid=:questionid, orderno=:orderno WHERE itemid=:itemid");
 			echo "questionids: "; print_r($this->questionids); echo "<br>";
 			echo "questionobjects: "; print_r($this->questionobjects); echo "<br>";

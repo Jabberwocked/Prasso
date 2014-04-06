@@ -42,6 +42,29 @@ class questionobject {
 		
 	}
 
+/**
+ * Update based on array-input (e.g. form)
+ */
+	
+	function update( $data = array() )
+	{
+		if (isset($data['orderno'])) $this->orderno = $data['orderno'];
+		if (isset($data['question'])) $this->question = $data['question'];
+		if (isset($data['type'])) $this->type = $data['type'];
+		if (isset($data['maxscore'])) $this->maxscore = $data['maxscore'];
+		if (isset($data['answers'])) $this->answers = $data['answers'];
+		if (isset($data['scorepercentages'])) $this->scorepercentages = $data['scorepercentages'];
+	
+		if ($this->type == "shortanswer")
+		{
+			$this->typeshort = "SA";
+		}
+		if ($this->type == "multichoice")
+		{
+			$this->typeshort = "MC";
+		}
+	
+	}
 	
 /**
  * To make a new questionobject with questionno, question, type, answers
