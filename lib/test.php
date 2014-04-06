@@ -391,8 +391,6 @@ class test
 		 * Save or update test name and owner in table TESTS.
 		 */
 		
-		echo "lala";
-		
 		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 		
 		if(!isset($this->testid))
@@ -406,20 +404,10 @@ class test
 		}
 		else 
 		{
-			echo "<br>" . $this->testid . "<br>";
-			echo $this->testname . "<br>";
-			echo $_SESSION['userid'] . "<br><br>";
-			echo "lala5<br><br>";
-			
 			$qry2 = $db->prepare("UPDATE tests SET testname=:testname WHERE testid=:testid");
 			$qry2->execute(array(
 				':testid' => $this->testid,
 				':testname' => $this->testname));
-		
-			echo "\nPDOStatement::errorInfo():\n";
-			$arr = $qry2->errorInfo();
-			print_r($arr);
-
 		}	
 	
 
@@ -440,21 +428,29 @@ class test
 			if(!isset($this->questionobjects[$orderno]->itemid))
 			{
 				$qry3 = $db->prepare("INSERT INTO test_items (questionid, testid, orderno) VALUES (:questionid,:testid,:orderno)");
+				$qry3->execute(array(
+					':questionid' => $questionid,
+					':testid' => $testid,
+					':orderno' => $orderno));
+			
+				$this->questionobjects[$orderno]->itemid = $db->lastInsertId(); //update SESSION with new itemid
 			}
 			else 
 			{
-				$qry3 = $db->prepare("UPDATE test_items SET questionid=:questionid, orderno=:orderno, itemid=LAST_INSERT_ID(itemid) WHERE itemid=:itemid");
+				$qry3 = $db->prepare("UPDATE test_items SET questionid=:questionid, orderno=:orderno WHERE itemid=:itemid");
+				$qry3->execute(array(
+					':questionid' => $questionid,
+					':orderno' => $orderno,
+					':itemid' => $this->questionobjects[$orderno]->itemid));
 			}
 				
-			$qry3->execute(array(
-				':questionid' => $questionid,
-				':orderno' => $orderno,
-				':testid' => $testid,
-				':itemid' => $this->questionobjects[$orderno]->itemid));
-
-			//update SESSION with itemids
-			$this->questionobjects[$orderno]->itemid = $db->lastInsertId();
-
+		
+			
+			echo "lala 1";
+			echo "\nPDOStatement::errorInfo():\n";
+			$arr = $qry2->errorInfo();
+			print_r($arr);
+				
 		}
 				
 		/**
