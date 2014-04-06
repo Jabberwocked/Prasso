@@ -447,7 +447,7 @@ class test
 		
 			echo "itemid-new: " . $this->questionobjects[$orderno]->itemid . "<br>";
 			echo "lala 4<br>";
-			echo "\nPDOStatement::errorInfo():\n" . "<br>";
+			echo "\nPDOStatement::errorInfo():\n";
 			$arr = $qry2->errorInfo();
 			print_r($arr);
 				
