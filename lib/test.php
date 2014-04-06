@@ -392,17 +392,21 @@ class test
 		
 		foreach ($this->questionobjects as $orderno => $questionobject)
 		{
-			$questionid = $this->questionids[$orderno];
-			foreach ($questionobject->answers as $answer)
+			foreach ($questionobject->answers as $answerobject)
 			{
-				if (!isset($answer->answerid))
+				$qry = $db->prepare("SELECT answerid FROM answers WHERE answer=:answer AND questionid=:questionid AND scorepercentage=:scorepercentage");
+				$qry->execute(array(
+					':answer' => $answerobject->answer,
+					':questionid' => $this->questionobjects[$orderno]->questionid,
+					':scorepercentage' => 100));
+
+				if (!$qry->fetch())
 				{
 					$qry = $db->prepare("INSERT INTO answers (questionid, answer) VALUES (:questionid,:answer)");
 					$qry->execute(array(
-						':questionid' => $questionid,
-						':answer' => $answer));
-				}
-				
+						':questionid' => $this->questionobjects[$orderno]->questionid,
+						':answer' => $answerobject->answer));
+				}				
 			}
 		}	
 	}

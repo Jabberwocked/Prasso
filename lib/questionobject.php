@@ -14,7 +14,7 @@ class questionobject {
 	public $type;
 	public $typeshort;
 	public $maxscore;
-	public $answers;
+	public $answers; //array with answerobjects, containing answerid, answer, scorepercentage
 	
 
 /**
