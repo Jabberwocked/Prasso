@@ -115,6 +115,7 @@ class questionobject {
 		
 		foreach ($resultanswers as $key => $tempanswersobject)
 		{
+			$tempanswers[$key]->answerid = $tempanswersobject['answerid'];
 			$tempanswers[$key]->answer = $tempanswersobject['answer'];
 			$tempanswers[$key]->scorepercentage = $tempanswersobject['scorepercentage'];
 		}
