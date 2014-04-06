@@ -364,16 +364,16 @@ class test
 			else 
 			{
 				
-				// WORKING ON IT. Update formulering nog aanpassen:
-				
-				$qry = $db->prepare("INSERT INTO questions (question, type) VALUES (:question,:type)");
+				// DO NOTHING. (If the questionid has not been unset by questionobject->update, there is no change.)
+
+				/* 
+				$qry = $db->prepare("UPDATE questions SET question=:question, type=:type WHERE questionid=:questionid");
 				$qry->execute(array(
 					':question' => $questionobject->question,
-					':type' => $questionobject->type));
-					
-				// save ids to array for later use...
-				$this->questionids[$orderno] = $db->lastInsertId();
-				$this->questionobjects[$orderno]->questionid = $db->lastInsertId();
+					':type' => $questionobject->type,
+					':questionid' => $questionobject->questionid));
+ 				*/
+							
 			}
 		}
 		
