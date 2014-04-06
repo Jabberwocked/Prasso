@@ -418,6 +418,8 @@ class test
 				':userid_owner' => $_SESSION['userid']));
 		
 			echo "\nPDOStatement::errorInfo():\n";
+			$arr = $qry2->errorInfo();
+			print_r($arr);
 
 		}	
 	
