@@ -158,6 +158,8 @@ class test
 	function showeditabletest( )
 	{
 	
+		echo "Editing test with testid " . $this->testid . "<br>";
+		
 		/**
 		 * Set which item is being edited.
 		 * If none then new question.
@@ -383,95 +385,68 @@ class test
 	 */
 	function savetesttodbtests( )
 	{
-		echo "Editing test with testid " . $this->testid . "<br>";
+		
 			
 		/**
-		 * Update or add test to table TESTS
+		 * Save or update test name and owner in table TESTS.
 		 */
-
-		if(isset($this->testid))
+		
+		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
+		
+		if(!isset($this->testid))
 		{
-			/**
-			 * Update testname in table TESTS
-			 */
-			
-			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
-			
-			$qry2 = $db->prepare("UPDATE tests SET testname=:testname WHERE testid=:testid");
-			$qry2->execute(array(
-				':testid' => $this->testid,
-				':testname' => $this->testname));
-			
-			/**
-			 * Now update which questionids belong to testid in table TEST_ITEMS.
-			 */
-			
-			/* 
-			INSERT INTO <table> (field1, field2, field3, ...)
-			VALUES ('value1', 'value2','value3', ...)
-			ON DUPLICATE KEY UPDATE
-			field1='value1', field2='value2', field3='value3', ...
- 			*/
-	
-			$qry3 = $db->prepare("UPDATE test_items SET questionid=:questionid, orderno=:orderno WHERE itemid=:itemid");
-			echo "questionids: "; print_r($this->questionids); echo "<br>";
-			echo "questionobjects: "; print_r($this->questionobjects); echo "<br>";
-			foreach ($this->questionids as $orderno => $questionid)
-			{
-				echo "itemid: " . $this->questionobjects[$orderno]->itemid;echo "<br>";
-
-				$qry3->execute(array(
-					':itemid' => $this->questionobjects[$orderno]->itemid,
-					':questionid' => $questionid,
-					':orderno' => $orderno));
-			
-			}
-				
-			/**
-			 * End connection
-			 */
-			mysqli_close($db);	
+			$qry2 = $db->prepare("INSERT INTO tests (testname, userid_owner) VALUES (:testname,:userid_owner)");
 		}
 		else 
-		{		
-			$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
+		{
+			$qry2 = $db->prepare("UPDATE tests SET testname=:testname, testid=LAST_INSERT_ID(testid) WHERE testid=:testid");
+		}	
+		$qry2->execute(array(
+			':testid' => $this->testid,
+			':testname' => $this->testname,
+			':userid_owner' => $_SESSION['userid']));
 			
-			/**
-			 * Save test name and owner in table TESTS.
-			 */
-			
-			$qry2 = $db->prepare("INSERT INTO tests (testname, userid_owner) VALUES (:testname,:userid_owner)");
-			$qry2->execute(array(
-				':testname' => $this->testname,
-				':userid_owner' => $_SESSION['userid']));
-			
-			// save testid for later use
-			$testid = $db->lastInsertId();
-			$this->testid = $testid;
-			
-			/**
-			 * Now save which questionids belong to testid in table TEST_ITEMS.
-			 */
-			
-			$qry3 = $db->prepare("INSERT INTO test_items (questionid, testid, orderno) VALUES (:questionid,:testid,:orderno)");
-			foreach ($this->questionids as $orderno => $questionid)
-			{
-				$qry3->execute(array(
-					':questionid' => $questionid,
-					':testid' => $testid,
-					':orderno' => $orderno));
+		// save testid for later use
+		$this->testid = $db->lastInsertId();
 				
-				//update SESSION with itemids
-				$this->questionobjects[$orderno]->itemid = $db->lastInsertId();
-			 
-			}
 			
-			/**
-			 * End connection
-			 */
-			mysqli_close($db);
+		/**
+		 * Now save or update which questionids belong to testid in table TEST_ITEMS.
+		 */
+				
+		echo "questionids: "; print_r($this->questionids); echo "<br>";
+		echo "questionobjects: "; print_r($this->questionobjects); echo "<br>";
+		
+		
+		foreach ($this->questionids as $orderno => $questionid)
+		{
+			echo "itemid: " . $this->questionobjects[$orderno]->itemid;echo "<br>";
+
+			if(!isset($this->questionobjects[$orderno]->itemid))
+			{
+				$qry3 = $db->prepare("INSERT INTO test_items (questionid, testid, orderno) VALUES (:questionid,:testid,:orderno)");
+			}
+			else 
+			{
+				$qry3 = $db->prepare("UPDATE test_items SET questionid=:questionid, orderno=:orderno, itemid=LAST_INSERT_ID(itemid) WHERE itemid=:itemid");
+			}
+				
+			$qry3->execute(array(
+				':questionid' => $questionid,
+				':orderno' => $orderno,
+				':testid' => $testid,
+				':itemid' => $this->questionobjects[$orderno]->itemid));
+
+			//update SESSION with itemids
+			$this->questionobjects[$orderno]->itemid = $db->lastInsertId();
 
 		}
+				
+		/**
+		 * End connection
+		 */
+		mysqli_close($db);	
+	
 	}
 
 
