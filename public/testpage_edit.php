@@ -104,7 +104,7 @@ if ($_POST['action2'] == "savetest")
 
 
 <?php
-print_r($_SESSION['test'];
+print_r($_SESSION['test']);
 
 $_SESSION['test']->showeditabletest(); 
 ?>
