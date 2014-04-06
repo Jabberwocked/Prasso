@@ -409,13 +409,12 @@ class test
 			echo "<br>" . $this->testid . "<br>";
 			echo $this->testname . "<br>";
 			echo $_SESSION['userid'] . "<br><br>";
-			echo "lala4<br><br>";
+			echo "lala5<br><br>";
 			
 			$qry2 = $db->prepare("UPDATE tests SET testname=:testname WHERE testid=:testid");
 			$qry2->execute(array(
 				':testid' => $this->testid,
-				':testname' => $this->testname,
-				':userid_owner' => $_SESSION['userid']));
+				':testname' => $this->testname));
 		
 			echo "\nPDOStatement::errorInfo():\n";
 			$arr = $qry2->errorInfo();
