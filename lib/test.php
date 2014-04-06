@@ -409,7 +409,7 @@ class test
 			echo "<br>" . $this->testid . "<br>";
 			echo $this->testname . "<br>";
 			echo $_SESSION['userid'] . "<br><br>";
-			echo "lala3<br><br>";
+			echo "lala4<br><br>";
 			
 			$qry2 = $db->prepare("UPDATE tests SET testname=:testname WHERE testid=:testid");
 			$qry2->execute(array(
