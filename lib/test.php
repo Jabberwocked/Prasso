@@ -428,7 +428,7 @@ class test
 
 			if(!isset($this->questionobjects[$orderno]->itemid))
 			{
-				echo "route 1";
+				echo "route 1<br>";
 				$qry3 = $db->prepare("INSERT INTO test_items (questionid, testid, orderno) VALUES (:questionid,:testid,:orderno)");
 				$qry3->execute(array(
 					':questionid' => $questionid,
@@ -439,7 +439,7 @@ class test
 			}
 			else 
 			{
-				echo "route 2";
+				echo "route 2<br>";
 				$qry3 = $db->prepare("UPDATE test_items SET questionid=:questionid, orderno=:orderno WHERE itemid=:itemid");
 				$qry3->execute(array(
 					':questionid' => $questionid,
