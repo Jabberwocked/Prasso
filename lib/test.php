@@ -418,7 +418,7 @@ class test
 		 */
 				
 		echo "questionids: "; print_r($this->questionids); echo "<br>";
-		echo "questionobjects: "; print_r($this->questionobjects); echo "<br>";
+		echo "questionobjects-old: "; print_r($this->questionobjects); echo "<br>";
 		
 		
 		foreach ($this->questionids as $orderno => $questionid)
@@ -446,13 +446,16 @@ class test
 				
 		
 			echo "itemid-new: " . $this->questionobjects[$orderno]->itemid;echo "<br>";
-			echo "lala 2";
+			echo "lala 3";
 			echo "\nPDOStatement::errorInfo():\n";
 			$arr = $qry2->errorInfo();
 			print_r($arr);
 				
 		}
-				
+
+		
+		echo "questionobjects-new: "; print_r($this->questionobjects); echo "<br>";
+		
 		/**
 		 * End connection
 		 */
