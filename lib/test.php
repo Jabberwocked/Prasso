@@ -409,7 +409,7 @@ class test
 			echo "<br>" . $this->testid . "<br>";
 			echo $this->testname . "<br>";
 			echo $_SESSION['userid'] . "<br><br>";
-			echo "lala<br><br>";
+			echo "lala2<br><br>";
 			
 			$qry2 = $db->prepare("UPDATE tests SET testname=:testname WHERE testid=:testid");
 			$qry2->execute(array(
@@ -417,7 +417,7 @@ class test
 				':testname' => $this->testname,
 				':userid_owner' => $_SESSION['userid']));
 		
-			echo PDO::errorInfo();
+			PDO::errorInfo();
 
 		}	
 	
