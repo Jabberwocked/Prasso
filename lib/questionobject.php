@@ -15,7 +15,7 @@ class questionobject {
 	public $typeshort;
 	public $maxscore;
 	public $answers;
-	public $scorepercentages;
+	
 
 /**
  * To make a new questionobject with orderno, question, type, answers
@@ -28,8 +28,20 @@ class questionobject {
 		if (isset($data['question'])) $this->question = $data['question'];
 		if (isset($data['type'])) $this->type = $data['type'];
 		if (isset($data['maxscore'])) $this->maxscore = $data['maxscore'];
-		if (isset($data['answers'])) $this->answers = $data['answers'];
-		if (isset($data['scorepercentages'])) $this->scorepercentages = $data['scorepercentages'];
+		if (isset($data['answers'])) 
+		{
+			foreach ($data['answers'] as $key => $answer)
+			{
+				$this->answers[$key]->answer = $answer;
+			}
+		}
+		if (isset($data['scorepercentages'])) 
+		{
+			foreach ($data['scorepercentages'] as $key => $scorepercentage)
+			{
+				$this->answers[$key]->scorepercentage = $scorepercentage;
+			}
+		}
 		
 		if ($this->type == "shortanswer")
 		{
@@ -60,8 +72,20 @@ class questionobject {
 			unset($this->questionid);
 		}
 		if (isset($data['maxscore'])) $this->maxscore = $data['maxscore'];
-		if (isset($data['answers'])) $this->answers = $data['answers'];
-		if (isset($data['scorepercentages'])) $this->scorepercentages = $data['scorepercentages'];
+		if (isset($data['answers'])) 
+		{
+			foreach ($data['answers'] as $key => $answer)
+			{
+				$this->answers[$key]->answer = $answer;
+			}
+		}
+		if (isset($data['scorepercentages'])) 
+		{
+			foreach ($data['scorepercentages'] as $key => $scorepercentage)
+			{
+				$this->answers[$key]->scorepercentage = $scorepercentage;
+			}
+		}
 	
 		if ($this->type == "shortanswer")
 		{
@@ -89,10 +113,10 @@ class questionobject {
 		$sql = "SELECT * FROM answers WHERE questionid=".$questionid;
 		$resultanswers = $db->query($sql);
 		
-		foreach ($resultanswers as $tempanswersobject)
+		foreach ($resultanswers as $key => $tempanswersobject)
 		{
-			$tempanswersarray[] = $tempanswersobject['answer'];
-			$tempscorepercentagesarray[] = $tempanswersobject['scorepercentage'];
+			$tempanswers[$key]->answer = $tempanswersobject['answer'];
+			$tempanswers[$key]->scorepercentage = $tempanswersobject['scorepercentage'];
 		}
 		
 		
@@ -104,8 +128,7 @@ class questionobject {
 			$this->question = $tempquestionobject['question'];
 			$this->type = $tempquestionobject['type'];
 // 			$this->$maxscore = ""; // Set in class test
-			$this->answers = $tempanswersarray;
-			$this->scorepercentages = $tempscorepercentagesarray;
+			$this->answers = $tempanswers;
 		}
 		
 		
@@ -133,7 +156,7 @@ class questionobject {
 			<p>
 			<span style='font-weight:bold'><?php echo $this->orderno . ". " . $this->question ; ?></span>
 			<span style='font-weight:normal'>(<?php echo $this->typeshort; ?>)</span><br>
-			<span><?php $n = 1; foreach($this->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;}?></span>
+			<span><?php $n = 1; foreach($this->answers as $answerobject){if ($n > 1){echo ", ";}$n ++;echo $answerobject->answer;}?></span>
 			</p>
 		</button><br>
 		

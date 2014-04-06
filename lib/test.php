@@ -238,8 +238,8 @@ class test
 						<option value="shortanswer" <?php if ($this->questionobjects[$itemtoedit]->type == 'shortanswer' OR !isset($this->questionobjects[$itemtoedit])){echo 'selected';} ?>>SA: Short Answer</option>
 						<option value="multichoice" <?php if ($this->questionobjects[$itemtoedit]->type == 'multichoice'){echo 'selected';} ?>>MC: Multiple Choice</option>
 					</select> 
-					<?php $answerno = 1; foreach ($this->questionobjects[$itemtoedit]->answers as $answer){	?>
-					<input type="text" name="answers[]" class="answers" value='<?php echo $answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display: inline; width: 60%">
+					<?php $answerno = 1; foreach ($this->questionobjects[$itemtoedit]->answers as $answerobject){	?>
+					<input type="text" name="answers[]" class="answers" value='<?php echo $answerobject->answer ?>' placeholder="Answer <?php echo $answerno ?>" style="display: inline; width: 60%">
 					<?php $answerno ++;} if ($answerno == 1){ ?>
 					<input type="text" name="answers[]" class="answers" placeholder="Answer <?php echo $answerno ?>" style="display: inline; width: 60%">
 					<?php $answerno ++;}?>
@@ -329,10 +329,18 @@ class test
 				$this->questionobjects[$_POST['orderno']]->update($_POST);
 			}
 			// remove empty answer strings
-			$temp = $this->questionobjects[$_POST['orderno']]->answers;
+			foreach($this->questionobjects[$_POST['orderno']]->answers as $key => $answerobject)
+			{
+				$temp[] = $answerobject->answer; 
+			}
 			$temp = array_diff($temp, array(""));
 			$temp = array_values($temp);
-			$this->questionobjects[$_POST['orderno']]->answers = $temp;
+			$this->questionobjects[$_POST['orderno']]->answers = array();
+			foreach ($temp as $key => $answer)
+			{
+				$this->questionobjects[$_POST['orderno']]->answers[$key]->answer = $answer;
+			}
+			
 		}
 	}
 
@@ -387,10 +395,14 @@ class test
 			$questionid = $this->questionids[$orderno];
 			foreach ($questionobject->answers as $answer)
 			{
-				$qry = $db->prepare("INSERT INTO answers (questionid, answer) VALUES (:questionid,:answer)");
-				$qry->execute(array(
-					':questionid' => $questionid,
-					':answer' => $answer));
+				if (!isset($answer->answerid))
+				{
+					$qry = $db->prepare("INSERT INTO answers (questionid, answer) VALUES (:questionid,:answer)");
+					$qry->execute(array(
+						':questionid' => $questionid,
+						':answer' => $answer));
+				}
+				
 			}
 		}	
 	}
@@ -477,10 +489,14 @@ class test
 		$sumscores = 0;
 		foreach ($this->questionids as $orderno => $questionid)
 		{
-			$answerkey = array_search($useranswers[$questionid], $this->questionobjects[$orderno]->answers);
+			foreach ($this->questionobjects[$orderno]->answers as $key => $answerobject)
+			{
+				$tempanswers[] = $answerobject->answer;
+			} 
+			$answerkey = array_search($useranswers[$questionid], $tempanswers);
 			if (is_int($answerkey))
 			{
-				$userscores[$questionid] = $this->questionobjects[$orderno]->scorepercentages[$answerkey] / 100 * $this->questionobjects[$orderno]->maxscore;
+				$userscores[$questionid] = $this->questionobjects[$orderno]->answers[$answerkey]->scorepercentage / 100 * $this->questionobjects[$orderno]->maxscore;
 			}
 			else
 			{
@@ -510,6 +526,10 @@ class test
 
 		foreach ($this->questionids as $orderno => $questionid)
 		{
+			foreach($this->questionobjects[$orderno]->answers as $key => $answerobject)
+			{
+				$tempanswers[] = $answerobject->answer;
+			}
 			
 			$qry = $db->prepare("INSERT INTO test_responses (attemptid, itemid, useranswer, userscore, question_logged, answers_logged, maxscore_logged) VALUES (:attemptid, :itemid, :useranswer, :userscore, :question_logged, :answers_logged, :maxscore_logged)");
 			$qry->execute(array(
@@ -518,7 +538,7 @@ class test
 				':useranswer' => $useranswers[$questionid], 
 				':userscore' => $userscores[$questionid],
 				':question_logged' => $this->questionobjects[$orderno]->question, 
-				':answers_logged' => implode("','", $this->questionobjects[$orderno]->answers), 
+				':answers_logged' => implode("','", $tempanswers), 
 				':maxscore_logged' => $this->questionobjects[$orderno]->maxscore));		
 			
 			$responseid = $db->lastInsertId();
@@ -551,7 +571,7 @@ class test
 			
 			echo "<p style='background-color:" . $colour . "'>";
 			echo "<span style='font-weight:bold; max-width:200px;'> ".$orderno.". ".$this->questionobjects[$orderno]->question."</span><span style='display: block; float:right'> Score: " . $userscores[$questionid] . "</span><br>";
-			echo "<span>>" . $useranswers[$questionid] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($this->questionobjects[$orderno]->answers as $answer){if ($n > 1){echo ", ";}$n ++;echo $answer;};echo "</span>";
+			echo "<span>>" . $useranswers[$questionid] . "</span><span style='display: block; float:right'> Answer: "; $n = 1; foreach ($this->questionobjects[$orderno]->answers as $answerobject){if ($n > 1){echo ", ";}$n ++;echo $answerobject->answer;};echo "</span>";
 			echo "</p>";
 		};
 		echo "<p style='font-weight:bold'> Totalscore: " . $userscores['sumscores'] . "</p>";
