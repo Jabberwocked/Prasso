@@ -157,8 +157,6 @@ class test
 	 */
 	function showeditabletest( )
 	{
-	
-		echo "Editing test with testid " . $this->testid . "<br>";
 		
 		/**
 		 * Set which item is being edited.
