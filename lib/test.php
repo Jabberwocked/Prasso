@@ -418,17 +418,12 @@ class test
 		 * Now save or update which questionids belong to testid in table TEST_ITEMS.
 		 */
 				
-		echo "questionids: "; print_r($this->questionids); echo "<br>";
-		echo "questionobjects-old: "; print_r($this->questionobjects); echo "<br>";
-		
-		
+	
 		foreach ($this->questionids as $orderno => $questionid)
 		{
-			echo "itemid-old: " . $this->questionobjects[$orderno]->itemid . "<br><br>";
 
 			if(!isset($this->questionobjects[$orderno]->itemid))
 			{
-				echo "route 1<br>";
 				$qry3 = $db->prepare("INSERT INTO test_items (questionid, testid, orderno) VALUES (:questionid,:testid,:orderno)");
 				$qry3->execute(array(
 					':questionid' => $questionid,
@@ -439,20 +434,12 @@ class test
 			}
 			else 
 			{
-				echo "route 2<br>";
 				$qry3 = $db->prepare("UPDATE test_items SET questionid=:questionid, orderno=:orderno WHERE itemid=:itemid");
 				$qry3->execute(array(
 					':questionid' => $questionid,
 					':orderno' => $orderno,
 					':itemid' => $this->questionobjects[$orderno]->itemid));
 			}
-				
-		
-			echo "itemid-new: " . $this->questionobjects[$orderno]->itemid . "<br>";
-			echo "lala 5<br>";
-			echo "\nPDOStatement::errorInfo():\n";
-			$arr = $qry2->errorInfo();
-			print_r($arr); echo "<br>";
 				
 		}
 
