@@ -406,7 +406,7 @@ class test
 		}
 		else 
 		{
-			echo $this->testid . "<br>";
+			echo "<br>" . $this->testid . "<br>";
 			echo $this->testname . "<br>";
 			echo $_SESSION['userid'] . "<br><br>";
 			
