@@ -356,14 +356,13 @@ class test
 		 */
 		$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
 		
-		echo "lala 1";
-		
+				
 		foreach ($this->questionobjects as $orderno => $questionobject)
 		{
-			echo "lala 2";
+
 			if (!isset($questionobject->questionid))
 			{
-				echo "lala 3";
+
 				$qry = $db->prepare("INSERT INTO questions (question, type) VALUES (:question,:type)");
 				$qry->execute(array(
 					':question' => $questionobject->question,
@@ -410,6 +409,8 @@ class test
 					$qry->execute(array(
 						':questionid' => $this->questionobjects[$orderno]->questionid,
 						':answer' => $answerobject->answer));
+
+					$answerobject->answerid = $db->lastInsertId();
 				}				
 			}
 		}	
@@ -417,7 +418,6 @@ class test
 
 	/** 
 	 * save test properties from SESSION to db tests
-	 * UPDATES NOT WORKING YET
 	 */
 	function savetesttodbtests( )
 	{

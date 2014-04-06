@@ -101,7 +101,11 @@ if ($_POST['action2'] == "savetest")
 
 <div style="position:relative; width: 500px; margin: 0px auto; border: 1px dotted; padding: 20px 170px 100px 170px">
 
-<?php 
+
+
+<?php
+print_r($_SESSION['test'];
+
 $_SESSION['test']->showeditabletest(); 
 ?>
 
