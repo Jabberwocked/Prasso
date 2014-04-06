@@ -110,6 +110,11 @@ class questionobject {
 		$sql = "SELECT * FROM questions WHERE questionid=".$questionid;
 		$resultquestions = $db->query($sql);
 		
+	//	itemid nog ergens vandaan halen
+	//	$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
+	//	$sql = "SELECT * FROM test_answers WHERE itemid=".$itemid;
+		
+		$db = new PDO(DB_QUESTIONS, DB_USERNAME, DB_PASSWORD);
 		$sql = "SELECT * FROM answers WHERE questionid=".$questionid;
 		$resultanswers = $db->query($sql);
 		
