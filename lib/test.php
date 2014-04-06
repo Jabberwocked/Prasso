@@ -399,18 +399,19 @@ class test
 			$qry2->execute(array(
 				':testname' => $this->testname,
 				':userid_owner' => $_SESSION['userid']));
+
+			$this->testid = $db->lastInsertId(); // saves testid for later use
 		}
 		else 
 		{
-			$qry2 = $db->prepare("UPDATE tests SET testname=:testname, testid=LAST_INSERT_ID(testid) WHERE testid=:testid");
+			$qry2 = $db->prepare("UPDATE tests SET testname=:testname WHERE testid=:testid");
 			$qry2->execute(array(
 				':testid' => $this->testid,
 				':testname' => $this->testname,
 				':userid_owner' => $_SESSION['userid']));
 		}	
 	
-		// save testid for later use
-		$this->testid = $db->lastInsertId();
+
 				
 			
 		/**
