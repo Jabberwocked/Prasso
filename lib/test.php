@@ -423,7 +423,7 @@ class test
 		
 		foreach ($this->questionids as $orderno => $questionid)
 		{
-			echo "itemid-old: " . $this->questionobjects[$orderno]->itemid;echo "<br><br>";
+			echo "itemid-old: " . $this->questionobjects[$orderno]->itemid . "<br><br>";
 
 			if(!isset($this->questionobjects[$orderno]->itemid))
 			{
