@@ -423,7 +423,7 @@ class test
 		
 		foreach ($this->questionids as $orderno => $questionid)
 		{
-			echo "itemid-old: " . $this->questionobjects[$orderno]->itemid;echo "<br>";
+			echo "itemid-old: " . $this->questionobjects[$orderno]->itemid;echo "<br><br>";
 
 			if(!isset($this->questionobjects[$orderno]->itemid))
 			{
@@ -445,9 +445,9 @@ class test
 			}
 				
 		
-			echo "itemid-new: " . $this->questionobjects[$orderno]->itemid;echo "<br>";
-			echo "lala 3";
-			echo "\nPDOStatement::errorInfo():\n";
+			echo "itemid-new: " . $this->questionobjects[$orderno]->itemid . "<br>";
+			echo "lala 4<br>";
+			echo "\nPDOStatement::errorInfo():\n" . "<br>";
 			$arr = $qry2->errorInfo();
 			print_r($arr);
 				
