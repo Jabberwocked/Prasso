@@ -444,8 +444,6 @@ class test
 		}
 
 		
-		echo "questionobjects-new: "; print_r($this->questionobjects); echo "<br>";
-		
 		/**
 		 * End connection
 		 */
