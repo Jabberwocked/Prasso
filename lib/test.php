@@ -431,7 +431,7 @@ class test
 				$qry3 = $db->prepare("INSERT INTO test_items (questionid, testid, orderno) VALUES (:questionid,:testid,:orderno)");
 				$qry3->execute(array(
 					':questionid' => $questionid,
-					':testid' => $testid,
+					':testid' => $this->testid,
 					':orderno' => $orderno));
 			
 				$this->questionobjects[$orderno]->itemid = $db->lastInsertId(); //update SESSION with new itemid
