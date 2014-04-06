@@ -402,7 +402,7 @@ class test
 			$qry2 = $db->prepare("UPDATE tests SET testname=:testname, testid=LAST_INSERT_ID(testid) WHERE testid=:testid");
 		}	
 		$qry2->execute(array(
-			':testid' => $this->testid,
+	//		':testid' => $this->testid,
 			':testname' => $this->testname,
 			':userid_owner' => $_SESSION['userid']));
 			
