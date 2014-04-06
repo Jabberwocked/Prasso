@@ -391,6 +391,8 @@ class test
 		 * Save or update test name and owner in table TESTS.
 		 */
 		
+		echo "lala";
+		
 		$db = new PDO(DB_TESTS, DB_USERNAME, DB_PASSWORD);
 		
 		if(!isset($this->testid))
