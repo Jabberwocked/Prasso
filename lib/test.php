@@ -406,6 +406,10 @@ class test
 		}
 		else 
 		{
+			echo $this->testid . "<br>";
+			echo $this->testname . "<br>";
+			echo $_SESSION['userid'] . "<br><br>";
+			
 			$qry2 = $db->prepare("UPDATE tests SET testname=:testname WHERE testid=:testid");
 			$qry2->execute(array(
 				':testid' => $this->testid,
